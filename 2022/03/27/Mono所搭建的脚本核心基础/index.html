@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022/3 | Hexo</title>
+  <title>Mono所搭建的脚本核心基础 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2022/03/index.html">
+  <meta name="description" content="Mono基本介绍Mono组件C#编译器——MCS：MCS的作用就是将C#编译为CIL（通用中间语言） Mono运行时（mono Runtime）：运行时中的编译器将CIL的Byte Code在转译为原生码，同时提供即时编译（JIT），提前编译（AOT），完全静态编译（Full-AOT）三种转译方式 基础类库：提供广泛的基础类 Mono类库：提供额外的有用功能，尤其是构建Linux方面 Mono如何">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mono所搭建的脚本核心基础">
+<meta property="og:url" content="http://example.com/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Mono基本介绍Mono组件C#编译器——MCS：MCS的作用就是将C#编译为CIL（通用中间语言） Mono运行时（mono Runtime）：运行时中的编译器将CIL的Byte Code在转译为原生码，同时提供即时编译（JIT），提前编译（AOT），完全静态编译（Full-AOT）三种转译方式 基础类库：提供广泛的基础类 Mono类库：提供额外的有用功能，尤其是构建Linux方面 Mono如何">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-27T13:00:54.000Z">
+<meta property="article:modified_time" content="2022-03-27T13:03:05.667Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -150,36 +155,99 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Mono所搭建的脚本核心基础" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Mono所搭建的脚本核心基础
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+
+        
+        <a href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/" class="archive-article-date">
   	<time datetime="2022-03-27T13:00:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">Mono所搭建的脚本核心基础</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mono基本介绍"><a href="#Mono基本介绍" class="headerlink" title="Mono基本介绍"></a>Mono基本介绍</h1><h2 id="Mono组件"><a href="#Mono组件" class="headerlink" title="Mono组件"></a>Mono组件</h2><p>C#编译器——MCS：MCS的作用就是将C#编译为CIL（通用中间语言）</p>
+<p>Mono运行时（mono Runtime）：运行时中的编译器将CIL的Byte Code在转译为原生码，同时提供即时编译（JIT），提前编译（AOT），完全静态编译（Full-AOT）三种转译方式</p>
+<p>基础类库：提供广泛的基础类</p>
+<p>Mono类库：提供额外的有用功能，尤其是构建Linux方面</p>
+<h2 id="Mono如何提供脚本功能"><a href="#Mono如何提供脚本功能" class="headerlink" title="Mono如何提供脚本功能"></a>Mono如何提供脚本功能</h2><p>总所周知Unity是由C++写成的，将Mono运行时嵌入到由C++写成的应用后，该应用便会获取一个完整的虚拟机环境 。Mono的嵌入接口就会将Mono运行时暴露给C++代码，哪些C&#x2F;C++代码被称为非托管代码，经CIL编译器生成的CIL代码被称为托管代码。</p>
+<p>Mono运行时嵌入应用可分为3个步骤：</p>
+<ul>
+<li>编译C++程序和链接Mono运行时</li>
+<li>初始化Mono运行时</li>
+<li>C&#x2F;C++ 和C#&#x2F;CIL的交互</li>
+</ul>
+<p>假设我们要实现Unity中的组件系统，在C#中定义Component类，C#端中主要目的是为游戏脚本提供相应接口，而不是具体逻辑的实现。我们在C&#x2F;C++中实现具体逻辑，再以该代码中创建的实例为样本，调用Mono提供的方法在托管环境中创建相同的类型实例。</p>
+<p>我们可以看出，虽然引擎底层是由C&#x2F;C++实现的，但是他通过Mono提供了一套C#的接口作为其脚本语言，方便我们快速开发游戏</p>
+<h1 id="UNITY如何跨平台"><a href="#UNITY如何跨平台" class="headerlink" title="UNITY如何跨平台"></a>UNITY如何跨平台</h1><h4 id="原理就是CIL！"><a href="#原理就是CIL！" class="headerlink" title="原理就是CIL！"></a><strong><u>原理就是CIL！</u></strong></h4><p>由于CIL的存在，不同平台的代码编译只需要两个步骤：从代码本身到CIL，从CIL到本地指令的即时编译</p>
+<p>这样我们就不用根据不同的平台部署不同内容</p>
+<h2 id="什么是CIL"><a href="#什么是CIL" class="headerlink" title="什么是CIL"></a>什么是CIL</h2><p>CIL（Common Intermediate Language）是指令集。</p>
+<p>CIL主要有以下特点：</p>
+<ul>
+<li>CIL基于堆栈而非CPU</li>
+<li>面向对象</li>
+<li>以一个“.”开头，可读性较低</li>
+</ul>
+<p>CIL其实没有在本地运行，他是在运行在虚拟机中的，具体到Unity中就是Mono运行时，运行在本地的是被编译后的原生代码</p>
+<h2 id="Unity中的脚本语言"><a href="#Unity中的脚本语言" class="headerlink" title="Unity中的脚本语言"></a>Unity中的脚本语言</h2><p>哈人！Unity除了可以使用C#之外，还可以使用Boo、UnityScript（和JavaScript的相同点就是后缀相同）</p>
+<p>C#效率比UnityScript更快，因为UnityScript涉及频繁的拆箱装箱，但他们是同一个层级的语言（都需要一个CIL的过渡过程）。至于Boo已经在Unity5.0之后停止文档支持了</p>
+<h1 id="Unity的脚本编译"><a href="#Unity的脚本编译" class="headerlink" title="Unity的脚本编译"></a>Unity的脚本编译</h1><p>无论是哪种语言编写的源代码，最后都不能供CPU运行，需要先被翻译为本地代码（也就是二进制的机器语言）</p>
+<h2 id="脚本编译流程概览"><a href="#脚本编译流程概览" class="headerlink" title="脚本编译流程概览"></a>脚本编译流程概览</h2><p>Unity并非直接将游戏脚本编译为二进制脚本而是将他编译为新的.NET dll文件，再通过Mono内部的 JIT 编译器编译为二进制代码（IOS平台不行，这也是为何Unity平台不能给出热更新方案，IOS一般采用完全静态编译）</p>
+<p>但是呢Unity的游戏脚本中经常会存在相互引用彼此定义的类型的情况，所以脚本编译将会按4个阶段的顺序进行，取决于他所在的文件夹，是的，也就是Asset，Plugins，Editor那些文件夹。</p>
+<ol>
+<li>编译运行时的脚本：这些脚本位于Standard Asset，Plugins，Pro Standard Asset（存放专业版才有的功能）文件夹中，这些文件夹中的脚本肯定不会访问外部变量</li>
+<li>编译Editor的脚本：位于Plugins&#x2F;Editor，Standard Asset&#x2F;Editor，Pro Standard Asset&#x2F;Editor中，我们使用了UnityEditor命名空间的脚本都要放在上述文件夹中，比如我们想要拓展Unity编辑器使用的脚本都要放在上述文件夹中</li>
+<li>所有不在Editor中的脚本：基本就是我们开发过程中创建的游戏逻辑脚本</li>
+<li>剩余的脚本：不在特殊文件夹的Editor中的，而在其他Editor文件夹中的脚本（好拗口解密）</li>
+</ol>
+<h2 id="JIT即时编译"><a href="#JIT即时编译" class="headerlink" title="JIT即时编译"></a>JIT即时编译</h2><p><strong>定义：一个程序在他运行时创建并且运行了全新的代码</strong></p>
+<p>编译器不仅会生成CIL代码，还会在托管模块中生成数据表集合，又叫metadata元数据。用来描述该模块定义了什么，引用了什么，所以进行JIT编译的时候就不需要额外的C++头文件的支持。</p>
+<p>相较于传统的直接将脚本编译为原生代码，JIT可以跨平台，而且具备了对生成的原生代码进行性能优化的能力，虽然即时编译会影响运行时的效率，但Mono优化之后并不明显。</p>
+<h2 id="不同平台上的编译"><a href="#不同平台上的编译" class="headerlink" title="不同平台上的编译"></a>不同平台上的编译</h2><h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><p>在打包成apk之前，首先需要一套Android开发环境，具体步骤为：</p>
+<ol>
+<li>在Android Developer SDK界面下载最新的SDK，安装解压</li>
+<li>将Android设备与计算机相连，识别成功后在Unity中设置Android SDK路径，第一次发布的时候需要提供Android SDK安装的根目录（在Preference中修改）</li>
+</ol>
+<p>生成Android引用程序也分为两个主要步骤：生成apk和将该文件部署到Android设备上。我们点击Build and Run会执行两个步骤</p>
+<h3 id="IOS"><a href="#IOS" class="headerlink" title="IOS"></a>IOS</h3><p>需要使用AOT编译方式（Ahead-Of-Time提前编译），先将游戏脚本源码提前编译，这样运行时直接加载已经编译好的原生源码而不是即时编译。相比JIT主要优势是减少启动时间、节约内存、生成的原生源码性能可能更好</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -191,285 +259,106 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2022-03-27T13:00:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">脚本之间优雅引用方式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/">脚本之间优雅引用方式</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-03-27T13:00:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/">UGUI的基础应用</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:59:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/">Unity实现存档的不同方法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/Git-%E7%90%86%E8%AE%BA%E5%8F%8A%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:59:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/Git-%E7%90%86%E8%AE%BA%E5%8F%8A%E5%BA%94%E7%94%A8/">Git 理论及应用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%B3%9B%E5%9E%8B%E3%80%81partial%E7%B1%BB%E3%80%81%E6%9E%9A%E4%B8%BE%E3%80%81%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%B3%9B%E5%9E%8B%E3%80%81partial%E7%B1%BB%E3%80%81%E6%9E%9A%E4%B8%BE%E3%80%81%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89/">C#个人学习总结（泛型、partial类、枚举、结构体）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/%E4%B8%AA%E4%BA%BAC#%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:58:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/%E4%B8%AA%E4%BA%BAC#%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%EF%BC%89/">个人C#学习总结（抽象类与接口）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E4%BA%8B%E4%BB%B6%E8%AF%A6%E8%A7%A3%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:34:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E4%BA%8B%E4%BB%B6%E8%AF%A6%E8%A7%A3%EF%BC%89/">C#个人学习总结（事件详解）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -492,8 +381,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

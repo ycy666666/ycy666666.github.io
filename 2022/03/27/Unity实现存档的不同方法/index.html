@@ -6,15 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2022/3 | Hexo</title>
+  <title>Unity实现存档的不同方法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2022/03/index.html">
+  <meta name="description" content="PlayerPres类这个类简单易懂，但只能存取int，float，string类，而且在调试过程中所产生的变化都会保留，最重要的是污染注册表。 脚本序列化序列化是将数据结构或对象状态转换为 Unity 可存储并在以后可重构的格式的自动过程。Unity 的一些内置功能会使用序列化，比如保存和加载、Inspector 窗口、实例化和预制件等功能。 序列化规则Unity 中的序列化程序在实时游戏环境中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity实现存档的不同方法">
+<meta property="og:url" content="http://example.com/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="PlayerPres类这个类简单易懂，但只能存取int，float，string类，而且在调试过程中所产生的变化都会保留，最重要的是污染注册表。 脚本序列化序列化是将数据结构或对象状态转换为 Unity 可存储并在以后可重构的格式的自动过程。Unity 的一些内置功能会使用序列化，比如保存和加载、Inspector 窗口、实例化和预制件等功能。 序列化规则Unity 中的序列化程序在实时游戏环境中">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/27378ab516434227b6389e8d1fe52f91.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/0c9e3d247d1d4a4699eba9c5d517cf32.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/3d04f5b369834d119d9144d8180355b4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_14,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1de4fb50b57d4564b154f1fba4c6c81f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/677f1ff8127d460d9f52a17f8e56bdd7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/a22874eecbff4e82a849880a7ed80513.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/6b07057b7daf4787b469d3f127507c33.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_18,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/483625da5a4f4706820d0c4e30f34ab6.png">
+<meta property="article:published_time" content="2022-03-27T12:59:56.000Z">
+<meta property="article:modified_time" content="2022-03-27T13:03:42.522Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/27378ab516434227b6389e8d1fe52f91.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,150 +164,94 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Unity实现存档的不同方法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2022-03-27T13:00:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">Mono所搭建的脚本核心基础</a>
+    <h1 class="article-title" itemprop="name">
+      Unity实现存档的不同方法
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2022-03-27T13:00:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/">脚本之间优雅引用方式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-03-27T13:00:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/">UGUI的基础应用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/" class="archive-article-date">
+        
+        <a href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/" class="archive-article-date">
   	<time datetime="2022-03-27T12:59:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/">Unity实现存档的不同方法</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="PlayerPres类"><a href="#PlayerPres类" class="headerlink" title="PlayerPres类"></a>PlayerPres类</h1><p>这个类简单易懂，但只能存取int，float，string类，而且在调试过程中所产生的变化都会保留，最重要的是污染注册表。</p>
+<h1 id="脚本序列化"><a href="#脚本序列化" class="headerlink" title="脚本序列化"></a>脚本序列化</h1><p>序列化是将数据结构或对象状态转换为 <strong>Unity 可存储</strong>并在以后可重构的格式的自动过程。Unity 的一些内置功能会使用序列化，比如保存和加载、Inspector 窗口、实例化和预制件等功能。</p>
+<h2 id="序列化规则"><a href="#序列化规则" class="headerlink" title="序列化规则"></a>序列化规则</h2><p>Unity 中的序列化程序在实时游戏环境中运行。这对性能有重大影响。因此，Unity 中的序列化与其他编程环境中的序列化具有不同的行为。以下部分概述了如何在 Unity 中使用序列化。要使用字段序列化，必须确保其：</p>
+<ul>
+<li>为 <code>public</code>，或具有 SerializeField属性</li>
+<li>非 <code>static</code></li>
+<li>非 <code>const</code></li>
+<li>非 <code>readonly</code></li>
+<li>具有可序列化的 <code>fieldtype</code>。</li>
+</ul>
+<h4 id="可序列化的简单字段类型"><a href="#可序列化的简单字段类型" class="headerlink" title="可序列化的简单字段类型"></a>可序列化的简单字段类型</h4><ul>
+<li>具有 <code>Serializable</code> 属性的自定义非抽象、非泛型类</li>
+<li>具有 <code>Serializable</code> 属性的自定义结构</li>
+<li>可序列化的简单字段类型的数组、 <code>List&lt;T&gt;</code></li>
+<li>原始数据类型（<code>int</code>、<code>float</code>、<code>double</code>、<code>bool</code>、<code>string</code> 等）</li>
+<li>枚举类型</li>
+<li>某些 Unity 内置类型：<code>Vector2</code>、<code>Vector3</code>、<code>Vector4</code>、<code>Rect</code>、<code>Quaternion</code>、<code>Matrix4x4</code>、&#96;<img src="https://img-blog.csdnimg.cn/27378ab516434227b6389e8d1fe52f91.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></li>
+</ul>
+<h4 id="存储无法序列化类的解决方法"><a href="#存储无法序列化类的解决方法" class="headerlink" title="存储无法序列化类的解决方法"></a>存储无法序列化类的解决方法</h4><p><img src="https://img-blog.csdnimg.cn/0c9e3d247d1d4a4699eba9c5d517cf32.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>总之，确保自定义类可序列化需要具有 <a target="_blank" rel="noopener" href="https://docs.unity3d.com/cn/2020.3/ScriptReference/Serializable.html">Serializable</a> 属性、非抽象、非静态、非泛型（但可继承自泛型类）</p>
+<p>此外在某些情况下，脚本序列化可能会导致错误。</p>
+<p>从构造函数或字段初始化函数以及反序列化期间调用 Unity Scripting API</p>
+<p>在 MonoBehaviour构造函数或字段初始化函数中调用诸如 <a target="_blank" rel="noopener" href="https://docs.unity3d.com/cn/current/ScriptReference/GameObject.Find.html">GameObject.Find</a> 之类的脚本 API 会触发错误：“Find is not allowed to be called from a MonoBehaviour constructor (or instance field initializer), call in in Awake or Start instead.”</p>
+<p>解决此问题的方法是在 MonoBehaviour.Start中而不是在构造函数中调用脚本 API。</p>
+<h1 id="Json类"><a href="#Json类" class="headerlink" title="Json类"></a>Json类</h1><p>之所以要了解序列化的知识，就是因为Json存储就是通过序列化来实现的</p>
+<p>首先我们需要创建一个类来表明需要存储哪些数据</p>
+<p><img src="https://img-blog.csdnimg.cn/3d04f5b369834d119d9144d8180355b4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_14,color_FFFFFF,t_70,g_se,x_16" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-7E2UuxIj-1646546826174)(C:\Users\ycy\AppData\Roaming\Typora\typora-user-images\image-20220306120115115.png)]"></p>
+<h2 id="Json文件如何转化"><a href="#Json文件如何转化" class="headerlink" title="Json文件如何转化"></a>Json文件如何转化</h2><p>使用unity中的JsonUtility类可以让可序列化对象和Json数据相互转换<br><img src="https://img-blog.csdnimg.cn/1de4fb50b57d4564b154f1fba4c6c81f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-WCWE9kTc-1646546826175)(C:\Users\ycy\AppData\Roaming\Typora\typora-user-images\image-20220306122024170.png)]"><br><img src="https://img-blog.csdnimg.cn/677f1ff8127d460d9f52a17f8e56bdd7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-DJhzh7Gj-1646546826176)(C:\Users\ycy\AppData\Roaming\Typora\typora-user-images\image-20220306134131674.png)]"><br><img src="https://img-blog.csdnimg.cn/a22874eecbff4e82a849880a7ed80513.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
+<p>注意：</p>
+<ul>
+<li>File类需要<code>using System.IO</code></li>
+<li><a target="_blank" rel="noopener" href="https://docs.unity3d.com/cn/current/ScriptReference/Application.html">Application</a>.persistentDataPath 返回一个持久数据目录的路径（不同平台的路径不同，因此也不用担心存档找不到）</li>
+<li>Path.Combine 将string类型合并成路径名</li>
+<li>File.WriteAllText(string path,string contents)</li>
+</ul>
+<p>我们创建该类的实例便可以储存，如果是敌人的话，创建多个实例存储即可</p>
+<p><img src="https://img-blog.csdnimg.cn/6b07057b7daf4787b469d3f127507c33.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_18,color_FFFFFF,t_70,g_se,x_16" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-CtBxkzeB-1646546826177)(C:\Users\ycy\AppData\Roaming\Typora\typora-user-images\image-20220306135024042.png)]"></p>
+<p><img src="https://img-blog.csdnimg.cn/483625da5a4f4706820d0c4e30f34ab6.png" alt="[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-REam3qgT-1646546826177)(C:\Users\ycy\AppData\Roaming\Typora\typora-user-images\image-20220306135040973.png)]"></p>
+<p>此外呢，还有.FromJsonOverwrite可以重写原有数据，用于覆盖存档</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -305,171 +263,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/Git-%E7%90%86%E8%AE%BA%E5%8F%8A%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:59:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          UGUI的基础应用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/27/Git-%E7%90%86%E8%AE%BA%E5%8F%8A%E5%BA%94%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Git 理论及应用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/Git-%E7%90%86%E8%AE%BA%E5%8F%8A%E5%BA%94%E7%94%A8/">Git 理论及应用</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%B3%9B%E5%9E%8B%E3%80%81partial%E7%B1%BB%E3%80%81%E6%9E%9A%E4%B8%BE%E3%80%81%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%B3%9B%E5%9E%8B%E3%80%81partial%E7%B1%BB%E3%80%81%E6%9E%9A%E4%B8%BE%E3%80%81%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89/">C#个人学习总结（泛型、partial类、枚举、结构体）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/%E4%B8%AA%E4%BA%BAC#%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:58:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/%E4%B8%AA%E4%BA%BAC#%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%EF%BC%89/">个人C#学习总结（抽象类与接口）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E4%BA%8B%E4%BB%B6%E8%AF%A6%E8%A7%A3%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:34:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E4%BA%8B%E4%BB%B6%E8%AF%A6%E8%A7%A3%EF%BC%89/">C#个人学习总结（事件详解）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -492,8 +394,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
