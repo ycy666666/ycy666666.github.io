@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>TH!S !S A WEBSITE</title>
+  <title>Unity3D脚本语言的类型系统 | TH!S !S A WEBSITE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="TH!S !S A WEBSITE">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="C#的类型系统C#是静态，安全，大多数时候显示的语言，而且所有类型都派生自Object类，同时Unity都是以MonoBehavior这个类作为基础的。 值类型与引用类型引用类型引用类型总是从托管堆分配，而C#要求所有对象都是用new关键词来创建。 简单介绍一下new操作符所做的事情：  计算所需内存空间，new操作符会计算其所有基类中定义的所有实例字段所需字节数。同时为了方便Mono运行时管理对">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity3D脚本语言的类型系统">
+<meta property="og:url" content="http://example.com/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="TH!S !S A WEBSITE">
+<meta property="og:description" content="C#的类型系统C#是静态，安全，大多数时候显示的语言，而且所有类型都派生自Object类，同时Unity都是以MonoBehavior这个类作为基础的。 值类型与引用类型引用类型引用类型总是从托管堆分配，而C#要求所有对象都是用new关键词来创建。 简单介绍一下new操作符所做的事情：  计算所需内存空间，new操作符会计算其所有基类中定义的所有实例字段所需字节数。同时为了方便Mono运行时管理对">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/ycy/Desktop/md/o_exeOrder.png">
+<meta property="article:published_time" content="2022-03-29T12:21:54.000Z">
+<meta property="article:modified_time" content="2022-03-29T12:24:35.918Z">
 <meta property="article:author" content="YCY">
+<meta property="article:tag" content="unity, C#">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/ycy/Desktop/md/o_exeOrder.png">
   
     <link rel="alternative" href="/atom.xml" title="TH!S !S A WEBSITE" type="application/atom+xml">
   
@@ -146,16 +153,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Unity3D脚本语言的类型系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Unity3D脚本语言的类型系统" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/">Unity3D脚本语言的类型系统</a>
+    <h1 class="article-title" itemprop="name">
+      Unity3D脚本语言的类型系统
     </h1>
   
 
@@ -179,9 +184,82 @@
 <li>最后返回一个新建对象的引用，这就是说新建的变量是一个引用而不是对象本身</li>
 </ol>
 <p>综上，引用类型可以概括为以下四点：</p>
-        
-          <a class="article-more-a" href="/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/#more">more >></a>
-        
+<span id="more"></span>
+
+<ol>
+<li>存储引用类型对象的内存空间从托管堆上分配</li>
+<li>每一个对象都有额外的成员为Mono运行时提供操作该对象的信息</li>
+<li>对象中的其他字段的字节总是0</li>
+<li>并没有一个关键词能删除对象，所以当没有空间可用时会触发垃圾回收</li>
+</ol>
+<h3 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h3><p>如果所有类型都是引用类型，那么会消耗巨大的内存分配。因此，值类型实例都是分配在线程栈上的，并且不受垃圾回收（GC）影响</p>
+<p>此外，值类型不能派生出其他类型，而且是隐式密封的。这就导致无须提供额外信息，也就不需要再托管堆上为其分配空间</p>
+<p><strong>并非所有值类型都分配在线程栈上</strong>，比如数组中的元素，引用类型中的值类型字段，迭代器中的局部变量。</p>
+<p>引用类型总是分配在托管堆上，而值类型并不总是在线程栈上。</p>
+<p>综上，对于值类型可以概括为：</p>
+<ol>
+<li>不派生出其他类型，也不需要从其他类型派生</li>
+<li>值类型不可变，指的是他没有提供会更改其字段的成员</li>
+<li>值类型都派生自System.ValueTybe</li>
+<li>值类型有已装箱和未装箱两种表示方式。装箱指的是将值类型转换为引用类型，很多情况需要获取和操作对值类型实例的引用，这便需要装箱机制</li>
+</ol>
+<h3 id="具体类型分类"><a href="#具体类型分类" class="headerlink" title="具体类型分类"></a>具体类型分类</h3><p>引用类型：</p>
+<p>​    采用 Class,Interface,Delegate关键词来声明的自定义引用类型</p>
+<p>​    C#内建的引用类型：Object,  <em><strong>string</strong></em>(string类型是对字符串的一个引用)，List类，Decoder</p>
+<p>值类型：</p>
+<p>​    结构：数字型结构(System.Int32, System.Float)，布尔型结构（System.Boolean），自定义的结构</p>
+<p>​    枚举： System.IO.FileAttribute等</p>
+<p>当我们深入了解各个类型之间的关系时，所有结构都派生自抽象类System.ValueTybe，枚举的基类System.Enum也都派生自System.ValueTybe。事实上所有值类型都派生自这个类</p>
+<h1 id="Unity脚本语言中的引用类型"><a href="#Unity脚本语言中的引用类型" class="headerlink" title="Unity脚本语言中的引用类型"></a>Unity脚本语言中的引用类型</h1><p>UnityEngine.Object是Unity3D中C#脚本语言最基本的类，所有的脚本派生自MonoBehavior类</p>
+<p>Unity3d中脚本会按照规定流程来执行<img src="C:\Users\ycy\Desktop\md\o_exeOrder.png" alt="o_exeOrder"></p>
+<p>概括一下：</p>
+<ol>
+<li><p>调用所有的Awake方法，再调用所有的Start方法</p>
+</li>
+<li><p>游戏逻辑循环</p>
+<p>1）所有FixedUpdate方法</p>
+<p>2）物理模拟</p>
+<p>3）OnEnter,Exit,Stay触发函数</p>
+<p>4）OnEnter,Exit,Stay碰撞函数</p>
+</li>
+<li><p>刚体插值，主要作用于transform.position和transform.rotation</p>
+</li>
+<li><p>输入事件如OnMouseDown，OnMouseUp</p>
+</li>
+<li><p>所有Update方法</p>
+</li>
+<li><p>高级动画，混合并应用到变换</p>
+</li>
+<li><p>所有LateUpdate</p>
+</li>
+<li><p>渲染</p>
+</li>
+<li><p>对象销毁或退出场景</p>
+</li>
+</ol>
+<p>此外，加载阶段的事件执行条件</p>
+<ul>
+<li><strong>Awake</strong> 是在gameObject被设置为Active后立即触发的, 且仅触发一次, 无论是场景中、Instantiate、还是SetActive(true);</li>
+<li><strong>OnEnable</strong> 只有在gameObject为Active且脚本enable为true时才会被触发, 如果enable为true时gameObject处于关闭状态, 则在gameObject被打开时跟在Awake后被触发;</li>
+<li><strong>Start</strong> 是在第一次Update之前触发的, 只有在gameObject为Active且脚本enable为true时才会被触发, 且仅触发一次;</li>
+</ul>
+<h1 id="Unity脚本语言中的值类型"><a href="#Unity脚本语言中的值类型" class="headerlink" title="Unity脚本语言中的值类型"></a>Unity脚本语言中的值类型</h1><p>向量类型主要表示位置和方向，以及纹理坐标，网格切线等</p>
+<p>既然说到了向量就复习一下点乘和叉乘吧</p>
+<p>点乘积: 两向量点乘等于他们的模长乘以向量夹角cos，可以判断当前物体是否朝向另一个物体，只需要计算transform.forward和(target.transform.position- transform.position)的点乘，大于0则面对另一个物体</p>
+<p>叉乘：两向量的叉乘得到的向量与这两个向量组成的平面垂直，得到的模长等于他们的模长与夹角sin相乘，满足右手法则</p>
+<p>其他的比如Color，Ray，Touch（描述手指触摸屏幕的状态）</p>
+<h1 id="装箱和拆箱"><a href="#装箱和拆箱" class="headerlink" title="装箱和拆箱"></a>装箱和拆箱</h1><p>我们有时候就是需要一个引用类型，比如我们使用ArrayList来容纳Vector3结构，ArrayList类中的Add方法参数就是一个Object类型。但向量不是一个引用类型，这时候Vector3实例就必须转换成在托管堆上分配的对象，且必须获得对象的引用。</p>
+<p>介绍一下装箱的步骤：</p>
+<ol>
+<li>在托管堆队中分配内存，此时就需要各个字段以及那两个额外成员所需的内存</li>
+<li>将值类型字段复制到新分配的堆内存中</li>
+<li>返回对象地址，也就是对象的引用</li>
+</ol>
+<p>我们可以发现我们只是将值类型变量复制了一份到托管堆上，我们改变原始值不会改变箱内的值</p>
+<p>当然我们读取ArrayList中的元素便会拆箱，我们需要告诉编译器需要拆箱成什么类型（因为他已经是Object类型了）。</p>
+<p>拆箱具体过程就是获取ArrayList中索引为0的元素包含的引用，再将其指向的对象复制到值类型的实例去，拆箱时我们要明确指定为最初的值类型。</p>
+<p>从这些步骤我们就能看出由于装箱拆箱、复制会影响程序的速度和内存，而且由于频繁的操作托管堆会增加GC次数，所以日常开发中我们并不常用这类会触发装箱机制的类型，而是采用List<T>这样的泛型</p>
+
       
 
       
@@ -203,16 +281,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mono所搭建的脚本核心基础</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -232,676 +369,14 @@
 
 
 
-
   
-    <article id="post-Mono所搭建的脚本核心基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">Mono所搭建的脚本核心基础</a>
-    </h1>
   
 
-        
-        <a href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2022-03-27T13:00:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mono基本介绍"><a href="#Mono基本介绍" class="headerlink" title="Mono基本介绍"></a>Mono基本介绍</h1><h2 id="Mono组件"><a href="#Mono组件" class="headerlink" title="Mono组件"></a>Mono组件</h2><p>C#编译器——MCS：MCS的作用就是将C#编译为CIL（通用中间语言）</p>
-<p>Mono运行时（mono Runtime）：运行时中的编译器将CIL的Byte Code在转译为原生码，同时提供即时编译（JIT），提前编译（AOT），完全静态编译（Full-AOT）三种转译方式</p>
-<p>基础类库：提供广泛的基础类</p>
-<p>Mono类库：提供额外的有用功能，尤其是构建Linux方面</p>
-        
-          <a class="article-more-a" href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-脚本之间优雅引用方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/">脚本之间优雅引用方式</a>
-    </h1>
   
 
-        
-        <a href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2022-03-27T13:00:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="引用方式"><a href="#引用方式" class="headerlink" title="引用方式"></a>引用方式</h1><p>我们现在有一个Role脚本来管理单个角色，一个RoleManager来控制整体的角色以及一个MapManager来变换位置，指示方位什么的</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RoleManager</span> : <span class="title">MonoBehaviour</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> RoleManager Instance;</span><br><span class="line">    [<span class="meta">SerializeField</span>] <span class="keyword">private</span> Role _prefab;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> List&lt;Role&gt; Roles&#123;<span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>;&#125; = <span class="keyword">new</span> List&lt;Role&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span> =&gt; Instance = <span class="keyword">this</span>;</span><br><span class="line">   </span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>, i &lt; <span class="number">10</span>, i++)&#123;</span><br><span class="line">			<span class="keyword">var</span> role = Instantiate(_prefab);</span><br><span class="line">            role.Init(<span class="keyword">this</span>);</span><br><span class="line">            Roles.Add(role);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span>&#123;</span><br><span class="line">		DoSomething();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> DoSomething&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>脚本之间相互调用需要一定的约束：常见的就是使用{get; set;}来封装属性</p>
-        
-          <a class="article-more-a" href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-UGUI的基础应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/">UGUI的基础应用</a>
-    </h1>
   
 
-        
-        <a href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-03-27T13:00:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="UI系统对比"><a href="#UI系统对比" class="headerlink" title="UI系统对比"></a>UI系统对比</h1><p>对 UI 系统的选择取决于是为 Unity 编辑器开发 UI，还是为游戏或应用程序开发运行时 UI。</p>
-<table>
-<thead>
-<tr>
-<th align="left"><strong>UI 的类型</strong></th>
-<th align="left"><strong>UI 工具包</strong></th>
-<th align="left"><strong>Unity UI(uGUI)</strong></th>
-<th align="left"><strong>IMGUI</strong></th>
-<th align="left"><strong>注意事项</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>运行时（调试）</strong></td>
-<td align="left">✔ *</td>
-<td align="left">✔</td>
-<td align="left">✔</td>
-<td align="left">这指用于调试用途的临时运行时 UI。</td>
-</tr>
-<tr>
-<td align="left"><strong>运行时（游戏内）</strong></td>
-<td align="left">✔ *</td>
-<td align="left">✔</td>
-<td align="left">不推荐</td>
-<td align="left">出于性能原因，Unity 不推荐将 IMGUI 用于游戏内运行时 UI。</td>
-</tr>
-<tr>
-<td align="left"><strong>Unity Editor</strong></td>
-<td align="left">✔</td>
-<td align="left">❌</td>
-<td align="left">✔</td>
-<td align="left">不能使用 Unity UI 为 Unity 编辑器创建 UI。</td>
-</tr>
-</tbody></table>
-<p>当然对于我来说，那必然是选择UGUI</p>
-<h1 id="基本布局"><a href="#基本布局" class="headerlink" title="基本布局"></a>基本布局</h1><p>UI是为了什么？当然是美观，不美观的UI就是摆在厕所的满汉全席</p>
-        
-          <a class="article-more-a" href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity实现存档的不同方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/">Unity实现存档的不同方法</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:59:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="PlayerPres类"><a href="#PlayerPres类" class="headerlink" title="PlayerPres类"></a>PlayerPres类</h1><p>这个类简单易懂，但只能存取int，float，string类，而且在调试过程中所产生的变化都会保留，最重要的是污染注册表。</p>
-<h1 id="脚本序列化"><a href="#脚本序列化" class="headerlink" title="脚本序列化"></a>脚本序列化</h1><p>序列化是将数据结构或对象状态转换为 <strong>Unity 可存储</strong>并在以后可重构的格式的自动过程。Unity 的一些内置功能会使用序列化，比如保存和加载、Inspector 窗口、实例化和预制件等功能。</p>
-<h2 id="序列化规则"><a href="#序列化规则" class="headerlink" title="序列化规则"></a>序列化规则</h2><p>Unity 中的序列化程序在实时游戏环境中运行。这对性能有重大影响。因此，Unity 中的序列化与其他编程环境中的序列化具有不同的行为。以下部分概述了如何在 Unity 中使用序列化。要使用字段序列化，必须确保其：</p>
-<ul>
-<li>为 <code>public</code>，或具有 SerializeField属性</li>
-<li>非 <code>static</code></li>
-<li>非 <code>const</code></li>
-<li>非 <code>readonly</code></li>
-<li>具有可序列化的 <code>fieldtype</code>。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git-理论及应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/Git-%E7%90%86%E8%AE%BA%E5%8F%8A%E5%BA%94%E7%94%A8/">Git 理论及应用</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/27/Git-%E7%90%86%E8%AE%BA%E5%8F%8A%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:59:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Git-库指令速查表"><a href="#Git-库指令速查表" class="headerlink" title="Git 库指令速查表"></a>Git 库指令速查表</h1><p><img src="https://img-blog.csdnimg.cn/e7f92fc3650a41fc81ea4954f04326b7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-        
-          <a class="article-more-a" href="/2022/03/27/Git-%E7%90%86%E8%AE%BA%E5%8F%8A%E5%BA%94%E7%94%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/Git-%E7%90%86%E8%AE%BA%E5%8F%8A%E5%BA%94%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C#个人学习总结（泛型、partial类、枚举、结构体）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%B3%9B%E5%9E%8B%E3%80%81partial%E7%B1%BB%E3%80%81%E6%9E%9A%E4%B8%BE%E3%80%81%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89/">C#个人学习总结（泛型、partial类、枚举、结构体）</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%B3%9B%E5%9E%8B%E3%80%81partial%E7%B1%BB%E3%80%81%E6%9E%9A%E4%B8%BE%E3%80%81%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="泛型的应用场景"><a href="#泛型的应用场景" class="headerlink" title="泛型的应用场景"></a>泛型的应用场景</h1><p>我们有一个Box类和好几个商品的种类，每个商品又都有自己的独特属性（颜色，作者，产地）之类的。我想用这个Box装所有货物怎么办捏</p>
-<p><img src="https://img-blog.csdnimg.cn/9ad6bbe058494aaf8699cc3854813fc8.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_17,color_FFFFFF,t_70,g_se,x_16" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p> 想到的方法是用Object这个类，但是呢得到货物的属性就格外困难。</p>
-        
-          <a class="article-more-a" href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%B3%9B%E5%9E%8B%E3%80%81partial%E7%B1%BB%E3%80%81%E6%9E%9A%E4%B8%BE%E3%80%81%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%B3%9B%E5%9E%8B%E3%80%81partial%E7%B1%BB%E3%80%81%E6%9E%9A%E4%B8%BE%E3%80%81%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-个人C#学习总结（抽象类与接口）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/%E4%B8%AA%E4%BA%BAC#%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%EF%BC%89/">个人C#学习总结（抽象类与接口）</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/27/%E4%B8%AA%E4%BA%BAC#%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:58:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="一-基本定义"><a href="#一-基本定义" class="headerlink" title="一.基本定义"></a>一.基本定义</h1><p>​    基本原则：封装确定的，稳定的成员；而把那些可能改变的写为抽象类，由子类去实现。除非是明确要改变基类的功能，不要改变封装好的代码，子类的增改在此基础上由自身去实现。</p>
-<p><img src="https://img-blog.csdnimg.cn/e3693577f59a467f8d116f75163be65a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAamtra18=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p> 示例代码</p>
-<p>如果不采用抽象方法，我们创建一个父类引用指向子类对象：Vehicle Car &#x3D; new Car();</p>
-<p>由于Cat是继承自它的父类Animal，所以Animal类型的引用是可以指向Cat类型的对象的。这就是“向上转型”。这样既可以使用子类强大的功能，又可以抽取父类的共性。 所以，父类类型的引用可以调用父类中定义的所有属性和方法，而对于子类中定义而父类中没有的方法，父类引用是无法调用的； </p>
-<p>那么如果我想编写一个种类的基类，种类之间都有相同方法，但具体实现需求不同。那么我就需要很多很多的抽象类，那会不会一个抽象类中的所有方法都是抽象的呢？</p>
-<p>当然有！这就是接口——</p>
-        
-          <a class="article-more-a" href="/2022/03/27/%E4%B8%AA%E4%BA%BAC#%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%EF%BC%89/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/%E4%B8%AA%E4%BA%BAC#%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C#个人学习总结（事件详解）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E4%BA%8B%E4%BB%B6%E8%AF%A6%E8%A7%A3%EF%BC%89/">C#个人学习总结（事件详解）</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E4%BA%8B%E4%BB%B6%E8%AF%A6%E8%A7%A3%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:34:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="事件的初步认识"><a href="#事件的初步认识" class="headerlink" title="事件的初步认识"></a>事件的初步认识</h1><p>事件（Event）是使类或者对象具备通知能力得成员，对象O拥有一个事件E，表示当E发生时，O有能力通知别的对象。这就能看出事件的作用：它可以通过这个事件来通知其他对象，“关心”着这个事件的对象做出响应。</p>
-<p>事件模型包含五个部分，举个例子：“网易云”“播放”“我”“emo” 这是两个对象以及两个方法，还有个部分就是“订阅”关系，就是说我只关心网易云播没播放，其他的我可不关心。</p>
-        
-          <a class="article-more-a" href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E4%BA%8B%E4%BB%B6%E8%AF%A6%E8%A7%A3%EF%BC%89/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/C#%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E4%BA%8B%E4%BB%B6%E8%AF%A6%E8%A7%A3%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
 
 
@@ -924,8 +399,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

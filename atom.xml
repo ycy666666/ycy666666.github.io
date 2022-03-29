@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2022-03-27T13:24:13.161Z</updated>
+  <updated>2022-03-29T12:24:35.918Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unity3D脚本语言的类型系统</title>
+    <link href="http://example.com/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://example.com/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/</id>
+    <published>2022-03-29T12:21:54.000Z</published>
+    <updated>2022-03-29T12:24:35.918Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="C-的类型系统"><a href="#C-的类型系统" class="headerlink" title="C#的类型系统"></a>C#的类型系统</h1><p>C#是静态，安全，大多数时候显示的语言，而且所有类型都派生自Object类，同时Unity都是以MonoBehavior这个类作为基础的。</p><h2 id="值类型与引用类型"><a href="#值类型与引用类型" class="headerlink" title="值类型与引用类型"></a>值类型与引用类型</h2><h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><p>引用类型总是从托管堆分配，而C#要求所有对象都是用new关键词来创建。</p><p>简单介绍一下new操作符所做的事情：</p><ol><li>计算所需内存空间，new操作符会计算其所有基类中定义的所有实例字段所需字节数。同时为了方便Mono运行时管理对象，还有一些额外信息需要托管堆为其分配空间，如类型对象指针和同步索引块。</li><li>在托管堆上分配其所要的内存空间，分配的所有字节设为0</li><li>初始化对象的类型对象指针和同步索引块</li><li>调用类型的实例构造器，同时编译器会自动调用当前类型的基类构造器</li><li>最后返回一个新建对象的引用，这就是说新建的变量是一个引用而不是对象本身</li></ol><p>综上，引用类型可以概括为以下四点：</p><span id="more"></span><ol><li>存储引用类型对象的内存空间从托管堆上分配</li><li>每一个对象都有额外的成员为Mono运行时提供操作该对象的信息</li><li>对象中的其他字段的字节总是0</li><li>并没有一个关键词能删除对象，所以当没有空间可用时会触发垃圾回收</li></ol><h3 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h3><p>如果所有类型都是引用类型，那么会消耗巨大的内存分配。因此，值类型实例都是分配在线程栈上的，并且不受垃圾回收（GC）影响</p><p>此外，值类型不能派生出其他类型，而且是隐式密封的。这就导致无须提供额外信息，也就不需要再托管堆上为其分配空间</p><p><strong>并非所有值类型都分配在线程栈上</strong>，比如数组中的元素，引用类型中的值类型字段，迭代器中的局部变量。</p><p>引用类型总是分配在托管堆上，而值类型并不总是在线程栈上。</p><p>综上，对于值类型可以概括为：</p><ol><li>不派生出其他类型，也不需要从其他类型派生</li><li>值类型不可变，指的是他没有提供会更改其字段的成员</li><li>值类型都派生自System.ValueTybe</li><li>值类型有已装箱和未装箱两种表示方式。装箱指的是将值类型转换为引用类型，很多情况需要获取和操作对值类型实例的引用，这便需要装箱机制</li></ol><h3 id="具体类型分类"><a href="#具体类型分类" class="headerlink" title="具体类型分类"></a>具体类型分类</h3><p>引用类型：</p><p>​    采用 Class,Interface,Delegate关键词来声明的自定义引用类型</p><p>​    C#内建的引用类型：Object,  <em><strong>string</strong></em>(string类型是对字符串的一个引用)，List类，Decoder</p><p>值类型：</p><p>​    结构：数字型结构(System.Int32, System.Float)，布尔型结构（System.Boolean），自定义的结构</p><p>​    枚举： System.IO.FileAttribute等</p><p>当我们深入了解各个类型之间的关系时，所有结构都派生自抽象类System.ValueTybe，枚举的基类System.Enum也都派生自System.ValueTybe。事实上所有值类型都派生自这个类</p><h1 id="Unity脚本语言中的引用类型"><a href="#Unity脚本语言中的引用类型" class="headerlink" title="Unity脚本语言中的引用类型"></a>Unity脚本语言中的引用类型</h1><p>UnityEngine.Object是Unity3D中C#脚本语言最基本的类，所有的脚本派生自MonoBehavior类</p><p>Unity3d中脚本会按照规定流程来执行<img src="C:\Users\ycy\Desktop\md\o_exeOrder.png" alt="o_exeOrder"></p><p>概括一下：</p><ol><li><p>调用所有的Awake方法，再调用所有的Start方法</p></li><li><p>游戏逻辑循环</p><p>1）所有FixedUpdate方法</p><p>2）物理模拟</p><p>3）OnEnter,Exit,Stay触发函数</p><p>4）OnEnter,Exit,Stay碰撞函数</p></li><li><p>刚体插值，主要作用于transform.position和transform.rotation</p></li><li><p>输入事件如OnMouseDown，OnMouseUp</p></li><li><p>所有Update方法</p></li><li><p>高级动画，混合并应用到变换</p></li><li><p>所有LateUpdate</p></li><li><p>渲染</p></li><li><p>对象销毁或退出场景</p></li></ol><p>此外，加载阶段的事件执行条件</p><ul><li><strong>Awake</strong> 是在gameObject被设置为Active后立即触发的, 且仅触发一次, 无论是场景中、Instantiate、还是SetActive(true);</li><li><strong>OnEnable</strong> 只有在gameObject为Active且脚本enable为true时才会被触发, 如果enable为true时gameObject处于关闭状态, 则在gameObject被打开时跟在Awake后被触发;</li><li><strong>Start</strong> 是在第一次Update之前触发的, 只有在gameObject为Active且脚本enable为true时才会被触发, 且仅触发一次;</li></ul><h1 id="Unity脚本语言中的值类型"><a href="#Unity脚本语言中的值类型" class="headerlink" title="Unity脚本语言中的值类型"></a>Unity脚本语言中的值类型</h1><p>向量类型主要表示位置和方向，以及纹理坐标，网格切线等</p><p>既然说到了向量就复习一下点乘和叉乘吧</p><p>点乘积: 两向量点乘等于他们的模长乘以向量夹角cos，可以判断当前物体是否朝向另一个物体，只需要计算transform.forward和(target.transform.position- transform.position)的点乘，大于0则面对另一个物体</p><p>叉乘：两向量的叉乘得到的向量与这两个向量组成的平面垂直，得到的模长等于他们的模长与夹角sin相乘，满足右手法则</p><p>其他的比如Color，Ray，Touch（描述手指触摸屏幕的状态）</p><h1 id="装箱和拆箱"><a href="#装箱和拆箱" class="headerlink" title="装箱和拆箱"></a>装箱和拆箱</h1><p>我们有时候就是需要一个引用类型，比如我们使用ArrayList来容纳Vector3结构，ArrayList类中的Add方法参数就是一个Object类型。但向量不是一个引用类型，这时候Vector3实例就必须转换成在托管堆上分配的对象，且必须获得对象的引用。</p><p>介绍一下装箱的步骤：</p><ol><li>在托管堆队中分配内存，此时就需要各个字段以及那两个额外成员所需的内存</li><li>将值类型字段复制到新分配的堆内存中</li><li>返回对象地址，也就是对象的引用</li></ol><p>我们可以发现我们只是将值类型变量复制了一份到托管堆上，我们改变原始值不会改变箱内的值</p><p>当然我们读取ArrayList中的元素便会拆箱，我们需要告诉编译器需要拆箱成什么类型（因为他已经是Object类型了）。</p><p>拆箱具体过程就是获取ArrayList中索引为0的元素包含的引用，再将其指向的对象复制到值类型的实例去，拆箱时我们要明确指定为最初的值类型。</p><p>从这些步骤我们就能看出由于装箱拆箱、复制会影响程序的速度和内存，而且由于频繁的操作托管堆会增加GC次数，所以日常开发中我们并不常用这类会触发装箱机制的类型，而是采用List<T>这样的泛型</p>]]></content>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;C-的类型系统&quot;&gt;&lt;a href=&quot;#C-的类型系统&quot; class=&quot;headerlink&quot; title=&quot;C#的类型系统&quot;&gt;&lt;/a&gt;C#的类型系统&lt;/h1&gt;&lt;p&gt;C#是静态，安全，大多数时候显示的语言，而且所有类型都派生自Object类，同时Unity都是以MonoBehavior这个类作为基础的。&lt;/p&gt;
+&lt;h2 id=&quot;值类型与引用类型&quot;&gt;&lt;a href=&quot;#值类型与引用类型&quot; class=&quot;headerlink&quot; title=&quot;值类型与引用类型&quot;&gt;&lt;/a&gt;值类型与引用类型&lt;/h2&gt;&lt;h3 id=&quot;引用类型&quot;&gt;&lt;a href=&quot;#引用类型&quot; class=&quot;headerlink&quot; title=&quot;引用类型&quot;&gt;&lt;/a&gt;引用类型&lt;/h3&gt;&lt;p&gt;引用类型总是从托管堆分配，而C#要求所有对象都是用new关键词来创建。&lt;/p&gt;
+&lt;p&gt;简单介绍一下new操作符所做的事情：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;计算所需内存空间，new操作符会计算其所有基类中定义的所有实例字段所需字节数。同时为了方便Mono运行时管理对象，还有一些额外信息需要托管堆为其分配空间，如类型对象指针和同步索引块。&lt;/li&gt;
+&lt;li&gt;在托管堆上分配其所要的内存空间，分配的所有字节设为0&lt;/li&gt;
+&lt;li&gt;初始化对象的类型对象指针和同步索引块&lt;/li&gt;
+&lt;li&gt;调用类型的实例构造器，同时编译器会自动调用当前类型的基类构造器&lt;/li&gt;
+&lt;li&gt;最后返回一个新建对象的引用，这就是说新建的变量是一个引用而不是对象本身&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;综上，引用类型可以概括为以下四点：&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="unity, C#" scheme="http://example.com/tags/unity-C/"/>
+    
+  </entry>
   
   <entry>
     <title>Mono所搭建的脚本核心基础</title>
