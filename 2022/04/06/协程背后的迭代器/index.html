@@ -6,32 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>UGUI的基础应用 | TH!S !S A WEBSITE</title>
+  <title>协程背后的迭代器 | TH!S !S A WEBSITE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="UI系统对比对 UI 系统的选择取决于是为 Unity 编辑器开发 UI，还是为游戏或应用程序开发运行时 UI。    UI 的类型 UI 工具包 Unity UI(uGUI) IMGUI 注意事项    运行时（调试） ✔ * ✔ ✔ 这指用于调试用途的临时运行时 UI。   运行时（游戏内） ✔ * ✔ 不推荐 出于性能原因，Unity 不推荐将 IMGUI 用于游戏内运行时 UI。   Un">
+  <meta name="description" content="协程的使用由于Unity3D是单线程的，所以实现了协程机制来达到类似多线程的作用。但它不是进程或线程，他执行过程类似于一个子例程或者是不带返回值的函数。 12Coroutine StartCoroutine(IEnumertor routine);Coroutine StartCoroutine(string methodName, object value &#x3D; null);  我们就可以以此来实">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UGUI的基础应用">
-<meta property="og:url" content="http://example.com/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:title" content="协程背后的迭代器">
+<meta property="og:url" content="http://example.com/2022/04/06/%E5%8D%8F%E7%A8%8B%E8%83%8C%E5%90%8E%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8/index.html">
 <meta property="og:site_name" content="TH!S !S A WEBSITE">
-<meta property="og:description" content="UI系统对比对 UI 系统的选择取决于是为 Unity 编辑器开发 UI，还是为游戏或应用程序开发运行时 UI。    UI 的类型 UI 工具包 Unity UI(uGUI) IMGUI 注意事项    运行时（调试） ✔ * ✔ ✔ 这指用于调试用途的临时运行时 UI。   运行时（游戏内） ✔ * ✔ 不推荐 出于性能原因，Unity 不推荐将 IMGUI 用于游戏内运行时 UI。   Un">
+<meta property="og:description" content="协程的使用由于Unity3D是单线程的，所以实现了协程机制来达到类似多线程的作用。但它不是进程或线程，他执行过程类似于一个子例程或者是不带返回值的函数。 12Coroutine StartCoroutine(IEnumertor routine);Coroutine StartCoroutine(string methodName, object value &#x3D; null);  我们就可以以此来实">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/9755bf3a0941478d865ff668f3ae014e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_14,color_FFFFFF,t_70,g_se,x_16">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/f8e68d23ed7b43eb999d1bcdd9de24e5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_14,color_FFFFFF,t_70,g_se,x_16">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/f68870bf55b8415e80bcf9bc06bc91bf.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2b94c4157c0048a188fe619fa9faa565.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/83f4c2cd08e84a98aeca2105d3521bbc.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/c75efd4e47d8404789aa1bed7631cfb7.gif#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/8e2a442fa9594b59b3b8cda2b9f8c078.png#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/51abe2a7dbd2428e90f3305956538252.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_13,color_FFFFFF,t_70,g_se,x_16#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/1e838977f7ca458baf775246da376465.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_9,color_FFFFFF,t_70,g_se,x_16#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/bb94bf16f8134a1897fc36552f0e809b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/9e48c8d9136145a88ad287e6d508c0e4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center">
-<meta property="article:published_time" content="2022-03-27T13:00:23.000Z">
-<meta property="article:modified_time" content="2022-03-27T13:24:22.949Z">
+<meta property="article:published_time" content="2022-04-06T07:24:25.000Z">
+<meta property="article:modified_time" content="2022-04-06T07:25:55.346Z">
 <meta property="article:author" content="YCY">
 <meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/9755bf3a0941478d865ff668f3ae014e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_14,color_FFFFFF,t_70,g_se,x_16">
   
     <link rel="alternative" href="/atom.xml" title="TH!S !S A WEBSITE" type="application/atom+xml">
   
@@ -163,222 +151,63 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-UGUI的基础应用" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="article-协程背后的迭代器" class="article article-type-article " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      UGUI的基础应用
+      协程背后的迭代器
     </h1>
   
 
         
-        <a href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-03-27T13:00:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
+        <a href="/2022/04/06/%E5%8D%8F%E7%A8%8B%E8%83%8C%E5%90%8E%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8/" class="archive-article-date">
+  	<time datetime="2022-04-06T07:24:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="UI系统对比"><a href="#UI系统对比" class="headerlink" title="UI系统对比"></a>UI系统对比</h1><p>对 UI 系统的选择取决于是为 Unity 编辑器开发 UI，还是为游戏或应用程序开发运行时 UI。</p>
-<table>
-<thead>
-<tr>
-<th align="left"><strong>UI 的类型</strong></th>
-<th align="left"><strong>UI 工具包</strong></th>
-<th align="left"><strong>Unity UI(uGUI)</strong></th>
-<th align="left"><strong>IMGUI</strong></th>
-<th align="left"><strong>注意事项</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>运行时（调试）</strong></td>
-<td align="left">✔ *</td>
-<td align="left">✔</td>
-<td align="left">✔</td>
-<td align="left">这指用于调试用途的临时运行时 UI。</td>
-</tr>
-<tr>
-<td align="left"><strong>运行时（游戏内）</strong></td>
-<td align="left">✔ *</td>
-<td align="left">✔</td>
-<td align="left">不推荐</td>
-<td align="left">出于性能原因，Unity 不推荐将 IMGUI 用于游戏内运行时 UI。</td>
-</tr>
-<tr>
-<td align="left"><strong>Unity Editor</strong></td>
-<td align="left">✔</td>
-<td align="left">❌</td>
-<td align="left">✔</td>
-<td align="left">不能使用 Unity UI 为 Unity 编辑器创建 UI。</td>
-</tr>
-</tbody></table>
-<p>当然对于我来说，那必然是选择UGUI</p>
-<h1 id="基本布局"><a href="#基本布局" class="headerlink" title="基本布局"></a>基本布局</h1><p>UI是为了什么？当然是美观，不美观的UI就是摆在厕所的满汉全席</p>
+        <h1 id="协程的使用"><a href="#协程的使用" class="headerlink" title="协程的使用"></a>协程的使用</h1><p>由于Unity3D是单线程的，所以实现了协程机制来达到类似多线程的作用。但它不是进程或线程，他执行过程类似于一个子例程或者是不带返回值的函数。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Coroutine <span class="title">StartCoroutine</span>(<span class="params">IEnumertor routine</span>)</span>;</span><br><span class="line"><span class="function">Coroutine <span class="title">StartCoroutine</span>(<span class="params"><span class="built_in">string</span> methodName, <span class="built_in">object</span> <span class="keyword">value</span> = <span class="literal">null</span></span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>我们就可以以此来实现延时效果</p>
+<p>而<code>StopCoroutine</code>方法只能停止同一个脚本当的方法名和传入string型参数相同的协程，而且只能用来停止那些使用<code>StartCoroutine</code>的string型参数的重载版本开启的协程</p>
+<h2 id="协程背后的迭代器"><a href="#协程背后的迭代器" class="headerlink" title="协程背后的迭代器"></a>协程背后的迭代器</h2><h2 id="认识迭代器"><a href="#认识迭代器" class="headerlink" title="认识迭代器"></a>认识迭代器</h2><p>迭代器：可在容器对象（container，例如链表或数组）上遍访的接口，而无需关心容器对象的内存分配的实现细节</p>
 <span id="more"></span>
 
-<h2 id="画布组件（Canvas）"><a href="#画布组件（Canvas）" class="headerlink" title="画布组件（Canvas）"></a>画布组件（Canvas）</h2><p>Canvas是进行 UI 布局和渲染的抽象空间。所有 UI 元素都必须是附加了画布组件的游戏对象的子对象。</p>
-<h3 id="Render-Mode"><a href="#Render-Mode" class="headerlink" title="Render Mode"></a>Render Mode</h3><h4 id="Screen-Space-Overlay"><a href="#Screen-Space-Overlay" class="headerlink" title="Screen Space - Overlay"></a>Screen Space - Overlay</h4><p>在此模式下，画布会进行缩放来适应屏幕，然后直接渲染而不参考场景或摄像机（即使场景中根本没有摄像机，也会渲染 UI）。UI 将绘制在所有其他图形（例如摄像机视图）上。<img src="https://img-blog.csdnimg.cn/9755bf3a0941478d865ff668f3ae014e.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_14,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
-<h3 id="Screen-Space-Camera"><a href="#Screen-Space-Camera" class="headerlink" title="Screen Space - Camera"></a>Screen Space - Camera</h3><p>在此模式下，画布的渲染效果就好像是在摄像机前面一定距离的平面对象上绘制的效果。如果更改屏幕的大小或分辨率或更改摄像机视锥体，则 UI 将自动重新缩放进行适应，UI 的大小不随距离而变化。场景中比 UI 平面更靠近摄像机的所有 3D 对象都将在 UI 前面渲染，而平面后的对象将被遮挡。<img src="https://img-blog.csdnimg.cn/f8e68d23ed7b43eb999d1bcdd9de24e5.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_14,color_FFFFFF,t_70,g_se,x_16" alt="请添加图片描述"></p>
-<h3 id="World-Space"><a href="#World-Space" class="headerlink" title="World Space"></a>World Space</h3><p>此模式将 UI 视为场景中的平面对象进行渲染，可以根据喜好任意定向。画布的大小可以使用矩形变换来设置，但画布在屏幕上的大小将取决于摄像机的视角和距离。其他场景对象可以位于画布后面、穿透画布或位于画布前面。</p>
-<p><img src="https://img-blog.csdnimg.cn/f68870bf55b8415e80bcf9bc06bc91bf.png" alt="请添加图片描述"></p>
-<h2 id="工具栏按钮"><a href="#工具栏按钮" class="headerlink" title="工具栏按钮"></a>工具栏按钮</h2><p><img src="https://img-blog.csdnimg.cn/2b94c4157c0048a188fe619fa9faa565.png#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/83f4c2cd08e84a98aeca2105d3521bbc.png#pic_center" alt="在这里插入图片描述"></p>
-<p>工具栏按钮</p>
-<ul>
-<li><p><strong>Local</strong>：是以物体自身为参照的坐标系。</p>
+<p>C#中迭代器被封装在<code>IEnumerable</code>和<code>IEnumerator</code>两个接口中，<code>IEnumerable</code>定义了可以获取<code>IEnumerator</code>的方法——<code>GetIEnumerator()</code>，而<code>IEnumerator</code>则实现了在目标序列上实现循环迭代（使用<code>MoveNext()</code>方法和<code>Current</code>属性），直到我们不再需要数据或者是没有数据可以返回。这样我们就能实现<code>foreach</code>循环</p>
+<p>为什么我们需要两个接口来完成工作呢，当我们需要使用嵌套的<code>foreach</code>循环时，我们要保证两个独立的迭代块不相互干扰，这正是<code>IEnumerator</code>要做的事情。我们还不能违背单一职责原则，不能让<code>IEnumerable</code>拥有过多指责，所以<code>IEnumerable</code>就没有实现<code>MoveNext()</code>方法</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Test</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span>&#123;</span><br><span class="line">        <span class="keyword">foreach</span>(<span class="function"><span class="built_in">string</span> s <span class="keyword">in</span> <span class="title">GetEnumerableTest</span>())</span>&#123;</span><br><span class="line">            Console.WriteLine(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">static</span> IEnumerable&lt;<span class="built_in">string</span>&gt; <span class="title">GetEnumerableTest</span>()</span>&#123;</span><br><span class="line">        <span class="keyword">yield</span> <span class="keyword">return</span> <span class="string">&quot;begin&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">yield</span> <span class="keyword">return</span> i.Tostring();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">yield</span> <span class="keyword">return</span> <span class="string">&quot;end&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行过程中值得注意的几点：</p>
+<ol>
+<li>执行顺序：<ol>
+<li>Main调用<code>GetEnumerableTest</code></li>
+<li>Main调用<code>IEnumerator</code>接口中的<code>MoveNext</code>方法</li>
+<li>迭代器开始执行，使用Current属性获取“begin” </li>
+<li>再次调用<code>MoveNext</code>，从上次遇到yield return的地方开始，直到<code>MoveNext</code>方法返回false</li>
+</ol>
 </li>
-<li><p><strong>Global</strong>：是游戏场景中的方向。在游戏场景中世界坐标系是不会随物体的改变而改变</p>
-</li>
-<li><p><strong>Center：</strong> Unity自己根据模型的mesh来计算的中心位置，与模型真实中心点没关系。</p>
-</li>
-<li><p><strong>Pivot：</strong> 该物体的真正中心点。</p>
-<p><strong>注意：</strong><br>  <strong>①</strong>当要改变的是模型的坐标、角度、大小，指的是相对于 Pivot 进行的操作，（选择 Pivot 工具）<br>  <strong>②</strong>若操作的是多个物体。选择 Center 工具后旋转，全部所选物体hi围绕着 Center 中心点旋转。而旋转 Pivot 工具后旋转，每一个所选物体会围绕着自己的真正中心点旋转。<br>  <strong>③</strong>Transform 组件的 position 属性指的就是 Pivot 中心点。</p>
-</li>
-</ul>
-<p>使用 UI 时，通常最好将这些设置保持为 <strong>Pivot</strong> 和 <strong>Local</strong>。</p>
-<h2 id="矩形变换"><a href="#矩形变换" class="headerlink" title="矩形变换"></a>矩形变换</h2><h3 id="轴心"><a href="#轴心" class="headerlink" title="轴心"></a>轴心</h3><p>旋转、大小和缩放修改都是围绕轴心进行的，因此轴心的位置会影响旋转、大小调整或缩放的结果。工具栏 Pivot 按钮设置为轴心模式时，可在 Rect Tool中在移动矩形变换的轴心。</p>
-<p>旋转好理解，缩放怎么回事呢。假如你的轴心设置在左边中心，那么缩小就是从右侧向左边挤压。而非原本的左右向中间挤压。</p>
-<h3 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h3><p>锚点的作用是当父物体拖动，变换时，该物体会相对于锚点做相应的运动</p>
-<p>如果矩形变换的父项也是矩形变换，则子矩形变换还可通过各种方式锚定到父矩形变换。</p>
-<p><img src="https://img-blog.csdnimg.cn/c75efd4e47d8404789aa1bed7631cfb7.gif#pic_center" alt="在这里插入图片描述"></p>
-<p>Anchor Presets按钮中可以将锚点直接设置在一些常用位置，同时可以设置轴心和物体位置<br><img src="https://img-blog.csdnimg.cn/8e2a442fa9594b59b3b8cda2b9f8c078.png#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="适应多种分辨率"><a href="#适应多种分辨率" class="headerlink" title="适应多种分辨率"></a>适应多种分辨率</h2><p>使用锚点适应不同宽高比：</p>
-<p>将对应位置的UI组件锚定在对应角，例如将左上角按钮的锚点设置为左上角。</p>
-<p>随屏幕大小缩放：</p>
-<p>将画布缩放器组件中的<strong>UI Scale Mode</strong> 设置为 <strong>Scale With Screen Size</strong></p>
-<h1 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h1><h2 id="可视组件"><a href="#可视组件" class="headerlink" title="可视组件"></a>可视组件</h2><h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><p>可以将Sprite应用在图像组件，Image Type 字段可定义应用的精灵的显示方式，提供的选项包括：</p>
-<ul>
-<li><p><strong>Simple</strong> - 均匀缩放整个Sprite。</p>
-</li>
-<li><p><strong>Sliced</strong> - 使用 3x3 精灵分区，确保大小调整不会扭曲角点，而是仅拉伸中心部分。</p>
-</li>
-<li><p><strong>Tiled</strong> - 类似于 Sliced，但平铺（重复）中心部分而不是对其进行拉伸。对于完全没有边框的精灵，整个精灵都是平铺的。</p>
-</li>
-<li><p><strong>Filled</strong> - 按照与 Simple 相同的方式显示精灵，但不同之处是使用定义的方向、方法和数量从原点开始填充精灵。</p>
-<p><img src="https://img-blog.csdnimg.cn/51abe2a7dbd2428e90f3305956538252.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_13,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/1e838977f7ca458baf775246da376465.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_9,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">属性：</th>
-<th align="left">功能：</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>Source Image</strong></td>
-<td align="left">表示要显示的图像的纹理（必须作为<a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/current/Manual/class-TextureImporter.html">精灵</a>导入）。</td>
-</tr>
-<tr>
-<td align="left"><strong>Raycast Target</strong></td>
-<td align="left">如果希望 Unity 将图像视为射线投射的目标，请启用 <strong>Raycast Target</strong>。</td>
-</tr>
-<tr>
-<td align="left"><strong>Preserve Aspect</strong></td>
-<td align="left">确保图像保持其现有尺寸</td>
-</tr>
-</tbody></table>
-<h3 id="原始图像（Raw-Image）"><a href="#原始图像（Raw-Image）" class="headerlink" title="原始图像（Raw Image）"></a>原始图像（Raw Image）</h3><p>图像组件采用精灵，但<strong>原始图像</strong>采用纹理（无边框等）。只有在必要时才应使用原始图像，否则大多数情况都适合使用图像。</p>
-<h3 id="UI效果组件"><a href="#UI效果组件" class="headerlink" title="UI效果组件"></a>UI效果组件</h3><p>阴影与轮廓<br><img src="https://img-blog.csdnimg.cn/bb94bf16f8134a1897fc36552f0e809b.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/9e48c8d9136145a88ad287e6d508c0e4.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="交互组件"><a href="#交互组件" class="headerlink" title="交互组件"></a>交互组件</h2><p>交互组件至少有一个 UnityEvent，当用户以特定方式与组件交互时将调用该 UnityEvent。</p>
-<h3 id="按钮与开关"><a href="#按钮与开关" class="headerlink" title="按钮与开关"></a>按钮与开关</h3><p>可以各自添加更改当前值时响应的事件，并且算是过渡选项最常应用的组件。</p>
-<h3 id="过渡选项"><a href="#过渡选项" class="headerlink" title="过渡选项"></a><strong>过渡选项</strong></h3><p>不同的状态包括正常、突出显示、按下和禁用。可以根据不同的状态来改变颜色，显示不同的精灵，产生动画。如果需要使用动画过渡的话，将Button组件中的Transition选择为Animation，单击“Auto Generate Animation”可自动创建带有四个状态的Animator。通过共享动画控制器，多个按钮可共享相同的行为。<strong>UI 动画过渡模式与 Unity 的旧版动画系统不兼容。</strong>仅应使用Animator组件。</p>
-<h3 id="开关组"><a href="#开关组" class="headerlink" title="开关组"></a>开关组</h3><p>当用户必须从互斥的一组选项进行选择时，便可使用开关组。常见示例包括选择玩家角色类型、预设颜色和一周中的日期。</p>
-<p>值得注意的是，如果在加载场景或实例化组时，开关组中的多个开关为打开状态，则开关组不会立即执行其约束。只有当新开关打开时，其他开关才会关闭。这意味着需要确保在开始时只打开一个开关。</p>
-<h3 id="滑动条与滚动条（Slider、Scrollbar）"><a href="#滑动条与滚动条（Slider、Scrollbar）" class="headerlink" title="滑动条与滚动条（Slider、Scrollbar）"></a>滑动条与滚动条（Slider、Scrollbar）</h3><p>滑动条控件用于用户通过拖动鼠标从预定范围中选择数值，</p>
-<p>滚动条控件用于用户滚动由于太大而无法完全看到的图像或其他视图（比如小地图，一封很长的书信）</p>
-<h1 id="自动布局"><a href="#自动布局" class="headerlink" title="自动布局"></a>自动布局</h1><p>布局控制器按以下顺序为布局元素分配宽度或高度：</p>
-<ul>
-<li>首先，布局控制器将分配最小大小属性（<strong>Min Width</strong>、<strong>Min Height</strong>）。</li>
-<li>如果有足够的可用空间，布局控制器将分配偏好大小属性（<strong>Preferred Width</strong>、<strong>Preferred Height</strong>）。</li>
-<li>如果有额外的可用空间，布局控制器将分配灵活大小属性（<strong>Flexible Width</strong>、<strong>Flexible Height</strong>）。</li>
-</ul>
-<h2 id="适配器"><a href="#适配器" class="headerlink" title="适配器"></a>适配器</h2><h3 id="内容大小适配器-Content-Size-Fitter"><a href="#内容大小适配器-Content-Size-Fitter" class="headerlink" title="内容大小适配器 (Content Size Fitter)"></a>内容大小适配器 (Content Size Fitter)</h3><table>
-<thead>
-<tr>
-<th align="left">*<strong>属性：*</strong></th>
-<th align="left">*<strong>功能：*</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>Horizontal Fit</strong></td>
-<td align="left">如何控制宽度。</td>
-</tr>
-<tr>
-<td align="left">Unconstrained</td>
-<td align="left">不根据布局元素伸展宽度。</td>
-</tr>
-<tr>
-<td align="left">Min Size</td>
-<td align="left">根据布局元素的最小宽度来伸展宽度。</td>
-</tr>
-<tr>
-<td align="left">Preferred Size</td>
-<td align="left">根据布局元素的偏好宽度来伸展宽度</td>
-</tr>
-</tbody></table>
-<p>控制高度同理</p>
-<p>当调整矩形变换的大小时（无论是通过内容大小适配器还是其他工具），大小调整是围绕轴心进行的。这意味着可使用轴心来控制大小调整的方向。</p>
-<p>例如，当轴心位于中心位置时，内容大小适配器将在所有方向朝外均匀扩展矩形变换。当轴心位于左上角时，内容大小适配器将向右下方向扩展矩形变换。</p>
-<h3 id="宽高比适配器-Aspect-Ratio-Fitter"><a href="#宽高比适配器-Aspect-Ratio-Fitter" class="headerlink" title="宽高比适配器 (Aspect Ratio Fitter)"></a>宽高比适配器 (Aspect Ratio Fitter)</h3><p>宽高比适配器可以调整高度来适应宽度或反之，也可以使元素在其父项内部适应或包裹其父项。宽高比适配器不考虑布局信息，例如最小大小和偏好大小。</p>
-<table>
-<thead>
-<tr>
-<th align="left">属性：</th>
-<th align="left">功能：</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>Aspect   Mode</strong></td>
-<td align="left">如何调整矩形的大小来强制实施宽高比。</td>
-</tr>
-<tr>
-<td align="left"><strong>None</strong></td>
-<td align="left">不让矩形适应宽高比。</td>
-</tr>
-<tr>
-<td align="left"><strong>Width Controls Height</strong></td>
-<td align="left">根据宽度自动调整高度。</td>
-</tr>
-<tr>
-<td align="left"><strong>Height Controls Width</strong></td>
-<td align="left">根据高度自动调整宽度。</td>
-</tr>
-<tr>
-<td align="left"><strong>Fit In Parent</strong></td>
-<td align="left">自动调整宽度、高度、位置和锚点，使矩形适应父项的矩形，同时保持宽高比。父矩形中可能有一些空间不会由此矩形覆盖。</td>
-</tr>
-<tr>
-<td align="left"><strong>Envelope Parent</strong></td>
-<td align="left">自动调整宽度、高度、位置和锚点，使矩形覆盖父项的整个区域，同时保持宽高比。此矩形可能比父矩形延伸更广。</td>
-</tr>
-<tr>
-<td align="left"><strong>Aspect Ratio</strong></td>
-<td align="left">要强制实施的宽高比。这是宽度除以高度的比值。</td>
-</tr>
-</tbody></table>
-<h2 id="布局组"><a href="#布局组" class="headerlink" title="布局组"></a>布局组</h2><h3 id="Horizontal-Layout-Group和Verticle-Layout-Group"><a href="#Horizontal-Layout-Group和Verticle-Layout-Group" class="headerlink" title="Horizontal Layout Group和Verticle Layout Group"></a>Horizontal Layout Group和Verticle Layout Group</h3><p>分别将子布局元素横向、纵向排列，</p>
-<ul>
-<li>如果布局组处于其最小宽度&#x2F;高度或更小值，则所有子布局元素也将具有最小宽度&#x2F;高度</li>
-<li>如果垂直布局组高度大于其偏好宽度&#x2F;高度，则会根据各子布局元素的灵活宽度&#x2F;高度按比例为子布局元素分配额外的可用空间。</li>
-</ul>
-<h3 id="网格布局组"><a href="#网格布局组" class="headerlink" title="网格布局组"></a>网格布局组</h3><p>与其他布局组不同，网格布局组会忽略其包含的布局元素的最小大小、偏好大小和灵活大小属性，而是为所有这些元素分配固定大小，此大小则由网格布局组本身的 Cell Size 属性进行定义。</p>
-<p>当与内容大小适配器结合使用时，可以设置例如固定宽度和灵活高度的网格</p>
-<ul>
-<li>Grid Layout Group <ul>
-<li>Constraint：Fixed Column Count</li>
-</ul>
-</li>
-<li>Content Size Fitter <ul>
-<li>Horizontal Fit：Preferred Size 或 Unconstrained</li>
-<li>Vertical Fit：Preferred Size</li>
-</ul>
-</li>
-</ul>
-<p>（灵活宽度和固定高度则相反）</p>
+<li>在第一次调用<code>MoveNext</code>前，<code>GetEnumerableTest</code>中的代码不会执行</li>
+<li>编译器为了保证<code>GetEnumerableTest</code>方法中的局部变量能被保留，值类型实例会被迭代器保存在堆上（也就是本例子当中的i）</li>
+</ol>
+<h2 id="迭代器背后的状态机"><a href="#迭代器背后的状态机" class="headerlink" title="迭代器背后的状态机"></a>迭代器背后的状态机</h2><p>通过反编译的方式，可以发现几乎所有逻辑都是在<code>MoveNext()</code>方法中实现的，当调用返回<code>IEnumerator&lt;T&gt;</code>的方法时，我们会调用编译器生成的用来实现迭代器的类（命名很奇怪）的构造函数。而这个构造函数会设置迭代器的初始状态，此时参数为0.而<code>IEnumerable</code>的<code>GetEnumerator()</code>方法初始状态为-2(表示该方法还没有执行,如果准备好迭代而<code>MoveNext()</code>方法还未调用则为0)</p>
+<h2 id="状态切换"><a href="#状态切换" class="headerlink" title="状态切换"></a>状态切换</h2><p>迭代器有4中状态: Before, Running, Suspend, After.</p>
+<p>我们已经知道调用一个使用了迭代器块,返回类型为<code>IEnumerable</code>或<code>IEnumerator</code>时,并不是立即执行我们写的代码,而是先创建一个编译器生成的类的实例,当调用<code>MoveNext()</code>时才会开始执行(如果返回的是<code>IEnumerable</code>则先调用<code>GetEnumerator()</code>)</p>
+<p>值得注意的是返回最后一个数据之后的代码不会执行,因为此时<code>MoveNext()</code>返回的是false</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">yield</span> <span class="keyword">return</span> <span class="string">&quot;Final&quot;</span>;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;这是最后yield return之后的代码&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>迭代器内部状态机的状态转换大概是这样的:<br>-2: 只有IEnumerable才有,表明首次调用GetEnumerator之前的状态</p>
+<p>-1: Running状态,也会用于After状态</p>
+<p>0: 表示此时<code>MoveNext()</code>一次都还没调用</p>
+<h2 id="协程的其他用法"><a href="#协程的其他用法" class="headerlink" title="协程的其他用法"></a>协程的其他用法</h2><p>我们可以通过WWW类来下载网址中的内容</p>
+<p>用法:</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">string</span> url = <span class="string">&quot;网址&quot;</span>;</span><br><span class="line"><span class="function">IEnumerator <span class="title">Start</span>()</span>&#123;</span><br><span class="line">    WWW www = <span class="keyword">new</span> WWW(url);</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> www;</span><br><span class="line">    render.material.mainTexture = www.texture;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -448,7 +277,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/04/06/%E5%8D%8F%E7%A8%8B%E8%83%8C%E5%90%8E%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -462,18 +291,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          脚本之间优雅引用方式
-        
-      </div>
-    </a>
   
-  
-    <a href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Unity实现存档的不同方法</div>
+    <a href="/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Unity3D脚本语言的类型系统</div>
       <i class="icon-circle-right"></i>
     </a>
   
