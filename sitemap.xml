@@ -110,6 +110,13 @@
 
   
   <url>
+    <loc>http://example.com/tags/C/</loc>
+    <lastmod>2022-04-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/tags/Git/</loc>
     <lastmod>2022-04-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -118,13 +125,6 @@
   
   <url>
     <loc>http://example.com/tags/Unity/</loc>
-    <lastmod>2022-04-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/C/</loc>
     <lastmod>2022-04-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

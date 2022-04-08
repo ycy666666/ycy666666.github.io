@@ -6,27 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Unity 音频相关设置 | TH!S !S A WEBSITE</title>
+  <title>TH!S !S A WEBSITE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="认识音频组件AudioClip想要播放的音频文件，存储在Assets文件夹中 AudioSource 播放音频文件，能调节音量，3D效果音。音频源就像一个控制器，用于启动和停止该剪辑音源的播放，以及修改其他音频属性。 Priority：从场景中存在的所有音频源中确定此音频源的优先级。（Priority值为0 表示优先级最高。值为256， 表示优先级最低。默认值为 128）。对于音轨值应为 0，避免">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity 音频相关设置">
+<meta property="og:title" content="TH!S !S A WEBSITE">
 <meta property="og:url" content="http://example.com/2022/04/08/Unity-%E9%9F%B3%E9%A2%91%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/index.html">
 <meta property="og:site_name" content="TH!S !S A WEBSITE">
 <meta property="og:description" content="认识音频组件AudioClip想要播放的音频文件，存储在Assets文件夹中 AudioSource 播放音频文件，能调节音量，3D效果音。音频源就像一个控制器，用于启动和停止该剪辑音源的播放，以及修改其他音频属性。 Priority：从场景中存在的所有音频源中确定此音频源的优先级。（Priority值为0 表示优先级最高。值为256， 表示优先级最低。默认值为 128）。对于音轨值应为 0，避免">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://docs.unity.cn/cn/current/uploads/Main/AudioDistanceFunctions.png">
-<meta property="og:image" content="https://docs.unity.cn/cn/current/uploads/Main/AudioReverbZone.png">
-<meta property="og:image" content="https://docs.unity.cn/cn/current/uploads/Main/ReverbZoneExpl.png">
-<meta property="og:image" content="c:/Users/ycy/AppData/Roaming/Typora/typora-user-images/image-20220408155244225.png">
-<meta property="og:image" content="https://docs.unity.cn/cn/current/uploads/Main/AudioMixerSnapshotPanel1.png">
-<meta property="og:image" content="https://img2020.cnblogs.com/blog/2127470/202105/2127470-20210508192454447-1841601193.png">
-<meta property="article:published_time" content="2022-04-08T13:17:45.000Z">
-<meta property="article:modified_time" content="2022-04-08T13:18:37.186Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/5f0afdc21c561bda064372671b694b97.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/803d5e3e66b5fb14c5f36b27d76f0e12.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/20dbe9751867c4bec6fd7d05ab631a89.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/685241c446ba47d09dcb1c46b9734f72.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/52e73a0d0636ee61a62e9dc8bb15eb90.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/c4c623449cc5d3b755b728416f88f586.png">
+<meta property="article:published_time" content="2022-04-08T13:17:45.444Z">
+<meta property="article:modified_time" content="2022-04-08T13:30:58.812Z">
 <meta property="article:author" content="YCY">
-<meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://docs.unity.cn/cn/current/uploads/Main/AudioDistanceFunctions.png">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/5f0afdc21c561bda064372671b694b97.png">
   
     <link rel="alternative" href="/atom.xml" title="TH!S !S A WEBSITE" type="application/atom+xml">
   
@@ -158,23 +157,8 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="article-Unity-音频相关设置" class="article article-type-article " itemscope itemprop="blogPost">
+            <article id="post-Unity-音频相关设置" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Unity 音频相关设置
-    </h1>
-  
-
-        
-        <a href="/2022/04/08/Unity-%E9%9F%B3%E9%A2%91%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2022-04-08T13:17:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-08</time>
-</a>
-        
-      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
@@ -201,19 +185,19 @@
 <td>音频源的音频效果是根据曲线图的设置变化的。</td>
 </tr>
 </tbody></table>
-<h3 id="距离函数"><a href="#距离函数" class="headerlink" title="距离函数"></a>距离函数</h3><p>可按音频源与音频监听器之间距离的函数形式修改音频的若干属性。</p>
-<!---more--->
+<h3 id="距离函数"><a href="#距离函数" class="headerlink" title="距离函数"></a>距离函数</h3><span id="more"></span>
 
+<p>可按音频源与音频监听器之间距离的函数形式修改音频的若干属性。</p>
 <p><strong>Volume</strong>：随着距离变化的幅度（0.0 到 1.0）。</p>
 <p><strong>Spatial Blend</strong>（设置 3D 引擎对音频源的影响程度。）：2D（原始声道映射）到 3D（所有声道下混为单声道并根据距离和方向衰减）。</p>
 <p><strong>Spread</strong>（在发声空间中将扩散角度设置为 3D 立体声或多声道）：随着距离变化的角度（0.0 到 360.0 度）。</p>
 <p><strong>Low-Pass</strong>（仅当低通滤波器 (LowPassFilter) 附加到音频源时）：随着距离变化的截止频率（22000.0 到 10.0）。</p>
 <p><strong>Reverb Zone</strong>：路由到混响区的信号量。请注意，音量属性以及距离和方向衰减首先应用于信号，因此会同时影响直接信号和回响信号。</p>
-<p><img src="https://docs.unity.cn/cn/current/uploads/Main/AudioDistanceFunctions.png" alt="音量 (Volume)、空间混合 (Spatial Blend)、扩散 (Spread)、低通 (Low-Pass) 音频滤波器和混响区混合 (Reverb Zone Mix) 的距离函数。当前与音频监听器的距离在图中用红色竖线标记。"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/5f0afdc21c561bda064372671b694b97.png" alt="音量 (Volume)、空间混合 (Spatial Blend)、扩散 (Spread)、低通 (Low-Pass) 音频滤波器和混响区混合 (Reverb Zone Mix) 的距离函数。当前与音频监听器的距离在图中用红色竖线标记。"></p>
 <p>音量 (Volume)、空间混合 (Spatial Blend)、扩散 (Spread)、低通 (Low-Pass) 音频滤波器和混响区混合 (Reverb Zone Mix) 的距离函数。当前与音频监听器的距离在图中用红色竖线标记。</p>
 <h2 id="AudioListener"><a href="#AudioListener" class="headerlink" title="AudioListener"></a>AudioListener</h2><p> 作为玩家耳朵使用，每个场景只能有一个才能正常使用、</p>
 <h1 id="混响区"><a href="#混响区" class="headerlink" title="混响区"></a>混响区</h1><p>混响区（Audio Reverb Zone）获取音频剪辑并根据音频监听器在混响区内的位置使音频剪辑失真。从没有环境效果的点逐渐到有环境效果的点（例如进入洞穴时），便可使用混响区，如果是太空什么的就完全不用</p>
-<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p><img src="https://docs.unity.cn/cn/current/uploads/Main/AudioReverbZone.png" alt="img"></p>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p><img src="https://img-blog.csdnimg.cn/img_convert/803d5e3e66b5fb14c5f36b27d76f0e12.png" alt="img"></p>
 <table>
 <thead>
 <tr>
@@ -235,17 +219,17 @@
 </tr>
 </tbody></table>
 <p>此图说明了混响区的属性。</p>
-<p><img src="https://docs.unity.cn/cn/current/uploads/Main/ReverbZoneExpl.png" alt="声音在混响区中的工作方式"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/20dbe9751867c4bec6fd7d05ab631a89.png" alt="声音在混响区中的工作方式"></p>
 <p>声音在混响区中的工作方式</p>
-<h1 id="动态背景音"><a href="#动态背景音" class="headerlink" title="动态背景音"></a>动态背景音</h1><h2 id="AudioMixer"><a href="#AudioMixer" class="headerlink" title="AudioMixer"></a>AudioMixer</h2><p><img src="C:\Users\ycy\AppData\Roaming\Typora\typora-user-images\image-20220408155244225.png" alt="image-20220408155244225"></p>
+<h1 id="动态背景音"><a href="#动态背景音" class="headerlink" title="动态背景音"></a>动态背景音</h1><h2 id="AudioMixer"><a href="#AudioMixer" class="headerlink" title="AudioMixer"></a>AudioMixer</h2><p><img src="https://img-blog.csdnimg.cn/685241c446ba47d09dcb1c46b9734f72.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16" alt="在这里插入图片描述"></p>
 <h2 id="Snapshot-面板"><a href="#Snapshot-面板" class="headerlink" title="Snapshot 面板"></a>Snapshot 面板</h2><p>Snapshot 面板允许在混音器中创建、切换和调整不同的快照。始终至少有一个快照处于活动状态，并且在 Snapshot 面板中选择了某个快照即表明对混音器的进一步编辑（音高，音量之类的，尤其是那种氛围音）便是对该快照的编辑。在遭遇敌人时，可以加入与正常音乐同步的鼓点等，新建一个快照</p>
 <p>Snapshot 面板中定义的快照也显示为混音器的子资源。允许在编辑器的其他位置以及脚本中访问快照。</p>
-<p><img src="https://docs.unity.cn/cn/current/uploads/Main/AudioMixerSnapshotPanel1.png" alt="img"></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/52e73a0d0636ee61a62e9dc8bb15eb90.png" alt="img"></p>
 <p>事件触发音乐也需要新建一个快照，而且需要使用<code>AudioSource.Transition(int 转换使用的时间)</code>，比如需要降低背景音乐的音量</p>
 <h2 id="使用滑动条调节音量"><a href="#使用滑动条调节音量" class="headerlink" title="使用滑动条调节音量"></a>使用滑动条调节音量</h2><p>**①创建AudioMixer并配置</p>
 <p>我们希望能调节主音量,背景音,特效音三种,目前只有一个音轨,并不符合我们的要求,</p>
 <p>需要新增两条音轨,比如叫背景音和特效音，创建好了之后,并不能直接在代码里控制他们,因为需要将它们**暴露出去,**暴露出去后才能在代码控制</p>
-<p><strong><img src="https://img2020.cnblogs.com/blog/2127470/202105/2127470-20210508192454447-1841601193.png" alt="img"></strong></p>
+<p><strong><img src="https://img-blog.csdnimg.cn/img_convert/c4c623449cc5d3b755b728416f88f586.png" alt="img"></strong></p>
 <p>将这三个分别设置为<strong>Main,BGM,Texiao</strong></p>
 <p><strong>②将音效片段中OutPut 指定音轨</strong></p>
 <p>我们需要将Audio Source下的OutPut选中对应的音轨,</p>
@@ -266,17 +250,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -469,15 +442,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Unity</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
