@@ -119,14 +119,14 @@
 
   
   <url>
-    <loc>http://example.com/tags/Git/</loc>
+    <loc>http://example.com/tags/C/</loc>
     <lastmod>2022-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/C/</loc>
+    <loc>http://example.com/tags/Git/</loc>
     <lastmod>2022-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -141,13 +141,6 @@
   
   <url>
     <loc>http://example.com/tags/unity-C/</loc>
-    <lastmod>2022-04-18</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</loc>
     <lastmod>2022-04-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
