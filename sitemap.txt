@@ -1,3 +1,4 @@
+http://example.com/2022/04/26/games101-%E5%85%89%E6%A0%85%E5%8C%96%EF%BC%885-6%EF%BC%89/
 http://example.com/2022/04/18/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/
 http://example.com/2022/04/08/Unity-%E9%9F%B3%E9%A2%91%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/
 http://example.com/2022/04/06/%E5%8D%8F%E7%A8%8B%E8%83%8C%E5%90%8E%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8/
@@ -15,3 +16,4 @@ http://example.com/tags/C/
 http://example.com/tags/Unity/
 http://example.com/tags/Git/
 http://example.com/tags/unity-C/
+http://example.com/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/
