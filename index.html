@@ -168,59 +168,54 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="几何归类"><a href="#几何归类" class="headerlink" title="几何归类"></a>几何归类</h1><h2 id="隐式几何"><a href="#隐式几何" class="headerlink" title="隐式几何"></a>隐式几何</h2><p>只表示各个点之间满足的关系，比如球在三维空间中的表示：x² + y² + z²  = R²</p>
+        <h1 id="几何归类"><a href="#几何归类" class="headerlink" title="几何归类"></a>几何归类</h1><h2 id="隐式几何"><a href="#隐式几何" class="headerlink" title="隐式几何"></a>隐式几何</h2><p>只表示各个点之间满足的关系，比如球在三维空间中的表示：x² + y² + z²  &#x3D; R²</p>
 <p>可以很容易的判断一个点在物体内还是外，但是很难画出这样的几何体，不容易找到所有点。</p>
 <h2 id="显式几何"><a href="#显式几何" class="headerlink" title="显式几何"></a>显式几何</h2><p>参数映射：通过一个函数，把二维空间上的点坐标当做参数，映射到三维空间上。</p>
-<p>如：f(u,v)=( (2 + cos u) 8 cos v,(2 + cos u) * sin v,sin u)</p>
+<p>如：f(u,v)&#x3D;( (2 + cos u) 8 cos v,(2 + cos u) * sin v,sin u)</p>
 <h2 id="更多的隐式表示方法"><a href="#更多的隐式表示方法" class="headerlink" title="更多的隐式表示方法"></a>更多的隐式表示方法</h2><h3 id="Constructive-Solid-Geometry（构造立体几何法）"><a href="#Constructive-Solid-Geometry（构造立体几何法）" class="headerlink" title="Constructive Solid Geometry（构造立体几何法）"></a>Constructive Solid Geometry（构造立体几何法）</h3><p>通过布尔运算表示复杂几何体</p>
 <p><img src="/.io//image-20220508171907714.png" alt="image-20220508171907714"></p>
 <h3 id="距离函数"><a href="#距离函数" class="headerlink" title="距离函数"></a>距离函数</h3><p>给出空间中的每个点到几何体上的最短距离，如果在内部则为负</p>
 <p>可以表示出渐变的运动过程</p>
 <p><img src="/.io//image-20220508172539255.png" alt="image-20220508172539255"></p>
-<p>A、B分别对应的是起始状态和终止状态，如果我们直接融合会产生黑灰白各占1/3的图像，这表现不出运动的过程</p>
-<p>我们可以融合距离函数SDF来表示中间状态，根据到边界的距离划分为正负，这样融合之后就会生成黑白各占1/3的图像</p>
+<p>A、B分别对应的是起始状态和终止状态，如果我们直接融合会产生黑灰白各占1&#x2F;3的图像，这表现不出运动的过程</p>
+<p>我们可以融合距离函数SDF来表示中间状态，根据到边界的距离划分为正负，这样融合之后就会生成黑白各占1&#x2F;3的图像</p>
 <p>我们还能这样表示两个几何体逐渐融合的过程</p>
 <p><img src="/.io//image-20220508172925399.png" alt="image-20220508172925399"></p>
 <h3 id="水平集-Level-Set-Methods"><a href="#水平集-Level-Set-Methods" class="headerlink" title="水平集(Level Set Methods)"></a>水平集(Level Set Methods)</h3><p>和距离函数的区别仅仅是表示方式不同，他表现在网格格式上，类似于等高线</p>
 <h3 id="分形-Fractals"><a href="#分形-Fractals" class="headerlink" title="分形(Fractals)"></a>分形(Fractals)</h3><p>在物体内部展现出自相似型，类似于递归的过程</p>
-<h1 id="曲线"><a href="#曲线" class="headerlink" title="曲线"></a>曲线</h1><h2 id="贝塞尔曲线"><a href="#贝塞尔曲线" class="headerlink" title="贝塞尔曲线"></a>贝塞尔曲线</h2><p>定义：二次贝塞尔曲线的路径由给定点P0,P1,P2的函数B(t)给出：</p>
-<script type="math/tex; mode=display">
-B(t)=(1-t)^2P_0+2t(1-t)P_1+t^2P_2,t\in [0,1]</script><p><img src="/.io//20200304113229429.gif" alt="20200304113229429"></p>
-<p> 假设P0 P1上的点为A，P1 P2上的点为B，AB上的点为C（也即C为曲线上的点)。则根据一次贝塞尔曲线公式有：</p>
-<script type="math/tex; mode=display">
-A=(1-t)P_0+tP_1</script><script type="math/tex; mode=display">
-B=(1-t)P_1+tP_2</script><script type="math/tex; mode=display">
-C=(1-t)A+tB</script><p>将上式中的A、B带入C中，即可得到二次贝塞尔曲线的公式：</p>
-<script type="math/tex; mode=display">
-B(t)=(1-t)^2P_0+2t(1-t)P_1+t^2P_2 , t\in [0,1]</script><p>同理可得三次贝塞尔曲线</p>
+<h1 id="曲线"><a href="#曲线" class="headerlink" title="曲线"></a>曲线</h1><h2 id="贝塞尔曲线"><a href="#贝塞尔曲线" class="headerlink" title="贝塞尔曲线"></a>贝塞尔曲线</h2><p>定义：二次贝塞尔曲线的路径由给定点P0,P1,P2的函数B(t)给出：<br>$$<br>B(t)&#x3D;(1-t)^2P_0+2t(1-t)P_1+t^2P_2,t\in [0,1]<br>$$<br><img src="/.io//20200304113229429.gif" alt="20200304113229429"></p>
+<p> 假设P0 P1上的点为A，P1 P2上的点为B，AB上的点为C（也即C为曲线上的点)。则根据一次贝塞尔曲线公式有：<br>$$<br>A&#x3D;(1-t)P_0+tP_1<br>$$</p>
+<p>$$<br>B&#x3D;(1-t)P_1+tP_2<br>$$</p>
+<p>$$<br>C&#x3D;(1-t)A+tB<br>$$</p>
+<p>将上式中的A、B带入C中，即可得到二次贝塞尔曲线的公式：<br>$$<br>B(t)&#x3D;(1-t)^2P_0+2t(1-t)P_1+t^2P_2 , t\in [0,1]<br>$$<br>同理可得三次贝塞尔曲线</p>
 <p><img src="/.io//20200304113511298.gif" alt="20200304113511298"></p>
 <h3 id="凸包性质："><a href="#凸包性质：" class="headerlink" title="凸包性质："></a>凸包性质：</h3><p>贝塞尔曲线始终会在<strong>包含了所有控制点的最小凸多边形</strong>中, 不是按照控制点的顺序围成的最小多边形. 也就是说可以通过控制点的凸包来限制规划曲线的范围，在路径规划是很需要的一个性质．</p>
 <h2 id="逐段贝塞尔曲线"><a href="#逐段贝塞尔曲线" class="headerlink" title="逐段贝塞尔曲线"></a>逐段贝塞尔曲线</h2><p>虽然贝塞尔曲线的阶数可以很高，但是如果曲线的阶数过高，调整控制点对曲线的影响就比较小，调整起来相当麻烦。</p>
 <p>于是，我们常常使用分段的贝塞尔曲线，保证每一小段不会太复杂。这样每次只用调小段，还可以做到只调局部不影响大局，那就相当舒服了。</p>
 <p>分段带来的唯一问题是，<strong>曲线在段与段的交界处，如何保证平滑？</strong></p>
 <p>所谓平滑，其实就是一阶导数连续，也就是左右导数的极限相同。</p>
-<p>对两侧的贝塞尔曲线求导，分别代入 t=0 和 t=1 （即贝塞尔曲线的开始和结束时间），让二者相等。</p>
+<p>对两侧的贝塞尔曲线求导，分别代入 t&#x3D;0 和 t&#x3D;1 （即贝塞尔曲线的开始和结束时间），让二者相等。</p>
 <p>此时能发现，当两侧控制点与分段交接点<strong>共线且</strong>形成的线段<strong>长度相等</strong>时，满足曲线平滑性质。</p>
-<h3 id="贝塞尔曲面"><a href="#贝塞尔曲面" class="headerlink" title="贝塞尔曲面"></a>贝塞尔曲面</h3><p><img src="/.io//v2-1c7b63501741bee61934d27e833f991b_r.jpg" alt></p>
-<p>如果说对于曲线来说只有一个参数 </p>
-<script type="math/tex; mode=display">
-t\in [0,1]</script><p>那么对于一个面来说，就应该有两个参数，分别设</p>
-<script type="math/tex; mode=display">
-u\in [0,1]</script><script type="math/tex; mode=display">
-v\in [0,1]</script><p>，具体过程如下图所示:</p>
+<h3 id="贝塞尔曲面"><a href="#贝塞尔曲面" class="headerlink" title="贝塞尔曲面"></a>贝塞尔曲面</h3><p><img src="/.io//v2-1c7b63501741bee61934d27e833f991b_r.jpg"></p>
+<p>如果说对于曲线来说只有一个参数<br>$$<br>t\in [0,1]<br>$$<br>那么对于一个面来说，就应该有两个参数，分别设<br>$$<br>u\in [0,1]<br>$$</p>
+<p>$$<br>v\in [0,1]<br>$$</p>
+<p>，具体过程如下图所示:</p>
 <p><img src="/.io//image-20220510223406757.png" alt="image-20220510223406757"></p>
 <p><img src="/.io//v2-cbe5f7054203ce2e7625068524c1ad2c_720w.jpg" alt="img"></p>
-<p>首先规定一共4x4 = 16个控制点，其水平面位置如图中16个黑点所示(并未表示出高度，防止图形太乱)，将这16个点分成4列，图中红色圈中的为一列的具体例子。</p>
+<p>首先规定一共4x4 &#x3D; 16个控制点，其水平面位置如图中16个黑点所示(并未表示出高度，防止图形太乱)，将这16个点分成4列，图中红色圈中的为一列的具体例子。</p>
 <p><strong>第1步 在这4个控制点之下利用第一个参数u 运用计算贝塞尔曲线的方法得到灰色曲线，因为有4列，所以一共可以得到某时刻下如图所示的4个蓝色点。(灰色曲线分别为每列4个点所对应的贝塞尔曲线)</strong></p>
 <p><strong>第2步 在得到4个蓝色顶点之后，将四个蓝色顶点作为控制点，利用第二个参数v 便可以成功得出贝塞尔曲面上的正确一点</strong></p>
 <p><strong>第3步 遍历所有的 u，v值就可以成功得到一个贝塞尔曲面</strong></p>
 <h1 id="面的细分"><a href="#面的细分" class="headerlink" title="面的细分"></a>面的细分</h1><h2 id="LOOP细分"><a href="#LOOP细分" class="headerlink" title="LOOP细分"></a>LOOP细分</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>网格细分是通过按一定规则给网格增加顶点和面片的数量，让网格模型变得更加光滑。Loop细分方法是最早一种基于<strong>三角网格</strong>的细分方法。Loop细分在每条边上都增加一个顶点，并且同一个三角形内的顶点用新增顶点连接起来，以构成新的三角形。</p>
 <p>一次细分的过程分为两步骤，第一步是增加顶点；第二步是对顶点位置进行调整，使得网格更加光滑。</p>
 <p>对于新增顶点</p>
-<p><img src="/.io//image-20220511151105560.png" alt="image-20220511151105560" style="zoom: 50%;"></p>
+<img src="/.io//image-20220511151105560.png" alt="image-20220511151105560" style="zoom: 50%;">
+
 <p>改变原有顶点</p>
-<p><img src="/.io//image-20220511151231598.png" alt="image-20220511151231598" style="zoom:50%;"></p>
-<p><img src="/.io//image-20220511151839768.png" alt="image-20220511151839768" style="zoom: 80%;"></p>
+<img src="/.io//image-20220511151231598.png" alt="image-20220511151231598" style="zoom:50%;">
+
+<img src="/.io//image-20220511151839768.png" alt="image-20220511151839768" style="zoom: 80%;">
+
 <h2 id="Catmull-Clark细分曲面过程"><a href="#Catmull-Clark细分曲面过程" class="headerlink" title="Catmull-Clark细分曲面过程"></a>Catmull-Clark细分曲面过程</h2><p>Catmull-Clark主要是针对<strong>四边形网格</strong>细分的算法</p>
 <p><img src="/.io//image-20220511152202597.png" alt="image-20220511152202597"></p>
 <h1 id="面的简化"><a href="#面的简化" class="headerlink" title="面的简化"></a>面的简化</h1><h2 id="边塌缩"><a href="#边塌缩" class="headerlink" title="边塌缩"></a>边塌缩</h2><p>边坍缩操作是移动一条边的两个使它们重合，以消除一条边。</p>
@@ -302,7 +297,7 @@ v\in [0,1]</script><p>，具体过程如下图所示:</p>
       
         <h1 id="深度缓存"><a href="#深度缓存" class="headerlink" title="深度缓存"></a>深度缓存</h1><h2 id="1-何为深度"><a href="#1-何为深度" class="headerlink" title="1. 何为深度"></a>1. 何为深度</h2><p>深度其实就是该象素点在3D世界中距离摄象机的距离（绘制坐标），深度缓存中存储着每个象素点（绘制在屏幕上的）的深度值！深度值（Z值）越大，则离摄像机越远。</p>
 <h2 id="2-为什么需要深度？"><a href="#2-为什么需要深度？" class="headerlink" title="2. 为什么需要深度？"></a>2. 为什么需要深度？</h2><p>在不使用深度测试的时候，如果我们先绘制一个距离较近的物体，再绘制距离较远的物体，则距离远的物体因为后绘制，会把距离近的物体覆盖掉，这样的效果并不是我们所希望的。</p>
-<p><img src="/.io//Blog\source\_posts\games101-着色（7-9）.assets\d24a62d3ef8e402c9026710e4155cb11.png" alt="在这里插入图片描述"></p>
+<p><img src="/.io//Blog\source_posts\games101-着色（7-9）.assets\d24a62d3ef8e402c9026710e4155cb11.png" alt="在这里插入图片描述"></p>
         
           <a class="article-more-a" href="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/#more">more >></a>
         
@@ -529,7 +524,6 @@ v\in [0,1]</script><p>，具体过程如下图所示:</p>
         <h1 id="认识音频组件"><a href="#认识音频组件" class="headerlink" title="认识音频组件"></a>认识音频组件</h1><h2 id="AudioClip"><a href="#AudioClip" class="headerlink" title="AudioClip"></a>AudioClip</h2><p>想要播放的音频文件，存储在Assets文件夹中</p>
 <h2 id="AudioSource"><a href="#AudioSource" class="headerlink" title="AudioSource"></a>AudioSource</h2><p> 播放音频文件，能调节音量，3D效果音。音频源就像一个控制器，用于启动和停止该剪辑音源的播放，以及修改其他音频属性。</p>
 <p><strong>Priority</strong>：从场景中存在的所有音频源中确定此音频源的优先级。（Priority值为0 表示优先级最高。值为256， 表示优先级最低。默认值为 128）。对于音轨值应为 0，避免被意外擦除。</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -537,8 +531,7 @@ v\in [0,1]</script><p>，具体过程如下图所示:</p>
 <th>声音衰减的速度。此值越高，监听器必须越接近才能听到声音。（这取决于图）。</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><strong>- Logarithmic Rolloff</strong></td>
 <td>靠近音频源时，声音很大，但离开对象时，声音降低得非常快。</td>
 </tr>
@@ -550,9 +543,7 @@ v\in [0,1]</script><p>，具体过程如下图所示:</p>
 <td><strong>- Custom Rolloff</strong></td>
 <td>音频源的音频效果是根据曲线图的设置变化的。</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h3 id="距离函数"><a href="#距离函数" class="headerlink" title="距离函数"></a>距离函数</h3>
         
           <a class="article-more-a" href="/2022/04/08/Unity-%E9%9F%B3%E9%A2%91%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/#more">more >></a>
@@ -620,6 +611,7 @@ v\in [0,1]</script><p>，具体过程如下图所示:</p>
       
         <h1 id="协程的使用"><a href="#协程的使用" class="headerlink" title="协程的使用"></a>协程的使用</h1><p>由于Unity3D是单线程的，所以实现了协程机制来达到类似多线程的作用。但它不是进程或线程，他执行过程类似于一个子例程或者是不带返回值的函数。</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Coroutine <span class="title">StartCoroutine</span>(<span class="params">IEnumertor routine</span>)</span>;</span><br><span class="line"><span class="function">Coroutine <span class="title">StartCoroutine</span>(<span class="params"><span class="built_in">string</span> methodName, <span class="built_in">object</span> <span class="keyword">value</span> = <span class="literal">null</span></span>)</span>;</span><br></pre></td></tr></table></figure>
+
 <p>我们就可以以此来实现延时效果</p>
 <p>而<code>StopCoroutine</code>方法只能停止同一个脚本当的方法名和传入string型参数相同的协程，而且只能用来停止那些使用<code>StartCoroutine</code>的string型参数的重载版本开启的协程</p>
 <h2 id="协程背后的迭代器"><a href="#协程背后的迭代器" class="headerlink" title="协程背后的迭代器"></a>协程背后的迭代器</h2><h2 id="认识迭代器"><a href="#认识迭代器" class="headerlink" title="认识迭代器"></a>认识迭代器</h2><p>迭代器：可在容器对象（container，例如链表或数组）上遍访的接口，而无需关心容器对象的内存分配的实现细节</p>
@@ -865,6 +857,7 @@ v\in [0,1]</script><p>，具体过程如下图所示:</p>
       
         <h1 id="引用方式"><a href="#引用方式" class="headerlink" title="引用方式"></a>引用方式</h1><p>我们现在有一个Role脚本来管理单个角色，一个RoleManager来控制整体的角色以及一个MapManager来变换位置，指示方位什么的</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RoleManager</span> : <span class="title">MonoBehaviour</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> RoleManager Instance;</span><br><span class="line">    [<span class="meta">SerializeField</span>] <span class="keyword">private</span> Role _prefab;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> List&lt;Role&gt; Roles&#123;<span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>;&#125; = <span class="keyword">new</span> List&lt;Role&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span> =&gt; Instance = <span class="keyword">this</span>;</span><br><span class="line">   </span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>, i &lt; <span class="number">10</span>, i++)&#123;</span><br><span class="line">			<span class="keyword">var</span> role = Instantiate(_prefab);</span><br><span class="line">            role.Init(<span class="keyword">this</span>);</span><br><span class="line">            Roles.Add(role);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span>&#123;</span><br><span class="line">		DoSomething();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> DoSomething&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>脚本之间相互调用需要一定的约束：常见的就是使用{get; set;}来封装属性</p>
         
           <a class="article-more-a" href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/#more">more >></a>
@@ -942,42 +935,38 @@ v\in [0,1]</script><p>，具体过程如下图所示:</p>
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="UI系统对比"><a href="#UI系统对比" class="headerlink" title="UI系统对比"></a>UI系统对比</h1><p>对 UI 系统的选择取决于是为 Unity 编辑器开发 UI，还是为游戏或应用程序开发运行时 UI。</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>UI 的类型</strong></th>
-<th style="text-align:left"><strong>UI 工具包</strong></th>
-<th style="text-align:left"><strong>Unity UI(uGUI)</strong></th>
-<th style="text-align:left"><strong>IMGUI</strong></th>
-<th style="text-align:left"><strong>注意事项</strong></th>
+<th align="left"><strong>UI 的类型</strong></th>
+<th align="left"><strong>UI 工具包</strong></th>
+<th align="left"><strong>Unity UI(uGUI)</strong></th>
+<th align="left"><strong>IMGUI</strong></th>
+<th align="left"><strong>注意事项</strong></th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>运行时（调试）</strong></td>
-<td style="text-align:left">✔ *</td>
-<td style="text-align:left">✔</td>
-<td style="text-align:left">✔</td>
-<td style="text-align:left">这指用于调试用途的临时运行时 UI。</td>
+<tbody><tr>
+<td align="left"><strong>运行时（调试）</strong></td>
+<td align="left">✔ *</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">这指用于调试用途的临时运行时 UI。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>运行时（游戏内）</strong></td>
-<td style="text-align:left">✔ *</td>
-<td style="text-align:left">✔</td>
-<td style="text-align:left">不推荐</td>
-<td style="text-align:left">出于性能原因，Unity 不推荐将 IMGUI 用于游戏内运行时 UI。</td>
+<td align="left"><strong>运行时（游戏内）</strong></td>
+<td align="left">✔ *</td>
+<td align="left">✔</td>
+<td align="left">不推荐</td>
+<td align="left">出于性能原因，Unity 不推荐将 IMGUI 用于游戏内运行时 UI。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Unity Editor</strong></td>
-<td style="text-align:left">✔</td>
-<td style="text-align:left">❌</td>
-<td style="text-align:left">✔</td>
-<td style="text-align:left">不能使用 Unity UI 为 Unity 编辑器创建 UI。</td>
+<td align="left"><strong>Unity Editor</strong></td>
+<td align="left">✔</td>
+<td align="left">❌</td>
+<td align="left">✔</td>
+<td align="left">不能使用 Unity UI 为 Unity 编辑器创建 UI。</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p>当然对于我来说，那必然是选择UGUI</p>
 <h1 id="基本布局"><a href="#基本布局" class="headerlink" title="基本布局"></a>基本布局</h1><p>UI是为了什么？当然是美观，不美观的UI就是摆在厕所的满汉全席</p>
         
@@ -1136,11 +1125,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
