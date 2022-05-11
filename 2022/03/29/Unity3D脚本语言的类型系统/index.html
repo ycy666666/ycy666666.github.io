@@ -5,23 +5,23 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://example.com">
+  <link rel="dns-prefetch" href="https://ycy666666.github.io">
   <title>Unity3D脚本语言的类型系统 | TH!S !S A WEBSITE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="C#的类型系统C#是静态，安全，大多数时候显示的语言，而且所有类型都派生自Object类，同时Unity都是以MonoBehavior这个类作为基础的。 值类型与引用类型引用类型引用类型总是从托管堆分配，而C#要求所有对象都是用new关键词来创建。 简单介绍一下new操作符所做的事情：  计算所需内存空间，new操作符会计算其所有基类中定义的所有实例字段所需字节数。同时为了方便Mono运行时管理对">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity3D脚本语言的类型系统">
-<meta property="og:url" content="http://example.com/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:url" content="https://ycy666666.github.io/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="TH!S !S A WEBSITE">
 <meta property="og:description" content="C#的类型系统C#是静态，安全，大多数时候显示的语言，而且所有类型都派生自Object类，同时Unity都是以MonoBehavior这个类作为基础的。 值类型与引用类型引用类型引用类型总是从托管堆分配，而C#要求所有对象都是用new关键词来创建。 简单介绍一下new操作符所做的事情：  计算所需内存空间，new操作符会计算其所有基类中定义的所有实例字段所需字节数。同时为了方便Mono运行时管理对">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="d:/Desk/md/o_exeOrder.png">
+<meta property="og:image" content="https://ycy666666.github.io/.io//Desk/md/o_exeOrder.png">
 <meta property="article:published_time" content="2022-03-29T12:21:54.000Z">
 <meta property="article:modified_time" content="2022-04-06T07:22:40.882Z">
 <meta property="article:author" content="YCY">
 <meta property="article:tag" content="unity, C#">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:/Desk/md/o_exeOrder.png">
+<meta name="twitter:image" content="https://ycy666666.github.io/.io//Desk/md/o_exeOrder.png">
   
     <link rel="alternative" href="/atom.xml" title="TH!S !S A WEBSITE" type="application/atom+xml">
   
@@ -185,7 +185,6 @@
 </ol>
 <p>综上，引用类型可以概括为以下四点：</p>
 <span id="more"></span>
-
 <ol>
 <li>存储引用类型对象的内存空间从托管堆上分配</li>
 <li>每一个对象都有额外的成员为Mono运行时提供操作该对象的信息</li>
@@ -205,14 +204,14 @@
 </ol>
 <h3 id="具体类型分类"><a href="#具体类型分类" class="headerlink" title="具体类型分类"></a>具体类型分类</h3><p>引用类型：</p>
 <p>​    采用 Class,Interface,Delegate关键词来声明的自定义引用类型</p>
-<p>​    C#内建的引用类型：Object,  <em><strong>string</strong></em>(string类型是对字符串的一个引用)，List类，Decoder</p>
+<p>​    C#内建的引用类型：Object,  <strong><em>string</em></strong>(string类型是对字符串的一个引用)，List类，Decoder</p>
 <p>值类型：</p>
 <p>​    结构：数字型结构(System.Int32, System.Float)，布尔型结构（System.Boolean），自定义的结构</p>
 <p>​    枚举： System.IO.FileAttribute等</p>
 <p>当我们深入了解各个类型之间的关系时，所有结构都派生自抽象类System.ValueTybe，枚举的基类System.Enum也都派生自System.ValueTybe。事实上所有值类型都派生自这个类</p>
 <h1 id="Unity脚本语言中的引用类型"><a href="#Unity脚本语言中的引用类型" class="headerlink" title="Unity脚本语言中的引用类型"></a>Unity脚本语言中的引用类型</h1><p>UnityEngine.Object是Unity3D中C#脚本语言最基本的类，所有的脚本派生自MonoBehavior类</p>
 <p>Unity3d中脚本会按照规定流程来执行</p>
-<p><img src="D:\Desk\md\o_exeOrder.png" alt="o_exeOrder"></p>
+<p><img src="/.io//Desk\md\o_exeOrder.png" alt="o_exeOrder"></p>
 <p>概括一下：</p>
 <ol>
 <li><p>调用所有的Awake方法，再调用所有的Start方法</p>
@@ -259,7 +258,7 @@
 <p>我们可以发现我们只是将值类型变量复制了一份到托管堆上，我们改变原始值不会改变箱内的值</p>
 <p>当然我们读取ArrayList中的元素便会拆箱，我们需要告诉编译器需要拆箱成什么类型（因为他已经是Object类型了）。</p>
 <p>拆箱具体过程就是获取ArrayList中索引为0的元素包含的引用，再将其指向的对象复制到值类型的实例去，拆箱时我们要明确指定为最初的值类型。</p>
-<p>从这些步骤我们就能看出由于装箱拆箱、复制会影响程序的速度和内存，而且由于频繁的操作托管堆会增加GC次数，所以日常开发中我们并不常用这类会触发装箱机制的类型，而是采用List<T>这样的泛型</p>
+<p>从这些步骤我们就能看出由于装箱拆箱、复制会影响程序的速度和内存，而且由于频繁的操作托管堆会增加GC次数，所以日常开发中我们并不常用这类会触发装箱机制的类型，而是采用List<T>这样的泛型</T></p>
 
       
 
@@ -329,7 +328,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://ycy666666.github.io/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -480,11 +479,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
