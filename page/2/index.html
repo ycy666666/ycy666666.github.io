@@ -148,6 +148,164 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Mono所搭建的脚本核心基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">Mono所搭建的脚本核心基础</a>
+    </h1>
+  
+
+        
+        <a href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2022-03-27T13:00:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mono基本介绍"><a href="#Mono基本介绍" class="headerlink" title="Mono基本介绍"></a>Mono基本介绍</h1><h2 id="Mono组件"><a href="#Mono组件" class="headerlink" title="Mono组件"></a>Mono组件</h2><p>C#编译器——MCS：MCS的作用就是将C#编译为CIL（通用中间语言）</p>
+<p>Mono运行时（mono Runtime）：运行时中的编译器将CIL的Byte Code在转译为原生码，同时提供即时编译（JIT），提前编译（AOT），完全静态编译（Full-AOT）三种转译方式</p>
+<p>基础类库：提供广泛的基础类</p>
+<p>Mono类库：提供额外的有用功能，尤其是构建Linux方面</p>
+        
+          <a class="article-more-a" href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-脚本之间优雅引用方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/">脚本之间优雅引用方式</a>
+    </h1>
+  
+
+        
+        <a href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/" class="archive-article-date">
+  	<time datetime="2022-03-27T13:00:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引用方式"><a href="#引用方式" class="headerlink" title="引用方式"></a>引用方式</h1><p>我们现在有一个Role脚本来管理单个角色，一个RoleManager来控制整体的角色以及一个MapManager来变换位置，指示方位什么的</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RoleManager</span> : <span class="title">MonoBehaviour</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> RoleManager Instance;</span><br><span class="line">    [<span class="meta">SerializeField</span>] <span class="keyword">private</span> Role _prefab;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> List&lt;Role&gt; Roles&#123;<span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>;&#125; = <span class="keyword">new</span> List&lt;Role&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span> =&gt; Instance = <span class="keyword">this</span>;</span><br><span class="line">   </span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>, i &lt; <span class="number">10</span>, i++)&#123;</span><br><span class="line">			<span class="keyword">var</span> role = Instantiate(_prefab);</span><br><span class="line">            role.Init(<span class="keyword">this</span>);</span><br><span class="line">            Roles.Add(role);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span>&#123;</span><br><span class="line">		DoSomething();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> DoSomething&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>脚本之间相互调用需要一定的约束：常见的就是使用{get; set;}来封装属性</p>
+        
+          <a class="article-more-a" href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-UGUI的基础应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -759,11 +917,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
