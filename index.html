@@ -148,6 +148,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="article-射线与碰撞范围检测【踩坑记录】" class="article article-type-article  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/07/%E5%B0%84%E7%BA%BF%E4%B8%8E%E7%A2%B0%E6%92%9E%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E3%80%91/">射线与碰撞范围检测【踩坑记录】”</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/07/%E5%B0%84%E7%BA%BF%E4%B8%8E%E7%A2%B0%E6%92%9E%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E3%80%91/" class="archive-article-date">
+  	<time datetime="2022-07-07T15:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="射线检测"><a href="#射线检测" class="headerlink" title="射线检测"></a>射线检测</h1><p>射线检测在2D和3D的区别比较大</p>
+<ul>
+<li><p>一定要加上对应的Collider组件</p>
+</li>
+<li><p>对应的函数只检测对应的Collider，<code>Physics.Raycast</code>是不会检测到Collider 2D的（这个让我有一次debug了好久才发现）</p>
+</li>
+<li><p>对应API如下</p>
+</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Physics.Raycast(Vector3 origin,Vector3 direction,<span class="keyword">out</span> RaycastHit hitinfo,<span class="built_in">float</span> distance,<span class="built_in">int</span> LayerMask);</span><br><span class="line"><span class="comment">//origin:射线的起始点，因为是位置坐标所以使用Vector3表示</span></span><br><span class="line"><span class="comment">//direction：射线的方向，因为是方向坐标所以使用Vector3表示</span></span><br><span class="line"><span class="comment">//hitinfo：一个结构体，可以储存碰撞体的所有信息。你可以声明一个空的然后直接代入就可以</span></span><br><span class="line"><span class="comment">//下面是可选参数：</span></span><br><span class="line"><span class="comment">//distance:射线检测的距离</span></span><br><span class="line"><span class="comment">//LayerMask：图层，如果输入图层的序号就可以只检测这个图层的相应物体，</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2022/07/07/%E5%B0%84%E7%BA%BF%E4%B8%8E%E7%A2%B0%E6%92%9E%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E3%80%91/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/07/%E5%B0%84%E7%BA%BF%E4%B8%8E%E7%A2%B0%E6%92%9E%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E3%80%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="article-详解四元数" class="article article-type-article  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -172,82 +257,9 @@
 <p>几何意义上，复数范围内的乘，把前一个复数看作是作用在第二个复数上的函数</p>
 <p><img src="/.io//image-20220621165642162.png" alt="image-20220621165642162"></p>
 <p>固定原点，将（1，0）这个点拉到z点位置，变换之后的w点就是乘积结果，在二维空间中有且仅有一个变换能得到这个结果</p>
-<p>这个过程中涉及到拉伸和旋转，拉伸十分好理解，因为一维数轴也能进行。那么旋转呢？这不本就是一个二维平面才有的概念吗？所有旋转都对应着唯一的旋转度数，我们可以将其投影到一维数轴上</p>
-<p>想象一个点在单位圆上移动，该点与（-1，0）的连线与复数轴产生交点，一维小人观察复数轴</p>
-<p><img src="/.io//image-20220621170806489.png" alt="image-20220621170806489"></p>
-<p><img src="/.io//image-20220621170832854.png" alt="image-20220621170832854"></p>
-<p>这个点会先到达上方的无限远处，在从下方无限远处出现</p>
-<h3 id="二维小人理解三维旋转"><a href="#二维小人理解三维旋转" class="headerlink" title="二维小人理解三维旋转"></a>二维小人理解三维旋转</h3><p>新引入一个单位j，表示与复数平面的距离单位，当我们不将其作为Z轴，而是把实数当作是Z轴便于我们更好的理解四元数。</p>
-<p>值得一提的是，这样的定义方式并没有很好的乘法准则，例如<code>i*j</code>和 <code>j*i</code>的结果</p>
-<p>同样的，我们定义一个在单位球上的点，以及它和（-1，0）的连线在平面上的交点</p>
-<p><img src="/.io//image-20220621171654966.png" alt="image-20220621171654966"></p>
-<p>我们对单位球进行旋转操作，与此同时是在平面上的投影会怎么变化呢</p>
-<p><img src="/.io//image-20220621172624194.png" alt="image-20220621172624194"></p>
-<p><img src="/.io//image-20220621172704203.png" alt="image-20220621172704203"></p>
-<h3 id="理解四元数"><a href="#理解四元数" class="headerlink" title="理解四元数"></a>理解四元数</h3><p>四元数中包含了三个虚数维度，他们都和实数轴垂直，而且他们之间也相互垂直</p>
-<p><img src="/.io//image-20220621172827984.png" alt="image-20220621172827984"></p>
-<p>对应的数学性质就是</p>
-<p><img src="/.io//image-20220621173012919.png" alt="image-20220621173012919"></p>
-<p>同样的，四元数乘法对应的也是相应的变换</p>
-<p><img src="/.io//image-20220621173149740.png" alt="image-20220621173149740"></p>
-<p><img src="/.io//image-20220621173346242.png" alt="image-20220621173346242"></p>
-<p>这个球面代表着所有实部为0的单位四元数</p>
-<p>黄色和红色的线代表着两个同心同半径、相互垂直且不相交的圆（在四维中，这很常见）</p>
-<p>左下角的公式是通过右手旋转定理得到的</p>
-<p><img src="/.io//image-20220621173922783.png" alt="image-20220621173922783"></p>
-<p>乘以i的投影变换</p>
-<p><img src="/.io//image-20220621174221196.png" alt="image-20220621174221196"></p>
-<p><img src="/.io//image-20220621174247090.png" alt="image-20220621174247090"></p>
-<p>更为普通的案例，左乘一个四元数-0.5+0.5i+0.5j+0.5k</p>
-<p>旋转第一个圆（黄色），让1来到q的位置</p>
-<p>然后根据右手法则旋转垂直的圆相同角度（白色）</p>
-<p><img src="/.io//image-20220621174828784.png" alt="image-20220621174828784"></p>
-<h1 id="三维转动"><a href="#三维转动" class="headerlink" title="三维转动"></a>三维转动</h1><p>最容易想到的方法就是一个物体定义三个方向上的圆圈控制方向，但这样就会出现“万向锁”的问题，也就是失去一个自由度</p>
-<p><img src="/.io//image-20220621185851740.png" alt="image-20220621185851740"></p>
-<p><strong>二维旋转</strong>：</p>
-<p>我们首先现在二维平面中考虑如何进行旋转，假设我们要将（4，1）这个点逆时针旋转30°，如何通过向量运算表示？</p>
-<p><img src="/.io//image-20220621190116043.png" alt="image-20220621190116043"></p>
-<p>我们延伸到三维旋转中，我们定义一个旋转轴方向上的单位向量</p>
-<p>同样的旋转角度的正弦乘以虚部，只不过这次的虚部有三个部分——用于确定旋转单位向量</p>
-<p><img src="/.io//image-20220621190433707.png" alt="image-20220621190433707"></p>
-<p>这是沿着给定方向旋转40°，**但事实上我们用的是半角！！！ ** 为什么？</p>
-<p>我们想要知道一个点经过这个变换后的位置，我们要做的并不是要把这两个四元数直接相乘，而是使用一种特殊的“三明治”形式</p>
-<p><img src="/.io//image-20220621190717291.png" alt="image-20220621190717291"></p>
-<p><a target="_blank" rel="noopener" href="http://eater.net/quaternions">一个四元数相乘的可视化网站，也是3Blue1Brown老师亲自制作的(eater.net)</a>——需要翻墙</p>
-<p>这里面有一个超级酷炫的功能，就是你能在他的演示视频中直接操作可视化案例通过这个更能理解为何需要右乘一个逆矩阵</p>
-<h2 id="为何右乘"><a href="#为何右乘" class="headerlink" title="为何右乘"></a>为何右乘</h2><p>首先进行正常的旋转操作，沿着i方向进行旋转</p>
-<p><img src="/.io//image-20220621193606564.png" alt="image-20220621193606564"></p>
-<p><img src="/.io//image-20220621193543625.png" alt="image-20220621193543625"></p>
-<p>然后我们不右乘一个逆矩阵</p>
-<p><img src="/.io//image-20220621193718215.png" alt="image-20220621193718215"></p>
-<p>可以明显的看到，四维超球在旋转轴上有一个明显的位移——<code>j（i）点</code>，这条黄绿色的线是其在三维空间中的投影</p>
-<p>想要消除这个<strong>“副作用”</strong>就要右乘逆矩阵</p>
-<h2 id="为何是半角"><a href="#为何是半角" class="headerlink" title="为何是半角"></a>为何是半角</h2><p>我们可以从视频网站明显看出，左乘对三维点不仅进行了旋转，还进行了偏移和形变</p>
-<p><img src="/.io//image-20220621195828006.png" alt="image-20220621195828006"><br>$$<br>i * j &#x3D; - ( j * i)<br>$$<br>左乘和右乘旋转方向是反的,  有一个负号表示反向<br>$$<br>i * j &#x3D;  j * （-i)<br>$$<br>也就是左乘i和右乘i的逆矩阵是一样的，两个旋转方向是一致的；但是偏移和形变是相反的，所以只用半角</p>
-<p><img src="/.io//image-20220621195500462.png" alt="image-20220621195500462"></p>
-<h1 id="Unity中的使用"><a href="#Unity中的使用" class="headerlink" title="Unity中的使用"></a>Unity中的使用</h1><h2 id="Unity-3D-中-Rotation"><a href="#Unity-3D-中-Rotation" class="headerlink" title="Unity 3D 中 Rotation"></a>Unity 3D 中 Rotation</h2><p>在Unity中，旋转通常可以用一个三维向量(x,y,z)表示。实际上这是欧拉角。三个分量分别是绕x轴、y轴和z轴的旋转角度。</p>
-<p>要对一个GameObject进行旋转，可以直接通过如下代码：</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform.Rotate(xAngle, yAngle, zAngle);</span><br></pre></td></tr></table></figure>
-
-<p><strong>Editor中Transform组件的旋转轴是父节点的模型空间坐标轴，如果没有父节点，则旋转轴是世界空间坐标轴。</strong></p>
-<p>在Script中使用Rotate函数，在Space.Self中旋转</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Rotate</span>(<span class="params">Vector3 eulerAngles, Space relativeTo = Space.Self</span>)</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Rotate</span>(<span class="params"><span class="built_in">float</span> xAngle, <span class="built_in">float</span> yAngle, <span class="built_in">float</span> zAngle, Space relativeTo = Space.Self</span>)</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Rotate</span>(<span class="params">Vector3 axis, <span class="built_in">float</span> angle, Space relativeTo = Space.Self</span>)</span>;</span><br></pre></td></tr></table></figure>
-
-<p>在Space.Self中进行旋转，旋转轴就是局部坐标系的坐标轴。</p>
-<p>在Space.World中进行旋转，旋转轴是世界坐标系的坐标轴。</p>
-<p>由于旋转顺序的不同会导致结果的不同，<strong>从文档中可以看到，其transform.Rotate()使用的是Z-X-Y顺规</strong></p>
-<h2 id="万向节锁"><a href="#万向节锁" class="headerlink" title="万向节锁"></a>万向节锁</h2><p>万向节锁真正会出现问题的是插值动画的时候，物体会沿着一条弧线进行旋转，这是因为由于缺少了一个自由度必须这样进行调节</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform.eulerAngles = Vector3.Lerp(transform.eulerAngles, <span class="keyword">new</span> Vector3(<span class="number">150</span>, <span class="number">90</span>, <span class="number">90</span>), <span class="number">0.5f</span>);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="用四元数进行旋转"><a href="#用四元数进行旋转" class="headerlink" title="用四元数进行旋转"></a>用四元数进行旋转</h2><p>​    Unity中的四元数支持和一个Vector3相乘，如果把这个Vector3看作一个向量，那么<strong>左乘一个四元数，就相当于对这个向量进行对应的旋转。</strong></p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">transform.rotation = Quaternion.FromToRotation(transform.up, toDirection) * transform.rotation;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>第一个参数是要旋转什么，第二个参数是要旋转到什么方向去这里的三维坐标全是代表一个向量</p>
-<p>上面的代码，改成四元数就是</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(new Vector3(150,90,90)), dTime);</span><br></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2022/06/21/%E8%AF%A6%E8%A7%A3%E5%9B%9B%E5%85%83%E6%95%B0/#more">more >></a>
+        
       
 
       
@@ -1281,88 +1293,6 @@
 
 
   
-    <article id="article-games101-光栅化（5-6）" class="article article-type-article  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/26/games101-%E5%85%89%E6%A0%85%E5%8C%96%EF%BC%885-6%EF%BC%89/">games101 光栅化（5~6）</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/26/games101-%E5%85%89%E6%A0%85%E5%8C%96%EF%BC%885-6%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-04-26T06:04:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="光栅化的介绍"><a href="#光栅化的介绍" class="headerlink" title="光栅化的介绍"></a>光栅化的介绍</h1><h2 id="什么是屏幕"><a href="#什么是屏幕" class="headerlink" title="什么是屏幕"></a>什么是屏幕</h2><p>屏幕在图形学中定义为一个像素的二维数组，数组的大小就是屏幕的分辨率</p>
-<h2 id="什么是光栅化"><a href="#什么是光栅化" class="headerlink" title="什么是光栅化"></a>什么是光栅化</h2><p>将屏幕空间中的多边形解释成像素</p>
-<h3 id="为什么选择三角形作为基本图形组成"><a href="#为什么选择三角形作为基本图形组成" class="headerlink" title="为什么选择三角形作为基本图形组成"></a>为什么选择三角形作为基本图形组成</h3><ol>
-<li>最基础的多边形 ：能组成其他多边形</li>
-<li>独特性质： 确定一个平面， 能清晰定义内外</li>
-</ol>
-<h1 id="采样（Samping）"><a href="#采样（Samping）" class="headerlink" title="采样（Samping）"></a>采样（Samping）</h1>
-        
-          <a class="article-more-a" href="/2022/04/26/games101-%E5%85%89%E6%A0%85%E5%8C%96%EF%BC%885-6%EF%BC%89/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">图形学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/26/games101-%E5%85%89%E6%A0%85%E5%8C%96%EF%BC%885-6%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1464,11 +1394,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1480,11 +1410,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity、 图形学</a>
+                <a href="javascript:void(0)" class="js-tag color1">unity</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">专业课</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Unity、 图形学</a>
               </li>
             
             <div class="clearfix"></div>

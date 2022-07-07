@@ -6,15 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://ycy666666.github.io">
-  <title>TH!S !S A WEBSITE</title>
+  <title>射线与碰撞范围检测【踩坑记录】” | TH!S !S A WEBSITE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="TH!S !S A WEBSITE">
-<meta property="og:url" content="https://ycy666666.github.io/page/2/index.html">
+  <meta name="description" content="射线检测射线检测在2D和3D的区别比较大  一定要加上对应的Collider组件  对应的函数只检测对应的Collider，Physics.Raycast是不会检测到Collider 2D的（这个让我有一次debug了好久才发现）  对应API如下   1234567Physics.Raycast(Vector3 origin,Vector3 direction,out RaycastHit hi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="射线与碰撞范围检测【踩坑记录】”">
+<meta property="og:url" content="https://ycy666666.github.io/2022/07/07/%E5%B0%84%E7%BA%BF%E4%B8%8E%E7%A2%B0%E6%92%9E%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E3%80%91/index.html">
 <meta property="og:site_name" content="TH!S !S A WEBSITE">
+<meta property="og:description" content="射线检测射线检测在2D和3D的区别比较大  一定要加上对应的Collider组件  对应的函数只检测对应的Collider，Physics.Raycast是不会检测到Collider 2D的（这个让我有一次debug了好久才发现）  对应API如下   1234567Physics.Raycast(Vector3 origin,Vector3 direction,out RaycastHit hi">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ycy666666.github.io/.io//image-20220707222931506.png">
+<meta property="og:image" content="https://ycy666666.github.io/.io//image-20220707230947043.png">
+<meta property="og:image" content="https://ycy666666.github.io/.io//image-20220707225916964.png">
+<meta property="og:image" content="https://ycy666666.github.io/.io//474fe252af9a3f2993f794c86cc454ee.gif">
+<meta property="article:published_time" content="2022-07-07T15:14:00.000Z">
+<meta property="article:modified_time" content="2022-07-07T15:15:32.421Z">
 <meta property="article:author" content="YCY">
+<meta property="article:tag" content="unity">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ycy666666.github.io/.io//image-20220707222931506.png">
   
     <link rel="alternative" href="/atom.xml" title="TH!S !S A WEBSITE" type="application/atom+xml">
   
@@ -146,712 +156,107 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="article-games101-光栅化（5-6）" class="article article-type-article  article-index" itemscope itemprop="blogPost">
+            <article id="article-射线与碰撞范围检测【踩坑记录】" class="article article-type-article " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/26/games101-%E5%85%89%E6%A0%85%E5%8C%96%EF%BC%885-6%EF%BC%89/">games101 光栅化（5~6）</a>
+    <h1 class="article-title" itemprop="name">
+      射线与碰撞范围检测【踩坑记录】”
     </h1>
   
 
         
-        <a href="/2022/04/26/games101-%E5%85%89%E6%A0%85%E5%8C%96%EF%BC%885-6%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-04-26T06:04:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-26</time>
+        <a href="/2022/07/07/%E5%B0%84%E7%BA%BF%E4%B8%8E%E7%A2%B0%E6%92%9E%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E3%80%91/" class="archive-article-date">
+  	<time datetime="2022-07-07T15:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="光栅化的介绍"><a href="#光栅化的介绍" class="headerlink" title="光栅化的介绍"></a>光栅化的介绍</h1><h2 id="什么是屏幕"><a href="#什么是屏幕" class="headerlink" title="什么是屏幕"></a>什么是屏幕</h2><p>屏幕在图形学中定义为一个像素的二维数组，数组的大小就是屏幕的分辨率</p>
-<h2 id="什么是光栅化"><a href="#什么是光栅化" class="headerlink" title="什么是光栅化"></a>什么是光栅化</h2><p>将屏幕空间中的多边形解释成像素</p>
-<h3 id="为什么选择三角形作为基本图形组成"><a href="#为什么选择三角形作为基本图形组成" class="headerlink" title="为什么选择三角形作为基本图形组成"></a>为什么选择三角形作为基本图形组成</h3><ol>
-<li>最基础的多边形 ：能组成其他多边形</li>
-<li>独特性质： 确定一个平面， 能清晰定义内外</li>
-</ol>
-<h1 id="采样（Samping）"><a href="#采样（Samping）" class="headerlink" title="采样（Samping）"></a>采样（Samping）</h1>
-        
-          <a class="article-more-a" href="/2022/04/26/games101-%E5%85%89%E6%A0%85%E5%8C%96%EF%BC%885-6%EF%BC%89/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">图形学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/26/games101-%E5%85%89%E6%A0%85%E5%8C%96%EF%BC%885-6%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="article-games101-矩阵变换（2-4）" class="article article-type-article  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/">games101 矩阵变换（2~4）</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-04-21T06:04:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="向量基本运算"><a href="#向量基本运算" class="headerlink" title="向量基本运算"></a>向量基本运算</h1><h2 id="加法："><a href="#加法：" class="headerlink" title="加法："></a>加法：</h2><p>三角形法则</p>
-<h2 id="乘法："><a href="#乘法：" class="headerlink" title="乘法："></a>乘法：</h2><h3 id="点乘："><a href="#点乘：" class="headerlink" title="点乘："></a>点乘：</h3><p><img src="https://img-blog.csdnimg.cn/64b847c7441b43f6b9b46cc06494801f.png" alt="在这里插入图片描述"></p>
-<p>点乘可以帮助我们获得夹角，尤其是在单位向量中尤其有用。同时满足交换律和结合律</p>
-<p>在笛卡尔坐标系（直角坐标系和斜角坐标系的统称）中的点乘，元素相乘后相加</p>
-<p><img src="https://img-blog.csdnimg.cn/888345d06344424da85f93f4beabe47a.png" alt="在这里插入图片描述"></p>
-<p><strong>图形学中的作用</strong>：判断前与后（点乘结果正数为同一方向和方向接近还是远离，获取向量在另一方向上的投影或他们之间夹角</p>
-        
-          <a class="article-more-a" href="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">图形学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity-音频相关设置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="认识音频组件"><a href="#认识音频组件" class="headerlink" title="认识音频组件"></a>认识音频组件</h1><h2 id="AudioClip"><a href="#AudioClip" class="headerlink" title="AudioClip"></a>AudioClip</h2><p>想要播放的音频文件，存储在Assets文件夹中</p>
-<h2 id="AudioSource"><a href="#AudioSource" class="headerlink" title="AudioSource"></a>AudioSource</h2><p> 播放音频文件，能调节音量，3D效果音。音频源就像一个控制器，用于启动和停止该剪辑音源的播放，以及修改其他音频属性。</p>
-<p><strong>Priority</strong>：从场景中存在的所有音频源中确定此音频源的优先级。（Priority值为0 表示优先级最高。值为256， 表示优先级最低。默认值为 128）。对于音轨值应为 0，避免被意外擦除。</p>
-<table>
-<thead>
-<tr>
-<th><strong>Rolloff Mode</strong></th>
-<th>声音衰减的速度。此值越高，监听器必须越接近才能听到声音。（这取决于图）。</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>- Logarithmic Rolloff</strong></td>
-<td>靠近音频源时，声音很大，但离开对象时，声音降低得非常快。</td>
-</tr>
-<tr>
-<td><strong>- Linear Rolloff</strong></td>
-<td>与音频源的距离越远，听到的声音越小。</td>
-</tr>
-<tr>
-<td><strong>- Custom Rolloff</strong></td>
-<td>音频源的音频效果是根据曲线图的设置变化的。</td>
-</tr>
-</tbody></table>
-<h3 id="距离函数"><a href="#距离函数" class="headerlink" title="距离函数"></a>距离函数</h3>
-        
-          <a class="article-more-a" href="/2022/04/08/Unity-%E9%9F%B3%E9%A2%91%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/08/Unity-%E9%9F%B3%E9%A2%91%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="article-协程背后的迭代器" class="article article-type-article  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/04/06/%E5%8D%8F%E7%A8%8B%E8%83%8C%E5%90%8E%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8/">协程背后的迭代器</a>
-    </h1>
-  
-
-        
-        <a href="/2022/04/06/%E5%8D%8F%E7%A8%8B%E8%83%8C%E5%90%8E%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8/" class="archive-article-date">
-  	<time datetime="2022-04-06T07:24:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-04-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="协程的使用"><a href="#协程的使用" class="headerlink" title="协程的使用"></a>协程的使用</h1><p>由于Unity3D是单线程的，所以实现了协程机制来达到类似多线程的作用。但它不是进程或线程，他执行过程类似于一个子例程或者是不带返回值的函数。</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Coroutine <span class="title">StartCoroutine</span>(<span class="params">IEnumertor routine</span>)</span>;</span><br><span class="line"><span class="function">Coroutine <span class="title">StartCoroutine</span>(<span class="params"><span class="built_in">string</span> methodName, <span class="built_in">object</span> <span class="keyword">value</span> = <span class="literal">null</span></span>)</span>;</span><br></pre></td></tr></table></figure>
-
-<p>我们就可以以此来实现延时效果</p>
-<p>而<code>StopCoroutine</code>方法只能停止同一个脚本当的方法名和传入string型参数相同的协程，而且只能用来停止那些使用<code>StartCoroutine</code>的string型参数的重载版本开启的协程</p>
-<h2 id="协程背后的迭代器"><a href="#协程背后的迭代器" class="headerlink" title="协程背后的迭代器"></a>协程背后的迭代器</h2><h2 id="认识迭代器"><a href="#认识迭代器" class="headerlink" title="认识迭代器"></a>认识迭代器</h2><p>迭代器：可在容器对象（container，例如链表或数组）上遍访的接口，而无需关心容器对象的内存分配的实现细节</p>
-        
-          <a class="article-more-a" href="/2022/04/06/%E5%8D%8F%E7%A8%8B%E8%83%8C%E5%90%8E%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/04/06/%E5%8D%8F%E7%A8%8B%E8%83%8C%E5%90%8E%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity3D脚本语言的类型系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/">Unity3D脚本语言的类型系统</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  	<time datetime="2022-03-29T12:21:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="C-的类型系统"><a href="#C-的类型系统" class="headerlink" title="C#的类型系统"></a>C#的类型系统</h1><p>C#是静态，安全，大多数时候显示的语言，而且所有类型都派生自Object类，同时Unity都是以MonoBehavior这个类作为基础的。</p>
-<h2 id="值类型与引用类型"><a href="#值类型与引用类型" class="headerlink" title="值类型与引用类型"></a>值类型与引用类型</h2><h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><p>引用类型总是从托管堆分配，而C#要求所有对象都是用new关键词来创建。</p>
-<p>简单介绍一下new操作符所做的事情：</p>
-<ol>
-<li>计算所需内存空间，new操作符会计算其所有基类中定义的所有实例字段所需字节数。同时为了方便Mono运行时管理对象，还有一些额外信息需要托管堆为其分配空间，如类型对象指针和同步索引块。</li>
-<li>在托管堆上分配其所要的内存空间，分配的所有字节设为0</li>
-<li>初始化对象的类型对象指针和同步索引块</li>
-<li>调用类型的实例构造器，同时编译器会自动调用当前类型的基类构造器</li>
-<li>最后返回一个新建对象的引用，这就是说新建的变量是一个引用而不是对象本身</li>
-</ol>
-<p>综上，引用类型可以概括为以下四点：</p>
-        
-          <a class="article-more-a" href="/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">unity, C#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/29/Unity3D%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Mono所搭建的脚本核心基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">Mono所搭建的脚本核心基础</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2022-03-27T13:00:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Mono基本介绍"><a href="#Mono基本介绍" class="headerlink" title="Mono基本介绍"></a>Mono基本介绍</h1><h2 id="Mono组件"><a href="#Mono组件" class="headerlink" title="Mono组件"></a>Mono组件</h2><p>C#编译器——MCS：MCS的作用就是将C#编译为CIL（通用中间语言）</p>
-<p>Mono运行时（mono Runtime）：运行时中的编译器将CIL的Byte Code在转译为原生码，同时提供即时编译（JIT），提前编译（AOT），完全静态编译（Full-AOT）三种转译方式</p>
-<p>基础类库：提供广泛的基础类</p>
-<p>Mono类库：提供额外的有用功能，尤其是构建Linux方面</p>
-        
-          <a class="article-more-a" href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/Mono%E6%89%80%E6%90%AD%E5%BB%BA%E7%9A%84%E8%84%9A%E6%9C%AC%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-脚本之间优雅引用方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/">脚本之间优雅引用方式</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2022-03-27T13:00:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="引用方式"><a href="#引用方式" class="headerlink" title="引用方式"></a>引用方式</h1><p>我们现在有一个Role脚本来管理单个角色，一个RoleManager来控制整体的角色以及一个MapManager来变换位置，指示方位什么的</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RoleManager</span> : <span class="title">MonoBehaviour</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> RoleManager Instance;</span><br><span class="line">    [<span class="meta">SerializeField</span>] <span class="keyword">private</span> Role _prefab;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> List&lt;Role&gt; Roles&#123;<span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>;&#125; = <span class="keyword">new</span> List&lt;Role&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span> =&gt; Instance = <span class="keyword">this</span>;</span><br><span class="line">   </span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>, i &lt; <span class="number">10</span>, i++)&#123;</span><br><span class="line">			<span class="keyword">var</span> role = Instantiate(_prefab);</span><br><span class="line">            role.Init(<span class="keyword">this</span>);</span><br><span class="line">            Roles.Add(role);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span>&#123;</span><br><span class="line">		DoSomething();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> DoSomething&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>脚本之间相互调用需要一定的约束：常见的就是使用{get; set;}来封装属性</p>
-        
-          <a class="article-more-a" href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-UGUI的基础应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/">UGUI的基础应用</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-03-27T13:00:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="UI系统对比"><a href="#UI系统对比" class="headerlink" title="UI系统对比"></a>UI系统对比</h1><p>对 UI 系统的选择取决于是为 Unity 编辑器开发 UI，还是为游戏或应用程序开发运行时 UI。</p>
-<table>
-<thead>
-<tr>
-<th align="left"><strong>UI 的类型</strong></th>
-<th align="left"><strong>UI 工具包</strong></th>
-<th align="left"><strong>Unity UI(uGUI)</strong></th>
-<th align="left"><strong>IMGUI</strong></th>
-<th align="left"><strong>注意事项</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>运行时（调试）</strong></td>
-<td align="left">✔ *</td>
-<td align="left">✔</td>
-<td align="left">✔</td>
-<td align="left">这指用于调试用途的临时运行时 UI。</td>
-</tr>
-<tr>
-<td align="left"><strong>运行时（游戏内）</strong></td>
-<td align="left">✔ *</td>
-<td align="left">✔</td>
-<td align="left">不推荐</td>
-<td align="left">出于性能原因，Unity 不推荐将 IMGUI 用于游戏内运行时 UI。</td>
-</tr>
-<tr>
-<td align="left"><strong>Unity Editor</strong></td>
-<td align="left">✔</td>
-<td align="left">❌</td>
-<td align="left">✔</td>
-<td align="left">不能使用 Unity UI 为 Unity 编辑器创建 UI。</td>
-</tr>
-</tbody></table>
-<p>当然对于我来说，那必然是选择UGUI</p>
-<h1 id="基本布局"><a href="#基本布局" class="headerlink" title="基本布局"></a>基本布局</h1><p>UI是为了什么？当然是美观，不美观的UI就是摆在厕所的满汉全席</p>
-        
-          <a class="article-more-a" href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity实现存档的不同方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/">Unity实现存档的不同方法</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:59:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="PlayerPres类"><a href="#PlayerPres类" class="headerlink" title="PlayerPres类"></a>PlayerPres类</h1><p>这个类简单易懂，但只能存取int，float，string类，而且在调试过程中所产生的变化都会保留，最重要的是污染注册表。</p>
-<h1 id="脚本序列化"><a href="#脚本序列化" class="headerlink" title="脚本序列化"></a>脚本序列化</h1><p>序列化是将数据结构或对象状态转换为 <strong>Unity 可存储</strong>并在以后可重构的格式的自动过程。Unity 的一些内置功能会使用序列化，比如保存和加载、Inspector 窗口、实例化和预制件等功能。</p>
-<h2 id="序列化规则"><a href="#序列化规则" class="headerlink" title="序列化规则"></a>序列化规则</h2><p>Unity 中的序列化程序在实时游戏环境中运行。这对性能有重大影响。因此，Unity 中的序列化与其他编程环境中的序列化具有不同的行为。以下部分概述了如何在 Unity 中使用序列化。要使用字段序列化，必须确保其：</p>
+        <h1 id="射线检测"><a href="#射线检测" class="headerlink" title="射线检测"></a>射线检测</h1><p>射线检测在2D和3D的区别比较大</p>
 <ul>
-<li>为 <code>public</code>，或具有 SerializeField属性</li>
-<li>非 <code>static</code></li>
-<li>非 <code>const</code></li>
-<li>非 <code>readonly</code></li>
-<li>具有可序列化的 <code>fieldtype</code>。</li>
+<li><p>一定要加上对应的Collider组件</p>
+</li>
+<li><p>对应的函数只检测对应的Collider，<code>Physics.Raycast</code>是不会检测到Collider 2D的（这个让我有一次debug了好久才发现）</p>
+</li>
+<li><p>对应API如下</p>
+</li>
 </ul>
-        
-          <a class="article-more-a" href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/#more">more >></a>
-        
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Physics.Raycast(Vector3 origin,Vector3 direction,<span class="keyword">out</span> RaycastHit hitinfo,<span class="built_in">float</span> distance,<span class="built_in">int</span> LayerMask);</span><br><span class="line"><span class="comment">//origin:射线的起始点，因为是位置坐标所以使用Vector3表示</span></span><br><span class="line"><span class="comment">//direction：射线的方向，因为是方向坐标所以使用Vector3表示</span></span><br><span class="line"><span class="comment">//hitinfo：一个结构体，可以储存碰撞体的所有信息。你可以声明一个空的然后直接代入就可以</span></span><br><span class="line"><span class="comment">//下面是可选参数：</span></span><br><span class="line"><span class="comment">//distance:射线检测的距离</span></span><br><span class="line"><span class="comment">//LayerMask：图层，如果输入图层的序号就可以只检测这个图层的相应物体，</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>可以使用<code>Debug.DrawLine(Vector3 origin,Vector3 destination,Color color)</code>和<code>Debug.DrawRay(Vector3 origin,Vector3 direction,Color color)</code>来使射线可视化</p>
+<p>此外因为Ray都是由两个Vector3变量构造而成的，而2D世界都是<code>Vector2</code>，只能用<code>Vector2</code>变量表示了。</p>
+<p>当从物体中心点发出时，检测到的第一个碰撞体却是自己。</p>
+<p>那我们该怎么解决这个问题呢？答案是<code>Physics2D.queriesStartInColliders = false;</code>这样如果碰撞体是我们射线所在起点的内部时，我们不让它返回该碰撞体。</p>
+<h2 id="为什么LayerMask是int"><a href="#为什么LayerMask是int" class="headerlink" title="为什么LayerMask是int"></a>为什么<code>LayerMask</code>是int</h2><p><code>LayerMask</code>的形式是int。它表示的是你图层的序号的<strong>二次方倍</strong></p>
+<p>就是相当于一个二进制数，需要检测的图层的对应位置为1，其余为0</p>
+<ul>
+<li>1 &lt;&lt; 10 打开第10的层。 等价于<code>1 &lt;&lt; LayerMask.NameToLayer(“Ground”);</code> 也等价于<code>LayerMask.GetMask((“Ground”);</code></li>
+<li>~(1 &lt;&lt; 10) 打开除了第10之外的层。（取反符号）</li>
+<li>~(1 &lt;&lt; 0) 打开所有的层。</li>
+<li>(1 &lt;&lt; 10) | (1 &lt;&lt; 8) 打开第10和第8的层。</li>
+</ul>
+<h1 id="2D碰撞检测"><a href="#2D碰撞检测" class="headerlink" title="2D碰撞检测"></a>2D碰撞检测</h1><p>Unity的物理引擎是基于PhysX的，但有时候游戏需要可配置的物理效果，按帧或者是时间线的方式来产生类似的效果。</p>
+<h2 id="Rigidbody-2D"><a href="#Rigidbody-2D" class="headerlink" title="Rigidbody 2D"></a>Rigidbody 2D</h2><p>选用了Rigidbody 2D组件的话，不能修改<code>transform.position</code>,而是要使用<code>Rigidbody2D.position</code>或<code>Rigidbody2D.rotation</code></p>
+<h3 id="Body-Type"><a href="#Body-Type" class="headerlink" title="Body Type"></a>Body Type</h3><ul>
+<li>Dynamic： 表示动态刚体，完全模拟物理效果，与任何Rigidbody 2D都会发生物理效果，但是效率最低，只适合角色使用</li>
+<li>Kinematic： 表示运动学，只能和Dynamic刚体碰撞，如果需要和其他类型碰撞或者是需要触发碰撞事件，需要勾选<code>Use Full Kinematic Contacts</code>.</li>
+<li>Static: 和Dynamic发生碰撞效果，和Kinematic只能发生碰撞事件（需要勾选<code>Use Full Kinematic Contacts</code>）</li>
+</ul>
+<h2 id="碰撞事件"><a href="#碰撞事件" class="headerlink" title="碰撞事件"></a>碰撞事件</h2><p>我们除了可以在碰撞者和被碰撞者上监听碰撞事件外，如果监听碰撞的元素比较多，还能将碰撞事件抛出去由外部统一处理。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    CollisionLi1stener.onCollisionEnter2D.AddListener(delegace (GameObject g1, GameObject g2） &#123;</span><br><span class="line">    	Debug.LogFormat ( <span class="string">&quot;&#123;0&#125;开始碰撞&#123;1&#125;&quot;</span>,g1.name , g2.name);</span><br><span class="line">    &#125;);</span><br><span class="line">                                                      </span><br><span class="line">    CollisionLi1stener.onCollisionStay2D.AddListener(delegace (GameObject g1, GameObject g2） &#123;</span><br><span class="line">    	Debug.LogFormat ( <span class="string">&quot;&#123;0&#125;碰撞中&#123;1&#125;&quot;</span>,g1.name , g2.name);</span><br><span class="line">    &#125;);</span><br><span class="line">                                                      </span><br><span class="line">    CollisionLi1stener.onCollisionExit2D.AddListener(delegace (GameObject g1, GameObject g2） &#123;</span><br><span class="line">    	Debug.LogFormat ( <span class="string">&quot;&#123;0&#125;结束碰撞&#123;1&#125;&quot;</span>,g1.name , g2.name);</span><br><span class="line">    &#125;);</span><br><span class="line">                                                      </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="碰撞方向"><a href="#碰撞方向" class="headerlink" title="碰撞方向"></a>碰撞方向</h3><p>Unity2D并没有提供方法来判断方向，但是提供了碰撞发生的坐标点，需要我们自己来计算碰撞方向。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> OnCollisionStav2D（Collision2D coll)&#123;</span><br><span class="line">    <span class="keyword">foreach</span> (ContactPoint2D contact <span class="keyword">in</span> coll.contacts)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//绘制线</span></span><br><span class="line">        Debug.DrawLine ( contact.point, transform.position, Color.red);</span><br><span class="line">        <span class="keyword">var</span> direction = transform.InverseTransformPoint (contact.point);</span><br><span class="line">        <span class="keyword">if</span>（direction.x &gt; <span class="number">0f</span>)&#123; </span><br><span class="line">            print( <span class="string">&quot;右碰撞&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>（direction.x &lt; <span class="number">0f</span>)&#123;</span><br><span class="line">        	print(<span class="string">&quot;左碰撞&quot;</span>);&#125;</span><br><span class="line">        <span class="keyword">if</span>（direction.y &gt; <span class="number">0f</span>）&#123;</span><br><span class="line">       	 	print (<span class="string">&quot;上碰撞&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(direction.y &lt; <span class="number">0f</span>)&#123;</span><br><span class="line">       		 print (<span class="string">&quot;下碰撞&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Effector"><a href="#Effector" class="headerlink" title="Effector"></a>Effector</h2><p>unity可以给Collider 2D组件添加的额外效果</p>
+<ul>
+<li>Platform Effector 2D: 单向板地面，能从下往上跳，却掉不下来</li>
+<li>Surface Effector 2D: 传输带一样带摩擦移动</li>
+<li>Point Effector 2D: 类似炸弹，爆炸后可以把周围东西炸开</li>
+<li>Buoyancy Effector 2D: 模拟浮力</li>
+<li>Area Effector 2D: 区域力</li>
+</ul>
+<h2 id="不依赖物理引擎"><a href="#不依赖物理引擎" class="headerlink" title="不依赖物理引擎"></a>不依赖物理引擎</h2><p>我们可以不依赖物理引擎，可以极大的优化效率，比如我们可以利用射线检测实现碰撞检测</p>
+<h3 id="射线检测-1"><a href="#射线检测-1" class="headerlink" title="射线检测"></a>射线检测</h3><p><img src="/.io//image-20220707222931506.png" alt="image-20220707222931506"></p>
+<p>可以看出只用一根射线检测是不行的，在2D-Epic-Controller中就使用了10个射线检测来判断地面和前提碰撞</p>
+<p>这种方法手感非常的完美，不过实现起来有些许麻烦</p>
+<h3 id="Physical-Overlap"><a href="#Physical-Overlap" class="headerlink" title="Physical.Overlap"></a>Physical.Overlap</h3><p>我们可以直接使用下面几种：</p>
+<ul>
+<li><strong>Physics.OverlapBox</strong></li>
+<li><strong>Physics.OverlapCapsule</strong></li>
+<li><strong>Physics.OverlapSphere</strong></li>
+</ul>
+<p>可以在此基础上使用Gizmos 辅助线框来实现在Scence中更好的视觉效果</p>
+<p>如果是2D则使用<a target="_blank" rel="noopener" href="https://docs.unity3d.com/ScriptReference/Physics2D.html">Physics2D</a>.开头的一系列函数</p>
+<h1 id="3D碰撞检测"><a href="#3D碰撞检测" class="headerlink" title="3D碰撞检测"></a>3D碰撞检测</h1><h2 id="碰撞检测穿透"><a href="#碰撞检测穿透" class="headerlink" title="碰撞检测穿透"></a>碰撞检测穿透</h2><p>只要是跟碰撞相关的基本都是离不开Rigidbody这个组件，当中的Collision detection参数可以选择碰撞检测方式</p>
+<img src="/.io//image-20220707230947043.png" alt="image-20220707230947043" style="zoom:80%;">
+
+<p>主要用于处理高速s运动的物体，会有时候直接穿过其他物体的时候</p>
+<p><img src="/.io//image-20220707225916964.png" alt="image-20220707225916964"></p>
+<p>（上图每个箭头两端均指的是两个即将碰撞的物体的Collision Detection属性的值，箭头中间的属性值所指的是这两个物体时间碰撞所用的碰撞检测模式)</p>
+<ul>
+<li><p>Discrete（离散型检测模式）就是普通的默认状态；</p>
+</li>
+<li><p>Continuous（连续检测）则是更加精细的碰撞检测，但是很耗资源；</p>
+</li>
+<li><p>Continuous和Continuous Dynamic的<strong>共同点</strong>在于，对待没有刚体和设置为Continuous Dynamic的物体都使用连续碰撞检测，对待刚体设置为Discrete的物体都使用离散碰撞检测。</p>
+</li>
+<li><p><strong>不同点</strong>在于，Continuous Dynamic在检测另一个设置为Continuous的物体使用的仍然是连续碰撞检测模式，而Continuous检测另一个Continuous的物体时使用的却是离散碰撞检测。</p>
+</li>
+</ul>
+<p><img src="/.io//474fe252af9a3f2993f794c86cc454ee.gif" alt="474fe252af9a3f2993f794c86cc454ee"></p>
+<p>此两类方法由于依赖于连续（线性）扫描，所以会忽略物体的角速度，当物体迅速旋转时，仍然会有穿墙的情况发生</p>
+<p>之后又出了一个Continuous Speculative <strong>（基于推测式）</strong>这里官方的API解释是要比Continuous和Dynamic的方式这两种方式更加的节省性能，是扫描方式的进行连续碰撞检测。</p>
+<p>使用连续碰撞检测（Continuous和Continuous Dynamic）前提:</p>
+<p>刚体和非刚体(静态碰撞器): 刚体物体的碰撞器必须是Box,Sphere,Capsule，非刚体物体的碰撞器必须是Mesh。</p>
+<h3 id="不使用物理引擎"><a href="#不使用物理引擎" class="headerlink" title="不使用物理引擎"></a>不使用物理引擎</h3><p>不使用刚体 Rigidbody的方式，采用发射子弹之前，先发射射线，记录碰撞点（判断是否会发生碰撞），然后在发射子弹。</p>
+
       
 
       
@@ -864,7 +269,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">unity</a>
         		</li>
       		
 		</ul>
@@ -873,16 +278,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://ycy666666.github.io/2022/07/07/%E5%B0%84%E7%BA%BF%E4%B8%8E%E7%A2%B0%E6%92%9E%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E3%80%91/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2022/06/21/%E8%AF%A6%E8%A7%A3%E5%9B%9B%E5%85%83%E6%95%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">详解四元数</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -902,89 +366,14 @@
 
 
 
-
-  
-    <article id="post-Git-理论及应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/Git-%E7%90%86%E8%AE%BA%E5%8F%8A%E5%BA%94%E7%94%A8/">Git 理论及应用</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/27/Git-%E7%90%86%E8%AE%BA%E5%8F%8A%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:59:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Git-库指令速查表"><a href="#Git-库指令速查表" class="headerlink" title="Git 库指令速查表"></a>Git 库指令速查表</h1><p><img src="https://img-blog.csdnimg.cn/e7f92fc3650a41fc81ea4954f04326b7.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-        
-          <a class="article-more-a" href="/2022/03/27/Git-%E7%90%86%E8%AE%BA%E5%8F%8A%E5%BA%94%E7%94%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/Git-%E7%90%86%E8%AE%BA%E5%8F%8A%E5%BA%94%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1007,8 +396,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
