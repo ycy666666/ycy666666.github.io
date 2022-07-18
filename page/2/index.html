@@ -148,6 +148,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="article-games101-几何" class="article article-type-article  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/11/games101-%E5%87%A0%E4%BD%95/">games101 几何</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/11/games101-%E5%87%A0%E4%BD%95/" class="archive-article-date">
+  	<time datetime="2022-05-11T08:16:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="几何归类"><a href="#几何归类" class="headerlink" title="几何归类"></a>几何归类</h1><h2 id="隐式几何"><a href="#隐式几何" class="headerlink" title="隐式几何"></a>隐式几何</h2><p>只表示各个点之间满足的关系，比如球在三维空间中的表示：x² + y² + z²  &#x3D; R²</p>
+<p>可以很容易的判断一个点在物体内还是外，但是很难画出这样的几何体，不容易找到所有点。</p>
+<h2 id="显式几何"><a href="#显式几何" class="headerlink" title="显式几何"></a>显式几何</h2><p>参数映射：通过一个函数，把二维空间上的点坐标当做参数，映射到三维空间上。</p>
+<p>如：f(u,v)&#x3D;( (2 + cos u) 8 cos v,(2 + cos u) * sin v,sin u)</p>
+<h2 id="更多的隐式表示方法"><a href="#更多的隐式表示方法" class="headerlink" title="更多的隐式表示方法"></a>更多的隐式表示方法</h2><h3 id="Constructive-Solid-Geometry（构造立体几何法）"><a href="#Constructive-Solid-Geometry（构造立体几何法）" class="headerlink" title="Constructive Solid Geometry（构造立体几何法）"></a>Constructive Solid Geometry（构造立体几何法）</h3><p>通过布尔运算表示复杂几何体</p>
+<p><img src="/.io//image-20220508171907714.png" alt="image-20220508171907714"></p>
+<h3 id="距离函数"><a href="#距离函数" class="headerlink" title="距离函数"></a>距离函数</h3><p>给出空间中的每个点到几何体上的最短距离，如果在内部则为负</p>
+<p>可以表示出渐变的运动过程</p>
+<p><img src="/.io//image-20220508172539255.png" alt="image-20220508172539255"></p>
+<p>A、B分别对应的是起始状态和终止状态，如果我们直接融合会产生黑灰白各占1&#x2F;3的图像，这表现不出运动的过程</p>
+<p>我们可以融合距离函数SDF来表示中间状态，根据到边界的距离划分为正负，这样融合之后就会生成黑白各占1&#x2F;3的图像</p>
+<p>我们还能这样表示两个几何体逐渐融合的过程</p>
+<p><img src="/.io//image-20220508172925399.png" alt="image-20220508172925399"></p>
+<h3 id="水平集-Level-Set-Methods"><a href="#水平集-Level-Set-Methods" class="headerlink" title="水平集(Level Set Methods)"></a>水平集(Level Set Methods)</h3><p>和距离函数的区别仅仅是表示方式不同，他表现在网格格式上，类似于等高线</p>
+<h3 id="分形-Fractals"><a href="#分形-Fractals" class="headerlink" title="分形(Fractals)"></a>分形(Fractals)</h3><p>在物体内部展现出自相似型，类似于递归的过程</p>
+        
+          <a class="article-more-a" href="/2022/05/11/games101-%E5%87%A0%E4%BD%95/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">图形学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/11/games101-%E5%87%A0%E4%BD%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="article-games101-着色（7-9）" class="article article-type-article  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -897,91 +987,6 @@
 
 
   
-    <article id="post-Unity实现存档的不同方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/">Unity实现存档的不同方法</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2022-03-27T12:59:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="PlayerPres类"><a href="#PlayerPres类" class="headerlink" title="PlayerPres类"></a>PlayerPres类</h1><p>这个类简单易懂，但只能存取int，float，string类，而且在调试过程中所产生的变化都会保留，最重要的是污染注册表。</p>
-<h1 id="脚本序列化"><a href="#脚本序列化" class="headerlink" title="脚本序列化"></a>脚本序列化</h1><p>序列化是将数据结构或对象状态转换为 <strong>Unity 可存储</strong>并在以后可重构的格式的自动过程。Unity 的一些内置功能会使用序列化，比如保存和加载、Inspector 窗口、实例化和预制件等功能。</p>
-<h2 id="序列化规则"><a href="#序列化规则" class="headerlink" title="序列化规则"></a>序列化规则</h2><p>Unity 中的序列化程序在实时游戏环境中运行。这对性能有重大影响。因此，Unity 中的序列化与其他编程环境中的序列化具有不同的行为。以下部分概述了如何在 Unity 中使用序列化。要使用字段序列化，必须确保其：</p>
-<ul>
-<li>为 <code>public</code>，或具有 SerializeField属性</li>
-<li>非 <code>static</code></li>
-<li>非 <code>const</code></li>
-<li>非 <code>readonly</code></li>
-<li>具有可序列化的 <code>fieldtype</code>。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1083,11 +1088,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
