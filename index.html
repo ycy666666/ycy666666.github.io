@@ -148,6 +148,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="article-C#回看委托与事件" class="article article-type-article  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/22/C#%E5%9B%9E%E7%9C%8B%E5%A7%94%E6%89%98%E4%B8%8E%E4%BA%8B%E4%BB%B6/">C# 回看委托与事件</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/22/C#%E5%9B%9E%E7%9C%8B%E5%A7%94%E6%89%98%E4%B8%8E%E4%BA%8B%E4%BB%B6/" class="archive-article-date">
+  	<time datetime="2022-07-22T10:36:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="委托概述"><a href="#委托概述" class="headerlink" title="委托概述"></a>委托概述</h1><p>很多时候，我们传入某个类型完整的实例引用，只是为了调用其中的一个方法吗，这时候我们就是需要委托</p>
+<h2 id="委托的应用场景"><a href="#委托的应用场景" class="headerlink" title="委托的应用场景"></a>委托的应用场景</h2><p>比如在排序过程中，我们会根据需要选择升序排列，降序排列，或者是字母顺序排列</p>
+<p>为了减少重复代码，我们可以将比较方法作为参数传给排序函数，为了能将方法作为参数传递，我们要有一个表示方法的数据类型，也就是委托。</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">BubbleSort</span>(<span class="params"><span class="built_in">int</span>[] items, ComparisonHandler comparisonHandler</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">int</span> i,j,temp;</span><br><span class="line">    <span class="keyword">for</span>(i = item.Length; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">		<span class="keyword">for</span> (j = item.Length - <span class="number">1</span>; j&lt;= i; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(comparisonHandler(items[j - <span class="number">1</span>], items[j]))&#123;<span class="comment">//和直接调用方法的语法一致</span></span><br><span class="line">                temp = items[j - <span class="number">1</span>];</span><br><span class="line">                items[j - <span class="number">1</span>] = items[j];</span><br><span class="line">                items[j] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">delegate</span> <span class="built_in">bool</span> <span class="title">ComparisonHandler</span>(<span class="params"><span class="built_in">int</span> first, <span class="built_in">int</span> second</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">bool</span> <span class="title">GreaterThan</span> (<span class="params"><span class="built_in">int</span> first,<span class="built_in">int</span> second</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> first &gt; second;</span><br><span class="line">&#125;<span class="comment">//方法签名的剩余部分（参数和返回值），必须兼容委托的签名</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//调用BubbleSort，并提供有委托捕捉到的方法名称作为实参</span></span><br><span class="line"><span class="built_in">int</span>[] items = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">5</span>];</span><br><span class="line">BubbleSort(items,GreaterThan);<span class="comment">//ComparisonHandler委托是引用类型，使用时不必用new实例化</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2022/07/22/C#%E5%9B%9E%E7%9C%8B%E5%A7%94%E6%89%98%E4%B8%8E%E4%BA%8B%E4%BB%B6/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/22/C#%E5%9B%9E%E7%9C%8B%E5%A7%94%E6%89%98%E4%B8%8E%E4%BA%8B%E4%BB%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="article-C#本质论-泛型" class="article article-type-article  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -177,66 +256,9 @@
 <p><strong>编程习惯： 如果类型参数必须实现<code>IComponent</code>，那个类型名称可以是<code>TComponent</code></strong></p>
 <h2 id="泛型接口和泛型结构"><a href="#泛型接口和泛型结构" class="headerlink" title="泛型接口和泛型结构"></a>泛型接口和泛型结构</h2><p><strong>声明泛型接口</strong></p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title">IPair</span>&lt;<span class="title">TFirst</span>, <span class="title">TSecond</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">	TFirst First &#123; <span class="keyword">get</span>; <span class="keyword">set</span>;&#125;</span><br><span class="line">	TSecond Second &#123; <span class="keyword">get</span>; <span class="keyword">set</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这组接口可以用于表示所有相似的一对对象，比如二维平面坐标，二叉树结点，父母等</p>
-<p>使用泛型最多的地方是集合类，使用类型安全的泛型接口，可以避免执行转型</p>
-<p>相同泛型接口的不同构造被看作是不同类型，因此类或者结构能多次实现同一泛型接口的不同实现，但这样并不是好的编码风格，它会造成混淆，尤其是在接口允许协变和逆变转换的情况下</p>
-<p><strong>声明泛型结构</strong></p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">struct</span> Pair&lt;&lt;TFirst, TSecond&gt;&gt; : IPair&lt;TFirst, TSecond&gt;</span><br><span class="line">&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Pair</span>(<span class="params">TFirst First,TSecond Second</span>)</span>&#123;</span><br><span class="line">		First = first;</span><br><span class="line">		Second = second;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> TFirst First &#123; <span class="keyword">get</span>; <span class="keyword">set</span>;&#125;</span><br><span class="line">	<span class="keyword">public</span> TSecond Second &#123; <span class="keyword">get</span>; <span class="keyword">set</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Pair&lt;<span class="built_in">int</span>, <span class="built_in">string</span>&gt; history = <span class="keyword">new</span> Pair&lt;<span class="built_in">int</span>, <span class="built_in">string</span>&gt;(<span class="number">2002</span>,<span class="string">&quot;Wonderful&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h1 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h1><p>泛型允许为类型参数定义约束，这些约束强迫作为类型实参提供的类型遵循的规则，使用<code>where：</code>关键词</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EntityDictionary</span>&lt;<span class="title">TKey</span>, <span class="title">TValue</span>&gt;</span><br><span class="line">	: <span class="title">Dictionary</span>&lt;<span class="title">TKey</span>,<span class="title">TValue</span>&gt;</span><br><span class="line">    <span class="keyword">where</span> <span class="title">TKey</span> : <span class="title">IComparable</span>&lt;<span class="title">TKey</span>&gt;,<span class="title">IFormattable</span></span><br><span class="line">    <span class="keyword">where</span> <span class="title">TValue</span> : <span class="title">EntityBase</span></span><br><span class="line">    &#123;</span><br><span class="line">	<span class="comment">//...        </span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>EntityDictionary&lt;TKey, TValue&gt;</code>要求类型参数<code>TValue</code>提供的所有类型实参都能隐式转换为<code>EntityBase</code>类</p>
-<p>假如指定了多个约束，那么类类型约束必须第一个出现（类声明中，基类也是必须先于所实现的接口出现）</p>
-<h2 id="struct-x2F-class-约束"><a href="#struct-x2F-class-约束" class="headerlink" title="struct &#x2F; class 约束"></a>struct &#x2F; class 约束</h2><p>另一个重要的泛型约束是将类型参数限制为任何非可空的值类型或者任何引用类型，只需使用 <code>where T : struct/class</code></p>
-<p>可空值类型不符合struct约束，因为可空值类型是作为泛型类型<code>Nullable&lt;T&gt;</code>实现的，当中的T已经引用了<code>struct</code>约束，如果可空值类型符合的话那么就能定义 <code>Nullable&lt; Nullable&lt;int&gt; &gt;</code>这样毫无意义的类型</p>
-<h2 id="构造器约束"><a href="#构造器约束" class="headerlink" title="构造器约束"></a>构造器约束</h2><p>某些泛型类需要创建类型实参的实例，</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EntityBase</span>&lt;<span class="title">TKey</span>&gt;&#123;</span><br><span class="line">	<span class="keyword">public</span> TKey Key &#123; <span class="keyword">get</span>; <span class="keyword">set</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">EntityDictionary</span>&lt;<span class="title">TKey</span>, <span class="title">TValue</span>&gt;</span><br><span class="line">	: <span class="title">Dictionary</span>&lt;<span class="title">TKey</span>,<span class="title">TValue</span>&gt;</span><br><span class="line">    <span class="keyword">where</span> <span class="title">TKey</span> : <span class="title">IComparable</span>&lt;<span class="title">TKey</span>&gt;,<span class="title">IFormattable</span></span><br><span class="line">    <span class="keyword">where</span> <span class="title">TValue</span> : <span class="title">EntityBase</span>&lt;<span class="title">TKey</span>&gt;, <span class="title">new</span>()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> TValue <span class="title">MakeValue</span>(<span class="params">TKey key</span>)</span>&#123;</span><br><span class="line">		TValue newEntity = <span class="keyword">new</span> TValue();</span><br><span class="line">		newEntity.Key = key;</span><br><span class="line">		Add(newEntity.Key, newEntity);</span><br><span class="line">		<span class="keyword">return</span> newEntity;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是并非所有对象都保证有公共默认构造器，所以编译器不允许为未约束的类型参数调用默认构造器。为了摆脱这一限制，在指定了其他约束之后添加<code>new（）</code>这就是构造器约束。</p>
-<p><strong>只能对构造器约束而不能对带参数的构造器约束</strong> 上诉例子中为 <code>newEntity = new TValue(key)</code></p>
-<p>针对这种情况我们可以使用工厂方法</p>
-<p><img src="file://D:/Desk/md/C%23%E6%9C%AC%E8%B4%A8%E8%AE%BA%20%E6%B3%9B%E5%9E%8B/IMG_20220717_172749.jpg?lastModify=1658124905" alt="IMG_20220717_172749"></p>
-<p>可以将新Key传给需要获取参数的<code>TValue</code>的工厂方法</p>
-<h2 id="约束继承"><a href="#约束继承" class="headerlink" title="约束继承"></a>约束继承</h2><p><strong>泛型的类型参数和他们的约束都不会被派生类继承，因为泛型类参数不是成员</strong></p>
-<p>类继承的特点在于派生类拥有基类的所有成员，常采用的做法是创建新的泛型类型，让他从其他泛型类型继承。而且由于派生的泛型类型的类型参数是泛型基类的类型实参，所以约束必须相同或者更强。</p>
-<p>派生类继承的约束必须重新在写一遍，这样避免在使用派生类时发现约束却不知来自哪里</p>
-<p>但是当虚泛型方法被继承或者重写时，约束隐式继承，不可以重新声明，因为如果约束不完全一致，那么就会破坏多态性</p>
-<p>委托、数组、枚举类型都不能在基类约束中使用，因为他们是密封类型，他们的基类型也不能在约束中使用</p>
-<p>所有委托类型都被当作不能指定为类型参数的特殊类，不然无法对<code>Event()</code>调用进行验证，因为所触发事件的签名是未知的</p>
-<h1 id="泛型方法"><a href="#泛型方法" class="headerlink" title="泛型方法"></a>泛型方法</h1><p>有时候使用泛型方法时会造成以此转型操作被“掩盖”起来，如下图所示</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//作用是将stream转换为给定类型的对象</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> T <span class="title">Deserialize</span>&lt;<span class="title">T</span>&gt;(<span class="params">Stream stream, IFormatter formatter</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> (T)formatter.Deserialize(stream);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用泛型版本代码如下</span></span><br><span class="line"><span class="built_in">string</span> greeting = Deserialization.Deserialize&lt;<span class="built_in">string</span>&gt;(stream, formatter);</span><br><span class="line"><span class="comment">//上述代码其实已经隐式执行了一次转换, 因此他不是类型安全的，下列代码是等价转换</span></span><br><span class="line"><span class="built_in">string</span> greeting = (<span class="built_in">string</span>)Deserialization.Deserialize(stream, formatter);</span><br></pre></td></tr></table></figure>
-
-<h2 id="协变性"><a href="#协变性" class="headerlink" title="协变性"></a>协变性</h2><p>假定X类型的值都能转换为Y类型，如果<code>I&lt;Y&gt;</code>和<code>I&lt;X&gt;</code>具有相同的特殊关系，那么 <code>I&lt;T&gt;</code>对T协变</p>
-<p>虽然string能够转换为object，但是不能将<code>List&lt;string&gt;</code>转换为<code>List&lt;object&gt;</code>，因为这两变量不是类型兼容的，他们不是协变量。如果泛型之间协变没有限制，那么类型安全会失去保障，object列表中能插入int，但string列表中却不行，因此一定要视为非法转换，不能将字符串列表作为对象列表使用。</p>
-<p>可以看出因为泛型类型允许写入所以会造成这个问题，创建只读类型的<code>IReadOnlyPair&lt;T&gt;</code>接口，不允许T作为形参和可写属性的类型使用便可</p>
-<h3 id="使用out修饰符实现协变"><a href="#使用out修饰符实现协变" class="headerlink" title="使用out修饰符实现协变"></a>使用out修饰符实现协变</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title">IReadOnlyPair</span>&lt;<span class="keyword">out</span> <span class="title">T</span>&gt;&#123;</span><br><span class="line">	T first &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line">	T Second &#123; <span class="keyword">get</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用out修饰类型参数，会导致编译器验证T只用于方法的返回类型和只读属性的返回类型</p>
-<p><strong>协变转换的一些限制：</strong></p>
-<ul>
-<li>只有泛型接口和泛型委托才可以协变，泛型类和结构不允许协变</li>
-<li>协变转换前后的类型实参都只能是引用类型而不能是值类型，比如<code>IReadOnlyPair&lt;string&gt;</code>可以协变转换为<code>IReadOnlyPair&lt;object&gt;</code>，但<code>IReadOnlyPair&lt;int&gt;</code>不能转换为<code>IReadOnlyPair&lt;object&gt;</code></li>
-<li>接口和委托必须声明为支持协变</li>
-</ul>
-<h2 id="逆变性"><a href="#逆变性" class="headerlink" title="逆变性"></a>逆变性</h2><p>逆变和协变相反，假定X类型的值都能转换为Y类型，如果<code>I&lt;Y&gt;</code>类型的每个值都能转换为<code>I&lt;X&gt;</code>，那么 <code>I&lt;T&gt;</code>对T逆变</p>
-<p><code>Fruit</code>基类派生出<code>Apple</code>派生类型，有一个比较器方法 <code>ICompare&lt;T&gt;</code>，因为所有<code>Apple</code>都是<code>Fruit</code>，所以在使用 <code>ICompare&lt;Apple&gt;</code>的地方都能使用 <code>ICompare&lt;Fruit&gt;</code></p>
-<p><strong>可以从另一角度理解逆变和协变：</strong></p>
-<p>协变：就是对具体成员的输出参数进行一次类型转换，能够使用比原始指定的派生类型的派生程度更大（更具体）的类型。例如，如果Cat是Animal的子类型，那么Cat类型的表达式可用于任何出现Animal类型表达式的地方。</p>
-<p>逆变：是对具体成员的输入参数进行一次类型转换，能够使用比原始指定的派生类型的派生程度更小（更不具体）的类型。在使用委托时，因为委托方法签名参数比方法参数更具体，因此可以在传递给处理程序方法时对它们进行隐式转换。这样，当创建可由大量类使用的更加通用的委托方法时，使用逆变就更为简单了。</p>
-<h1 id="不同类型的泛型的实例化"><a href="#不同类型的泛型的实例化" class="headerlink" title="不同类型的泛型的实例化"></a>不同类型的泛型的实例化</h1><h2 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h2><p>使用值类型作为类型参数首次构造一个泛型类型的时候，“运行时”会针对每个新的“参数值类型”创建一个新的具体化的泛型类型</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Stack&lt;<span class="built_in">int</span>&gt; stack;</span><br><span class="line"><span class="comment">//首次使用Stack&lt;int&gt; 类型，”运行时“生成一个Stack类的具体化版本，并用int替代类型参数</span></span><br><span class="line"></span><br><span class="line">Stack&lt;<span class="built_in">int</span>&gt; stackOne = <span class="keyword">new</span> Stack&lt;<span class="built_in">int</span>&gt;();</span><br><span class="line"><span class="comment">//之后在使用Stack&lt;int&gt; 的时候，”运行时“重用已生成的具体化类</span></span><br><span class="line"></span><br><span class="line">Stack&lt;<span class="built_in">long</span>&gt; stackTwo = <span class="keyword">new</span> Stack&lt;<span class="built_in">long</span>&gt;();</span><br><span class="line"><span class="comment">//使用不同值类型就会生成另一版本</span></span><br><span class="line"><span class="comment">//这样代码能避免转换和装箱，因为每个具体的泛型类都”原生的“（natively）包含了值类型</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><p>使用引用类型作为类型参数首次构造一个泛型类型的时候，“运行时”会在CIL代码中用<code>object</code>引用替换类型参数来创建一个具体化的泛型类型，而不是基于所提供的类型实参。此后即便引用类型和第一次的不同，“运行时”也会重用已经生成好了的泛型类型参数</p>
-<p>这样编译器创建的具体化类只有一个，减少了代码量</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//两个引用类型，Customer和Order</span></span><br><span class="line">EntityDictionary&lt;Guid, Customer&gt; customers;</span><br><span class="line"></span><br><span class="line"><span class="comment">//再创建一个Order类型的EntityDictionary</span></span><br><span class="line">EntityDictionary&lt;Guid, Order&gt; orders = <span class="keyword">new</span> EntityDictionary&lt;Guid, Order&gt;();</span><br><span class="line"><span class="comment">//会实例化一个object应用的EntityDictionary的一个实例</span></span><br><span class="line"><span class="comment">//针对替换类型参数的object引用都会分配一个Order类型的内存区域，来确保类型安全性</span></span><br></pre></td></tr></table></figure>
-
-
+        
+          <a class="article-more-a" href="/2022/07/18/C#%E6%9C%AC%E8%B4%A8%E8%AE%BA-%E6%B3%9B%E5%9E%8B/#more">more >></a>
+        
       
 
       
@@ -316,7 +338,7 @@
 </blockquote>
 <p>值类型的值一般都是短时间存在的，大多情况下只是作为表达式的一部分或者是用于激活方法。在这种情况下，值类型的变量和临时值通常是存储在被称为“<strong>栈</strong>”的临时存储池中，他的清理代价低于需要进行垃圾回收的堆</p>
 <h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><p>他的值是对一个对象实例的引用，</p>
-<p>![20200928233153432](..&#x2F;..&#x2F;..&#x2F;Desk&#x2F;md&#x2F;C%23 再述值类型&#x2F;20200928233153432-16574464217701.png)</p>
+<p><img src="file://D:\Desk\md\C%23%20%E5%86%8D%E8%BF%B0%E5%80%BC%E7%B1%BB%E5%9E%8B\20200928233153432-16574464217701.png?lastModify=1658130759" alt="20200928233153432"></p>
 <h1 id="结构-Struct"><a href="#结构-Struct" class="headerlink" title="结构 Struct"></a>结构 Struct</h1><p>除了string和object外，所有C#内建类型都是值类型</p>
 <blockquote>
 <p>对于使用值类型的一种良好规范是确保值类型不可变，一旦实例化了值类型就不能修改它。要修改就只能创建新的一个实例。</p>
@@ -405,8 +427,7 @@
 </li>
 <li><p>对应的函数只检测对应的Collider，<code>Physics.Raycast</code>是不会检测到Collider 2D的（这个让我有一次debug了好久才发现）</p>
 </li>
-<li><p>对应API如下</p>
-</li>
+<li>对应API如下</li>
 </ul>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Physics.Raycast(Vector3 origin,Vector3 direction,<span class="keyword">out</span> RaycastHit hitinfo,<span class="built_in">float</span> distance,<span class="built_in">int</span> LayerMask);</span><br><span class="line"><span class="comment">//origin:射线的起始点，因为是位置坐标所以使用Vector3表示</span></span><br><span class="line"><span class="comment">//direction：射线的方向，因为是方向坐标所以使用Vector3表示</span></span><br><span class="line"><span class="comment">//hitinfo：一个结构体，可以储存碰撞体的所有信息。你可以声明一个空的然后直接代入就可以</span></span><br><span class="line"><span class="comment">//下面是可选参数：</span></span><br><span class="line"><span class="comment">//distance:射线检测的距离</span></span><br><span class="line"><span class="comment">//LayerMask：图层，如果输入图层的序号就可以只检测这个图层的相应物体，</span></span><br></pre></td></tr></table></figure>
         
@@ -563,10 +584,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="相机"><a href="#相机" class="headerlink" title="相机"></a>相机</h1><h2 id="FOV（视场）"><a href="#FOV（视场）" class="headerlink" title="FOV（视场）"></a>FOV（视场）</h2><img src="/.io//image-20220604191453737.png" alt="image-20220604191453737" style="zoom:67%;">
-
+        <h1 id="相机"><a href="#相机" class="headerlink" title="相机"></a>相机</h1><h2 id="FOV（视场）"><a href="#FOV（视场）" class="headerlink" title="FOV（视场）"></a>FOV（视场）</h2><p><img src="/.io//image-20220604191453737.png" alt="image-20220604191453737" style="zoom:67%;"></p>
 <p>对于更小的传感器想要得到相同的FOV，需要将焦距调小（Focal length） </p>
-<h2 id="曝光"><a href="#曝光" class="headerlink" title="曝光"></a>曝光</h2><p>H &#x3D;  T x E</p>
+<h2 id="曝光"><a href="#曝光" class="headerlink" title="曝光"></a>曝光</h2><p>H =  T x E</p>
 <p>T: 曝光时间，被快门（Shutter）控制</p>
 <p>E: Irradiance (辐照度)</p>
         
@@ -646,12 +666,12 @@
       
         <h1 id="第1章-计算机网络和因特网"><a href="#第1章-计算机网络和因特网" class="headerlink" title="第1章-计算机网络和因特网"></a>第1章-计算机网络和因特网</h1><p><img src="/.io//image-20220610155822384.png" alt="image-20220610155822384"></p>
 <h2 id="Internet"><a href="#Internet" class="headerlink" title="Internet"></a>Internet</h2><h3 id="Internet的具体构成"><a href="#Internet的具体构成" class="headerlink" title="Internet的具体构成"></a>Internet的具体构成</h3><p><strong>数以亿计的计算互连设备：</strong></p>
-<p>主机（host）&#x3D; 端系统（end system）</p>
+<p>主机（host）= 端系统（end system）</p>
 <p>运行网络应用程序</p>
 <p><strong>分组(packet)交换设备</strong>：</p>
 <p><strong>通信链路(link)：</strong></p>
 <p>fiber, copper, radio, satellite</p>
-<p>传输速率 &#x3D; 带宽(bandwidth)</p>
+<p>传输速率 = 带宽(bandwidth)</p>
 <p><strong>网络 (Networks)：</strong></p>
 <p>设备、路由器、交换机和链路的集合，由机构组织管理</p>
 <h3 id="Internet的服务描述"><a href="#Internet的服务描述" class="headerlink" title="Internet的服务描述"></a>Internet的服务描述</h3>
@@ -730,7 +750,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第一章-操作系统引论"><a href="#第一章-操作系统引论" class="headerlink" title="第一章 操作系统引论"></a>第一章 操作系统引论</h1><p><img src="/.io//%E7%BD%91%E9%A1%B5%E6%8D%95%E8%8E%B7_7-6-2022_204248_.jpeg" alt="网页捕获_7-6-2022_204248_"></p>
+        <h1 id="第一章-操作系统引论"><a href="#第一章-操作系统引论" class="headerlink" title="第一章 操作系统引论"></a>第一章 操作系统引论</h1><p><img src="/.io//网页捕获_7-6-2022_204248_.jpeg" alt="网页捕获_7-6-2022_204248_"></p>
 <h2 id="操作系统的目标"><a href="#操作系统的目标" class="headerlink" title="操作系统的目标"></a>操作系统的目标</h2><ul>
 <li>方便性:操作系统使计算机更易于使用。</li>
 <li>有效性:操作系统允许以更有效的方式使用计算机系统资源。<ul>
@@ -811,7 +831,7 @@
 <li>BTDF的T指的是折射(Transmitte)。</li>
 <li>BRDF和BTDF统称为BSDF，这里的S指的是散射(Scatter)。</li>
 </ul>
-<h2 id="Diffuse-x2F-Lambertian-Material-BRDF-漫反射"><a href="#Diffuse-x2F-Lambertian-Material-BRDF-漫反射" class="headerlink" title="Diffuse &#x2F; Lambertian Material(BRDF) 漫反射"></a>Diffuse &#x2F; Lambertian Material(BRDF) 漫反射</h2><p>首先认为现在在研究的这个漫反射材质是均匀的，这也意味着：</p>
+<h2 id="Diffuse-Lambertian-Material-BRDF-漫反射"><a href="#Diffuse-Lambertian-Material-BRDF-漫反射" class="headerlink" title="Diffuse / Lambertian Material(BRDF) 漫反射"></a>Diffuse / Lambertian Material(BRDF) 漫反射</h2><p>首先认为现在在研究的这个漫反射材质是均匀的，这也意味着：</p>
 <ul>
 <li><p>假设入射光是各个方向均匀射向这个着色点的，并且每一个入射光的光强都是相同的；</p>
 </li>
@@ -821,19 +841,17 @@
 <p><img src="/.io//image-20220530145517043.png" alt="image-20220530145517043"></p>
 </li>
 </ul>
-<p>我们可以定义一个名为<strong>反射率</strong>这么一个该概念，英文名为<strong>albedo(color)<strong>，albedo可以是单通道的一个数，也可以是三个数RGB，我们定义他的</strong>范围在[0，1]区间内</strong>，引入不同颜色BRDF，所以这个BRDF的值就是<code>fr</code>,范围为[0, 1 &#x2F; pi]</p>
+<p>我们可以定义一个名为<strong>反射率</strong>这么一个该概念，英文名为<strong>albedo(color)</strong>，albedo可以是单通道的一个数，也可以是三个数RGB，我们定义他的<strong>范围在[0，1]区间内</strong>，引入不同颜色BRDF，所以这个BRDF的值就是<code>fr</code>,范围为[0, 1 / pi]</p>
 <h2 id="镜面折射（Specular-Refraction）"><a href="#镜面折射（Specular-Refraction）" class="headerlink" title="镜面折射（Specular Refraction）"></a>镜面折射（Specular Refraction）</h2><h3 id="Snell’s-Law"><a href="#Snell’s-Law" class="headerlink" title="Snell’s Law"></a>Snell’s Law</h3><p><img src="/.io//image-20220530144639294.png" alt="image-20220530144639294"></p>
 <p>如果结果不是一个实数，则说明折射不会发生，也就是入射的介质的折射率大于折射的介质的折射率，这种情况就可能出现没有折射这种现象，这种现象也成为全反射现象。</p>
-<h3 id="Snell’s-Window"><a href="#Snell’s-Window" class="headerlink" title="Snell’s Window"></a>Snell’s Window</h3><img src="/.io//image-20220530144848764.png" alt="image-20220530144848764" style="zoom:67%;">
-
+<h3 id="Snell’s-Window"><a href="#Snell’s-Window" class="headerlink" title="Snell’s Window"></a>Snell’s Window</h3><p><img src="/.io//image-20220530144848764.png" alt="image-20220530144848764" style="zoom:67%;"></p>
 <p>当人从水里外天空看的时候，只能看到一个锥形的范围，锥形范围之外的都看不见，就是因为发生了全反射现象</p>
-<h2 id="Fresnel-Reflection-x2F-Term-菲涅尔项"><a href="#Fresnel-Reflection-x2F-Term-菲涅尔项" class="headerlink" title="Fresnel Reflection &#x2F; Term(菲涅尔项)"></a>Fresnel Reflection &#x2F; Term(菲涅尔项)</h2><p>光线照射到物体表面后，一部分发生折射，一部分发生反射。那么发生反射部分的比例是多少，可以用菲涅尔项来描述。</p>
+<h2 id="Fresnel-Reflection-Term-菲涅尔项"><a href="#Fresnel-Reflection-Term-菲涅尔项" class="headerlink" title="Fresnel Reflection / Term(菲涅尔项)"></a>Fresnel Reflection / Term(菲涅尔项)</h2><p>光线照射到物体表面后，一部分发生折射，一部分发生反射。那么发生反射部分的比例是多少，可以用菲涅尔项来描述。</p>
 <ul>
 <li>如果一根入射光线和物体表面几乎平行，就认为大量能量会被反射。上图中光线与法线角度成90度就是表示光线与物体表面平行。</li>
 <li>如果入射光线和物体表面垂直，就会有更多能量会穿过物体，发生折射，反射的能量就会比较少。</li>
 </ul>
-<img src="/.io//image-20220530145313583.png" alt="image-20220530145313583" style="zoom:50%;">
-
+<p><img src="/.io//image-20220530145313583.png" alt="image-20220530145313583" style="zoom:50%;"></p>
 <h3 id="简化的计算公式"><a href="#简化的计算公式" class="headerlink" title="简化的计算公式"></a>简化的计算公式</h3><p><img src="/.io//image-20220530150629108.png" alt="image-20220530150629108"></p>
 <h2 id="微表面材质-Microfacet-BRDF"><a href="#微表面材质-Microfacet-BRDF" class="headerlink" title="微表面材质(Microfacet BRDF)"></a>微表面材质(Microfacet BRDF)</h2><p>几何表面的凹凸变化在远处看来就是材质，关键是微表面法线的分布：</p>
 <p><img src="/.io//image-20220530151819611.png" alt="image-20220530151819611"></p>
@@ -846,12 +864,13 @@
 <li>G： 几何项， 反射的过程中，有一部分的光被自身几何结构遮挡了，有多少比例的反射光没有被遮挡。光几乎是平行着物体表面，打到这个物体表面上时容易发生这种自投影(自遮挡)的现象</li>
 <li>D：法线分布函数，在所有的分布里，有多少比例的微平面的法线方向沿着半程向量。</li>
 </ul>
-<h2 id="各向同性和各向异性Isotropic-x2F-Anisotropic-Materials-BRDFs"><a href="#各向同性和各向异性Isotropic-x2F-Anisotropic-Materials-BRDFs" class="headerlink" title="各向同性和各向异性Isotropic &#x2F; Anisotropic Materials(BRDFs)"></a>各向同性和各向异性Isotropic &#x2F; Anisotropic Materials(BRDFs)</h2><p><img src="/.io//image-20220530154204966.png" alt="image-20220530154204966"></p>
+<h2 id="各向同性和各向异性Isotropic-Anisotropic-Materials-BRDFs"><a href="#各向同性和各向异性Isotropic-Anisotropic-Materials-BRDFs" class="headerlink" title="各向同性和各向异性Isotropic / Anisotropic Materials(BRDFs)"></a>各向同性和各向异性Isotropic / Anisotropic Materials(BRDFs)</h2><p><img src="/.io//image-20220530154204966.png" alt="image-20220530154204966"></p>
 <p>在方位角上旋转，得到的不是相同的BRDF，就将其成为各向异性（Anisotropic）的材质。</p>
 <p>就是在一个平面上有一对入射角和出射角，可知他们的半程向量是垂直于平面的，这时半程向量的方向不动，旋转这对角，这时他们相对的位置没有变化。</p>
 <h2 id="BRDFS的性质"><a href="#BRDFS的性质" class="headerlink" title="BRDFS的性质"></a>BRDFS的性质</h2><ol>
-<li><p>BRDF的值非负<br>$$<br>f_r(w_i → w_r) &gt; 0<br>$$</p>
-</li>
+<li><p>BRDF的值非负</p>
+<script type="math/tex; mode=display">
+f_r(w_i → w_r) > 0</script></li>
 <li><p>可以拆分计算</p>
 <p><img src="/.io//image-20220530154730247.png" alt="image-20220530154730247"></p>
 </li>
@@ -861,7 +880,7 @@
 <li><p>能量守恒</p>
 </li>
 </ol>
-<p>​	<img src="/.io//image-20220530154805894.png" alt="image-20220530154805894"></p>
+<p>​    <img src="/.io//image-20220530154805894.png" alt="image-20220530154805894"></p>
 <h2 id="基于图像的-BRDF-测量"><a href="#基于图像的-BRDF-测量" class="headerlink" title="基于图像的 BRDF 测量"></a>基于图像的 BRDF 测量</h2><p>确定一个相机，确定一个光源。使用光源从四面八方照射物体，再用相机从四面八方取拍它，这样就可以覆盖BRDF的所有可能的输入方向和输出方向</p>
 <p>提升效率：</p>
 <ul>
@@ -880,10 +899,12 @@
 <ol>
 <li>从光源发射光子，直到打在漫反射表面</li>
 <li>从相机发射光子，直到打在漫反射表面</li>
-<li>计算局部密度评估</li>
+<li>计算局部密度评估 </li>
 </ol>
 <p>为什么光子映射有偏？</p>
-<p>我们计算<br>$$<br>dN &#x2F; dA !&#x3D; \Delta N &#x2F; \Delta A<br>$$<br>如果光子打出无限多，那么结果与正确结果无限接近</p>
+<p>我们计算</p>
+<script type="math/tex; mode=display">
+dN / dA != \Delta N / \Delta A</script><p>如果光子打出无限多，那么结果与正确结果无限接近</p>
 <h3 id="VCM"><a href="#VCM" class="headerlink" title="VCM"></a>VCM</h3><p>双向路线追踪和光子映射结合</p>
 <p><img src="/.io//image-20220601154157031.png" alt="image-20220601154157031"></p>
 <p>当BDPT的路径在一个局部面上时，尽管他们没有相交但仍然可以把他们当作光子而不是光路，以此来做光子映射</p>
@@ -990,7 +1011,7 @@
 <p>关节链 – 将一系列依次相连的刚体通过关节连接而成的开链</p>
 <p>末端影响器 – 关节链的自由末端(End effector)</p>
 <p>关节链结构的自由度（Degree of freedom - DOF） – 状态空间的维 度，完全确定关节链结构状态所需的独立变量个数</p>
-<h2 id="正向运动学（direct-x2F-forward-kinematics）"><a href="#正向运动学（direct-x2F-forward-kinematics）" class="headerlink" title="正向运动学（direct&#x2F;forward kinematics）"></a>正向运动学（direct&#x2F;forward kinematics）</h2><p>研究如何从给定的状态向量计算各个链杆的位置（包括各个关节的位置），尤其是末端影响器的位置</p>
+<h2 id="正向运动学（direct-forward-kinematics）"><a href="#正向运动学（direct-forward-kinematics）" class="headerlink" title="正向运动学（direct/forward kinematics）"></a>正向运动学（direct/forward kinematics）</h2><p>研究如何从给定的状态向量计算各个链杆的位置（包括各个关节的位置），尤其是末端影响器的位置</p>
 <p><img src="/.io//image-20220524162616780.png" alt="image-20220524162616780"></p>
 <p>𝜃1，𝜃2和𝜃3之间相互独立，因此三 链杆关节链状态空间的维度为3</p>
 <p>三链杆关节链末端影响器位置坐标： </p>
@@ -1022,170 +1043,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="article-games101-光线追踪" class="article article-type-article  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/">games101 光线追踪</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/" class="archive-article-date">
-  	<time datetime="2022-05-23T12:02:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Shadow-Mapping"><a href="#Shadow-Mapping" class="headerlink" title="Shadow Mapping"></a>Shadow Mapping</h1><p>在确定遮挡关系的时候， z-buffer的深度值是相对于摄像机镜头，也就是眼睛所见来确定物体是否被遮挡，这个很容易理解。眼睛能看不见的地方，当然被挡住了。那我们换个角度想想，阴影是如何产生的？</p>
-<p>通过移动视口到光源位置，可以观察到这个位置每个东西都是明亮的，因为从光的角度来看是没有阴影的。从光源的角度将场景的深度渲染到一张深度缓冲区中，我们可以在场景中获得一张阴影或者无阴影的贴图，一张阴影贴图。</p>
-<p><img src="https://img-blog.csdn.net/20160520003255489" alt="img"></p>
-<h2 id="软硬阴影"><a href="#软硬阴影" class="headerlink" title="软硬阴影"></a>软硬阴影</h2><p>在下面的图中，a点与光源之间没有任何物体遮挡，因此是照亮（lit）的。而地面也就是接受者（receiver）上的 c 点被遮挡者（occluder）立方体遮挡，处于本影区（umbra）。b 点处于被部分遮挡形成的半影区（penumbra）。<br><img src="https://img-blog.csdnimg.cn/20200108152330691.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvZG93bmxvYWQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h1 id="光线追踪"><a href="#光线追踪" class="headerlink" title="光线追踪"></a>光线追踪</h1><p>为什么选用光线追踪？</p>
-<p>光栅化并不能很好的描述全局效果，比如软阴影、间接光照。</p>
-<p>光栅化质量不高但特别快，光线追踪则相反。因此主要是离线运算，比如电影等</p>
-<h2 id="图形学关于光线的几个假设"><a href="#图形学关于光线的几个假设" class="headerlink" title="图形学关于光线的几个假设"></a>图形学关于光线的几个假设</h2><ol>
-<li>光线沿直线传播</li>
-<li>光线之间不发生碰撞</li>
-<li>光线由光源向眼睛传播</li>
-</ol>
-<h2 id="光线跟物体的互动"><a href="#光线跟物体的互动" class="headerlink" title="光线跟物体的互动"></a>光线跟物体的互动</h2><h2 id="Whitted-Style光线追踪"><a href="#Whitted-Style光线追踪" class="headerlink" title="Whitted-Style光线追踪"></a>Whitted-Style光线追踪</h2><p>几个shadow rays的着色结果都会加回到image plane上</p>
-<p><img src="/.io//image-20220512104150773.png" alt="image-20220512104150773"></p>
-<h3 id="跟隐式表面"><a href="#跟隐式表面" class="headerlink" title="跟隐式表面"></a>跟隐式表面</h3><p>跟三维空间中的球面</p>
-<p><img src="/.io//image-20220512094532202.png" alt="image-20220512094532202"></p>
-<h3 id="跟显式表面"><a href="#跟显式表面" class="headerlink" title="跟显式表面"></a>跟显式表面</h3><p>跟三角形面</p>
-<p>先考虑跟三角形所在的平面求交（与平面上另一点组成的向量与平面法向量垂直），在考虑交点是否在三角形内</p>
-<p><img src="/.io//image-20220512100314026.png" alt="image-20220512100314026"></p>
-<h3 id="包围盒（Bounding-Volumes）"><a href="#包围盒（Bounding-Volumes）" class="headerlink" title="包围盒（Bounding Volumes）"></a>包围盒（Bounding Volumes）</h3><p>将一个包围盒将物体完全包含，如果光线连包围盒都碰撞不了就不用计算与三角形面的碰撞，减少了</p>
-<p><strong>那么我们如何计算光线和方块状物体交互</strong></p>
-<p>使用三组对面来描述长方体</p>
-<p><img src="/.io//image-20220512102624942.png" alt="image-20220512102624942"></p>
-<p>t_enter&#x3D; max{t_min}  t_exit&#x3D;min{t_max}，已经进入三个对面才算进入盒子，只要离开一个对面就算出去盒子</p>
-<p><strong>为啥使用轴对称</strong>（Axis-Aligned Bounding Boxes）</p>
-<p><img src="/.io//image-20220512104433801.png" alt="image-20220512104433801"></p>
-<p>减少了大量运算</p>
-<h1 id="网格划分"><a href="#网格划分" class="headerlink" title="网格划分"></a>网格划分</h1><p>1.找出包围盒</p>
-<p>2.创建网格</p>
-<p>3.存储与物体重叠的网格</p>
-<p>与网格计算求交比物体快很多，只有光线经过有物体的网格才需要与物体求交</p>
-<p><img src="/.io//image-20220512155201007.png" alt="image-20220512155201007"></p>
-<h1 id="空间划分"><a href="#空间划分" class="headerlink" title="空间划分"></a>空间划分</h1><p>网格划分仅在场景中物体分布较均匀的时候有较好效果</p>
-<p>一个真实的场景中经常有一大块的空白区域，这一大块空白其实可一用一个大格子来覆盖，而其他物体稠密的区域仍然用小格子。</p>
-<p><img src="/.io//image-20220512145227452.png" alt="image-20220512145227452"></p>
-<p>Oct-Tree：八叉树，对于三维空间中的一个场景将其横竖切三刀，切成八块，在二维空间表现为四叉。它的意思就是把包围盒切成四块，然后对于每一个子节点在切成四块，当格子是空的或者格子里面物体足够少时就停止。但是对于高维空间不好划分。</p>
-<p>KD-Tree：类似二叉树，每次将包围盒分成两份，每次都是沿着某个轴的方向进行分割，并且分割顺序是x-&gt;y-&gt;z -&gt;x-&gt;y-&gt;z……这样循环往复。</p>
-<p>BSP-Tree：也是每次划分选择一个方向将空间分成两部分，与KD-Tree相比它不是横平竖直的划分，不好计算</p>
-<h2 id="KD—Tree"><a href="#KD—Tree" class="headerlink" title="KD—Tree"></a>KD—Tree</h2><p><img src="/.io//image-20220512153614599.png" alt="image-20220512153614599"></p>
-<p>首先检查光线和场景中最大的包围盒A是否有交点</p>
-<p>每次到达叶子结点（规定区域内物体少于多少就不再划分）就与其中的物体求交</p>
-<p>可以发现4号区域和5号区域光线没有经过，所以不要和里面的物体进行求交，加速了计算速度。</p>
-<p>KD-Tree也有很多缺点：</p>
-<ul>
-<li>很难判定一个三角形和包围盒有交集</li>
-<li>一个物体可能会在多个格子里，那么在这些格子都要保存这个物体，最后判断这个物体和光线是否相交也要执行很多次。</li>
-</ul>
-<h2 id="层次包围盒Bounding-Volume-Hierarchy（BVH）"><a href="#层次包围盒Bounding-Volume-Hierarchy（BVH）" class="headerlink" title="层次包围盒Bounding Volume Hierarchy（BVH）"></a>层次包围盒Bounding Volume Hierarchy（BVH）</h2><p>BVH按照物体而不是空间来划分</p>
-<p><img src="/.io//image-20220512154227725.png" alt="image-20220512154227725"></p>
-<p>BVH先将物体分为两部分在重新求包围盒，而不是像KD—Tree一样像划分包围盒在考虑物体与盒子的相交情况</p>
-<h3 id="划分的依据"><a href="#划分的依据" class="headerlink" title="划分的依据"></a>划分的依据</h3><ul>
-<li>为了让包围盒在空间中均匀分布，每次都沿着最长的轴划分。</li>
-<li>在第<strong>中位数</strong>个三角形的位置进行划分，这两部分里面的三角形数量差不多相同，也就是要构造一个平衡二叉树</li>
-</ul>
-<h1 id="辐射度量学（basic-radiometry）"><a href="#辐射度量学（basic-radiometry）" class="headerlink" title="辐射度量学（basic radiometry）"></a>辐射度量学（basic radiometry）</h1><h2 id="radiant-intensity（辐射通量）"><a href="#radiant-intensity（辐射通量）" class="headerlink" title="radiant intensity（辐射通量）"></a>radiant intensity（辐射通量）</h2><p>定义：单位立体角上的功率</p>
-<p><img src="/.io//image-20220512155609191.png" alt="image-20220512155609191"></p>
-<p>立体角（solid angle）： 辐射的面积除以到圆心的平方——可以形容一个锥展开有多大</p>
-<p>candela：发光强度单位</p>
-<p>lumen：是描述光通量的物理单位，物理学解释为一candela在一个立体角（半径为1米的单位圆球上，1平米的球冠所对应的球锥所代表的角度，其对应中截面的圆心角约65°）上产生的总发射光通量</p>
-<p>也可以使用瓦特（W）表示，单位时间内的能量（Q）</p>
-<h2 id="Irradiance（辐照度）"><a href="#Irradiance（辐照度）" class="headerlink" title="Irradiance（辐照度）"></a>Irradiance（辐照度）</h2><p>定义: 单位面积上的功率（面与光线垂直）</p>
-<p><img src="/.io//image-20220512160150918.png" alt="image-20220512160150918"></p>
-<h2 id="radiance-辐亮度"><a href="#radiance-辐亮度" class="headerlink" title="radiance(辐亮度)"></a>radiance(辐亮度)</h2><p>在单位立体角、单位面积上的功率</p>
-<p><img src="/.io//image-20220522151901768.png" alt="image-20220522151901768"></p>
-<p>单位面积（d A）在某个方向上的辐射  </p>
-<h1 id="Bidirectional-Reflectance-Distribution-Function（BRDF）-双向反射分布函数"><a href="#Bidirectional-Reflectance-Distribution-Function（BRDF）-双向反射分布函数" class="headerlink" title="Bidirectional Reflectance Distribution Function（BRDF）-双向反射分布函数"></a>Bidirectional Reflectance Distribution Function（BRDF）-双向反射分布函数</h1><h2 id="反射方程："><a href="#反射方程：" class="headerlink" title="反射方程："></a>反射方程：</h2><p><img src="/.io//image-20220522154831161.png" alt="image-20220522154831161"></p>
-<p>但是则会只考虑了光源，其他物体反射的光不会产生影响</p>
-<h2 id="渲染方程："><a href="#渲染方程：" class="headerlink" title="渲染方程："></a>渲染方程：</h2><p><img src="/.io//image-20220522154950550.png" alt="image-20220522154950550"></p>
-<p>在反射方程基础上加上自身发光</p>
-<p><strong>渲染方程不再区分光线是由光源发出还是由物体反射，都把他们当作光源</strong></p>
-<p><img src="/.io//image-20220522160349431.png" alt="image-20220522160349431"></p>
-<p>由图可知，想要解出反射光只有入射光不可知</p>
-<p>将这个方程简写为<br>$$<br>l(u) &#x3D; e(u) + \int l(v)K(u,v)dv<br>$$<br>再将这个方程简写，使其变为矩阵形式的 递归定义</p>
-<p>$$<br>L &#x3D; E +KL<br>$$<br>用E和K表示L后，再利用二项式定理展开，最后结果为</p>
-<p><img src="/.io//image-20220522161413860.png" alt="image-20220522161413860"></p>
-<p> <img src="/.io//image-20220522163014776.png" alt="image-20220522163014776"></p>
-<h1 id="路径追踪"><a href="#路径追踪" class="headerlink" title="路径追踪"></a>路径追踪</h1><h2 id="蒙特卡洛积分"><a href="#蒙特卡洛积分" class="headerlink" title="蒙特卡洛积分"></a>蒙特卡洛积分</h2><p>  <img src="/.io//image-20220522205632637.png" alt="image-20220522205632637"></p>
-<p>p(Xi)为随机变量Xi的概率密度分布函数，估计值与理论值之间的误差可以通过增加样本数来减小。</p>
-<p><strong>将蒙特卡洛积分应用到渲染方程</strong></p>
-<p><img src="/.io//image-20220522212806004.png" alt="image-20220522212806004"></p>
-<h2 id="待解决的问题"><a href="#待解决的问题" class="headerlink" title="待解决的问题"></a>待解决的问题</h2><h3 id="弹射光线迅速增多"><a href="#弹射光线迅速增多" class="headerlink" title="弹射光线迅速增多"></a>弹射光线迅速增多</h3><p><img src="/.io//image-20220523184158079.png" alt=" "></p>
-<p>我们在计算光线的漫反射时，有多个点都会有反射光线到达，再次反射时，所需计算的光线会指数级别增加。</p>
-<p>所以我们假设每条N &#x3D; 1，只有一条路径，以此来做蒙特卡洛积分，<strong>这就叫路径追踪</strong></p>
-<p>但是只有一条路径产生的画面会有很大的噪声，所以我们在单个像素上追踪足够多的路径来改善画面 </p>
-<p><img src="/.io//image-20220523184652294.png" alt="image-20220523184652294"></p>
-<h3 id="采样效率不高"><a href="#采样效率不高" class="headerlink" title="采样效率不高"></a>采样效率不高</h3><p>如果我们对着色点进行采样，那么可能追踪的路径只有少数才会到达光源，这样对于光源的采样效率会很低</p>
-<p>所以我们直接对光源进行采样，但是渲染方程是对于着色点的，是对于<code>dw</code>的积分</p>
-<p>因此我们需要将渲染方程改写为<code>dA</code>的积分，也就是要求出<code>dw</code>和<code>dA</code>的转换关系 <img src="/.io//image-20220523192122652.png" alt="image-20220523192122652"></p>
-<p><code>dw</code>为<code>dA</code>在该方向上的投影面积除以他们之间距离的平方</p>
-<p><strong>因此考虑两方面的辐射，光源和其他的间接光照。间接光照采用”俄罗斯轮盘赌 “</strong></p>
-<h3 id="如何判断光照是否被遮挡"><a href="#如何判断光照是否被遮挡" class="headerlink" title="如何判断光照是否被遮挡"></a>如何判断光照是否被遮挡</h3><p>发射一条从x到x’的光线，检测是否被遮挡</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">图形学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/">展开全文 >></a>
         </p>
       
 
@@ -1316,11 +1173,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">

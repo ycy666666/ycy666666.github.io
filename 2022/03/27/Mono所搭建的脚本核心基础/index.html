@@ -176,16 +176,15 @@
 <p>基础类库：提供广泛的基础类</p>
 <p>Mono类库：提供额外的有用功能，尤其是构建Linux方面</p>
 <span id="more"></span>
-
-<h2 id="Mono如何提供脚本功能"><a href="#Mono如何提供脚本功能" class="headerlink" title="Mono如何提供脚本功能"></a>Mono如何提供脚本功能</h2><p>总所周知Unity是由C++写成的，将Mono运行时嵌入到由C++写成的应用后，该应用便会获取一个完整的虚拟机环境 。Mono的嵌入接口就会将Mono运行时暴露给C++代码，哪些C&#x2F;C++代码被称为非托管代码，经CIL编译器生成的CIL代码被称为托管代码。</p>
+<h2 id="Mono如何提供脚本功能"><a href="#Mono如何提供脚本功能" class="headerlink" title="Mono如何提供脚本功能"></a>Mono如何提供脚本功能</h2><p>总所周知Unity是由C++写成的，将Mono运行时嵌入到由C++写成的应用后，该应用便会获取一个完整的虚拟机环境 。Mono的嵌入接口就会将Mono运行时暴露给C++代码，哪些C/C++代码被称为非托管代码，经CIL编译器生成的CIL代码被称为托管代码。</p>
 <p>Mono运行时嵌入应用可分为3个步骤：</p>
 <ul>
 <li>编译C++程序和链接Mono运行时</li>
 <li>初始化Mono运行时</li>
-<li>C&#x2F;C++ 和C#&#x2F;CIL的交互</li>
+<li>C/C++ 和C#/CIL的交互</li>
 </ul>
-<p>假设我们要实现Unity中的组件系统，在C#中定义Component类，C#端中主要目的是为游戏脚本提供相应接口，而不是具体逻辑的实现。我们在C&#x2F;C++中实现具体逻辑，再以该代码中创建的实例为样本，调用Mono提供的方法在托管环境中创建相同的类型实例。</p>
-<p>我们可以看出，虽然引擎底层是由C&#x2F;C++实现的，但是他通过Mono提供了一套C#的接口作为其脚本语言，方便我们快速开发游戏</p>
+<p>假设我们要实现Unity中的组件系统，在C#中定义Component类，C#端中主要目的是为游戏脚本提供相应接口，而不是具体逻辑的实现。我们在C/C++中实现具体逻辑，再以该代码中创建的实例为样本，调用Mono提供的方法在托管环境中创建相同的类型实例。</p>
+<p>我们可以看出，虽然引擎底层是由C/C++实现的，但是他通过Mono提供了一套C#的接口作为其脚本语言，方便我们快速开发游戏</p>
 <h1 id="UNITY如何跨平台"><a href="#UNITY如何跨平台" class="headerlink" title="UNITY如何跨平台"></a>UNITY如何跨平台</h1><h4 id="原理就是CIL！"><a href="#原理就是CIL！" class="headerlink" title="原理就是CIL！"></a><strong><u>原理就是CIL！</u></strong></h4><p>由于CIL的存在，不同平台的代码编译只需要两个步骤：从代码本身到CIL，从CIL到本地指令的即时编译</p>
 <p>这样我们就不用根据不同的平台部署不同内容</p>
 <h2 id="什么是CIL"><a href="#什么是CIL" class="headerlink" title="什么是CIL"></a>什么是CIL</h2><p>CIL（Common Intermediate Language）是指令集。</p>
@@ -203,7 +202,7 @@
 <p>但是呢Unity的游戏脚本中经常会存在相互引用彼此定义的类型的情况，所以脚本编译将会按4个阶段的顺序进行，取决于他所在的文件夹，是的，也就是Asset，Plugins，Editor那些文件夹。</p>
 <ol>
 <li>编译运行时的脚本：这些脚本位于Standard Asset，Plugins，Pro Standard Asset（存放专业版才有的功能）文件夹中，这些文件夹中的脚本肯定不会访问外部变量</li>
-<li>编译Editor的脚本：位于Plugins&#x2F;Editor，Standard Asset&#x2F;Editor，Pro Standard Asset&#x2F;Editor中，我们使用了UnityEditor命名空间的脚本都要放在上述文件夹中，比如我们想要拓展Unity编辑器使用的脚本都要放在上述文件夹中</li>
+<li>编译Editor的脚本：位于Plugins/Editor，Standard Asset/Editor，Pro Standard Asset/Editor中，我们使用了UnityEditor命名空间的脚本都要放在上述文件夹中，比如我们想要拓展Unity编辑器使用的脚本都要放在上述文件夹中</li>
 <li>所有不在Editor中的脚本：基本就是我们开发过程中创建的游戏逻辑脚本</li>
 <li>剩余的脚本：不在特殊文件夹的Editor中的，而在其他Editor文件夹中的脚本（好拗口解密）</li>
 </ol>
@@ -441,11 +440,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -148,6 +148,173 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="article-games101-光线追踪" class="article article-type-article  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/">games101 光线追踪</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/" class="archive-article-date">
+  	<time datetime="2022-05-23T12:02:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Shadow-Mapping"><a href="#Shadow-Mapping" class="headerlink" title="Shadow Mapping"></a>Shadow Mapping</h1><p>在确定遮挡关系的时候， z-buffer的深度值是相对于摄像机镜头，也就是眼睛所见来确定物体是否被遮挡，这个很容易理解。眼睛能看不见的地方，当然被挡住了。那我们换个角度想想，阴影是如何产生的？</p>
+<p>通过移动视口到光源位置，可以观察到这个位置每个东西都是明亮的，因为从光的角度来看是没有阴影的。从光源的角度将场景的深度渲染到一张深度缓冲区中，我们可以在场景中获得一张阴影或者无阴影的贴图，一张阴影贴图。</p>
+<p><img src="https://img-blog.csdn.net/20160520003255489" alt="img"></p>
+<h2 id="软硬阴影"><a href="#软硬阴影" class="headerlink" title="软硬阴影"></a>软硬阴影</h2><p>在下面的图中，a点与光源之间没有任何物体遮挡，因此是照亮（lit）的。而地面也就是接受者（receiver）上的 c 点被遮挡者（occluder）立方体遮挡，处于本影区（umbra）。b 点处于被部分遮挡形成的半影区（penumbra）。<br><img src="https://img-blog.csdnimg.cn/20200108152330691.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvZG93bmxvYWQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="光线追踪"><a href="#光线追踪" class="headerlink" title="光线追踪"></a>光线追踪</h1><p>为什么选用光线追踪？</p>
+<p>光栅化并不能很好的描述全局效果，比如软阴影、间接光照。</p>
+<p>光栅化质量不高但特别快，光线追踪则相反。因此主要是离线运算，比如电影等</p>
+<h2 id="图形学关于光线的几个假设"><a href="#图形学关于光线的几个假设" class="headerlink" title="图形学关于光线的几个假设"></a>图形学关于光线的几个假设</h2><ol>
+<li>光线沿直线传播</li>
+<li>光线之间不发生碰撞</li>
+<li>光线由光源向眼睛传播</li>
+</ol>
+<h2 id="光线跟物体的互动"><a href="#光线跟物体的互动" class="headerlink" title="光线跟物体的互动"></a>光线跟物体的互动</h2><h2 id="Whitted-Style光线追踪"><a href="#Whitted-Style光线追踪" class="headerlink" title="Whitted-Style光线追踪"></a>Whitted-Style光线追踪</h2><p>几个shadow rays的着色结果都会加回到image plane上</p>
+<p><img src="/.io//image-20220512104150773.png" alt="image-20220512104150773"></p>
+<h3 id="跟隐式表面"><a href="#跟隐式表面" class="headerlink" title="跟隐式表面"></a>跟隐式表面</h3><p>跟三维空间中的球面</p>
+<p><img src="/.io//image-20220512094532202.png" alt="image-20220512094532202"></p>
+<h3 id="跟显式表面"><a href="#跟显式表面" class="headerlink" title="跟显式表面"></a>跟显式表面</h3><p>跟三角形面</p>
+<p>先考虑跟三角形所在的平面求交（与平面上另一点组成的向量与平面法向量垂直），在考虑交点是否在三角形内</p>
+<p><img src="/.io//image-20220512100314026.png" alt="image-20220512100314026"></p>
+<h3 id="包围盒（Bounding-Volumes）"><a href="#包围盒（Bounding-Volumes）" class="headerlink" title="包围盒（Bounding Volumes）"></a>包围盒（Bounding Volumes）</h3><p>将一个包围盒将物体完全包含，如果光线连包围盒都碰撞不了就不用计算与三角形面的碰撞，减少了</p>
+<p><strong>那么我们如何计算光线和方块状物体交互</strong></p>
+<p>使用三组对面来描述长方体</p>
+<p><img src="/.io//image-20220512102624942.png" alt="image-20220512102624942"></p>
+<p>t_enter= max{t_min}  t_exit=min{t_max}，已经进入三个对面才算进入盒子，只要离开一个对面就算出去盒子</p>
+<p><strong>为啥使用轴对称</strong>（Axis-Aligned Bounding Boxes）</p>
+<p><img src="/.io//image-20220512104433801.png" alt="image-20220512104433801"></p>
+<p>减少了大量运算</p>
+<h1 id="网格划分"><a href="#网格划分" class="headerlink" title="网格划分"></a>网格划分</h1><p>1.找出包围盒</p>
+<p>2.创建网格</p>
+<p>3.存储与物体重叠的网格</p>
+<p>与网格计算求交比物体快很多，只有光线经过有物体的网格才需要与物体求交</p>
+<p><img src="/.io//image-20220512155201007.png" alt="image-20220512155201007"></p>
+<h1 id="空间划分"><a href="#空间划分" class="headerlink" title="空间划分"></a>空间划分</h1><p>网格划分仅在场景中物体分布较均匀的时候有较好效果</p>
+<p>一个真实的场景中经常有一大块的空白区域，这一大块空白其实可一用一个大格子来覆盖，而其他物体稠密的区域仍然用小格子。</p>
+<p><img src="/.io//image-20220512145227452.png" alt="image-20220512145227452"></p>
+<p>Oct-Tree：八叉树，对于三维空间中的一个场景将其横竖切三刀，切成八块，在二维空间表现为四叉。它的意思就是把包围盒切成四块，然后对于每一个子节点在切成四块，当格子是空的或者格子里面物体足够少时就停止。但是对于高维空间不好划分。</p>
+<p>KD-Tree：类似二叉树，每次将包围盒分成两份，每次都是沿着某个轴的方向进行分割，并且分割顺序是x-&gt;y-&gt;z -&gt;x-&gt;y-&gt;z……这样循环往复。</p>
+<p>BSP-Tree：也是每次划分选择一个方向将空间分成两部分，与KD-Tree相比它不是横平竖直的划分，不好计算</p>
+<h2 id="KD—Tree"><a href="#KD—Tree" class="headerlink" title="KD—Tree"></a>KD—Tree</h2><p><img src="/.io//image-20220512153614599.png" alt="image-20220512153614599"></p>
+<p>首先检查光线和场景中最大的包围盒A是否有交点</p>
+<p>每次到达叶子结点（规定区域内物体少于多少就不再划分）就与其中的物体求交</p>
+<p>可以发现4号区域和5号区域光线没有经过，所以不要和里面的物体进行求交，加速了计算速度。</p>
+<p>KD-Tree也有很多缺点：</p>
+<ul>
+<li>很难判定一个三角形和包围盒有交集</li>
+<li>一个物体可能会在多个格子里，那么在这些格子都要保存这个物体，最后判断这个物体和光线是否相交也要执行很多次。</li>
+</ul>
+<h2 id="层次包围盒Bounding-Volume-Hierarchy（BVH）"><a href="#层次包围盒Bounding-Volume-Hierarchy（BVH）" class="headerlink" title="层次包围盒Bounding Volume Hierarchy（BVH）"></a>层次包围盒Bounding Volume Hierarchy（BVH）</h2><p>BVH按照物体而不是空间来划分</p>
+<p><img src="/.io//image-20220512154227725.png" alt="image-20220512154227725"></p>
+<p>BVH先将物体分为两部分在重新求包围盒，而不是像KD—Tree一样像划分包围盒在考虑物体与盒子的相交情况</p>
+<h3 id="划分的依据"><a href="#划分的依据" class="headerlink" title="划分的依据"></a>划分的依据</h3><ul>
+<li>为了让包围盒在空间中均匀分布，每次都沿着最长的轴划分。</li>
+<li>在第<strong>中位数</strong>个三角形的位置进行划分，这两部分里面的三角形数量差不多相同，也就是要构造一个平衡二叉树</li>
+</ul>
+<h1 id="辐射度量学（basic-radiometry）"><a href="#辐射度量学（basic-radiometry）" class="headerlink" title="辐射度量学（basic radiometry）"></a>辐射度量学（basic radiometry）</h1><h2 id="radiant-intensity（辐射通量）"><a href="#radiant-intensity（辐射通量）" class="headerlink" title="radiant intensity（辐射通量）"></a>radiant intensity（辐射通量）</h2><p>定义：单位立体角上的功率</p>
+<p><img src="/.io//image-20220512155609191.png" alt="image-20220512155609191"></p>
+<p>立体角（solid angle）： 辐射的面积除以到圆心的平方——可以形容一个锥展开有多大</p>
+<p>candela：发光强度单位</p>
+<p>lumen：是描述光通量的物理单位，物理学解释为一candela在一个立体角（半径为1米的单位圆球上，1平米的球冠所对应的球锥所代表的角度，其对应中截面的圆心角约65°）上产生的总发射光通量</p>
+<p>也可以使用瓦特（W）表示，单位时间内的能量（Q）</p>
+<h2 id="Irradiance（辐照度）"><a href="#Irradiance（辐照度）" class="headerlink" title="Irradiance（辐照度）"></a>Irradiance（辐照度）</h2><p>定义: 单位面积上的功率（面与光线垂直）</p>
+<p><img src="/.io//image-20220512160150918.png" alt="image-20220512160150918"></p>
+<h2 id="radiance-辐亮度"><a href="#radiance-辐亮度" class="headerlink" title="radiance(辐亮度)"></a>radiance(辐亮度)</h2><p>在单位立体角、单位面积上的功率</p>
+<p><img src="/.io//image-20220522151901768.png" alt="image-20220522151901768"></p>
+<p>单位面积（d A）在某个方向上的辐射  </p>
+<h1 id="Bidirectional-Reflectance-Distribution-Function（BRDF）-双向反射分布函数"><a href="#Bidirectional-Reflectance-Distribution-Function（BRDF）-双向反射分布函数" class="headerlink" title="Bidirectional Reflectance Distribution Function（BRDF）-双向反射分布函数"></a>Bidirectional Reflectance Distribution Function（BRDF）-双向反射分布函数</h1><h2 id="反射方程："><a href="#反射方程：" class="headerlink" title="反射方程："></a>反射方程：</h2><p><img src="/.io//image-20220522154831161.png" alt="image-20220522154831161"></p>
+<p>但是则会只考虑了光源，其他物体反射的光不会产生影响</p>
+<h2 id="渲染方程："><a href="#渲染方程：" class="headerlink" title="渲染方程："></a>渲染方程：</h2><p><img src="/.io//image-20220522154950550.png" alt="image-20220522154950550"></p>
+<p>在反射方程基础上加上自身发光</p>
+<p><strong>渲染方程不再区分光线是由光源发出还是由物体反射，都把他们当作光源</strong></p>
+<p><img src="/.io//image-20220522160349431.png" alt="image-20220522160349431"></p>
+<p>由图可知，想要解出反射光只有入射光不可知</p>
+<p>将这个方程简写为</p>
+<script type="math/tex; mode=display">
+l(u) = e(u) + \int l(v)K(u,v)dv</script><p>再将这个方程简写，使其变为矩阵形式的 递归定义</p>
+<script type="math/tex; mode=display">
+L = E +KL</script><p>用E和K表示L后，再利用二项式定理展开，最后结果为</p>
+<p><img src="/.io//image-20220522161413860.png" alt="image-20220522161413860"></p>
+<p> <img src="/.io//image-20220522163014776.png" alt="image-20220522163014776"></p>
+<h1 id="路径追踪"><a href="#路径追踪" class="headerlink" title="路径追踪"></a>路径追踪</h1><h2 id="蒙特卡洛积分"><a href="#蒙特卡洛积分" class="headerlink" title="蒙特卡洛积分"></a>蒙特卡洛积分</h2><p>  <img src="/.io//image-20220522205632637.png" alt="image-20220522205632637"></p>
+<p>p(Xi)为随机变量Xi的概率密度分布函数，估计值与理论值之间的误差可以通过增加样本数来减小。</p>
+<p><strong>将蒙特卡洛积分应用到渲染方程</strong></p>
+<p><img src="/.io//image-20220522212806004.png" alt="image-20220522212806004"></p>
+<h2 id="待解决的问题"><a href="#待解决的问题" class="headerlink" title="待解决的问题"></a>待解决的问题</h2><h3 id="弹射光线迅速增多"><a href="#弹射光线迅速增多" class="headerlink" title="弹射光线迅速增多"></a>弹射光线迅速增多</h3><p><img src="/.io//image-20220523184158079.png" alt=" "></p>
+<p>我们在计算光线的漫反射时，有多个点都会有反射光线到达，再次反射时，所需计算的光线会指数级别增加。</p>
+<p>所以我们假设每条N = 1，只有一条路径，以此来做蒙特卡洛积分，<strong>这就叫路径追踪</strong></p>
+<p>但是只有一条路径产生的画面会有很大的噪声，所以我们在单个像素上追踪足够多的路径来改善画面 </p>
+<p><img src="/.io//image-20220523184652294.png" alt="image-20220523184652294"></p>
+<h3 id="采样效率不高"><a href="#采样效率不高" class="headerlink" title="采样效率不高"></a>采样效率不高</h3><p>如果我们对着色点进行采样，那么可能追踪的路径只有少数才会到达光源，这样对于光源的采样效率会很低</p>
+<p>所以我们直接对光源进行采样，但是渲染方程是对于着色点的，是对于<code>dw</code>的积分</p>
+<p>因此我们需要将渲染方程改写为<code>dA</code>的积分，也就是要求出<code>dw</code>和<code>dA</code>的转换关系 <img src="/.io//image-20220523192122652.png" alt="image-20220523192122652"></p>
+<p><code>dw</code>为<code>dA</code>在该方向上的投影面积除以他们之间距离的平方</p>
+<p><strong>因此考虑两方面的辐射，光源和其他的间接光照。间接光照采用”俄罗斯轮盘赌 “</strong></p>
+<h3 id="如何判断光照是否被遮挡"><a href="#如何判断光照是否被遮挡" class="headerlink" title="如何判断光照是否被遮挡"></a>如何判断光照是否被遮挡</h3><p>发射一条从x到x’的光线，检测是否被遮挡</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">图形学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="article-games101-几何" class="article article-type-article  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -168,17 +335,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="几何归类"><a href="#几何归类" class="headerlink" title="几何归类"></a>几何归类</h1><h2 id="隐式几何"><a href="#隐式几何" class="headerlink" title="隐式几何"></a>隐式几何</h2><p>只表示各个点之间满足的关系，比如球在三维空间中的表示：x² + y² + z²  &#x3D; R²</p>
+        <h1 id="几何归类"><a href="#几何归类" class="headerlink" title="几何归类"></a>几何归类</h1><h2 id="隐式几何"><a href="#隐式几何" class="headerlink" title="隐式几何"></a>隐式几何</h2><p>只表示各个点之间满足的关系，比如球在三维空间中的表示：x² + y² + z²  = R²</p>
 <p>可以很容易的判断一个点在物体内还是外，但是很难画出这样的几何体，不容易找到所有点。</p>
 <h2 id="显式几何"><a href="#显式几何" class="headerlink" title="显式几何"></a>显式几何</h2><p>参数映射：通过一个函数，把二维空间上的点坐标当做参数，映射到三维空间上。</p>
-<p>如：f(u,v)&#x3D;( (2 + cos u) 8 cos v,(2 + cos u) * sin v,sin u)</p>
+<p>如：f(u,v)=( (2 + cos u) 8 cos v,(2 + cos u) * sin v,sin u)</p>
 <h2 id="更多的隐式表示方法"><a href="#更多的隐式表示方法" class="headerlink" title="更多的隐式表示方法"></a>更多的隐式表示方法</h2><h3 id="Constructive-Solid-Geometry（构造立体几何法）"><a href="#Constructive-Solid-Geometry（构造立体几何法）" class="headerlink" title="Constructive Solid Geometry（构造立体几何法）"></a>Constructive Solid Geometry（构造立体几何法）</h3><p>通过布尔运算表示复杂几何体</p>
 <p><img src="/.io//image-20220508171907714.png" alt="image-20220508171907714"></p>
 <h3 id="距离函数"><a href="#距离函数" class="headerlink" title="距离函数"></a>距离函数</h3><p>给出空间中的每个点到几何体上的最短距离，如果在内部则为负</p>
 <p>可以表示出渐变的运动过程</p>
 <p><img src="/.io//image-20220508172539255.png" alt="image-20220508172539255"></p>
-<p>A、B分别对应的是起始状态和终止状态，如果我们直接融合会产生黑灰白各占1&#x2F;3的图像，这表现不出运动的过程</p>
-<p>我们可以融合距离函数SDF来表示中间状态，根据到边界的距离划分为正负，这样融合之后就会生成黑白各占1&#x2F;3的图像</p>
+<p>A、B分别对应的是起始状态和终止状态，如果我们直接融合会产生黑灰白各占1/3的图像，这表现不出运动的过程</p>
+<p>我们可以融合距离函数SDF来表示中间状态，根据到边界的距离划分为正负，这样融合之后就会生成黑白各占1/3的图像</p>
 <p>我们还能这样表示两个几何体逐渐融合的过程</p>
 <p><img src="/.io//image-20220508172925399.png" alt="image-20220508172925399"></p>
 <h3 id="水平集-Level-Set-Methods"><a href="#水平集-Level-Set-Methods" class="headerlink" title="水平集(Level Set Methods)"></a>水平集(Level Set Methods)</h3><p>和距离函数的区别仅仅是表示方式不同，他表现在网格格式上，类似于等高线</p>
@@ -260,7 +427,7 @@
       
         <h1 id="深度缓存"><a href="#深度缓存" class="headerlink" title="深度缓存"></a>深度缓存</h1><h2 id="1-何为深度"><a href="#1-何为深度" class="headerlink" title="1. 何为深度"></a>1. 何为深度</h2><p>深度其实就是该象素点在3D世界中距离摄象机的距离（绘制坐标），深度缓存中存储着每个象素点（绘制在屏幕上的）的深度值！深度值（Z值）越大，则离摄像机越远。</p>
 <h2 id="2-为什么需要深度？"><a href="#2-为什么需要深度？" class="headerlink" title="2. 为什么需要深度？"></a>2. 为什么需要深度？</h2><p>在不使用深度测试的时候，如果我们先绘制一个距离较近的物体，再绘制距离较远的物体，则距离远的物体因为后绘制，会把距离近的物体覆盖掉，这样的效果并不是我们所希望的。</p>
-<p><img src="/.io//Blog\source_posts\games101-着色（7-9）.assets\d24a62d3ef8e402c9026710e4155cb11.png" alt="在这里插入图片描述"></p>
+<p><img src="/.io//Blog\source\_posts\games101-着色（7-9）.assets\d24a62d3ef8e402c9026710e4155cb11.png" alt="在这里插入图片描述"></p>
         
           <a class="article-more-a" href="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/#more">more >></a>
         
@@ -487,6 +654,7 @@
         <h1 id="认识音频组件"><a href="#认识音频组件" class="headerlink" title="认识音频组件"></a>认识音频组件</h1><h2 id="AudioClip"><a href="#AudioClip" class="headerlink" title="AudioClip"></a>AudioClip</h2><p>想要播放的音频文件，存储在Assets文件夹中</p>
 <h2 id="AudioSource"><a href="#AudioSource" class="headerlink" title="AudioSource"></a>AudioSource</h2><p> 播放音频文件，能调节音量，3D效果音。音频源就像一个控制器，用于启动和停止该剪辑音源的播放，以及修改其他音频属性。</p>
 <p><strong>Priority</strong>：从场景中存在的所有音频源中确定此音频源的优先级。（Priority值为0 表示优先级最高。值为256， 表示优先级最低。默认值为 128）。对于音轨值应为 0，避免被意外擦除。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -494,7 +662,8 @@
 <th>声音衰减的速度。此值越高，监听器必须越接近才能听到声音。（这取决于图）。</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>- Logarithmic Rolloff</strong></td>
 <td>靠近音频源时，声音很大，但离开对象时，声音降低得非常快。</td>
 </tr>
@@ -506,7 +675,9 @@
 <td><strong>- Custom Rolloff</strong></td>
 <td>音频源的音频效果是根据曲线图的设置变化的。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="距离函数"><a href="#距离函数" class="headerlink" title="距离函数"></a>距离函数</h3>
         
           <a class="article-more-a" href="/2022/04/08/Unity-%E9%9F%B3%E9%A2%91%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/#more">more >></a>
@@ -574,7 +745,6 @@
       
         <h1 id="协程的使用"><a href="#协程的使用" class="headerlink" title="协程的使用"></a>协程的使用</h1><p>由于Unity3D是单线程的，所以实现了协程机制来达到类似多线程的作用。但它不是进程或线程，他执行过程类似于一个子例程或者是不带返回值的函数。</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Coroutine <span class="title">StartCoroutine</span>(<span class="params">IEnumertor routine</span>)</span>;</span><br><span class="line"><span class="function">Coroutine <span class="title">StartCoroutine</span>(<span class="params"><span class="built_in">string</span> methodName, <span class="built_in">object</span> <span class="keyword">value</span> = <span class="literal">null</span></span>)</span>;</span><br></pre></td></tr></table></figure>
-
 <p>我们就可以以此来实现延时效果</p>
 <p>而<code>StopCoroutine</code>方法只能停止同一个脚本当的方法名和传入string型参数相同的协程，而且只能用来停止那些使用<code>StartCoroutine</code>的string型参数的重载版本开启的协程</p>
 <h2 id="协程背后的迭代器"><a href="#协程背后的迭代器" class="headerlink" title="协程背后的迭代器"></a>协程背后的迭代器</h2><h2 id="认识迭代器"><a href="#认识迭代器" class="headerlink" title="认识迭代器"></a>认识迭代器</h2><p>迭代器：可在容器对象（container，例如链表或数组）上遍访的接口，而无需关心容器对象的内存分配的实现细节</p>
@@ -820,7 +990,6 @@
       
         <h1 id="引用方式"><a href="#引用方式" class="headerlink" title="引用方式"></a>引用方式</h1><p>我们现在有一个Role脚本来管理单个角色，一个RoleManager来控制整体的角色以及一个MapManager来变换位置，指示方位什么的</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">RoleManager</span> : <span class="title">MonoBehaviour</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> RoleManager Instance;</span><br><span class="line">    [<span class="meta">SerializeField</span>] <span class="keyword">private</span> Role _prefab;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> List&lt;Role&gt; Roles&#123;<span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>;&#125; = <span class="keyword">new</span> List&lt;Role&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Awake</span>()</span> =&gt; Instance = <span class="keyword">this</span>;</span><br><span class="line">   </span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>, i &lt; <span class="number">10</span>, i++)&#123;</span><br><span class="line">			<span class="keyword">var</span> role = Instantiate(_prefab);</span><br><span class="line">            role.Init(<span class="keyword">this</span>);</span><br><span class="line">            Roles.Add(role);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span>&#123;</span><br><span class="line">		DoSomething();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> DoSomething&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>脚本之间相互调用需要一定的约束：常见的就是使用{get; set;}来封装属性</p>
         
           <a class="article-more-a" href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/#more">more >></a>
@@ -848,116 +1017,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/03/27/%E8%84%9A%E6%9C%AC%E4%B9%8B%E9%97%B4%E4%BC%98%E9%9B%85%E5%BC%95%E7%94%A8%E6%96%B9%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-UGUI的基础应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/">UGUI的基础应用</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-03-27T13:00:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="UI系统对比"><a href="#UI系统对比" class="headerlink" title="UI系统对比"></a>UI系统对比</h1><p>对 UI 系统的选择取决于是为 Unity 编辑器开发 UI，还是为游戏或应用程序开发运行时 UI。</p>
-<table>
-<thead>
-<tr>
-<th align="left"><strong>UI 的类型</strong></th>
-<th align="left"><strong>UI 工具包</strong></th>
-<th align="left"><strong>Unity UI(uGUI)</strong></th>
-<th align="left"><strong>IMGUI</strong></th>
-<th align="left"><strong>注意事项</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>运行时（调试）</strong></td>
-<td align="left">✔ *</td>
-<td align="left">✔</td>
-<td align="left">✔</td>
-<td align="left">这指用于调试用途的临时运行时 UI。</td>
-</tr>
-<tr>
-<td align="left"><strong>运行时（游戏内）</strong></td>
-<td align="left">✔ *</td>
-<td align="left">✔</td>
-<td align="left">不推荐</td>
-<td align="left">出于性能原因，Unity 不推荐将 IMGUI 用于游戏内运行时 UI。</td>
-</tr>
-<tr>
-<td align="left"><strong>Unity Editor</strong></td>
-<td align="left">✔</td>
-<td align="left">❌</td>
-<td align="left">✔</td>
-<td align="left">不能使用 Unity UI 为 Unity 编辑器创建 UI。</td>
-</tr>
-</tbody></table>
-<p>当然对于我来说，那必然是选择UGUI</p>
-<h1 id="基本布局"><a href="#基本布局" class="headerlink" title="基本布局"></a>基本布局</h1><p>UI是为了什么？当然是美观，不美观的UI就是摆在厕所的满汉全席</p>
-        
-          <a class="article-more-a" href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/">展开全文 >></a>
         </p>
       
 
@@ -1088,11 +1147,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">

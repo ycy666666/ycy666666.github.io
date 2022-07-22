@@ -148,6 +148,120 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-UGUI的基础应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/">UGUI的基础应用</a>
+    </h1>
+  
+
+        
+        <a href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2022-03-27T13:00:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="UI系统对比"><a href="#UI系统对比" class="headerlink" title="UI系统对比"></a>UI系统对比</h1><p>对 UI 系统的选择取决于是为 Unity 编辑器开发 UI，还是为游戏或应用程序开发运行时 UI。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>UI 的类型</strong></th>
+<th style="text-align:left"><strong>UI 工具包</strong></th>
+<th style="text-align:left"><strong>Unity UI(uGUI)</strong></th>
+<th style="text-align:left"><strong>IMGUI</strong></th>
+<th style="text-align:left"><strong>注意事项</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>运行时（调试）</strong></td>
+<td style="text-align:left">✔ *</td>
+<td style="text-align:left">✔</td>
+<td style="text-align:left">✔</td>
+<td style="text-align:left">这指用于调试用途的临时运行时 UI。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>运行时（游戏内）</strong></td>
+<td style="text-align:left">✔ *</td>
+<td style="text-align:left">✔</td>
+<td style="text-align:left">不推荐</td>
+<td style="text-align:left">出于性能原因，Unity 不推荐将 IMGUI 用于游戏内运行时 UI。</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Unity Editor</strong></td>
+<td style="text-align:left">✔</td>
+<td style="text-align:left">❌</td>
+<td style="text-align:left">✔</td>
+<td style="text-align:left">不能使用 Unity UI 为 Unity 编辑器创建 UI。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>当然对于我来说，那必然是选择UGUI</p>
+<h1 id="基本布局"><a href="#基本布局" class="headerlink" title="基本布局"></a>基本布局</h1><p>UI是为了什么？当然是美观，不美观的UI就是摆在厕所的满汉全席</p>
+        
+          <a class="article-more-a" href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/27/UGUI%E7%9A%84%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Unity实现存档的不同方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -412,7 +526,7 @@
 <p><img src="https://img-blog.csdnimg.cn/e3693577f59a467f8d116f75163be65a.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAamtra18=,size_20,color_FFFFFF,t_70,g_se,x_16" alt="img"></p>
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p> 示例代码</p>
-<p>如果不采用抽象方法，我们创建一个父类引用指向子类对象：Vehicle Car &#x3D; new Car();</p>
+<p>如果不采用抽象方法，我们创建一个父类引用指向子类对象：Vehicle Car = new Car();</p>
 <p>由于Cat是继承自它的父类Animal，所以Animal类型的引用是可以指向Cat类型的对象的。这就是“向上转型”。这样既可以使用子类强大的功能，又可以抽取父类的共性。 所以，父类类型的引用可以调用父类中定义的所有属性和方法，而对于子类中定义而父类中没有的方法，父类引用是无法调用的； </p>
 <p>那么如果我想编写一个种类的基类，种类之间都有相同方法，但具体实现需求不同。那么我就需要很多很多的抽象类，那会不会一个抽象类中的所有方法都是抽象的呢？</p>
 <p>当然有！这就是接口——</p>
@@ -649,11 +763,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
