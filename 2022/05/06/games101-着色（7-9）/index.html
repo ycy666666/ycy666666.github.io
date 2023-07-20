@@ -201,15 +201,15 @@
 <p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20220428120250042.png" alt="image-20220428120250042"></p>
 <p>而且如果出现上图这种情况，这种方法便失效了。而有了深度缓冲以后，绘制物体的顺序就不那么重要了，都能按照远近（Z值)正常显示，这很关键。</p>
 <span id="more"></span>
-
 <h2 id="3-深度缓冲原理"><a href="#3-深度缓冲原理" class="headerlink" title="3.深度缓冲原理"></a>3.深度缓冲原理</h2><p>深度缓冲区原理就是把一个距离观察平面的距离与窗口中的每个像素相关联。<br>首先，把所有像素的深度值设置为无限远。然后，在场景中以任意次序绘制所有物体，此时并不考虑是否被其他物体遮挡。在绘制每个像素之前，会把它的深度值和已经存储在这个像素的深度值进行比较。新像素深度值&lt;原先像素深度值，则新像素值会取代原先的；反之，新像素值被遮挡，他颜色值和深度将被丢弃。</p>
 <p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20220428112422848.png" alt="image-20220428112422848"></p>
 <h1 id="着色模式"><a href="#着色模式" class="headerlink" title="着色模式"></a>着色模式</h1><p>着色只考虑一个点，不考虑其他物体</p>
 <h2 id="漫反射（diffuse）"><a href="#漫反射（diffuse）" class="headerlink" title="漫反射（diffuse）"></a>漫反射（<strong>diffuse</strong>）</h2><p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20220428115903794.png" alt="image-20220428115903794"></p>
 <p><strong>反射光的强度取决于在表面法向量和入射光的光线之间的角度的余弦值。</strong></p>
 <h2 id="折射"><a href="#折射" class="headerlink" title="折射"></a>折射</h2><p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20220524135115312.png" alt="image-20220524135115312"></p>
-<p> I_refl为该点反射的光强  I_trans为到达该点背后的光强		Kt 该点的透射系数<br>$$<br>I &#x3D; (1-k_t)I_{refl} + k_tI_{transf}<br>$$</p>
-<h1 id="Blinn-Phong模型"><a href="#Blinn-Phong模型" class="headerlink" title="Blinn-Phong模型"></a>Blinn-Phong模型</h1><p>只要不是绝对光滑，入射角就会喝反射角有一定夹角<br><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/Cache_3cedfdf7bafd69b2..jpg" alt="Cache_3cedfdf7bafd69b2."><br>也只有观察方向和反射方向相近的时候，物体才会展现出高光效果<br>但是观察方向和镜面反射方向相近的时候可以以转换成他们之间的角平分向量和法线方向接近，所以我们可以求出半程向量<br><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/Cache_34ec1421765f65cc..jpg" alt="Cache_34ec1421765f65cc."><br>同样我们可以利用点乘的方式求出他们之间的接近程度，而这个公式就比之前的公式容易计算的多<br>这个公式中的指数p指的是对接近判断的严格程度，因为夹角余弦对于接近的太宽容，夹角达到45度时余弦仍然是较大值，一般采用的是128次方<br>环境光就是在光的基础上乘以一个固定系数<br>最后我们就能得到完整的Blinn-Phone反射模型</p>
+<p> I_refl为该点反射的光强  I_trans为到达该点背后的光强        Kt 该点的透射系数</p>
+<script type="math/tex; mode=display">
+I = (1-k_t)I_{refl} + k_tI_{transf}</script><h1 id="Blinn-Phong模型"><a href="#Blinn-Phong模型" class="headerlink" title="Blinn-Phong模型"></a>Blinn-Phong模型</h1><p>只要不是绝对光滑，入射角就会喝反射角有一定夹角<br><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/Cache_3cedfdf7bafd69b2..jpg" alt="Cache_3cedfdf7bafd69b2."><br>也只有观察方向和反射方向相近的时候，物体才会展现出高光效果<br>但是观察方向和镜面反射方向相近的时候可以以转换成他们之间的角平分向量和法线方向接近，所以我们可以求出半程向量<br><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/Cache_34ec1421765f65cc..jpg" alt="Cache_34ec1421765f65cc."><br>同样我们可以利用点乘的方式求出他们之间的接近程度，而这个公式就比之前的公式容易计算的多<br>这个公式中的指数p指的是对接近判断的严格程度，因为夹角余弦对于接近的太宽容，夹角达到45度时余弦仍然是较大值，一般采用的是128次方<br>环境光就是在光的基础上乘以一个固定系数<br>最后我们就能得到完整的Blinn-Phone反射模型</p>
 <p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/Cache_64a733e02b9ff652..jpg" alt="Cache_64a733e02b9ff652."></p>
 <h1 id="着色频率"><a href="#着色频率" class="headerlink" title="着色频率"></a>着色频率</h1><h2 id="flat-shading"><a href="#flat-shading" class="headerlink" title="flat shading"></a>flat shading</h2><p>在每个三角形上着色，三角形内部没有着色的变化</p>
 <h2 id="gouraud-shading"><a href="#gouraud-shading" class="headerlink" title="gouraud shading"></a>gouraud shading</h2><p>在每个顶点上进行着色，在三角形内部进行插值着色<br>如何定义每个顶点的法线？<br>我们可以将它周围的面的法线向量求平均，同时根据三角形面积的大小进行加权平均<br><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/Cache_70d0db17ccacb2df..jpg" alt="Cache_70d0db17ccacb2df."></p>
@@ -236,11 +236,10 @@
 <p>但是呢这样的level计算出来都是正数，在图片上不会连续变化，我们可以将D向上取整和向下取整的level在进行一次线性插值</p>
 <p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20220505155826465.png" alt="image-20220505155826465"></p>
 <h2 id="其他形式的MipMap"><a href="#其他形式的MipMap" class="headerlink" title="其他形式的MipMap"></a>其他形式的MipMap</h2><p>在不同level我们都是采取的正方形区域，但是很多时候我们只需要竖直或者是水平方向上的高Level，所以我们需要各向异性的过滤</p>
-<img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20220505160116853.png" alt="image-20220505160116853" style="zoom:67%;">
-
+<p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20220505160116853.png" alt="image-20220505160116853" style="zoom:67%;"></p>
 <p>各向异性过滤的贴图采用不同的长宽比</p>
 <p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20220505160327024.png" alt="image-20220505160327024"></p>
-<h1 id="纹理的应用"><a href="#纹理的应用" class="headerlink" title="纹理的应用"></a>纹理的应用</h1><p>在现代GPU中，纹理 &#x3D; 内存 + 范围查询</p>
+<h1 id="纹理的应用"><a href="#纹理的应用" class="headerlink" title="纹理的应用"></a>纹理的应用</h1><p>在现代GPU中，纹理 = 内存 + 范围查询</p>
 <p>环境光可以通过镜面球来存储，但展开之后会产生扭曲，不能均匀描述</p>
 <p>我们可以用一个立方体包住这个球，把光照信息存储在立方体表面上</p>
 <p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20220508162650592.png" alt="image-20220508162650592"></p>
@@ -275,8 +274,12 @@
 </ul>
 <p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20220524141137457.png" alt="image-20220524141137457" style="zoom: 67%;"><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/../../Desk/md/games101 着色（7~9）/image-20220524141149217.png" alt="image-20220524141149217" style="zoom:50%;"></p>
 <h2 id="凹凸映射"><a href="#凹凸映射" class="headerlink" title="凹凸映射"></a>凹凸映射</h2><p>• 凹凸映射 – 使用扰动函数并在光照模型计算中使用扰动法向量</p>
-<p>• 令P(u,v)表示一个参数曲面上的点<br>$$<br>N &#x3D; P_u * P_v<br>$$<br>• Pu和Pv – 关于参数u和v的偏导数</p>
-<p> • 增加一个小的扰动函数（凹凸函数）b，在表面法向量𝑛 &#x3D; 𝑵 &#x2F; |𝑵| 方向上增加凹凸效果：<br>$$<br>P’(u,v) &#x3D; P(u,v) +b(u,v)*n<br>$$<br>再将P’分别对u、v求导，假设凹凸函数b很小可以忽略最后一项</p>
+<p>• 令P(u,v)表示一个参数曲面上的点 </p>
+<script type="math/tex; mode=display">
+N = P_u * P_v</script><p>• Pu和Pv – 关于参数u和v的偏导数</p>
+<p> • 增加一个小的扰动函数（凹凸函数）b，在表面法向量𝑛 = 𝑵 / |𝑵| 方向上增加凹凸效果： </p>
+<script type="math/tex; mode=display">
+P'(u,v) = P(u,v) +b(u,v)*n</script><p>再将P’分别对u、v求导，假设凹凸函数b很小可以忽略最后一项</p>
 <p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20220524141854107.png" alt="image-20220524141854107"></p>
 <p>最后化简成为</p>
 <p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20221110151912673.png" alt="image-20221110151912673"></p>

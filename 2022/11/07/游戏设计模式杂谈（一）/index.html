@@ -175,7 +175,6 @@
 <p><strong>结构型模式</strong>： 这些设计模式关注类和对象的组合。继承的概念被用来组合接口和定义组合对象获得新功能的方式。</p>
 <p><strong>行为型模式</strong>：这些设计模式特别关注对象之间的通信。</p>
 <span id="more"></span>
-
 <h1 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h1><p>准确定义：<strong>将一个请求封装为一个对象，从而使你可用不同的请求对客户进行参数化； 对请求排队或记录请求日志，以及支持可撤销的操作。</strong></p>
 <p>这太难理解了，简化后就是： <strong>命令是具现化的方法调用</strong>，就是函数调用被存储在对象之中</p>
 <p><strong>什么时候使用？</strong></p>
@@ -186,7 +185,6 @@
 <h1 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h1><p>享元模式，利用先前创建的已有对象，判断当前所需对象是否能够通过原有对象做一定修改后获得</p>
 <p>比如在游戏中出现了一片森林，需要大量的时间渲染，但是每棵树之间只是位置、颜色、大小等可调节差异。那么我们就可以将共有的数据分离到另一个类中</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">TreeModel</span></span><br><span class="line">&#123;</span><br><span class="line">  Mesh mesh_;</span><br><span class="line">  Texture bark_;</span><br><span class="line">  Texture leaves_;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>其余的修改数据放到另一个类中，保留对这个类的引用就行了</p>
 <p><img src="/2022/11/07/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%9D%82%E8%B0%88%EF%BC%88%E4%B8%80%EF%BC%89/image-20221106200402976.png" alt="image-20221106200402976"></p>
 <p>同时，我们只用发送后每个模型的独特数据后在告诉GPU，用同一模型渲染每一个实例，这样也能减少Drawcall</p>

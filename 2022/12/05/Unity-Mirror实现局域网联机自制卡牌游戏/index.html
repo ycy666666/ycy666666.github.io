@@ -180,7 +180,6 @@
 <li>导入<code>ParrelSync</code>， 并为其clone当前项目，在此之后clone后的项目能同步你在本项目的所有修改</li>
 </ol>
 <span id="more"></span>
-
 <h3 id="演示场景"><a href="#演示场景" class="headerlink" title="演示场景"></a>演示场景</h3><p>点击开始之后会看到如下界面，需要其中一台电脑作为Host，其他玩家点击Client就可以直接连接</p>
 <p><img src="/2022/12/05/Unity-Mirror%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA%E8%87%AA%E5%88%B6%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F/image-20221128153741347.png" alt="image-20221128153741347"></p>
 <p>Mirror演示场景连接成功效果：</p>
@@ -199,13 +198,14 @@
 <h4 id="Network-Authority"><a href="#Network-Authority" class="headerlink" title="Network Authority"></a>Network Authority</h4><p>Authority（权限）决定着谁拥有并控制着这个物体，默认情况下服务器拥有所有物体的权限</p>
 <p>但有时候我们需要客户端拥有权限，比如玩家输入，我们有以下方法将权限给到客户端：</p>
 <ul>
-<li><p>**<code>NetworkServer.Spawn</code>**： 在创建物体时给出权限</p>
+<li><p><strong><code>NetworkServer.Spawn</code></strong>： 在创建物体时给出权限</p>
 </li>
-<li><p>**<code>NetworkServer.AddPlayerForConnection</code>**，生成玩家物体时自动添加权限</p>
+<li><p><strong><code>NetworkServer.AddPlayerForConnection</code></strong>，生成玩家物体时自动添加权限</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GameObject go = Instantiate(prefab);</span><br><span class="line">NetworkServer.Spawn(go, connectionToClient);</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>**<code>AssignClientAuthority</code>**： 在任何时候添加权限</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">identity.AssignClientAuthority(conn);</span><br></pre></td></tr></table></figure></li>
+<li><p><strong><code>AssignClientAuthority</code></strong>： 在任何时候添加权限</p>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">identity.AssignClientAuthority(conn);</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <p>给物体赋予权限后，我们就能在ClientRpc中根据<code>IsOwn</code>来根据是否是自己的物体来执行不同函数，比如本游戏中，将卡牌放置在不同区域</p>
 <h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>在需要使用服务端、客户端开始结束时回调的脚本中继承自NetworkBehavior，本例子继承自Network Manager是为了方便不再添加一个Network Manager组件</p>
@@ -236,16 +236,13 @@
 <p>避免每一帧都调用Cmd方法，这会产生巨大的流量</p>
 <h4 id="ClientRpc"><a href="#ClientRpc" class="headerlink" title="[ClientRpc]"></a>[ClientRpc]</h4><p>服务端发送该函数，到客户端执行函数。开头需要加上 <code>Rpc</code>前缀</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Player</span> : <span class="title">NetworkBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">int</span> health;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">TakeDamage</span>(<span class="params"><span class="built_in">int</span> amount</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!isServer) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">        health -= amount;</span><br><span class="line">        RpcDamage(amount);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">ClientRpc</span>]</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">RpcDamage</span>(<span class="params"><span class="built_in">int</span> amount</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;Took damage:&quot;</span> + amount);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>使用本地客户端作为主机运行游戏时，将在本地客户端上调用 ClientRpc 调用，即使它与服务器处于同一进程中</p>
 <h4 id="TargetRpc"><a href="#TargetRpc" class="headerlink" title="[TargetRpc]"></a>[TargetRpc]</h4><p>clientRpc是会向所有client回调这个方法，有时候我们想让特定的client接受特定的回调，于是就有了回调特定client的方法</p>
 <p>TargetRpc 函数由服务器上的用户代码调用，然后在指定网络连接的客户端上的相应客户端对象上调用。函数开头需要加上 <code>Target</code>前缀</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">Player</span> :</span> NetworkBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    public <span class="type">int</span> health;</span><br><span class="line"></span><br><span class="line">    [Command]</span><br><span class="line">    <span class="type">void</span> <span class="title function_">CmdMagic</span><span class="params">(GameObject target, <span class="type">int</span> damage)</span></span><br><span class="line">    &#123;</span><br><span class="line">        target.GetComponent&lt;Player&gt;().health -= damage;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 重点，尽管target没有在TargetDoMagic中使用，但必须传入</span></span><br><span class="line">        NetworkIdentity opponentIdentity = target.GetComponent&lt;NetworkIdentity&gt;();</span><br><span class="line">        TargetDoMagic(opponentIdentity.connectionToClient, damage);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [TargetRpc]</span><br><span class="line">    public <span class="type">void</span> <span class="title function_">TargetDoMagic</span><span class="params">(NetworkConnection target, <span class="type">int</span> damage)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 这会出现在对手的客户端中，而不是攻击者的</span></span><br><span class="line">        Debug.Log($<span class="string">&quot;Magic Damage = &#123;damage&#125;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 治疗自己</span></span><br><span class="line">    [Command]</span><br><span class="line">    public <span class="type">void</span> <span class="title function_">CmdHealMe</span><span class="params">()</span></span><br><span class="line">    &#123;</span><br><span class="line">        health += <span class="number">10</span>;</span><br><span class="line">        TargetHealed(<span class="number">10</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [TargetRpc]</span><br><span class="line">    public <span class="type">void</span> <span class="title function_">TargetHealed</span><span class="params">(<span class="type">int</span> amount)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 没有指定NetworkConnection变量，因此出现在物体拥有者中</span></span><br><span class="line">        Debug.Log($<span class="string">&quot;Health increased by &#123;amount&#125;&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h4 id="SyncVar"><a href="#SyncVar" class="headerlink" title="[SyncVar]"></a>[SyncVar]</h4><p>SyncVar 是从 NetworkBehavior 继承的类的属性，这些类从服务器同步到客户端。当生成游戏对象或新玩家加入正在进行的游戏时，将向他们发送对他们可见的网络对象上所有 SyncVar 的最新状态。使用[SyncVar]指定脚本中要同步的变量。</p>
 <p>能用Hook指定变量发生变量时将要调用的函数</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">SyncVar(hook = nameof(OnHolaCountChanged))</span>]</span><br><span class="line"><span class="built_in">int</span> holaCount = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnHolaCountChanged</span>(<span class="params"><span class="built_in">int</span> oldCount, <span class="built_in">int</span> newCount</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">$&quot;We had <span class="subst">&#123;oldCount&#125;</span> holas, but now we have <span class="subst">&#123;newCount&#125;</span> holas!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>假设您正在制作一个库存系统。假设玩家 A、B 和 C 位于同一区域。整个网络中总共有 12 个对象：</p>
 <ul>
 <li>客户端 A 有玩家 A（他自己）、玩家 B 和玩家 C</li>
@@ -255,14 +252,12 @@
 </ul>
 <p>除了服务器和客户端A之外，其他人没必要也不应该知道A的库存，典型用例包括任务、玩家在纸牌游戏中的手牌、技能、经验或您不需要与其他玩家共享的任何其他数据。</p>
 <h3 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!isLocalPlayer) <span class="keyword">return</span>;</span><br><span class="line">    HandleMovement();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (Input.GetKeyDown(KeyCode.X))</span><br><span class="line">    &#123;</span><br><span class="line">        Debug.Log(<span class="string">&quot;Sending Hola to Server!&quot;</span>);</span><br><span class="line">        CmdHola();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">Command</span>]</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CmdHola</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">&quot;Received Hola from Client!&quot;</span>);</span><br><span class="line">    TargetReplyHola();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[<span class="meta">TargetRpc</span>]</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">TargetReplyHola</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Debug.Log(<span class="string">&quot;Received Hola from Server!&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>客户端点击X：</p>
 <p><img src="/2022/12/05/Unity-Mirror%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA%E8%87%AA%E5%88%B6%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F/image-20221129145336669.png" alt="image-20221129145336669"></p>
 <p>Host端点击X</p>
 <p><img src="/2022/12/05/Unity-Mirror%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA%E8%87%AA%E5%88%B6%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F/image-20221129145422279.png" alt="image-20221129145422279"></p>
 <h1 id="游戏编写"><a href="#游戏编写" class="headerlink" title="游戏编写"></a>游戏编写</h1><h2 id="PlayPrefab"><a href="#PlayPrefab" class="headerlink" title="PlayPrefab"></a>PlayPrefab</h2><p>我们如果想要获取当前玩家的一些参数，需要按照以下代码获取——PlayerManger挂载在playerPrefab上</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取玩家预制体的NetworkIdentity</span></span><br><span class="line">NetworkIdentity networkIdentity = NetworkClient.connection.identity;</span><br><span class="line">playerManager = networkIdentity.GetComponent&lt;PlayerManager&gt;();</span><br></pre></td></tr></table></figure>
-
 <p>这样我们调用 <code>PlayerManager.Function</code>时就是调用当前玩家的方法，记住这个方法在 <code>ClientRpc</code>中会很有用，比如给特定ID的玩家设定称号，就需要获取当前ID是否与特定ID相等</p>
 <p>因为你必须确定是当前玩家的PlayerManager触发的函数，所以Cmd方法最好写在PlayerManager中，这个肯定会涉及到耦合。如果不想这样，可以自己新建一个类，但必须确认你调用的时候是当前玩家控制下的对应实例</p>
 <h2 id="是否添加NetworkBehavior"><a href="#是否添加NetworkBehavior" class="headerlink" title="是否添加NetworkBehavior"></a>是否添加NetworkBehavior</h2><p>不是所有的物体都添加该组件，本游戏中比如玩家手牌，以及一些Manger管理器都是不用通信交互的，因为他们没必要让其他玩家知道。</p>
@@ -310,104 +305,104 @@ public static class PivotEazier
         GameObject objSelectionAfter = null;
 
 
-<pre><code>    if (Selection.activeGameObject != null)
-    &#123;
-        if (Selection.activeGameObject.transform.childCount &gt; 0)
+        if (Selection.activeGameObject != null)
         &#123;
-            objSelectionAfter = Selection.activeGameObject.transform.GetChild(0).gameObject;
+            if (Selection.activeGameObject.transform.childCount > 0)
+            &#123;
+                objSelectionAfter = Selection.activeGameObject.transform.GetChild(0).gameObject;
+            &#125;
+            else if (Selection.activeGameObject.transform.parent != null)
+            &#123;
+                objSelectionAfter = Selection.activeGameObject.transform.parent.gameObject;
+            &#125;
+
+            DeletePivotObject(Selection.activeGameObject);
+
+            Selection.activeGameObject = objSelectionAfter;
         &#125;
-        else if (Selection.activeGameObject.transform.parent != null)
+    &#125;
+    private static GameObject CreatePivotObjectAtParentPos(GameObject current)
+    &#123;
+        if (current == null)
         &#123;
-            objSelectionAfter = Selection.activeGameObject.transform.parent.gameObject;
+            return null;
         &#125;
 
-        DeletePivotObject(Selection.activeGameObject);
+        int siblingIndex = current.transform.GetSiblingIndex();
 
-        Selection.activeGameObject = objSelectionAfter;
+        GameObject newObject = new GameObject(current.name);
+        newObject.transform.SetParent(current.transform.parent);
+
+        newObject.transform.localPosition = Vector3.zero;
+        newObject.transform.localScale = Vector3.one;
+        newObject.transform.localRotation = Quaternion.identity;
+
+        newObject.transform.SetSiblingIndex(siblingIndex);
+
+        current.transform.SetParent(newObject.transform);
+
+        return newObject;
     &#125;
-&#125;
-private static GameObject CreatePivotObjectAtParentPos(GameObject current)
-&#123;
-    if (current == null)
+    private static GameObject CreatePivotObject(GameObject current)
     &#123;
-        return null;
+        if (current == null)
+        &#123;
+            return null;
+        &#125;
+
+        int siblingIndex = current.transform.GetSiblingIndex();
+
+        GameObject newObject = new GameObject("Pivot");
+        newObject.transform.SetParent(current.transform.parent);
+
+        newObject.transform.position = current.transform.position;
+        newObject.transform.localScale = current.transform.localScale;
+        newObject.transform.rotation = current.transform.rotation;
+
+        newObject.transform.SetSiblingIndex(siblingIndex);
+
+        current.transform.SetParent(newObject.transform);
+
+        return newObject;
     &#125;
-
-    int siblingIndex = current.transform.GetSiblingIndex();
-
-    GameObject newObject = new GameObject(current.name);
-    newObject.transform.SetParent(current.transform.parent);
-
-    newObject.transform.localPosition = Vector3.zero;
-    newObject.transform.localScale = Vector3.one;
-    newObject.transform.localRotation = Quaternion.identity;
-
-    newObject.transform.SetSiblingIndex(siblingIndex);
-
-    current.transform.SetParent(newObject.transform);
-
-    return newObject;
-&#125;
-private static GameObject CreatePivotObject(GameObject current)
-&#123;
-    if (current == null)
+    private static GameObject DeletePivotObject(GameObject current)
     &#123;
-        return null;
+        Transform parent = current.transform.parent;
+        int childrenCount = current.transform.childCount;
+        int siblingIndex = current.transform.GetSiblingIndex();
+
+        Transform[] children = new Transform[childrenCount];
+        for (int i = 0; i < childrenCount; i++)
+        &#123;
+            children[i] = current.transform.GetChild(i);
+        &#125;
+
+        for (int i = 0; i < childrenCount; i++)
+        &#123;
+            children[i].SetParent(parent);
+            children[i].SetSiblingIndex(siblingIndex + i);
+        &#125;
+
+        if (Application.isPlaying)
+        &#123;
+            GameObject.Destroy(current);
+        &#125;
+        else
+        &#123;
+            GameObject.DestroyImmediate(current);
+        &#125;
+
+        if (children.Length > 0)
+        &#123;
+            return children[0].gameObject;
+        &#125;
+        else
+        &#123;
+            return null;
+        &#125;
     &#125;
 
-    int siblingIndex = current.transform.GetSiblingIndex();
-
-    GameObject newObject = new GameObject(&quot;Pivot&quot;);
-    newObject.transform.SetParent(current.transform.parent);
-
-    newObject.transform.position = current.transform.position;
-    newObject.transform.localScale = current.transform.localScale;
-    newObject.transform.rotation = current.transform.rotation;
-
-    newObject.transform.SetSiblingIndex(siblingIndex);
-
-    current.transform.SetParent(newObject.transform);
-
-    return newObject;
-&#125;
-private static GameObject DeletePivotObject(GameObject current)
-&#123;
-    Transform parent = current.transform.parent;
-    int childrenCount = current.transform.childCount;
-    int siblingIndex = current.transform.GetSiblingIndex();
-
-    Transform[] children = new Transform[childrenCount];
-    for (int i = 0; i &lt; childrenCount; i++)
-    &#123;
-        children[i] = current.transform.GetChild(i);
-    &#125;
-
-    for (int i = 0; i &lt; childrenCount; i++)
-    &#123;
-        children[i].SetParent(parent);
-        children[i].SetSiblingIndex(siblingIndex + i);
-    &#125;
-
-    if (Application.isPlaying)
-    &#123;
-        GameObject.Destroy(current);
-    &#125;
-    else
-    &#123;
-        GameObject.DestroyImmediate(current);
-    &#125;
-
-    if (children.Length &gt; 0)
-    &#123;
-        return children[0].gameObject;
-    &#125;
-    else
-    &#123;
-        return null;
-    &#125;
-&#125;
-</code></pre>
-<p>}</p></code></pre> <p></p>
+&#125;</code></pre> 
 </details>
 
 <p>使用方法是将模式中心对齐其父物体中心，在Hierarchy窗口中右键<code>Create Pivot (Local Zero)</code>就可以</p>

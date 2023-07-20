@@ -173,26 +173,22 @@
 <p>游戏运行时从服务器下载files.txt清单文件,与本地的files.txt清单文件进行对比。如果新下载的files里面的md5值与本地files的md5值不一样,或者本地清单里没有对应文件，那么就从服务器下载AB包，然后解压进行初始化</p>
 <h1 id="LuaState"><a href="#LuaState" class="headerlink" title="LuaState"></a>LuaState</h1><p>C#能调用lua的原理就是创建了一个lua虚拟机，LuaState封装了对lua 主要数据结构 lua_State 指针的各种堆栈操作。</p>
 <span id="more"></span>
-
 <h2 id="去反射"><a href="#去反射" class="headerlink" title="去反射"></a>去反射</h2><p>旧版本中lua调用C#函数是基于反射的，而现阶段是基于去反射，意思就是：把所有的c#类的public成员变量、成员函数，都导出到一个相对应的Wrap类中。而这些成员函数通过特殊的标记，映射到lua的虚拟机中，当在lua中调用相对应的函数时候，直接调用映射进去的c# wrap函数，然后再调用到实际的c#类，完成调用过程</p>
 <h3 id="Lua虚拟栈"><a href="#Lua虚拟栈" class="headerlink" title="Lua虚拟栈"></a>Lua虚拟栈</h3><p><img src="/2023/04/29/ToLua%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/16827734664141.png" alt="img"></p>
 <p>C#会告诉虚拟机传入的参数和需要返回的参数，然后虚拟机开始访问栈，从栈中取出对应函数传送给Lua编译器。然后lua程序调用Lua文件全局表（Global table）查找对应函数，然后将返回参数入栈，C#再从栈中读取数据。</p>
 <ol>
-<li>可以按1<del>N的顺序从栈底向上，也可以从-1</del>-N从栈顶向下</li>
+<li>可以按1~N的顺序从栈底向上，也可以从-1~-N从栈顶向下</li>
 <li>栈中可以存储任何数据，函数、table等，空的位置用nil表示</li>
 </ol>
 <h2 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h2><p>使用Tolua的相关类和方法都需要调用命名空间LuaInterface，LuaState.Start 需要在tolua代码加载到内存后调用。如果使用assetbunblde加载lua文件，调用Start()之前assetbundle必须加载好。</p>
 <p>调用lua脚本必须先创建一个lua虚拟机， 一般对于客户端，推荐只创建一个LuaState对象。如果要使用多State需要在Unity中设置全局宏 MULTI_STATE，创建步骤为：</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LuaState lua = new LuaState();</span><br></pre></td></tr></table></figure>
-
 <h2 id="加载脚本"><a href="#加载脚本" class="headerlink" title="加载脚本"></a>加载脚本</h2><p>重要方法lua.AddSearchPath ，通过此方法添加lua文件的路径，只有添加了文件路径之后，在该路径上的lua文件才可以被读取。这样DoFile跟Require函数可以只用文件名,无需写全路径。</p>
 <p>在C#中运行一段lua脚本最简单的方法就是lua.DoString，该方法声明如下：</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public object[] DoString(<span class="built_in">string</span> chunk, <span class="built_in">string</span> chunkName = <span class="string">&quot;LuaState.DoString&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <p><strong>注意dofile需要扩展名</strong>, 可反复执行, 后面的变量会覆盖之前的DoFile加载的变量这里加载了就会从开始逐句执行。</p>
 <p>LuaState.Require</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public void Require(<span class="built_in">string</span> filename)</span><br></pre></td></tr></table></figure>
-
 <p>因为Require 读取文件是会检查该文件是否被加载过，如果被加载过，则直接返回一个索引，否则则加载并返回一个索引</p>
 <ul>
 <li><p>使用完lua虚拟机之后记得要销毁，具体操作如下：</p>
@@ -203,59 +199,47 @@
 </ul>
 </li>
 </ul>
-<h1 id="C-调用lua函数"><a href="#C-调用lua函数" class="headerlink" title="C#调用lua函数"></a>C#调用lua函数</h1><h2 id="调用lua方法"><a href="#调用lua方法" class="headerlink" title="调用lua方法"></a>调用lua方法</h2><p>我们可以把lua中的函数看成一个对象，在虚拟机初始化完成后，加载对应的lua文件，接着需要创建一个LuaFunction类型的对象来表示这个lua函数，可以通过调用：**<code>lua.GetFunction(&quot;方法名&quot;);</code>** 来获取对应的函数对象</p>
+<h1 id="C-调用lua函数"><a href="#C-调用lua函数" class="headerlink" title="C#调用lua函数"></a>C#调用lua函数</h1><h2 id="调用lua方法"><a href="#调用lua方法" class="headerlink" title="调用lua方法"></a>调用lua方法</h2><p>我们可以把lua中的函数看成一个对象，在虚拟机初始化完成后，加载对应的lua文件，接着需要创建一个LuaFunction类型的对象来表示这个lua函数，可以通过调用：<strong><code>lua.GetFunction(&quot;方法名&quot;);</code></strong> 来获取对应的函数对象</p>
 <p>获取了之后就需要在C#中调用了，主要方式有两种：</p>
 <ol>
 <li>直接调用LuaFunction类型的对象的func.Call 方法，完整声明为：</li>
 </ol>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">object</span>[] <span class="title">Call</span>(<span class="params"><span class="keyword">params</span> <span class="built_in">object</span>[] args</span>)</span></span><br></pre></td></tr></table></figure>
-
 <p>这种调用方法比较简单，但是有一个缺点，lua对象的内存无法被自动释放，所以当使用完这个lua函数对象之后，我们需要手动的调用LuaFunction类型的对象的func.Dispose();方法，释放掉垃圾内存，否则会造成内存泄漏！</p>
 <p>不过选择都采用的是委托的方式，需要先进行<code>DelegateFactory.Init()；</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int num = luaFunc.Invoke&lt;int,int&gt;(arg);</span><br></pre></td></tr></table></figure>
-
 <p>或者是</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Func&lt;<span class="built_in">int</span>, <span class="built_in">int</span>&gt; Func = luaFunc.ToDelegate&lt;Func&lt;<span class="built_in">int</span>, <span class="built_in">int</span>&gt;&gt;();</span><br><span class="line">num = Func(<span class="number">123456</span>);</span><br></pre></td></tr></table></figure>
-
 <ol>
 <li>如同案例当中的CallFunc()</li>
 </ol>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">int</span> <span class="title">CallFunc</span>()</span></span><br><span class="line">&#123;        </span><br><span class="line">    luaFunc.BeginPCall();                </span><br><span class="line">    luaFunc.Push(<span class="number">123456</span>);</span><br><span class="line">    luaFunc.PCall();        </span><br><span class="line">    <span class="built_in">int</span> num = (<span class="built_in">int</span>)luaFunc.CheckNumber();</span><br><span class="line">    luaFunc.EndPCall();</span><br><span class="line">    <span class="keyword">return</span> num;                </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>首先我们必须先以<code>func.BeginPCall;</code>开始，通过<code>func.Push(参数)</code>来给方法传参–通过众多重载函数来解决参数转换的gc，然后需要通过<code>func.PCall();</code>来运行，接着通过对应的<code>func.Checkxxx()</code>方法来获取返回值,最后通过<code>func.EndPCall();</code>结束–清楚函数调用导致的堆栈变化。整个流程比较繁琐且不易封装，不过优点是不会有垃圾内存，所以不用手动释放GC。</p>
+<p>首先我们必须先以<code>func.BeginPCall;</code>开始，通过<code>func.Push(参数)</code>来给方法传参—通过众多重载函数来解决参数转换的gc，然后需要通过<code>func.PCall();</code>来运行，接着通过对应的<code>func.Checkxxx()</code>方法来获取返回值,最后通过<code>func.EndPCall();</code>结束—清楚函数调用导致的堆栈变化。整个流程比较繁琐且不易封装，不过优点是不会有垃圾内存，所以不用手动释放GC。</p>
 <h2 id="获取lua中的变量"><a href="#获取lua中的变量" class="headerlink" title="获取lua中的变量"></a>获取lua中的变量</h2><h3 id="创建全局变量"><a href="#创建全局变量" class="headerlink" title="创建全局变量"></a>创建全局变量</h3><p>在lua虚拟机创建完成且初始化完毕（调用Start方法）之后，可以直接声明一个lua虚拟机的全局变量:</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LuaState lua = <span class="keyword">new</span> LuaState();</span><br><span class="line">lua.Start();</span><br><span class="line">lua[<span class="string">&quot;Objs2Spawn&quot;</span>] = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
-
 <p>获取全局变量格式是相同的，这点和lua相同，没有就创建否则就读取。值得注意的是对于获取的函数需要强制转换为LuaFunction：<code>LuaFunction func = lua[&quot;TestFunc&quot;] as LuaFunction;</code></p>
 <h3 id="获取与创建lua的table"><a href="#获取与创建lua的table" class="headerlink" title="获取与创建lua的table"></a>获取与创建lua的table</h3><p>通过调用虚拟机的方法lua.GetTable 来获取lua中的table，用LuaTable类型来储存lua中的Table，通过调用Luatable的成员方法table.AddTable来创建lua中的table , 除了通过虚拟机的GetTable方法访问之外，直接通过 LuaTable 型变量按字典的类似方法也可以调用table </p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LuaTable table1 = lua.GetTable(<span class="string">&quot;varTable&quot;</span>);</span><br><span class="line">Debug.Log(<span class="string">&quot;Read VarTable from lua name:&#123;0&#125;&quot;</span>, table1[map.name]);<span class="comment">//会将map.name作为整体识别为键,值为nil，不会有任何输出</span></span><br><span class="line">table1[<span class="string">&quot;map.name&quot;</span>] = <span class="string">&quot;new&quot;</span>;<span class="comment">// table字符串只能为key,现在为“new”</span></span><br><span class="line">LuaTable table2 = (LuaTable)table[<span class="string">&quot;newmap&quot;</span>];</span><br></pre></td></tr></table></figure>
-
 <p>对于lua元表也能使用LuaTable的GetMetaTable()方法来获取</p>
 <p>对于变量的获取有一点值得注意：</p>
 <p>如同注释中的那样，[]中的string会作为整体。lua语法中，如果有一个table A，那么A.x代表的是A[“x”],表示的是由字符串 “x”索引的表， 而a[x]表示的是变量x对应的值索引的表</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;&#125;</span><br><span class="line">x = &quot;y&quot;</span><br><span class="line">a[x] = 10</span><br><span class="line">a.x --&gt;nil 字段“x”的值，未定义</span><br><span class="line">a.y --&gt;10, 字段“y”的值</span><br></pre></td></tr></table></figure>
-
 <p>因此如果想要C#正确获取的话，需要像下面这样：</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LuaTable table = lua.GetTable(<span class="string">&quot;varTable&quot;</span>);</span><br><span class="line">LuaTable map = (LuaTable)table[<span class="string">&quot;map&quot;</span>];</span><br><span class="line">Debugger.Log(<span class="string">&quot;Read varTable from lua,  name: &#123;0&#125;&quot;</span>, map[<span class="string">&quot;name&quot;</span>]);</span><br></pre></td></tr></table></figure>
-
 <p>对LuaTable类型的变量，在使用完后需要手动释放内存，否则会因为内存未自动释放造成内存泄漏，具体方法为调用LuaTable对象的方法table.Dispose();</p>
 <h2 id="GameObject"><a href="#GameObject" class="headerlink" title="GameObject"></a>GameObject</h2><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="built_in">string</span> script =</span><br><span class="line">    <span class="string">@&quot;                                    </span></span><br><span class="line"><span class="string">        local GameObject = UnityEngine.GameObject          </span></span><br><span class="line"><span class="string">        local ParticleSystem = UnityEngine.ParticleSystem            </span></span><br><span class="line"><span class="string">        local go = GameObject(&#x27;go&#x27;)</span></span><br><span class="line"><span class="string">        go:AddComponent(typeof(ParticleSystem))</span></span><br><span class="line"><span class="string">        local node = go.transform</span></span><br><span class="line"><span class="string">        node.position = Vector3.one      </span></span><br><span class="line"><span class="string">        print(&#x27;gameObject is: &#x27;..tostring(go))    </span></span><br><span class="line"><span class="string">        GameObject.Destroy(go, 2)                        </span></span><br><span class="line"><span class="string">    &quot;</span>;</span><br><span class="line">    </span><br><span class="line">LuaState lua = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;        </span><br><span class="line">    lua = <span class="keyword">new</span> LuaState();</span><br><span class="line">    lua.LogGC = <span class="literal">true</span>;</span><br><span class="line">    lua.Start();</span><br><span class="line">    LuaBinder.Bind(lua);</span><br><span class="line">    lua.DoString(script);            </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span>()</span>&#123;</span><br><span class="line">    lua.CheckTop();</span><br><span class="line">    lua.Collect();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>LuaBinder.Bind();  ——该方法需要传入一个 <code>LuaState</code> 类型参数。该方法会将 C# 代码中定义的类、方法、属性等绑定到该 Lua 模块中。这样，Lua 脚本就可以调用 C# 代码中定义的函数和属性，而 C# 代码也可以通过 Lua 脚本调用 Lua 中的函数和属性。</p>
 <p>lua.Collect();——垃圾回收, 对于被自动gc的LuaFunction, LuaTable, 以及委托减掉的LuaFunction, 延迟删除的Object之类。等等需要延迟处理的回收, 都在这里自动执行</p>
 <h1 id="lua调用C-函数"><a href="#lua调用C-函数" class="headerlink" title="lua调用C#函数"></a>lua调用C#函数</h1><p>如同 案例中的那样，</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> ParticleSystem = UnityEngine.ParticleSystem</span><br><span class="line"><span class="keyword">local</span> GameObject = UnityEngine.GameObjectlocal </span><br><span class="line">go = GameObject(<span class="string">&#x27;go&#x27;</span>)</span><br><span class="line">go:AddComponent(typeof(ParticleSystem))</span><br><span class="line"><span class="keyword">local</span> node = go.transform</span><br><span class="line">node.position = Vector3.one                  </span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;gameObject is: &#x27;</span>..<span class="built_in">tostring</span>(go))</span><br></pre></td></tr></table></figure>
-
 <p>对于UnityEngine下的一部分方法，lua中可以直接引用。</p>
 <h2 id="自定义脚本"><a href="#自定义脚本" class="headerlink" title="自定义脚本"></a>自定义脚本</h2><p>对于自己实现的脚本比较麻烦，首先需要调用 LuaBinder.Bind(LuaState lua) </p>
 <p>其次需要将自定义的类写入CustomSetting.cs文件中，你将你的自定义类加入到customTypeList数组中的末尾，如果是静态类就还需加入staticClassTypes中。然后依次点击Lua菜单中的Clear wrap files 和Gen All</p>
 <h2 id="自定义委托"><a href="#自定义委托" class="headerlink" title="自定义委托"></a>自定义委托</h2><p>只要需要使用到delegate字段，都要调用一次DelegateFactory.Init()，如果有自定义的委托还是要添加到CustomSetting.cs中的customDelegateList</p>
 <p>如何给按钮动态添加监听事件？ 首先我们可以定义一个LuaHelper的静态类，在其中实现一个AddButtonClick的静态函数，NGUI中给按钮添加事件代码示例：EventDelegate.Add(UIButton.onclick, Call call)</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">AddButtonClick</span>(<span class="params">GameObject g,LuaFunction callback</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    EventDelegate.Add(g.GetComponent&lt;UIButton&gt;().onClick, callback.Call);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>在lua代码中只需找到对应的游戏物体</p>
 <figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">local</span> helper = LuaHelper</span><br><span class="line"><span class="keyword">local</span> btn = UnityEngine.GameObject.Find(<span class="string">&quot;Button&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">local</span> <span class="function"><span class="keyword">function</span> <span class="title">Onclick</span><span class="params">()</span></span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;OnClick&quot;</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">helper.AddButtonClick(btn,Onclick)</span><br></pre></td></tr></table></figure>
-
 <p>Lua调用C#的规范就是不在Start周期函数中去做初始化，而是包装好初始化相关的函数，在lua中获取该函数在调用</p>
 <h2 id="获取C-数组元素"><a href="#获取C-数组元素" class="headerlink" title="获取C#数组元素"></a>获取C#数组元素</h2><p>lua想要访问C#数组有几种方法，</p>
 <ul>
@@ -266,7 +250,6 @@
 <p>C#中获得lua函数的返回值，可以通过func.Checkxxx()来获得</p>
 <p>比如</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">double</span> arg1 = func.CheckNumber();<span class="comment">//获得func函数double类型的返回值</span></span><br><span class="line"><span class="built_in">string</span> arg2 = func.CheckString();<span class="comment">//获得func函数string类型的返回值</span></span><br><span class="line"><span class="comment">// 调用通用函数时需要转换类型，避免拆成多个参数</span></span><br><span class="line"><span class="built_in">object</span>[] objs = func.Invoke((<span class="built_in">object</span>)array);</span><br><span class="line"><span class="keyword">if</span> (objs != <span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">    Debugger.Log(<span class="string">&quot;return is &#123;0&#125; &#123;1&#125; &#123;2&#125;&quot;</span>, objs[<span class="number">0</span>], objs[<span class="number">1</span>], objs[<span class="number">2</span>]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h1 id="ToLua框架UML"><a href="#ToLua框架UML" class="headerlink" title="ToLua框架UML"></a>ToLua框架UML</h1><p>LuaState，LuaFunction、LuaTable</p>
 <p>暂时无法在莉莉丝飞书文档外展示此内容</p>
 

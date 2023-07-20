@@ -177,18 +177,17 @@
 <li>独特性质： 确定一个平面， 能清晰定义内外</li>
 </ol>
 <h1 id="采样（Samping）"><a href="#采样（Samping）" class="headerlink" title="采样（Samping）"></a>采样（Samping）</h1><span id="more"></span>
-
 <p><strong>走样的定义：</strong></p>
 <p>  <strong>由于低频取样而造成的信息失真</strong>  <strong>图形数字化过程中，图形映射到光栅系统的整数位置而产生的图形畸变。</strong></p>
 <p><strong>函数中定义：</strong>把一个函数离散化的过程</p>
 <p>采样三角形中每个像素的中心点，为了提高采样的效率，我们只在边界区内进行采样</p>
-<p><img src="/2022/04/26/games101-%E5%85%89%E6%A0%85%E5%8C%96%EF%BC%885-6%EF%BC%89/cdfebc4f593d4826b19742cd84e6b3f1.png"></p>
+<p><img src="/2022/04/26/games101-%E5%85%89%E6%A0%85%E5%8C%96%EF%BC%885-6%EF%BC%89/cdfebc4f593d4826b19742cd84e6b3f1.png" alt></p>
 <p>但是呢采样之后我们在屏幕得到的图形是这样的</p>
 <p><img src="/2022/04/26/games101-%E5%85%89%E6%A0%85%E5%8C%96%EF%BC%885-6%EF%BC%89/76c5d5e3d57a4b16a773ae1ed2151710.png" alt="在这里插入图片描述"></p>
 <p>采样率不够高，就会导致走样（Aliasing），这就会产生锯齿，除此之外还会产生摩尔纹，车轮效应等</p>
 <h2 id="反走样"><a href="#反走样" class="headerlink" title="反走样"></a>反走样</h2><p>为了避免走样带来的影响，我们可以先对图像进行模糊再进行采样</p>
 <p><strong>采样在频率上的定义</strong>：同一种采样方法采样两种不同的函数却无法区分他们，这就叫采样</p>
-<p>如何进行模糊？我们一般使用低频滤波器，（滤波&#x3D;卷积&#x3D;平均）</p>
+<p>如何进行模糊？我们一般使用低频滤波器，（滤波=卷积=平均）</p>
 <p><img src="/2022/04/26/games101-%E5%85%89%E6%A0%85%E5%8C%96%EF%BC%885-6%EF%BC%89/0f9f8ea612ef4ac5b5130b5d223e554b.png" alt="在这里插入图片描述"></p>
 <p><strong>过取样</strong>：在高分辨率下对对象特性取样并在较低分辨率上显示其结果的技术 </p>
 <ul>

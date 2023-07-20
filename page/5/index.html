@@ -407,6 +407,7 @@
         <h1 id="认识音频组件"><a href="#认识音频组件" class="headerlink" title="认识音频组件"></a>认识音频组件</h1><h2 id="AudioClip"><a href="#AudioClip" class="headerlink" title="AudioClip"></a>AudioClip</h2><p>想要播放的音频文件，存储在Assets文件夹中</p>
 <h2 id="AudioSource"><a href="#AudioSource" class="headerlink" title="AudioSource"></a>AudioSource</h2><p> 播放音频文件，能调节音量，3D效果音。音频源就像一个控制器，用于启动和停止该剪辑音源的播放，以及修改其他音频属性。</p>
 <p><strong>Priority</strong>：从场景中存在的所有音频源中确定此音频源的优先级。（Priority值为0 表示优先级最高。值为256， 表示优先级最低。默认值为 128）。对于音轨值应为 0，避免被意外擦除。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -414,7 +415,8 @@
 <th>声音衰减的速度。此值越高，监听器必须越接近才能听到声音。（这取决于图）。</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>- Logarithmic Rolloff</strong></td>
 <td>靠近音频源时，声音很大，但离开对象时，声音降低得非常快。</td>
 </tr>
@@ -426,7 +428,9 @@
 <td><strong>- Custom Rolloff</strong></td>
 <td>音频源的音频效果是根据曲线图的设置变化的。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="距离函数"><a href="#距离函数" class="headerlink" title="距离函数"></a>距离函数</h3>
         
           <a class="article-more-a" href="/2022/04/10/Unity-%E9%9F%B3%E9%A2%91%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/#more">more >></a>
@@ -505,7 +509,6 @@
       
         <h1 id="协程的使用"><a href="#协程的使用" class="headerlink" title="协程的使用"></a>协程的使用</h1><p>由于Unity3D是单线程的，所以实现了协程机制来达到类似多线程的作用。但它不是进程或线程，他执行过程类似于一个子例程或者是不带返回值的函数。</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Coroutine <span class="title">StartCoroutine</span>(<span class="params">IEnumertor routine</span>)</span>;</span><br><span class="line"><span class="function">Coroutine <span class="title">StartCoroutine</span>(<span class="params"><span class="built_in">string</span> methodName, <span class="built_in">object</span> <span class="keyword">value</span> = <span class="literal">null</span></span>)</span>;</span><br></pre></td></tr></table></figure>
-
 <p>我们就可以以此来实现延时效果</p>
 <p>而<code>StopCoroutine</code>方法只能停止同一个脚本当的方法名和传入string型参数相同的协程，而且只能用来停止那些使用<code>StartCoroutine</code>的string型参数的重载版本开启的协程</p>
 <h2 id="协程背后的迭代器"><a href="#协程背后的迭代器" class="headerlink" title="协程背后的迭代器"></a>协程背后的迭代器</h2><h2 id="认识迭代器"><a href="#认识迭代器" class="headerlink" title="认识迭代器"></a>认识迭代器</h2><p>迭代器：可在容器对象（container，例如链表或数组）上遍访的接口，而无需关心容器对象的内存分配的实现细节</p>
@@ -585,38 +588,42 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="UI系统对比"><a href="#UI系统对比" class="headerlink" title="UI系统对比"></a>UI系统对比</h1><p>对 UI 系统的选择取决于是为 Unity 编辑器开发 UI，还是为游戏或应用程序开发运行时 UI。</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="left"><strong>UI 的类型</strong></th>
-<th align="left"><strong>UI 工具包</strong></th>
-<th align="left"><strong>Unity UI(uGUI)</strong></th>
-<th align="left"><strong>IMGUI</strong></th>
-<th align="left"><strong>注意事项</strong></th>
+<th style="text-align:left"><strong>UI 的类型</strong></th>
+<th style="text-align:left"><strong>UI 工具包</strong></th>
+<th style="text-align:left"><strong>Unity UI(uGUI)</strong></th>
+<th style="text-align:left"><strong>IMGUI</strong></th>
+<th style="text-align:left"><strong>注意事项</strong></th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="left"><strong>运行时（调试）</strong></td>
-<td align="left">✔ *</td>
-<td align="left">✔</td>
-<td align="left">✔</td>
-<td align="left">这指用于调试用途的临时运行时 UI。</td>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>运行时（调试）</strong></td>
+<td style="text-align:left">✔ *</td>
+<td style="text-align:left">✔</td>
+<td style="text-align:left">✔</td>
+<td style="text-align:left">这指用于调试用途的临时运行时 UI。</td>
 </tr>
 <tr>
-<td align="left"><strong>运行时（游戏内）</strong></td>
-<td align="left">✔ *</td>
-<td align="left">✔</td>
-<td align="left">不推荐</td>
-<td align="left">出于性能原因，Unity 不推荐将 IMGUI 用于游戏内运行时 UI。</td>
+<td style="text-align:left"><strong>运行时（游戏内）</strong></td>
+<td style="text-align:left">✔ *</td>
+<td style="text-align:left">✔</td>
+<td style="text-align:left">不推荐</td>
+<td style="text-align:left">出于性能原因，Unity 不推荐将 IMGUI 用于游戏内运行时 UI。</td>
 </tr>
 <tr>
-<td align="left"><strong>Unity Editor</strong></td>
-<td align="left">✔</td>
-<td align="left">❌</td>
-<td align="left">✔</td>
-<td align="left">不能使用 Unity UI 为 Unity 编辑器创建 UI。</td>
+<td style="text-align:left"><strong>Unity Editor</strong></td>
+<td style="text-align:left">✔</td>
+<td style="text-align:left">❌</td>
+<td style="text-align:left">✔</td>
+<td style="text-align:left">不能使用 Unity UI 为 Unity 编辑器创建 UI。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>当然对于我来说，那必然是选择UGUI</p>
 <h1 id="基本布局"><a href="#基本布局" class="headerlink" title="基本布局"></a>基本布局</h1><p>UI是为了什么？当然是美观，不美观的UI就是摆在厕所的满汉全席</p>
         
@@ -861,7 +868,7 @@
 <p><img src="/2022/03/27/CSharp-%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%EF%BC%89/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAamtra18=,size_20,color_FFFFFF,t_70,g_se,x_16.png" alt="img"></p>
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p> 示例代码</p>
-<p>如果不采用抽象方法，我们创建一个父类引用指向子类对象：Vehicle Car &#x3D; new Car();</p>
+<p>如果不采用抽象方法，我们创建一个父类引用指向子类对象：Vehicle Car = new Car();</p>
 <p>由于Cat是继承自它的父类Animal，所以Animal类型的引用是可以指向Cat类型的对象的。这就是“向上转型”。这样既可以使用子类强大的功能，又可以抽取父类的共性。 所以，父类类型的引用可以调用父类中定义的所有属性和方法，而对于子类中定义而父类中没有的方法，父类引用是无法调用的； </p>
 <p>那么如果我想编写一个种类的基类，种类之间都有相同方法，但具体实现需求不同。那么我就需要很多很多的抽象类，那会不会一个抽象类中的所有方法都是抽象的呢？</p>
 <p>当然有！这就是接口——</p>
