@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="https://ycy666666.github.io">
+  <title>计算机网络 | WEBSITE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="第1章-计算机网络和因特网 InternetInternet的具体构成数以亿计的计算互连设备： 主机（host）&#x3D; 端系统（end system） 运行网络应用程序 分组(packet)交换设备： 通信链路(link)： fiber, copper, radio, satellite 传输速率 &#x3D; 带宽(bandwidth) 网络 (Networks)： 设备、路由器、交换机和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络">
+<meta property="og:url" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html">
+<meta property="og:site_name" content="WEBSITE">
+<meta property="og:description" content="第1章-计算机网络和因特网 InternetInternet的具体构成数以亿计的计算互连设备： 主机（host）&#x3D; 端系统（end system） 运行网络应用程序 分组(packet)交换设备： 通信链路(link)： fiber, copper, radio, satellite 传输速率 &#x3D; 带宽(bandwidth) 网络 (Networks)： 设备、路由器、交换机和">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610155822384.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610201706363.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610171617390.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612182934012.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610173135411.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610195353001.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20200301200433750.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610200956531.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610204231947.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610205749120.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610211750861.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610213322965.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610214747216.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610214853048.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611133820660.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611134233687.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611134528801.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611141420549.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611143719759.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611150942511.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611151220839.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611152509672.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611160720329.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611162759221.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611162826082.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611163143512.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611164037625.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610214920953.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611165305795.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611170216469.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611171420151.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611171154344.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611171801340.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611172303078.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611182358543.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611191848945.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611194124043.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611194739744.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611195102193.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611195744497.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611200132450.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611203342741.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611204742055.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611204647307.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610215003139.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612133105265.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612140851371.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612142614257.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612144754958.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612150925855.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612150938871.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612150957048.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612151019946.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612154425163.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612155719416.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612160821307.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612161550744.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612161842192.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612162252384.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610215123806.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612170821107.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612170947161.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612170844030.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612170957552.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612171147070.png">
+<meta property="article:published_time" content="2022-06-13T06:38:48.000Z">
+<meta property="article:modified_time" content="2022-06-13T06:41:01.779Z">
+<meta property="article:author" content="YCY">
+<meta property="article:tag" content="专业课">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610155822384.png">
+  
+    <link rel="alternative" href="/atom.xml" title="WEBSITE" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
+  <style type="text/css">
+  
+    #container.show {
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+    }
+  </style>
+  
+
+  
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      
+<div class="overlay" style="background: #4d4d4d"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="" class="js-avatar">
+		</a>
+		<hgroup>
+		  <h1 class="header-author"><a href="/"></a></h1>
+		</hgroup>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+    		
+    			
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/ycy666666" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="qq" target="_blank" href="/1327132163" title="qq"><i class="icon-qq"></i></a>
+		        
+					<a class="mail" target="_blank" href="/1327132163@qq.com" title="mail"><i class="icon-mail"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      
+<nav id="mobile-nav">
+  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+	<div class="btnctn js-mobile-btnctn">
+  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author js-header-author"></h1>
+			</hgroup>
+			
+			
+			
+				
+			
+			
+			
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/ycy666666" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="qq" target="_blank" href="/1327132163" title="qq"><i class="icon-qq"></i></a>
+			        
+						<a class="mail" target="_blank" href="/1327132163@qq.com" title="mail"><i class="icon-mail"></i></a>
+			        
+				</div>
+			</nav>
+
+			<nav class="header-menu js-header-menu">
+				<ul style="width: 50%">
+				
+				
+					<li style="width: 100%"><a href="/">主页</a></li>
+		        
+				</ul>
+			</nav>
+		</header>				
+	</div>
+	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="article-计算机网络" class="article article-type-article " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      计算机网络
+    </h1>
+  
+
+        
+        <a href="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="archive-article-date">
+  	<time datetime="2022-06-13T06:38:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="第1章-计算机网络和因特网"><a href="#第1章-计算机网络和因特网" class="headerlink" title="第1章-计算机网络和因特网"></a>第1章-计算机网络和因特网</h1><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610155822384.png" alt="image-20220610155822384"></p>
+<h2 id="Internet"><a href="#Internet" class="headerlink" title="Internet"></a>Internet</h2><h3 id="Internet的具体构成"><a href="#Internet的具体构成" class="headerlink" title="Internet的具体构成"></a>Internet的具体构成</h3><p><strong>数以亿计的计算互连设备：</strong></p>
+<p>主机（host）&#x3D; 端系统（end system）</p>
+<p>运行网络应用程序</p>
+<p><strong>分组(packet)交换设备</strong>：</p>
+<p><strong>通信链路(link)：</strong></p>
+<p>fiber, copper, radio, satellite</p>
+<p>传输速率 &#x3D; 带宽(bandwidth)</p>
+<p><strong>网络 (Networks)：</strong></p>
+<p>设备、路由器、交换机和链路的集合，由机构组织管理</p>
+<h3 id="Internet的服务描述"><a href="#Internet的服务描述" class="headerlink" title="Internet的服务描述"></a>Internet的服务描述</h3><span id="more"></span>
+
+<p><strong>提供网络应用基础架构</strong></p>
+<p> 允许终端系统上运行分布式应用程序，并彼此交换数据：</p>
+<p>​	Web, email, games, e-commerce, database, VOIP, P2P file sharing</p>
+<p><strong>为分布式应用程序提供通信服务接口</strong></p>
+<ul>
+<li>无连接服务connectionless</li>
+<li>面向连接服务connection-oriented</li>
+<li>不提供数据传递时间保证（发送端到接收端）的服务</li>
+</ul>
+<h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h3><p><strong>协议：</strong>定义了两个或多个通信实体间所交换报文的<strong>格式</strong> <strong>(format)<strong>和</strong>次序</strong> **(order)**，以及在报文发送和&#x2F;或接收或者其他事件方面所采取的行动（响应）(actions)。</p>
+<p><strong>协议的基本要素：</strong>语法、语义和同步</p>
+<h2 id="网络核心部分"><a href="#网络核心部分" class="headerlink" title="网络核心部分"></a>网络核心部分</h2><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610201706363.png" alt="image-20220610201706363"></p>
+<p><strong>虚电路网络一定是面向连接的。</strong></p>
+<p><strong>数据报网络既可以提供面向连接的服务也可以提供无连接的服务。</strong>如：Internet为网络应用既提供面向连接的传输服务 (TCP)，也提供无连接的传输服务(UDP)。</p>
+<h3 id="电路交换："><a href="#电路交换：" class="headerlink" title="电路交换："></a><strong>电路交换：</strong></h3><p>每次会话预留沿其路径（线路）所需的独占资源——电话网</p>
+<p>（1）预先建立连接，预留资源，发送方以恒定速度发送数据</p>
+<p>（2）电路和通信链路的区别</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610171617390.png" alt="image-20220610171617390"></p>
+<p>（3）链路带宽和一条电路的传输速率的关系</p>
+<p>​	在两台主机A、B之间创建一条专用的端到端连接，分别占用每条链路中的一条电路；</p>
+<p>​	该连接获得链路带宽的1&#x2F;<em>n</em>，进行通信</p>
+<p>发送一个文件时间 &#x3D; 创建电路时间 + 文件传输时间</p>
+<p>文件传输时间：文件长&#x2F;电路的传输速率</p>
+<p>每条电路的传输速率：链路传输速率&#x2F;时隙数</p>
+<p>​                (1.536M b&#x2F;s) &#x2F; 24 &#x3D; 64kb&#x2F;s</p>
+<p>文件传输时间：640kb&#x2F;(64kb&#x2F;s) &#x3D; 10s</p>
+<p>A 到 B 的总发送时间：0.5s + 10s &#x3D; 10.5s</p>
+<p>（5）电路交换的优缺点：电路级的性能，时延小；效率低；创建连接过程复杂</p>
+<h3 id="分组交换："><a href="#分组交换：" class="headerlink" title="分组交换："></a><strong>分组交换：</strong></h3><p>数据以离散的数据块通过网络来发送</p>
+<p>（1）报文：应用程序要传输的信息，包含控制或数据</p>
+<p>（2）分组：报文拆分成若干的数据块，每个数据块加上头部信息，构成分组</p>
+<p>（3）特点：每个分组使用全部链路带宽；传输过程采用存储转发；排队时延和分组丢失；转发表和路由选择协议</p>
+<h2 id="分组交换网络中的延迟、丢失和吞吐量"><a href="#分组交换网络中的延迟、丢失和吞吐量" class="headerlink" title="分组交换网络中的延迟、丢失和吞吐量"></a><strong>分组交换网络中的延迟、丢失和吞吐量</strong></h2><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612182934012.png" alt="image-20220612182934012"></p>
+<p>分组到达输出链路的速率超过输出链路的容量，产生延迟，甚至丢失</p>
+<p>分组在缓冲区队列排队，按序等待</p>
+<h3 id="分组延迟的4种类型："><a href="#分组延迟的4种类型：" class="headerlink" title="分组延迟的4种类型："></a><strong>分组延迟的4种类型</strong>：</h3><p>（1）节点处理时延：差错检测、选择输出链路，微秒级</p>
+<p>（2）排队时延：路由器的拥塞程度</p>
+<p>（3）传输时延：L&#x2F;R</p>
+<p>（4）传播时延：d&#x2F;s，卫星250ms</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610173135411.png" alt="image-20220610173135411"></p>
+<h3 id="分组丢失"><a href="#分组丢失" class="headerlink" title="分组丢失"></a><strong>分组丢失</strong></h3><p>•路由器输入链路和输出链路的缓冲区容量有限</p>
+<p>•当分组到达路由器输入链路发现缓冲区已满，则路由器只好<strong>丢弃</strong>分组</p>
+<p>•当分组在路由器内部要转发到输出链路时发现输出缓冲区队列已满，路由器只好<strong>丢弃</strong>分组</p>
+<p>•丢失的分组可能被前路由节点、源节点<strong>重传，或不重传</strong></p>
+<h3 id="吞吐量"><a href="#吞吐量" class="headerlink" title="吞吐量"></a>吞吐量</h3><p>接收端接收到数据的比特速率 (bps )</p>
+<h2 id="协议层及其服务模型"><a href="#协议层及其服务模型" class="headerlink" title="协议层及其服务模型"></a>协议层及其服务模型</h2><h3 id="协议和服务的的区分"><a href="#协议和服务的的区分" class="headerlink" title="协议和服务的的区分"></a><strong>协议和服务的的区分</strong></h3><p>（1）协议的实现保证了能够向上一层提供服务。本层的服务用户只能看见服务，而无法看见下面的协议。下 面的协议对上面的服务用户是透明的。</p>
+<p>（2）协议是“水平的”，即协议是控制两个对等实体进行通信的规则。但服务是“垂直的”，即服务是由下层 通过层间接口向上层提供的。</p>
+<h3 id="因特网分层模型"><a href="#因特网分层模型" class="headerlink" title="因特网分层模型"></a><strong>因特网分层模型</strong></h3><p>（1）应用层：网络应用程序和应用层协议（Web应用【HTTP】、电子邮件【SMTP】、文件传输【FTP】）；交换的分组（报文）；</p>
+<p>（2）运输层：应用程序端点之间传输应用层报文（TCP【面向连接、可靠传输、流量控制、拥塞控制】、UDP）；不提供时间保证；运输层的分组（报文段）。</p>
+<p>（3）网络层：将网络层分组（数据报）从一台主机传输到另一台主机（网际协议IP、路由选择协议）。</p>
+<p>（4）链路层：将分组（帧）从一个节点（主机或路由器）传输到另一个节点（可靠交付、不同链路【以太网、Wifi、电缆】有不同协议，广播链路和点对点链路）</p>
+<p>（5）物理层：将数据帧一个bit一个bit从一个节点移动到另一个节点（协议与传输媒体有关）。</p>
+<h3 id="各体系结构图"><a href="#各体系结构图" class="headerlink" title="各体系结构图"></a>各体系结构图</h3><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610195353001.png" alt="image-20220610195353001"></p>
+<p><strong>ISO&#x2F;OSI RM</strong>：</p>
+<p>表示层：允许应用程序解释数据的含义，实现数据格式的转换、数据压缩及加解密等。</p>
+<p>会话层：对数据传输进行管理，包括数据交换的定界、同步，建立检查点等</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20200301200433750.png" alt="20200301200433750"></p>
+<h1 id="第2章-应用层"><a href="#第2章-应用层" class="headerlink" title="第2章-应用层"></a>第2章-应用层</h1><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610200956531.png" alt="image-20220610200956531"></p>
+<h2 id="套接字"><a href="#套接字" class="headerlink" title="套接字"></a>套接字</h2><p><strong>套接字又叫做应用程序编程接口API</strong></p>
+<p>用户通过API对传输层的控制仅限于：</p>
+<ul>
+<li><strong>选择传输协议</strong> </li>
+<li><strong>设定几个参数</strong></li>
+</ul>
+<p>进程通过它的套接字在网络上发送和接收报文</p>
+<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><p><strong>HTTP</strong>（<strong>hypertext transfer protocol</strong>）:超文本传输协议</p>
+<p><strong>client&#x2F;server模式</strong></p>
+<p>client: 浏览器browser请求, 接收, “解释显示” Web对象</p>
+<p>server: Web服务器响应请求，发送 Web对象</p>
+<h3 id="响应时间模型"><a href="#响应时间模型" class="headerlink" title="响应时间模型"></a><strong>响应时间模型</strong></h3><p><strong>往返时间RTT(Round-Trip Time):</strong> 1个分组从客户主机到服务器再回到客户主机所花费的时间。</p>
+<p><strong>HTTP 响应时间 (每个对象)：</strong></p>
+<p>​	1个RTT用于建立TCP连接</p>
+<p>​	1个RTT用于HTTP请求&#x2F;响应消息的交互</p>
+<p>​	对象&#x2F;文件的传输时间</p>
+<h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><p>TCP连接的“三次握手”过程：</p>
+<p>客户机发送一个TCP连接请求报文 </p>
+<p>服务器回送一个TCP确认响应报文 </p>
+<p>客户机向服务器发送一个包含“ HTTP请求”与“TCP确认”的报文</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610204231947.png" alt="image-20220610204231947"></p>
+<h3 id="HTTP报文结构"><a href="#HTTP报文结构" class="headerlink" title="HTTP报文结构"></a>HTTP报文结构</h3><p>开始行:用于区分是请求报文还是响应报文。</p>
+<p>在请求报文中的开始行称为请求行；</p>
+<p>响应报文中的开始行称为状态行；</p>
+<p>开始行的三个字段之间都以空格分隔，最后的“CR”和“LF”分别代表“回车”和“换行”。</p>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>HTTP协议本身是无状态的，通常使用Cookie 加数据库的方式来跟踪用户的活动</p>
+<ol>
+<li>cookie头部行可在HTTP请求消息和响应消息中</li>
+<li>cookie文件保存在用户主机中并被用户浏览器管理，cookie也保存在Web站点的后端数据库</li>
+</ol>
+<h2 id="电子邮件"><a href="#电子邮件" class="headerlink" title="电子邮件"></a><strong>电子邮件</strong></h2><p><strong>3个主要组成部分:</strong> </p>
+<ul>
+<li><p>用户代理 user agents：也就是邮件阅读器，允许用户阅读、回复、转发、保存、编辑邮件消息 </p>
+</li>
+<li><p>邮件服务器 mail servers ：传出&#x2F;传入消息存储在服务器上</p>
+</li>
+<li><p>简单邮件传送协议 SMTP：邮件服务器之间以SMTP协议发送电子邮件</p>
+<ul>
+<li><p>​	“client”: 发送邮件服务器</p>
+</li>
+<li><p>​	“server”: 接收邮件服务器</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610205749120.png" alt="image-20220610205749120"></p>
+<h3 id="邮件访问协议"><a href="#邮件访问协议" class="headerlink" title="邮件访问协议"></a>邮件访问协议</h3><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610211750861.png" alt="image-20220610211750861"></p>
+<p><strong>发送方：</strong>用户代理使用 SMTP 将邮件推入其邮件服务器 à 邮件服务器再用 SMTP 将邮件转发到接收方的邮件服务器</p>
+<p><strong>接收方</strong>通过用户代理使用从其邮件服务器上取回邮件（POP、IMAP、HTTP）</p>
+<h3 id="与HTTP的比较"><a href="#与HTTP的比较" class="headerlink" title="与HTTP的比较:"></a>与HTTP的比较:</h3><p><strong>HTTP: 拉协议</strong></p>
+<p>用户使用HTTP从服务器拉取信息。其TCP连接是由想获取文件的机器发起。</p>
+<p><strong>SMTP:</strong> <strong>推协议</strong></p>
+<p>发送邮件服务器把文件推向接收邮件服务器，其TCP连接是由要发送文件的机器发起。</p>
+<ul>
+<li>都有ASCII 命令&#x2F;应答交互, 状态码</li>
+<li>HTTP: 每个对象封装在它各自的HTTP响应消息中发送</li>
+<li>SMTP: 一个邮件内各个对象置于同一个邮件消息的多部分发送</li>
+</ul>
+<h2 id="DNS：域名系统Domain-Name-System"><a href="#DNS：域名系统Domain-Name-System" class="headerlink" title="DNS：域名系统Domain Name System"></a>DNS：域名系统Domain Name System</h2><p>把便于人们记忆的具有特定含义的主机名(如<a target="_blank" rel="noopener" href="http://www.web.com)转换为便于机器处理的ip地址./">www.web.com)转换为便于机器处理的IP地址。</a></p>
+<h3 id="域名服务器类型"><a href="#域名服务器类型" class="headerlink" title="域名服务器类型"></a>域名服务器类型</h3><ul>
+<li>根域名服务器（Root DNS servers）：目前全球共有13套域名根服务器</li>
+<li>顶级域名服务器（Top-level domain (TLD) servers）：负责顶级域名 com, org, net, edu, etc, 和所有国家的顶级域名 uk, fr, ca, jp</li>
+<li>权威域名服务器（Authoritative DNS servers）：在因特网上具有公共可访问主机（如Web服务器和邮件服务器）的每个组织机构必须提供公共可访问的DNS记录，这些记录将这些主机的名字映射为IP地址。组织机构的权威DNS服务器负责保存这些DNS记录。</li>
+<li>本地域名服务器（Local DNS server）：每一个因特网服务提供商 ISP（住宅ISP、公司、大学、甚至一个大学的系）都可以拥有一个本地域名服务器。当一个主机发出DNS查询报文时，这个报文就首先被送往该主机的本地域名服务器。</li>
+</ul>
+<h3 id="DNS查询方法"><a href="#DNS查询方法" class="headerlink" title="DNS查询方法"></a>DNS查询方法</h3><h4 id="递归查询-recursive-query"><a href="#递归查询-recursive-query" class="headerlink" title="递归查询(recursive query):"></a>递归查询(recursive query):</h4><p>名字解析的负担交给被查询的名字服务器</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610213322965.png" alt="image-20220610213322965"></p>
+<h4 id="迭代查询"><a href="#迭代查询" class="headerlink" title="迭代查询"></a>迭代查询</h4><p>被查询的名字服务器回复可以被查询的名字服务器的IP地址，“我不知道它的名字，但是你可以问服务器xx”</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610214747216.png" alt="image-20220610214747216"></p>
+<p>一旦名字服务器获得DNS映射, 它将缓存该映射到局部内存</p>
+<ul>
+<li>服务器在一定时间后将丢弃缓存的信息</li>
+<li>本地DNS服务器可以缓存TLD服务器的IP地址</li>
+<li>因此根DNS服务器不会被经常访问</li>
+</ul>
+<h1 id="第3章-运输层"><a href="#第3章-运输层" class="headerlink" title="第3章-运输层"></a>第3章-运输层</h1><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610214853048.png" alt="image-20220610214853048"></p>
+<h2 id="运输层服务"><a href="#运输层服务" class="headerlink" title="运输层服务"></a>运输层服务</h2><p>在两个不同的主机上运行的应用程序之间提供<strong>逻辑通信</strong></p>
+<h3 id="发送方："><a href="#发送方：" class="headerlink" title="发送方："></a>发送方：</h3><ul>
+<li>传递一个应用层消息</li>
+<li>确定报文段头部域值</li>
+<li>创建报文段</li>
+<li>传递报文段到IP层</li>
+</ul>
+<h3 id="接收方："><a href="#接收方：" class="headerlink" title="接收方："></a>接收方：</h3><ul>
+<li>从IP层接受报文段</li>
+<li>检查头部值</li>
+<li>提取应用层消息</li>
+<li>通过套接字多路分解消息到应用层</li>
+</ul>
+<h2 id="多路复用和多路分解"><a href="#多路复用和多路分解" class="headerlink" title="多路复用和多路分解"></a><strong>多路复用和多路分解</strong></h2><p><strong>在发送主机多路复用：</strong></p>
+<p>从多个套接字收集数据, 用首部封装数据，然后将报文段传递到网络层。</p>
+<p><strong>在接收主机多路分解</strong></p>
+<p>使用头部信息将接收到的报文段传递到正确的套接字。</p>
+<h3 id="多路分解如何工作"><a href="#多路分解如何工作" class="headerlink" title="多路分解如何工作?"></a>多路分解如何工作?</h3><p>主机收到IP数据报</p>
+<ul>
+<li>每个数据报有源IP地址、目的IP地址</li>
+<li>每个数据报搬运一个运输层报文段</li>
+<li>每个数据段有<strong>源、目的端口号</strong></li>
+</ul>
+<p>主机用<strong>IP地址和端口号</strong>指明报文段属于哪个合适的套接字</p>
+<h3 id="面向连接的多路分解"><a href="#面向连接的多路分解" class="headerlink" title="面向连接的多路分解"></a>面向连接的多路分解</h3><p>TCP 套接字由4部分指定: </p>
+<ul>
+<li>源IP地址</li>
+<li>源端口号</li>
+<li>目的IP地址</li>
+<li>目的端口号</li>
+</ul>
+<p>接收主机使用所有四个值将报文定位到合适的套接字</p>
+<h3 id="无连接多路分解"><a href="#无连接多路分解" class="headerlink" title="无连接多路分解"></a><strong>无连接多路分解</strong></h3><p>当创建套接字时，必须指定本地主机的端口号</p>
+<p>当创建数据报发送到UDP套接字时，必须指定：</p>
+<ul>
+<li>目的 IP 地址</li>
+<li>目的端口号</li>
+</ul>
+<p>请求报文段中提供返回地址（包括IP地址和端口号）</p>
+<h2 id="无连接传输UDP"><a href="#无连接传输UDP" class="headerlink" title="无连接传输UDP"></a>无连接传输UDP</h2><h3 id="为什么要有-UDP-："><a href="#为什么要有-UDP-：" class="headerlink" title="**为什么要有 UDP?**："></a>**为什么要有 UDP?**：</h3><p>不需要建立连接 (减少延迟)</p>
+<p>简单：在发送者接受者之间不需要连接状态</p>
+<p>很小的报文段首部</p>
+<p>没有拥塞控制：UDP 能够用尽可能快地进行传递，可以在拥塞的情况下发挥作用</p>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><p>“无修饰”，“不加渲染的”因特网传输协议</p>
+<p>“尽力而为”服务，UDP报文段可能： </p>
+<ul>
+<li>丢失</li>
+<li>会将失序的报文交付到应用程序</li>
+</ul>
+<p>无连接：</p>
+<ul>
+<li>在UDP接收者、发送者之间没有握手</li>
+<li>每个UDP 段的处理独立于其他段</li>
+</ul>
+<h3 id="UDP-用户数据报协议"><a href="#UDP-用户数据报协议" class="headerlink" title="UDP: 用户数据报协议"></a>UDP: 用户数据报协议</h3><p>UDP 是面向报文的。面向报文的传输方式是应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。因此，应用程序必须选择合适大小的报文。若报文太长，则IP层需要分片，降低效率。若太短，会是IP太小。UDP对应用层交下来的报文，既不合并，也不拆分，而是保留这些报文的边界。即应用层交给UDP多长的报文，UDP就照样发送，即一次发送一个报文。</p>
+<h3 id="UDP-首部格式"><a href="#UDP-首部格式" class="headerlink" title="UDP 首部格式"></a>UDP 首部格式</h3><p>用户数据报 UDP 有两个字段：数据字段和首部字段。首部字段有 8 个字节，由 4 个字段组成，每个字段都是两个字节。长度是首部和数据的总长度，故最小值为8 。 </p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611133820660.png" alt="image-20220611133820660"></p>
+<h3 id="UDP校验和"><a href="#UDP校验和" class="headerlink" title="UDP校验和"></a>UDP校验和</h3><p>在计算检验和时，临时把“伪首部”和 UDP 用户数据报连接在一起。伪首部仅仅是为了计算检验和。</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611134233687.png" alt="image-20220611134233687"></p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611134528801.png" alt="image-20220611134528801"></p>
+<p>累加和 + 校验和 的结果全为1，表示传输正确</p>
+<h2 id="可靠数据传输原理"><a href="#可靠数据传输原理" class="headerlink" title="可靠数据传输原理"></a>可靠数据传输原理</h2><h3 id="Rdt1-0-完全可靠信道上的可靠数据传输"><a href="#Rdt1-0-完全可靠信道上的可靠数据传输" class="headerlink" title="Rdt1.0: 完全可靠信道上的可靠数据传输"></a>Rdt1.0: 完全可靠信道上的可靠数据传输</h3><h3 id="Rdt2-0-具有bit错误的信道"><a href="#Rdt2-0-具有bit错误的信道" class="headerlink" title="Rdt2.0: 具有bit错误的信道"></a>Rdt2.0: 具有bit错误的信道</h3><p><strong>下层信道可能让传输分组中的bit受损</strong></p>
+<p>利用校验和检测位错误</p>
+<p><strong>如何从错误中恢复</strong></p>
+<ul>
+<li>确认(ACKs): 接收方明确告诉发送方 分组接收正确</li>
+<li>否认 (NAKs):接收方明确告诉发送方 分组接收出错</li>
+<li>发送方收到NAK后重发这个分组</li>
+</ul>
+<p><strong>在 rdt2.0中的新机制 (在 rdt1.0中没有的):</strong></p>
+<ul>
+<li>差错检测</li>
+<li>接收方反馈: 控制信息 (ACK,NAK)  rcvr-&gt;sender</li>
+<li>重传</li>
+</ul>
+<h4 id="rdt2-1"><a href="#rdt2-1" class="headerlink" title="rdt2.1"></a><strong>rdt2.1</strong></h4><p><strong>如果ACK&#x2F;NAK发生错误&#x2F;被破坏(corrupted)会怎么样？</strong></p>
+<p>发送方:</p>
+<ul>
+<li>序号 加到分组上</li>
+<li>两个序号 (0,1) 就可以满足</li>
+<li>必须检查是否收到混淆的 ACK&#x2F;NAK</li>
+<li>状态加倍：状态必须记住当前的分组是1号还是0号</li>
+</ul>
+<p>接收方:</p>
+<ul>
+<li>必须检查分组是否重复：当前所处的状态提供了期望收到的分组。</li>
+<li>注意:接收方并不知道它的上一个ACK&#x2F;NAK 是否被发送方正确收到</li>
+</ul>
+<h4 id="rdt2-2-无NAK的消息协议"><a href="#rdt2-2-无NAK的消息协议" class="headerlink" title="rdt2.2: 无NAK的消息协议"></a>rdt2.2: 无NAK的消息协议</h4><ul>
+<li>同 rdt2.1一样的功能, 但只用 ACKs </li>
+<li>接收方通过<strong>ACK</strong>告知最后一个被正确接收的分组</li>
+<li>在<strong>ACK</strong>消息中显式地加入被确认分组的序列号</li>
+<li>发送方收到重复<strong>ACK</strong>之后，采取与收到<strong>NAK</strong>消息相同的动作，重传当前分组</li>
+</ul>
+<h3 id="Rdt3-0-具有出错和丢失的信道"><a href="#Rdt3-0-具有出错和丢失的信道" class="headerlink" title="Rdt3.0: 具有出错和丢失的信道"></a>Rdt3.0: 具有出错和丢失的信道</h3><p>新假设: 下层信道还要丢失报文 (数据或者 ACKs)。校验和, 序号, 确认, 重发将会有帮助，但是不够</p>
+<p>发送者等待“合理的”确认时间</p>
+<ul>
+<li>如果在这个时间内没有收到确认就重发</li>
+<li>如果报文（或者确认）只是延迟 (没有丢失):<ul>
+<li>重发将导致重复，但是使用序号已经处理了这个问题</li>
+<li>接受方必须指定被确认的报文序号</li>
+</ul>
+</li>
+<li>要求倒计时定时器：只有在定时器超时时才触发重发</li>
+</ul>
+<h4 id="性能问题"><a href="#性能问题" class="headerlink" title="性能问题"></a>性能问题</h4><p>利用率 ——发送方忙于发送的时间部分的比率</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611141420549.png" alt="image-20220611141420549"></p>
+<p>Rdt3.0的效率特别低，所以我们采用流水线技术（发送方允许发送多个、“传输中的”、还没有确认的报文）</p>
+<p>流水线技术的两个通用形式：<strong>go-Back-N,</strong> <strong>选择性重传</strong></p>
+<h4 id="Go-Back-N"><a href="#Go-Back-N" class="headerlink" title="Go-Back-N:"></a>Go-Back-N:</h4><h5 id="发送方：-1"><a href="#发送方：-1" class="headerlink" title="发送方："></a>发送方：</h5><p><strong>累积确认</strong> <strong>cumulative ACK</strong>, <strong>ACK(n)</strong>: 确认所有的分组，直到 (包括)序号 n </p>
+<p>接收到 ACK(n): 移动窗口到 n+1 开始处</p>
+<p>对最先（第一个）传输中的分组设定<strong>定时器</strong></p>
+<p><strong>timeout(n)</strong>:重传窗口中的分组 n 以及更高序号的分组（只有一个定时器记录最早的未被确认分组的发送时间）</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611143719759.png" alt="image-20220611143719759"></p>
+<h5 id="接收方"><a href="#接收方" class="headerlink" title="接收方"></a><strong>接收方</strong></h5><p>总是为正确接收的<strong>最高序号</strong>的分组发送ACK</p>
+<h4 id="选择性重传"><a href="#选择性重传" class="headerlink" title="选择性重传"></a>选择性重传</h4><h5 id="发送方"><a href="#发送方" class="headerlink" title="发送方"></a><strong>发送方</strong></h5><ul>
+<li>从上层收到数据 :<ul>
+<li>如果下一个可用的序号在发送方窗口内，则将数据打包并发送,启动定时器</li>
+</ul>
+</li>
+<li>超时(n):<ul>
+<li>重发分组n, 重启定时器</li>
+</ul>
+</li>
+<li>收到ACK(n)在[sendbase,sendbase+N-1]内:<ul>
+<li>标记分组n被接收</li>
+<li>如果n是最小的未确认分组，则增加窗口基序号到下一个未被确认的序号</li>
+</ul>
+</li>
+</ul>
+<h5 id="接收方-1"><a href="#接收方-1" class="headerlink" title="接收方"></a>接收方</h5><ul>
+<li>分组n的序号在[rcvbase, rcvbase+N-1]内<ul>
+<li>发送ACK(n)</li>
+<li>失序分组: 缓冲</li>
+<li>有序分组: 交付上层 (包括已经缓冲的有序分组), 提高窗口到下一个没有接收的分组</li>
+</ul>
+</li>
+<li>分组n在[rcvbase-N,rcvbase-1]内<ul>
+<li>发送ACK(n)</li>
+</ul>
+</li>
+<li>其他:<ul>
+<li>忽略</li>
+</ul>
+</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611150942511.png" alt="image-20220611150942511"></p>
+<h2 id="面向连接的传输-TCP"><a href="#面向连接的传输-TCP" class="headerlink" title="面向连接的传输: TCP"></a>面向连接的传输: TCP</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li><p>点到点:</p>
+<p>一个发送者,一个接收者</p>
+</li>
+<li><p>可靠按序的字节流:</p>
+<p>没有“信息边界”</p>
+</li>
+<li><p>流水线:</p>
+<p>TCP 拥塞和流量控制设置窗口大小</p>
+</li>
+<li><p>收发缓冲区</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611151220839.png" alt="image-20220611151220839"></p>
+</li>
+<li><p>全双工数据:</p>
+<p>同一个连接上的双向数据流</p>
+<p>MSS: 最大报文段长</p>
+</li>
+<li><p>面向连接: </p>
+<p>在数据交换前握手(交换控制信息)</p>
+<p>连接状态只在连接的两端中维护，在沿途节点中并不维护状态。</p>
+<p>TCP连接包括：两台主机上的缓存、连接状态变量、socket等</p>
+</li>
+<li><p>流量控制:</p>
+<p>发送方不会淹没接收方</p>
+</li>
+</ul>
+<h3 id="TCP-报文段的首部格式"><a href="#TCP-报文段的首部格式" class="headerlink" title="TCP 报文段的首部格式"></a>TCP 报文段的首部格式</h3><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611152509672.png" alt="image-20220611152509672"></p>
+<ol>
+<li><code>序号字段</code>。占4B。TCP是面向字节流的(即TCP传送时是逐个字节传送的)，所以TCP连接传送的数据流中的每个字节都编上一个序号。序号字段的值指的是本报文段所发送的数据的第一个字节的序号。</li>
+<li><code>确认号字段</code>。占4B,是期望收到对方的下一个报文段的数据的第一个字节的序号。若确认号为N，则表明到序号N- 1为止的所有数据都已正确收到。</li>
+<li><code>数据偏移(即首部长度)</code>。占4位，这里不是IP数据报分片的那个数据偏移，而是表示首部长度，它指出TCP报文段的数据起始处距离TCP报文段的起始处有多远。“数据偏移”的单位是32位(以4B为计算单位)。因此当此字段的值为15时，达到TCP首部的最大长度60B</li>
+</ol>
+<h3 id="TCP可靠数据传输"><a href="#TCP可靠数据传输" class="headerlink" title="TCP可靠数据传输"></a>TCP可靠数据传输</h3><p>TCP在IP不可靠服务的基础上创建可靠数据传输服务</p>
+<ul>
+<li>流水线发送报文段</li>
+<li>累积确认</li>
+<li>使用单个重传计时器</li>
+</ul>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611160720329.png" alt="image-20220611160720329"></p>
+<h3 id="TCP-快速重传"><a href="#TCP-快速重传" class="headerlink" title="TCP 快速重传"></a>TCP 快速重传</h3><p>超时周期往往太长，重传丢失报文之前要等待很长时间，因此增加了网络的时延</p>
+<p>如果发送方收到相同数据的3个其他ACK（“三个重复ACK”），则重新发送具有最小序号的未确认的报文段，那么未确认的报文段很可能丢失了，所以不必等待超时</p>
+<h3 id="TCP-流量控制"><a href="#TCP-流量控制" class="headerlink" title="TCP 流量控制"></a>TCP 流量控制</h3><p>接收方控制发送方，因此发送方不会由于发送太多、发送得太快而使接收方的缓冲区溢出</p>
+<p>TCP 接收方通过在TCP头部中包含 <strong>rwnd</strong> 域，通告其接收缓冲区的剩余空间 (假设 TCP 接收方丢弃失序的报文段)</p>
+<h3 id="TCP-连接管理"><a href="#TCP-连接管理" class="headerlink" title="TCP 连接管理"></a>TCP 连接管理</h3><p>发送方&#x2F;接收方在进行数据交换之前，需先进行“握手” ：</p>
+<ul>
+<li>同意建立连接（彼此知道对方愿意建立连接）</li>
+<li>同意连接参数（例如，初始<strong>序号</strong> <strong>seq #</strong>, 接收缓冲区大小 <strong>rcvBuffer</strong>）</li>
+</ul>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611162759221.png" alt="image-20220611162759221"></p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611162826082.png" alt="image-20220611162826082"></p>
+<h2 id="TCP-拥塞控制"><a href="#TCP-拥塞控制" class="headerlink" title="TCP 拥塞控制"></a>TCP 拥塞控制</h2><p>TCP所采用的方法是端到端的拥塞控制：（另一种是路由器利用数据流通过拥塞的路由器，向发送&#x2F;接收主机提供<strong>直接</strong>反馈）</p>
+<ul>
+<li>不从网络中得到明确的反馈</li>
+<li>从端系统根据观察到的时延和丢失现象推断出拥塞</li>
+</ul>
+<h3 id="AIMD"><a href="#AIMD" class="headerlink" title="AIMD"></a>AIMD</h3><p>方法：发送方增加发送速率，直到丢包（拥塞）发生，然后在发生丢包事件时降低发送速率</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611163143512.png" alt="image-20220611163143512"></p>
+<p>TCP 发送方如何感知网络拥塞：</p>
+<ul>
+<li>丢包事件：超时 或者 3个重复ACK</li>
+<li>发生丢包事件后，TCP发送方降低速率 (拥塞窗口 cwnd)</li>
+</ul>
+<h3 id="TCP-慢启动-slow-start"><a href="#TCP-慢启动-slow-start" class="headerlink" title="TCP 慢启动 (slow start)"></a>TCP 慢启动 (slow start)</h3><p>当连接开始的时候，以指数速率增加发送速率，直到第1次报文丢失事件发生为止：</p>
+<ul>
+<li>初始，拥塞窗口值 cwnd &#x3D; 1 MSS</li>
+<li>每 RTT 倍增 cwnd</li>
+<li>每收到一个ACK，增加 cwnd</li>
+</ul>
+<h3 id="TCP：从慢启动进入到拥塞避免"><a href="#TCP：从慢启动进入到拥塞避免" class="headerlink" title="TCP：从慢启动进入到拥塞避免"></a>TCP：从慢启动进入到拥塞避免</h3><p>当 cwnd 达到慢启动阈值 ssthresh时变为线性增长</p>
+<h3 id="对拥塞事件的反应"><a href="#对拥塞事件的反应" class="headerlink" title="对拥塞事件的反应"></a>对拥塞事件的反应</h3><p><strong>当超时事件发生时:</strong></p>
+<ul>
+<li><p>CongWin 立即设置为 1个 MSS； </p>
+</li>
+<li><p>窗口开始指数增长（进入慢启动）</p>
+</li>
+<li><p>到达一个阈值后再线性增长</p>
+</li>
+<li><p>ssthresh &#x3D; cwnd&#x2F;2, cwnd &#x3D; 1*MSS，进入慢启动状态</p>
+</li>
+</ul>
+<p><strong>收到三个重复的确认时：</strong></p>
+<ul>
+<li>CongWin 减半+3 (Reno版) </li>
+<li>然后，窗口线性增长（快速恢复）</li>
+<li>ssthresh &#x3D; cwnd&#x2F;2, cwnd &#x3D; ssthresh + 3*MSS, 进入快速恢复状态</li>
+</ul>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611164037625.png" alt="image-20220611164037625"></p>
+<h1 id="第4章-网络层"><a href="#第4章-网络层" class="headerlink" title="第4章-网络层"></a>第4章-网络层</h1><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610214920953.png" alt="image-20220610214920953"></p>
+<h2 id="网络层的功能"><a href="#网络层的功能" class="headerlink" title="网络层的功能"></a>网络层的功能</h2><ul>
+<li>转发(forwarding): 将分组从路由器的输入端口转移到正确的路由器输出端口</li>
+<li>路由(routing): 确定分组从发送方传输到接收方(目的主机)所经过的路径(或路由)</li>
+<li>连接建立:指网络层数据分组开始传输前，在所选择的从源到目的地路径上的各路由器之间相互握手，建立连接状态</li>
+</ul>
+<h2 id="网络层的服务模型"><a href="#网络层的服务模型" class="headerlink" title="网络层的服务模型"></a>网络层的服务模型</h2><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611165305795.png" alt="image-20220611165305795"></p>
+<p>传输层：面向连接服务在网络边缘的<strong>端系统</strong>中实现。</p>
+<p>网络层：面向连接服务在<strong>端系统及网络核心的路由器</strong>中实现。</p>
+<h3 id="数据报"><a href="#数据报" class="headerlink" title="数据报"></a>数据报</h3><p>提供网络层的无连接服务，不事先为分组的传输确定路径，每个分组独立确定</p>
+<p>路由器不需要维护端到端连接的状态</p>
+<p>使用目的主机的地址进行分组转发</p>
+<h3 id="虚电路"><a href="#虚电路" class="headerlink" title="虚电路"></a>虚电路</h3><p>提供网络层的连接服务，端系统每次建立虚电路时，选择一个未用过的<code>虚电路号</code>分配给该虛电路，以区别于本系统中的其他虚电路。</p>
+<p>虚电路之所以是“虚”的，是因为这条电路不是专用的，每个结点到其他结点之间的链路可能同时有若干虚电路通过，也可能同时与多个结点之间建立虚电路</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611170216469.png" alt="image-20220611170216469"></p>
+<h2 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h2><h3 id="路由器体系结构"><a href="#路由器体系结构" class="headerlink" title="路由器体系结构"></a>路由器体系结构</h3><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611171420151.png" alt="image-20220611171420151"></p>
+<h3 id="输入输出端口"><a href="#输入输出端口" class="headerlink" title="输入输出端口"></a>输入输出端口</h3><p>第一个线路端接模块：将一条物理链路端接到路由器的物理层；</p>
+<p>第二个数据链路处理模块：实现路由器的数据链路层功能；</p>
+<p>第三个查找与转发模块：实现查找与转发功能，以便分组通过路由器交换结构转发到适当的输出端口；</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611171154344.png" alt="image-20220611171154344"></p>
+<h4 id="查找-x2F-转发模块"><a href="#查找-x2F-转发模块" class="headerlink" title="查找&#x2F;转发模块"></a>查找&#x2F;转发模块</h4><p>确定将一个到达的分组通过交换结构转发给哪个输出端口。 通过查找转发表实现，这里的转发表是存储在输入端口的内存中</p>
+<p><strong>转发表</strong>：每台路由器有一张。目的地址与链路接口的映射表。</p>
+<h4 id="最长匹配原则"><a href="#最长匹配原则" class="headerlink" title="最长匹配原则"></a>最长匹配原则</h4><p>对于给定的目的地址，使用最长地址前缀匹配来完成输出端口的查找</p>
+<h3 id="交换结构"><a href="#交换结构" class="headerlink" title="交换结构"></a>交换结构</h3><p>将分组从输入端口缓存交换（转发）到恰当的输出端口缓存中</p>
+<p>交换速率：数据包从输入传输到输出的速率</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611171801340.png" alt="image-20220611171801340"></p>
+<h3 id="输入-x2F-输出端口排队"><a href="#输入-x2F-输出端口排队" class="headerlink" title="输入 &#x2F; 输出端口排队"></a>输入 &#x2F; 输出端口排队</h3><p>当交换结构的速度慢于<strong>输入端口</strong>的速度，就会在输入端口的缓冲区发生排队，进而<strong>会导致排队延时和由于输入缓冲区溢出导致的丢包！</strong></p>
+<p>当交换结构将分组交付给<strong>输出端口</strong>的速率超过输出链路速率，就需要<strong>排队与缓存</strong>管理功能。当输出端口的缓冲区溢出时，就会出现<strong>丢包</strong>。</p>
+<h2 id="IPv4"><a href="#IPv4" class="headerlink" title="IPv4"></a>IPv4</h2><h3 id="数据报结构"><a href="#数据报结构" class="headerlink" title="数据报结构"></a>数据报结构</h3><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611172303078.png" alt="image-20220611172303078"></p>
+<ul>
+<li>首部长度——占 4 位，可表示的最大数值是 15 个单位(一个单位为 4 字节)，因此 IP 的首部长度的最大值是 60 字节</li>
+<li>片偏移(13 位)指出：较长的分组在分片后，某片在原分组中的相对位置。片偏移以 8 个字节为偏移单位。</li>
+<li>生存时间(8 位)记为 TTL (Time To Live)，数据报在网络中可通过的路由器数的最大值。数据报每经过一台路由器，TTL值减1。若TTL&#x3D;0，则该数据报必须丢弃。</li>
+<li><strong>标志(flag) 占 3 位</strong>，<ul>
+<li>第1位：保留，一般置为0</li>
+<li><strong>第2位：“不分片位”，DF (Don’t Fragment) 。只有当 DF &#x3D; 0 时才允许分片。</strong></li>
+<li><strong>第3位：“更多片位”，MF (More Fragment)。MF &#x3D; 1 表示后面“还有分片”。MF &#x3D; 0 表示最后一个分片。</strong></li>
+</ul>
+</li>
+<li>上层协议(8位)字段：指出此数据报携带的数据使用何种协议，以便目的主机的 IP 层将数据部分上交给哪个处理过程</li>
+</ul>
+<h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><p>IP 地址: 分配给主机或路由器接口的标识符</p>
+<p>接口: 主机&#x2F;路由器与物理链路之间的边界</p>
+<ul>
+<li>路由器有多个接口</li>
+<li>主机可以有多个接口</li>
+</ul>
+<p>每个接口有一个IP地址</p>
+<ul>
+<li>IP地址有两种：IPV4和IPV6</li>
+<li>IPV4：32个二进制位长（4字节），常用点分十进制表示</li>
+<li>IPV6：128个二进制位长（16字节）常用冒号分隔表示</li>
+</ul>
+<h3 id="特殊IP地址段"><a href="#特殊IP地址段" class="headerlink" title="特殊IP地址段"></a>特殊IP地址段</h3><ul>
+<li>本地回环地址</li>
+</ul>
+<p>127.0.0.1-127.255.255.254</p>
+<p>这是预留的一组IP地址，主要是用来识别主机本身的地址。也叫做“localhost”，一般用来测试。</p>
+<ul>
+<li>私有地址（Private address）</li>
+</ul>
+<p>10.x.x.x, 172.16.x.x-172.31.x.x,  192.168.x.x </p>
+<p>这三个地址段被称为私有IP地址段，也就是局域网所使用的地址段，在公网上不能被路由</p>
+<ul>
+<li>0.0.0.0</li>
+</ul>
+<p>这个地址严格上来说都不是真正意义上的IP地址。主要是用来标识不清楚的网络和主机的。系统遇到无法识别的网络或主机的时候会统一的归纳到这个地址</p>
+<ul>
+<li>255.255.255.255</li>
+</ul>
+<p>这个地址是受限的广播地址。主要指一个网段内的所有主机</p>
+<h3 id="互联网中的IP地址"><a href="#互联网中的IP地址" class="headerlink" title="互联网中的IP地址"></a>互联网中的IP地址</h3><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611182358543.png" alt="image-20220611182358543"></p>
+<h2 id="子网划分"><a href="#子网划分" class="headerlink" title="子网划分"></a>子网划分</h2><p>划分子网纯属一个单位内部的事情。单位对外仍然表现为没有划分子网的网络。</p>
+<p>从主机号借用若干个位作为子网号 subnet-id，而主机号 host-id 也就相应减少了若干个位</p>
+<p>划分子网只是把 IP 地址的主机号 host-id 这部分进行再划分，而不改变 IP 地址原来的网络号 net-id。 </p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611191848945.png" alt="image-20220611191848945"></p>
+<h3 id="定义子网的方法"><a href="#定义子网的方法" class="headerlink" title="定义子网的方法"></a>定义子网的方法</h3><p>将每个接口与其主机或路由器分离，创建隔离网络的“孤岛”</p>
+<p>每个隔离的网络称为一个子网</p>
+<h2 id="动态主机配置协议"><a href="#动态主机配置协议" class="headerlink" title="动态主机配置协议"></a>动态主机配置协议</h2><h4 id="DHCP概述："><a href="#DHCP概述：" class="headerlink" title="DHCP概述："></a>DHCP概述：</h4><ol>
+<li>主机广播 “DHCP DISCOVER” （发现报文）</li>
+<li>DHCP 服务器用 “DHCP OFFER” （提供报文）进行响应</li>
+<li>主机请求IP地址: “DHCP REQUEST” （请求报文）</li>
+<li>DHCP 服务器分配IP地址 “DHCP ACK&#x2F;NACK” （确认报文）</li>
+<li>DHCP 终止租用期”DHCP RELEASE”（终止报文）</li>
+</ol>
+<p><strong>DHCP分配的不仅仅是IP地址，还可分配</strong>：</p>
+<ul>
+<li>客户的第一跳路由器的地址（网关）</li>
+<li>DNS服务器的IP地址或域名</li>
+<li>子网掩码</li>
+</ul>
+<p> DHCP是应用层协议</p>
+<h2 id="NAT-网络地址转换"><a href="#NAT-网络地址转换" class="headerlink" title="NAT: 网络地址转换"></a>NAT: 网络地址转换</h2><h3 id="动机"><a href="#动机" class="headerlink" title="动机:"></a>动机:</h3><p>对外部网络来讲，本地网络中所有设备只用一个IP地址</p>
+<ul>
+<li>不需要从 ISP分配一系列地址—— 只要一个IP地址用于所有设备</li>
+<li>在本地网络，改变设备的IP地址不用通知外部世界</li>
+<li>可以变更 ISP ，不用改变本地网络的设备的地址</li>
+<li>本地网络内部设备不能被外部世界明确寻址，或是不可见 (增加了安全性)</li>
+</ul>
+<h3 id="实现："><a href="#实现：" class="headerlink" title="实现："></a>实现：</h3><p>(在NAT转换表中) 记录每个(源IP 地址, 端口号)到 (NAT IP地址, 新端口号) 转换配对</p>
+<p>进来的分组：对每个进来的分组，用保存在NAT表中的对应的 (源IP 地址, 端口号) 替换分组中的目的域 (NAT IP 地址, 新端口号）</p>
+<h2 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h2><h3 id="IPv6首部"><a href="#IPv6首部" class="headerlink" title="IPv6首部"></a>IPv6首部</h3><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611194124043.png" alt="image-20220611194124043"></p>
+<p>与 IPv4比较，</p>
+<ul>
+<li>无首部长度：IPv6 首部长度固定为 40 字节</li>
+<li>无校验和：全部去掉，减少每一跳的处理时间</li>
+<li>无选项（使得首部固定为40字节）：使用扩展首部来实现选项功能。</li>
+<li>总长度 -&gt; 有效载荷长度</li>
+<li>协议字段 -&gt; 下一个首部</li>
+<li>TTL 字段 -&gt; 跳数限制</li>
+<li>无分片&#x2F;组装</li>
+</ul>
+<h3 id="IPv6地址表示"><a href="#IPv6地址表示" class="headerlink" title="IPv6地址表示"></a>IPv6地址表示</h3><p>IPv6 使用<strong>冒号十六进制记法</strong></p>
+<p>在十六进制记法中，允许把数字前面的 0 省略。例如把 0000 中的前三个 0 省略，写成 1 个 0。</p>
+<h2 id="路由选路方法"><a href="#路由选路方法" class="headerlink" title="路由选路方法"></a>路由选路方法</h2><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611194739744.png" alt="image-20220611194739744"></p>
+<h3 id="控制平面"><a href="#控制平面" class="headerlink" title="控制平面"></a>控制平面</h3><p>每个路由器中的各个路由算法组件都在控制平面中进行交互</p>
+<h3 id="路由算法分类"><a href="#路由算法分类" class="headerlink" title="路由算法分类"></a>路由算法分类</h3><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611195102193.png" alt="image-20220611195102193"></p>
+<p>动态路由算法包含全局路由算法和分布式路由算法</p>
+<h4 id="链路状态选路算法"><a href="#链路状态选路算法" class="headerlink" title="链路状态选路算法"></a>链路状态选路算法</h4><p>Dijkstra最低费用路径算法</p>
+<ul>
+<li>所有节点知道网络拓扑，以及每条链路的费用信息<ul>
+<li>通过链路状态广播来实现</li>
+<li>所有节点拥有相同的信息</li>
+</ul>
+</li>
+<li>计算任意一个节点（源节点）到所有其他节点的最低费用路径<ul>
+<li>给出该节点的转发表</li>
+</ul>
+</li>
+<li><strong>迭代</strong>：通过k次迭代后可以知道到达k个目的节点的最低费用路径</li>
+<li><strong>基本思想</strong>：以源节点为起点，每次找出一个到源节点的费用最低的节点，直到把所有的目的节点都找到为止。</li>
+</ul>
+<h4 id="距离向量路由算法DV"><a href="#距离向量路由算法DV" class="headerlink" title="距离向量路由算法DV"></a>距离向量路由算法DV</h4><p>距离向量路由算法是一种迭代的、异步的和分布式的算法。</p>
+<ul>
+<li>分布式：每个节点都从其直接相连邻居接收信息，进行计算，再将计算结果分发给邻居。</li>
+<li>迭代：计算过程一直持续到邻居之间无更多信息交换为止。</li>
+<li>异步：不要求所有节点相互之间步伐一致地操作。</li>
+<li>自我终结：算法能自行停止。</li>
+</ul>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611195744497.png" alt="image-20220611195744497"></p>
+<p><strong>步骤：</strong></p>
+<p>对所有节点：</p>
+<ul>
+<li>从邻居接收距离向量</li>
+<li>计算它们的新的本地距离向量</li>
+<li>将新的本地距离向量发送给邻居</li>
+</ul>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611200132450.png" alt="image-20220611200132450"></p>
+<h2 id="层次选路"><a href="#层次选路" class="headerlink" title="层次选路"></a>层次选路</h2><p>网络并不是“平面的”，一个区域内的路由器组成集合 “自治系统”(AS，autonomous system)，同一个自治系统的路由器运行相同的路由协议——区域内路由协议，不同自治系统内的路由器可以运行不同的区域内路由协议</p>
+<h3 id="域（自治系统）内路由选择"><a href="#域（自治系统）内路由选择" class="headerlink" title="域（自治系统）内路由选择"></a>域（自治系统）内路由选择</h3><p>使用域内路由协议，也被称作内部网关协议 (IGP)</p>
+<p>标准的域内路由协议:</p>
+<ul>
+<li>RIP: 路由信息协议</li>
+<li>OSPF: 开放式最短路径优先</li>
+<li>IGRP: 内部网关路由协议 (Cisco 所有)</li>
+</ul>
+<h4 id="OSPF-Open-Shortest-Path-First"><a href="#OSPF-Open-Shortest-Path-First" class="headerlink" title="OSPF (Open Shortest Path First)"></a>OSPF (Open Shortest Path First)</h4><p>OSPF 优点 (RIP所没有的)</p>
+<ul>
+<li><p>安全：所有OSPF 消息需要认证 (防止恶意入侵) </p>
+</li>
+<li><p>允许多个相同开销的路径 (在 RIP中只有一条路径)</p>
+</li>
+<li><p>对于每个链路，有多个消费尺度用于不同的服务类型TOS (例如在尽力转发时卫星链路代价设置为 “低” ，而对实时应用设置为高)</p>
+</li>
+<li><p>单播和多播综合支持</p>
+</li>
+<li><p>在大的区域中使用层次 OSPF</p>
+</li>
+</ul>
+<h3 id="Internet-域间选路-BGP"><a href="#Internet-域间选路-BGP" class="headerlink" title="Internet 域间选路: BGP"></a>Internet 域间选路: BGP</h3><p>lBGP (Border Gateway Protocol)：事实上的标准域间路由协议，将Internet “粘合”为一个整体的关键</p>
+<p>lBGP 为每个 AS 提供了一种手段:</p>
+<ul>
+<li>eBGP：从相邻AS获取子网可达信息</li>
+<li>iBGP：向该AS内部的所有路由器传播这些子网的可达信息</li>
+<li>基于该可达信息和AS策略，决定到达子网的“好”路由</li>
+<li>允许一个子网向Internet的其他部分通告它的存在 “I am here”</li>
+</ul>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611203342741.png" alt="image-20220611203342741"></p>
+<h4 id="AS互连与AS域间任务"><a href="#AS互连与AS域间任务" class="headerlink" title="AS互连与AS域间任务"></a>AS互连与AS域间任务</h4><p>转发表根据AS内和AS间选路算法而配置</p>
+<ul>
+<li>AS域内的选路项用于目的端在域内的选路。</li>
+<li>AS域内和AS域间的选路项用于目的端在域外的选路</li>
+</ul>
+<p>AS1 需要知道:</p>
+<ul>
+<li>通过AS2和AS3可以到达哪些目的端</li>
+<li>将这些可达信息传播给AS1内的所有路由器</li>
+<li>这就是<strong>域间选路</strong>的任务</li>
+</ul>
+<h4 id="BGP通道"><a href="#BGP通道" class="headerlink" title="BGP通道"></a>BGP通道</h4><p>当AS3通告一个前缀给AS1：</p>
+<ul>
+<li>AS3承诺能够将数据报转发该子网</li>
+<li>AS3能够在它的通告中汇聚网络前缀。</li>
+</ul>
+<h4 id="路径属性"><a href="#路径属性" class="headerlink" title="路径属性"></a>路径属性</h4><p>当通告前缀时，通告包含了BGP属性.：<strong>前缀+属性&#x3D;“路由”</strong></p>
+<p>两个重要的属性:</p>
+<ul>
+<li>AS-PATH: 包含了前缀的通告已经通告过的那些AS,如 AS67,AS17</li>
+<li>NEXT-HOP: 指出到达下一个AS的具体AS间边界路由器（可能存在多条从当前AS到达下一个AS的链路）</li>
+</ul>
+<p>当网关路由器接收到路由通告时，使用输入策略来决定接收&#x2F;舍弃该通告。</p>
+<h4 id="为什么AS内选路和AS间选路采用不同的协议"><a href="#为什么AS内选路和AS间选路采用不同的协议" class="headerlink" title="为什么AS内选路和AS间选路采用不同的协议 ?"></a>为什么AS内选路和AS间选路采用不同的协议 ?</h4><p>策略：</p>
+<ul>
+<li>AS间：管理员想控制本AS内产生的通信流怎样选路，以及什么通信流穿过自己的网络</li>
+<li>AS内：单个管理者，因此不需要策略</li>
+</ul>
+<p>规模：</p>
+<ul>
+<li>层次路由节省了转发表的大小空间，减少了路由更新的流量</li>
+</ul>
+<p>性能：</p>
+<ul>
+<li>AS内：集中在性能上</li>
+<li>AS间：策略可能比性能更加重要</li>
+</ul>
+<h2 id="SDN（软件定义网络）"><a href="#SDN（软件定义网络）" class="headerlink" title="SDN（软件定义网络）"></a>SDN（<strong>软件定义网络</strong>）</h2><p>SDN并不是一个具体的技术，它是一种网络设计理念，规划了网络的各个组成部分（软件、硬件、转发面和控制面）及相互之间的互动关系。</p>
+<p>SDN的核心思想是建立一个通用转发体系  ——每个交换设备包含一个流表(flow table)。流表由一个逻辑上中心化的控制器（远程控制器）来计算和分发。</p>
+<h3 id="SDN体系结构和特征"><a href="#SDN体系结构和特征" class="headerlink" title="SDN体系结构和特征"></a>SDN体系结构和特征</h3><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611204742055.png" alt="image-20220611204742055"></p>
+<h4 id="特征："><a href="#特征：" class="headerlink" title="特征："></a>特征：</h4><ul>
+<li>基于流的转发：基于首部字段值进行转发</li>
+<li>数据平面与控制平面分离：数据平面网络交换机组成，控制平面由服务器和管理流表软件构成。</li>
+<li>网络控制功能：位于数据平面交换机外部，包括SDN控制器和若干网络控制程序。</li>
+<li>可编程的网络：调用API定义和控制网络设备的数据平面。</li>
+</ul>
+<h3 id="SDN控制器的组件"><a href="#SDN控制器的组件" class="headerlink" title="SDN控制器的组件"></a>SDN控制器的组件</h3><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220611204647307.png" alt="image-20220611204647307"></p>
+<h1 id="第5章-数据链路层"><a href="#第5章-数据链路层" class="headerlink" title="第5章-数据链路层"></a>第5章-数据链路层</h1><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610215003139.png" alt="image-20220610215003139"></p>
+<h2 id="链路层提供的服务"><a href="#链路层提供的服务" class="headerlink" title="链路层提供的服务"></a>链路层提供的服务</h2><p>数据链路层的职责是将数据报从一个节点传送到与该节点直接有物理链路相连的另一个节点。</p>
+<ul>
+<li><p>组帧 (framing):</p>
+<p>封装数据报为数据帧，增加头部(e.g.,地址信息)，尾部信息（e.g.,差错编码信息）帧同步(e.g.,帧定界符)</p>
+</li>
+<li><p>链路接入( link access)</p>
+<p>如果是共享链路，需要解决信道接入(channel access)</p>
+<p>在数据帧头部中，用MAC地址来标识源和目的，不同于IP地址</p>
+</li>
+<li><p>在相邻节点之间可靠传输数据帧（某些链路可能未实现）</p>
+<p>在比特错误率很低的链路(光纤、双绞线)很少使用</p>
+<p>无线链路：高比特错误率，需要可靠交付</p>
+</li>
+<li><p>流量控制(flow control): </p>
+<p>用于控制发送节点向直接相连的接收节点发送数据帧的频率</p>
+</li>
+<li><p>差错检测(error detection): </p>
+<p>差错可能由信号衰减、噪声引入</p>
+<p>接收方检测是否出现错误：</p>
+<p>通知发送方重传或丢弃数据帧</p>
+</li>
+<li><p>错误纠正(error correction): </p>
+<p>接收方标识和纠正比特错误，而不需要请求重传</p>
+</li>
+<li><p>半双工和全双工(half-duplex and full-duplex):</p>
+<p>在半双工模式，链路的两个节点都可以发送数据，但是不能同时发送</p>
+</li>
+</ul>
+<h2 id="差错检测和纠错"><a href="#差错检测和纠错" class="headerlink" title="差错检测和纠错"></a>差错检测和纠错</h2><h3 id="三种主要差错检测技术"><a href="#三种主要差错检测技术" class="headerlink" title="三种主要差错检测技术"></a>三种主要差错检测技术</h3><h4 id="奇偶校验：最基本的方法。"><a href="#奇偶校验：最基本的方法。" class="headerlink" title="奇偶校验：最基本的方法。"></a>奇偶校验：最基本的方法。</h4><h5 id="一比特奇偶校验"><a href="#一比特奇偶校验" class="headerlink" title="一比特奇偶校验"></a>一比特奇偶校验</h5><p>发送方：</p>
+<p>在要发送的信息D（d位）后面附加一个奇偶校验位，使“1”的个数是奇数（奇校验）或偶数（偶校验），一起传输发送（d+1位）。</p>
+<p>接收方：</p>
+<p>检测收到的信息（d+1位）中“1”的个数。偶校验：发现奇数个“1”，至少有一个比特发生差错（奇数个比特差错）。奇校验：发现偶数个“1”，至少有一个比特发生差错。</p>
+<h5 id="二维奇偶校验"><a href="#二维奇偶校验" class="headerlink" title="二维奇偶校验"></a>二维奇偶校验</h5><p><strong>基本思想：</strong></p>
+<p>将要传信息D（d比特）划分为i行j 列（i 个组，每组j位）；对每行和每列分别计算奇偶值；结果的i+j+1个奇偶比特构成了帧的差错检测比特。</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612133105265.png" alt="image-20220612133105265"></p>
+<h4 id="Internet校验和：常用于运输层"><a href="#Internet校验和：常用于运输层" class="headerlink" title="Internet校验和：常用于运输层"></a>Internet校验和：常用于运输层</h4><p><strong>发送方：</strong></p>
+<p>将数据的每两个字节当作一个16位的整数，可分成若干整数；</p>
+<p>将所有16 位的整数求和；</p>
+<p>对得到的和逐位取反，作为检查和，放在报文段首部，一起发送。</p>
+<p><strong>接收方：</strong> </p>
+<p>对接收到的信息 (包括检查和)按与发送方相同的方法求和。</p>
+<p>全“1”：收到的数据无差错；</p>
+<p>其中有“0”：收到的数据出现差错。</p>
+<h4 id="循环冗余检测CRC：常用于链路层"><a href="#循环冗余检测CRC：常用于链路层" class="headerlink" title="循环冗余检测CRC：常用于链路层"></a>循环冗余检测CRC：常用于链路层</h4><p>计算机网络中广泛采用</p>
+<p><strong>基本思想：</strong></p>
+<p>设发送节点要把数据<em>D</em>（<em>d</em> 比特）发送给接收节点。</p>
+<p>发送方和接收方先共同选定一个<em>生成多项式</em> <em>G</em>（<em>r</em>+1比特），最高有效位 (最左边)是1。</p>
+<p><strong>循环冗余检测CRC (cyclic redundancy check)编码：</strong></p>
+<p>即<em>多项式编码</em>，把要发送的比特串看作为系数是0或1的一个多项式，对比特串的操作看作为多项式运算。</p>
+<p><strong>发送方：</strong></p>
+<p>计算出一个 r 位附加比特 R，添加到D的后面产生DR（d+r 比特</p>
+<p>DR 能被生成多项式 G 模2运算整除，一起发送。</p>
+<p><strong>接收方：</strong></p>
+<p>用生成多项式 G 去除接收到的 DR（d+r比特）</p>
+<p>余数非0：传输发生差错；</p>
+<p>余数为0：传输正确，去掉尾部 r 位，得所需数据 D。</p>
+<p><strong>模2运算</strong>：<br>按位异或 (XOR)，1001 XOR 1101 &#x3D; 0100  </p>
+<p>R的计算：将数据D后面添加 <em>r</em> 个0，除以给定的生成多项式G，所得余数即为R（<em>r</em> 位）。</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612140851371.png" alt="image-20220612140851371"></p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612142614257.png" alt="image-20220612142614257"></p>
+<h2 id="多路访问链路和协议"><a href="#多路访问链路和协议" class="headerlink" title="多路访问链路和协议"></a>多路访问链路和协议</h2><p>两种网络链路：</p>
+<ul>
+<li>点对点链路：链路两端各一个节点。一个发送和一个接收。如点对点协议P2P。</li>
+<li>广播链路：多个节点连接到一个共享的广播信道。</li>
+</ul>
+<p>广播：任何一个节点传输一帧时，信号在信道上广播，其他节点都可以收到一个拷贝。常用于局域网LAN中，如早期的以太网和无线局域网。</p>
+<h3 id="多路访问协议"><a href="#多路访问协议" class="headerlink" title="多路访问协议"></a>多路访问协议</h3><ul>
+<li><h4 id="信道划分协议"><a href="#信道划分协议" class="headerlink" title="信道划分协议"></a>信道划分协议</h4><p>把信道划分为小“片” (时隙)</p>
+<p>给节点分配专用的小“片” </p>
+<p><strong>时分多路访问TDMA (time division multiple access)：</strong></p>
+<p>将时间划分为<em>时间帧</em>，每个时间帧再划分为<em>N个时隙</em>（长度保证发送一个分组），分别分配给<em>N</em>个节点。每个节点只在固定分配的时隙中传输。</p>
+<p><strong>频分多路访问FDMA</strong> (frequency division multiple access)：</p>
+<p>将总信道带宽 R b&#x2F;s划分为 N 个较小信道（频段，带宽为R&#x2F;N），分别分配给 N 个节点。</p>
+</li>
+<li><h4 id="随机访问协议"><a href="#随机访问协议" class="headerlink" title="随机访问协议"></a>随机访问协议</h4><p>不划分信道，允许冲突</p>
+<p>发送节点以信道全部速率（<em>R</em> b&#x2F;s）发送；</p>
+<p>发生冲突时，冲突的每个节点分别等待一个随机时间，再重发，直到帧(分组)发送成功</p>
+<p>节点间没有协调者</p>
+<p><strong>纯 ALOHA</strong></p>
+<p>帧一到达，立即传输，如果与其他帧产生冲突，在该冲突帧传完之后，以概率<em>p</em>立即重传该帧；</p>
+<p>或等待一个帧的传输时间，再以概率<em>p</em> 传输该帧，或者以概率1-<em>p</em> 等待另一个帧的时间。</p>
+<img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612144754958.png" alt="image-20220612144754958" style="zoom:67%;">
+
+<p><strong>时隙ALOHA</strong></p>
+<p>所有帧<strong>大小相同</strong></p>
+<p>时间被划分为<strong>相同大小的时隙</strong>，一个时隙等于传送一帧的时间</p>
+<p>节点只能在一个时隙的开始才能传送</p>
+<p>假设有N个节点，每个节点在时隙以概率<em>p</em>发送</p>
+<p>一个节点在一个时隙成功传送的概率 <strong>&#x3D; p(1-p)N-1</strong></p>
+</li>
+<li><h4 id="轮流协议"><a href="#轮流协议" class="headerlink" title="轮流协议"></a>轮流协议</h4><p>通过轮流访问信道避免冲突，要发送的节点越多轮流时间越长</p>
+<p><strong>轮询(polling):</strong> </p>
+<p>主节点“邀请”从节点依次传送</p>
+<p>主节点首先向节点1发送一个报文，告诉它（节点1）能够传输的帧的最多数量。如果节点1有数据要发送，则最多可发送允许的最多数据的数据；</p>
+<p>然后主节点会继续询问节点2，节点3。</p>
+<p><strong>令牌传递(token passing):</strong></p>
+<p>控制令牌顺序从一个节点传递到下一个节点。</p>
+<p>当一个节点收到令牌时，仅当它有一些数据帧要发送时，它才持有这个令牌，否则，它立即向下一个节点转发该令牌。</p>
+<p>当一个节点收到令牌时，如果它确实有数据帧要传输，它发送最大数目的帧数，然后把令牌转发给下一个节点。</p>
+</li>
+</ul>
+<h3 id="多路访问控制协议的总结"><a href="#多路访问控制协议的总结" class="headerlink" title="多路访问控制协议的总结"></a>多路访问控制协议的总结</h3><p><strong>信道划分</strong>：时分，频分，码分</p>
+<p><strong>随机接入：</strong></p>
+<ul>
+<li>ALOHA, S-ALOHA, CSMA, CSMA&#x2F;CD</li>
+<li>载波侦听：在某些技术中容易实现(有线)，在有些技术中比较困难(无线)</li>
+<li>CSMA&#x2F;CD used in Ethernet</li>
+<li>CSMA&#x2F;CA used in 802.11</li>
+</ul>
+<p><strong>轮流</strong></p>
+<ul>
+<li>来自中心站的轮询</li>
+<li>令牌传递</li>
+</ul>
+<h2 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h2><p><strong>局域网：Local Area Network ( LAN )</strong></p>
+<p><strong>主要特点：网络为一个组织所拥有，且地理范围和站点数目均有限</strong></p>
+<h3 id="网络拓扑结构"><a href="#网络拓扑结构" class="headerlink" title="网络拓扑结构"></a>网络拓扑结构</h3><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612150925855.png" alt="image-20220612150925855"></p>
+<p>•辐射状连接</p>
+<p>•中央结点集中式通信控制</p>
+<p>•优点：结构简单，访问协议简单，单个节点的故障不会影响到整个网络。</p>
+<p>•缺点：对中央结点的可靠性要求很高，一有故障，全网瘫痪。</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612150938871.png" alt="image-20220612150938871"></p>
+<p>•优点：结构简单，易于扩充</p>
+<p>•缺点：故障检测比较困难</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612150957048.png" alt="image-20220612150957048"></p>
+<p>•站与站点之间首尾相接，形成一个环，数据只能沿单方向传输</p>
+<p>•优点：这种结构适合于光纤介质。实时性较强</p>
+<p>•缺点：如果处理不当，站点的故障会引起全网故障</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612151019946.png" alt="image-20220612151019946"></p>
+<p>它与星型结构相比降低了通信线路成本，增加了网络复杂性</p>
+<h3 id="链路层寻址和ARP"><a href="#链路层寻址和ARP" class="headerlink" title="链路层寻址和ARP"></a>链路层寻址和ARP</h3><p>每个节点有网络层地址和链路层地址。</p>
+<ul>
+<li>网络层地址：节点在网络中分配的一个唯一地址（IP地址）。用于把分组送到目的IP网络。长度为32比特（IPv4）。</li>
+<li>链路层地址：又叫做MAC地址或物理地址、局域网地址。</li>
+</ul>
+<p>​			用于把数据帧从一个节点传送到另一个节点(同一网络中)。</p>
+<ul>
+<li>MAC地址（LAN地址、物理地址）：</li>
+</ul>
+<p>​			节点“网卡”本身所带的地址（唯一）。</p>
+<p>​			MAC地址长度通常为6字节(48比特)，共248个。</p>
+<p>​			6字节地址用16进制表示，每个字节表示为一对16进制数</p>
+<p>​			网卡的MAC地址是永久的（生产时固化在其ROM里）</p>
+<h4 id="地址之间如何进行转换："><a href="#地址之间如何进行转换：" class="headerlink" title="地址之间如何进行转换："></a>地址之间如何进行转换：</h4><h5 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h5><p>MAC 地址是平面结构：带有同一网卡的节点，在任何网络中都有同样的MAC地址。</p>
+<p>IP地址具有层次结构：当节点移动到不同网络时，节点的IP地址发生改变。</p>
+<h5 id="MAC地址识别"><a href="#MAC地址识别" class="headerlink" title="MAC地址识别"></a>MAC地址识别</h5><ul>
+<li>广播信道的局域网中，一个节点发送的帧，在信道上广播传输，其他节点都可能收到该帧。</li>
+<li>大多数情况，一个节点只向某个特定的节点发送。</li>
+<li>由“网卡”负责MAC地址的封装和识别。</li>
+<li><strong>发送适配器</strong>：将目的MAC地址封装到帧中，并发送。所有其他适配器都会收到这个帧。</li>
+<li><strong>接收适配器</strong>：检查帧的目的MAC地址是否与自己MAC地址相匹配：</li>
+</ul>
+<p>​				匹配：接收该帧，取出数据报，并传递给上层。</p>
+<p>​				不匹配：丢弃该帧。</p>
+<p>​    主机名 → IP地址 → MAC地址</p>
+<p><strong>DNS域名系统：将主机名解析到IP地址。</strong></p>
+<p>   DNS为在因特网中任何地方的主机解析主机名。</p>
+<p><strong>ARP地址解析协议：将IP地址解析到MAC地址。</strong></p>
+<p>   ARP只为在同一个LAN上的节点解析IP地址。</p>
+<h4 id="ARP协议-地址解析协议"><a href="#ARP协议-地址解析协议" class="headerlink" title="ARP协议: 地址解析协议"></a>ARP协议: 地址解析协议</h4><p>ARP表: 局域网上的每个节点(主机、路由器)都有这个表	&lt; IP address; MAC address; TTL&gt;</p>
+<p>为某些局域网节点进行 IP &lt;-&gt; MAC地址映射：</p>
+<p>TTL (存活时间): 地址映射将被删除的时间（通常为20分钟）</p>
+<h5 id="两个主机位于同一个局域网"><a href="#两个主机位于同一个局域网" class="headerlink" title="两个主机位于同一个局域网"></a>两个主机位于同一个局域网</h5><ol>
+<li>主机A希望发送数据报给主机B，B的MAC地址不在A的ARP映射表中</li>
+<li>主机A 广播 ARP查询分组, 其中包含B的IP地址 ，目的MAC地址 &#x3D; FF-FF-FF-FF-FF-FF</li>
+<li>局域网中所有节点收到ARP查询分组</li>
+<li>主机B收到ARP查询分组，返回B的MAC地址给主机A，包含有B的MAC地址的帧发送给主机A(单播)</li>
+</ol>
+<h5 id="发送数据报到子网以外"><a href="#发送数据报到子网以外" class="headerlink" title="发送数据报到子网以外"></a>发送数据报到子网以外</h5><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612154425163.png" alt="image-20220612154425163"></p>
+<p>主机A经路由器R发送数据报给主机B</p>
+<p><strong>集中在寻址上——IP层(数据报)和MAC层(数据帧)</strong></p>
+<ul>
+<li>假设主机A知道主机B的IP地址</li>
+<li>假设主机A知道第一跳路由器R的IP地址(通过DHCP协议)</li>
+<li>假设主机A知道路由器R的MAC地址(通过ARP协议)</li>
+</ul>
+<ol>
+<li><p>主机A构建IP数据报，源地址是A的IP地址，目的地址是B的IP地址</p>
+<p>主机A构建链路层数据帧，目的MAC地址是路由器左边端口的MAC地址</p>
+</li>
+<li><p>数据帧从主机A发送到路由器R</p>
+<p>路由器R收到数据帧，抽取出数据报递交到IP层</p>
+</li>
+<li><p>路由器R转发数据报，源地址为A的IP地址，目的地址为B的IP地址</p>
+<p>路由器R将该数据报封装成链路层帧，目的MAC地址为主机B的MAC地址</p>
+</li>
+</ol>
+<h3 id="以太网-Ethernet"><a href="#以太网-Ethernet" class="headerlink" title="以太网(Ethernet)"></a>以太网(Ethernet)</h3><h4 id="不可靠的无连接服务"><a href="#不可靠的无连接服务" class="headerlink" title="不可靠的无连接服务"></a>不可靠的无连接服务</h4><p><strong>无连接服务：</strong>通信时，发送方适配器不需要先和接收方适配器“握手”。</p>
+<p><strong>不可靠的服务：</strong></p>
+<ul>
+<li>接收到的帧可能包含比特差错。</li>
+<li>收到正确帧，不发确认帧；收到出错帧，丢弃该帧，不发否定帧。</li>
+<li>发送适配器不会重发出错帧。</li>
+<li>丢弃数据的恢复是通过终端传输层的可靠数据传输机制来实现的</li>
+<li><strong>以太网并不知道是传输新数据，还是重传数据。</strong></li>
+</ul>
+<h4 id="以太网的帧结构"><a href="#以太网的帧结构" class="headerlink" title="以太网的帧结构"></a>以太网的帧结构</h4><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612155719416.png" alt="image-20220612155719416"></p>
+<p>发送方：发送适配器将IP数据报封装成以太网帧，并传递到物理层。</p>
+<p>接收方：接收适配器从物理层收到该帧，取出IP数据报，并传递给网络层。</p>
+<p><strong>前同步码(8 字节)</strong></p>
+<p>使接收方和发送方的时钟同步，接收方一旦收到连续的8字节前同步码，可确定有帧传过来。</p>
+<p>前同步码是“无效信号”，接收方收到后删除，不向上层传送。</p>
+<p><strong>源、目的MAC地址(各6字节)</strong></p>
+<p>主机A向主机B发送一个IP数据报</p>
+<p>那么适配器B只接收目的地址与其MAC地址匹配或广播地址的帧，并将数据字段的内容传递给网络层。否则，丢弃该帧。</p>
+<p><strong>类型字段(2 字节)</strong></p>
+<p>以太网可以“多路复用”（支持）多种网络层协议，接收适配器根据“类型”字段，将数据字段传递给相应的网络层协议</p>
+<p><strong>数据字段(46～1500 字节)</strong></p>
+<p>以太网的最大传输单元MTU是1500字节：<strong>若IP数据报超过1500字节，必须将该数据报分段。</strong></p>
+<p>最小长度是46字节：如果IP数据报小于46字节，必须填充为46字节。接收方网络层去除填充内容。</p>
+<p><strong>循环冗余检测CRC(4字节)</strong></p>
+<p>检测数据帧中是否出现比特差错（翻转）</p>
+<h4 id="链路层交换机"><a href="#链路层交换机" class="headerlink" title="链路层交换机"></a>链路层交换机</h4><h5 id="支持多节点同时传输"><a href="#支持多节点同时传输" class="headerlink" title="支持多节点同时传输"></a>支持多节点同时传输</h5><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612160821307.png" alt="image-20220612160821307"></p>
+<p>每个主机由单独的链路直接连到交换机端口</p>
+<p>交换机可以缓存数据帧</p>
+<p>以太网协议在每个输入链路使用，无碰撞，全双工，每条链路自身是一个碰撞域（A-to-A‘和B-to-B’可以同时传输，而不会发生碰撞）</p>
+<h5 id="通过自学习构建转发表"><a href="#通过自学习构建转发表" class="headerlink" title="通过自学习构建转发表"></a>通过自学习构建转发表</h5><p>当收到数据帧时，交换机“学习”发送主机的位置：进入的局域网网段(到达端口)</p>
+<p>在转发表中记录发送主机&#x2F;位置对</p>
+<h5 id="数据帧的过滤-x2F-转发"><a href="#数据帧的过滤-x2F-转发" class="headerlink" title="数据帧的过滤&#x2F;转发"></a>数据帧的过滤&#x2F;转发</h5><p>当交换机收到数据帧：</p>
+<ol>
+<li><p>记录到达链路和发送主机的MAC地址</p>
+</li>
+<li><p>使用数据帧的目的MAC地址，在转发表中检索</p>
+</li>
+<li><p><strong>IF</strong>在转发表条目中找到对应的MAC地址</p>
+<p>Do{</p>
+<pre><code> **IF** 目的MAC地址对应的端口与数据帧的达到端口相同
+</code></pre>
+<p>​	 <strong>Then</strong> 丢弃该数据帧</p>
+<p>​	 <strong>Else</strong> 转发该数据帧到条目指定的端口</p>
+<p>}</p>
+</li>
+<li><p><strong>Else</strong>，向除到达端口之外的所有端口转发**(flood)<strong>——</strong>泛洪**</p>
+</li>
+</ol>
+<h5 id="三层交换"><a href="#三层交换" class="headerlink" title="三层交换"></a>三层交换</h5><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612161550744.png" alt="image-20220612161550744"></p>
+<ul>
+<li>发送站点A在开始发送时，把自己的IP地址与B站的IP地址比较，判断B站是否与自己在同一子网内。</li>
+<li>若目的站B与发送站A在同一子网内，则进行二层的转发。</li>
+<li>若两个站点不在同一子网内，则发送站A要向“缺省网关”发出ARP请求，请求获得B的MAC地址。</li>
+<li>如果三层交换机知道B的MAC地址，则向A回复B的MAC地址。否则三层交换机根据路由信息向B站广播一个ARP请求，B站得到此ARP请求后向三层交换机回复其MAC地址，三层交换机将B站的MAC地址保存到二层交换引擎的MAC地址表中，并回复给发送站A。</li>
+<li>A直接用B的MAC地址封装数据帧，三层交换机接收到数据后直接进行二层交换（数据链路交换）。</li>
+</ul>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612161842192.png" alt="image-20220612161842192"></p>
+<h2 id="VLAN"><a href="#VLAN" class="headerlink" title="VLAN"></a>VLAN</h2><p>Virtual Local Area Network：利用支持VLAN的交换机，可以在一个实际的物理局域网内，定义多个虚拟的局域网</p>
+<p><strong>基于端口的VLAN</strong>: 利用交换机内置的管理软件，将端口分组，使得一个单独的交换机像多个交换机一样工作。</p>
+<p><strong><em>Trunk Port</em>（干线端口）</strong>: 每台交换机上的一个特殊端口被配置为干线端口，干线端口属于所有VLAN，发送到任何VLAN的帧经过干线链路转发到其他交换机</p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612162252384.png" alt="image-20220612162252384"></p>
+<h1 id="第六章-物理层"><a href="#第六章-物理层" class="headerlink" title="第六章-物理层"></a>第六章-物理层</h1><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610215123806.png" alt="image-20220610215123806"></p>
+<h1 id="第七章-网络编程"><a href="#第七章-网络编程" class="headerlink" title="第七章-网络编程"></a>第七章-网络编程</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="服务器和客户机"><a href="#服务器和客户机" class="headerlink" title="服务器和客户机"></a>服务器和客户机</h3><p>服务器： </p>
+<ul>
+<li>总是打开的主机</li>
+<li>具有固定的、众所周知的IP地址</li>
+<li>主机群集常被用于创建强大的虚拟服务器</li>
+</ul>
+<p>客户机:</p>
+<ul>
+<li>同服务器端通信</li>
+<li>可以间断的同服务器连接</li>
+<li>可以拥有动态IP地址</li>
+<li>客户机相互之间不直接通信</li>
+</ul>
+<h3 id="并发与并行"><a href="#并发与并行" class="headerlink" title="并发与并行"></a>并发与并行</h3><p>并行(<em>Parallelism</em>)：真正同时发生</p>
+<p>并发(<em>Concurrency</em>)：看起来同时发生一般采用分时机制</p>
+<h3 id="字节序"><a href="#字节序" class="headerlink" title="字节序"></a>字节序</h3><p><strong>字节(Byte)：</strong></p>
+<ul>
+<li>传输和存储信息的最小单位。</li>
+<li>各种数据类型，都是由字节构成。</li>
+</ul>
+<p><strong>主机字节序(Big-Endian | Little-Endian)：</strong></p>
+<ul>
+<li>不同类型的机器处理数据时，会按特定的字节排列顺序读取存储器。</li>
+</ul>
+<p><strong>网络字节顺序（<em>Network-Endian</em>）</strong></p>
+<p>网络字节顺序是TCP&#x2F;IP中规定好的一种数据表示格式，它与具体的CPU类型、操作系统等无关，从而可以保证数据在不同主机之间传输时能够被正确解释。</p>
+<p><strong>网络字节顺序采用Big-Endian排序方式，总是从低位地址开始传输。</strong></p>
+<p>发送数据包时，程序将主机字节序转换为网络字节序；接收数据包时，则将网络字节序转换为主机字节序。</p>
+<h2 id="数据结构对齐"><a href="#数据结构对齐" class="headerlink" title="数据结构对齐"></a>数据结构对齐</h2><p><strong>对齐系数</strong></p>
+<ul>
+<li>每个特定平台的编译器都有自己的默认“对齐系数” 。</li>
+<li>通过预编译命令#pragma pack(n)，n&#x3D;1,2,4,8,16来改变这一系数，其中的n就是指定的“对齐系数”。</li>
+</ul>
+<p><strong>结构体对齐规则：</strong></p>
+<ul>
+<li>结构体变量的首地址能够被其最宽基本类型成员的大小所整除；</li>
+<li>结构体每个成员相对结构体首地址的偏移量(offset)都是成员大小的整数倍，如有需要编译器会在成员之间加上填充字节；</li>
+<li>结构体的总大小为结构体最宽基本类型成员大小的整数倍，如有需要编译器会在最末一个成员之后加上填充字节。</li>
+</ul>
+<p><strong>数据结构对齐</strong></p>
+<p>平台原因(移植原因)：不是所有的硬件平台都能访问任意地址上的任意数据的。</p>
+<p>性能原因：数据结构(尤其是栈)应该尽可能地在自然边界上对齐。为了访问未对齐的内存，处理器需要作两次内存访问；而对齐的内存访问仅需要一次访问。</p>
+<h2 id="Socket套接字与循环服务器"><a href="#Socket套接字与循环服务器" class="headerlink" title="Socket套接字与循环服务器"></a>Socket套接字与循环服务器</h2><h3 id="主动套接字和被动套接字"><a href="#主动套接字和被动套接字" class="headerlink" title="主动套接字和被动套接字"></a>主动套接字和被动套接字</h3><p>创建方式相同，使用方式不同</p>
+<ul>
+<li>被动：等待传入连接的套接字，如服务器套接字</li>
+<li>主动：发起连接的套接字，如客户端套接字</li>
+</ul>
+<p>指明端到端地址：创建时不指定，使用时指明</p>
+<ul>
+<li>TCP&#x2F;IP需要指明协议端口号和IP地址</li>
+<li>TCP&#x2F;IP协议族：PF_INET</li>
+<li>TCP&#x2F;IP地址族：AF_INET</li>
+<li>注意：具有相同的数字值，防止误用</li>
+</ul>
+<h3 id="地址结构"><a href="#地址结构" class="headerlink" title="地址结构"></a>地址结构</h3><p>Socket 通用地址结构<strong>sockaddr</strong></p>
+<p>Socket是传输层&#x2F;网络层编程接口，由于传输层&#x2F;网络层的各种实现不同，可能会有不同的编址方案。通用地址为了适应这种需求而定义。</p>
+<h3 id="循环服务器Socket编程基本步骤"><a href="#循环服务器Socket编程基本步骤" class="headerlink" title="循环服务器Socket编程基本步骤"></a>循环服务器Socket编程基本步骤</h3><h4 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h4><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612170821107.png" alt="image-20220612170821107"></p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612170947161.png" alt="image-20220612170947161"></p>
+<h4 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h4><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612170844030.png" alt="image-20220612170844030"></p>
+<p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612170957552.png" alt="image-20220612170957552"></p>
+<h3 id="地址转换函数小结"><a href="#地址转换函数小结" class="headerlink" title="地址转换函数小结"></a>地址转换函数小结</h3><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220612171147070.png" alt="image-20220612171147070"></p>
+<p>ipv4映射地址：即ipv4映射的ipv6地址。如ipv6地址::ffff:10.0.0.1可以表示ipv4地址 10.0.0.1。</p>
+<p>ipv4兼容地址：即ipv4兼容的ipv6地址。如::0102:f001相当于地址::1.2.240.1。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">专业课</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://ycy666666.github.io/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2022/06/20/games101%20%E7%9B%B8%E6%9C%BA%E3%80%81%E9%80%8F%E9%95%9C%E3%80%81%E5%85%89%E5%9C%BA%E3%80%81%E8%89%B2%E5%BD%A9/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          games101 相机、透镜、光场、色彩
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/06/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机操作系统</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2023 YCY
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		toc_hide_index: true,
+		root: "/",
+		innerArchive: true,
+		showTags: false
+	}
+</script>
+
+<script>!function(t){function n(e){if(r[e])return r[e].exports;var i=r[e]={exports:{},id:e,loaded:!1};return t[e].call(i.exports,i,i.exports,n),i.loaded=!0,i.exports}var r={};n.m=t,n.c=r,n.p="./",n(0)}([function(t,n,r){r(195),t.exports=r(191)},function(t,n,r){var e=r(3),i=r(52),o=r(27),u=r(28),c=r(53),f="prototype",a=function(t,n,r){var s,l,h,v,p=t&a.F,d=t&a.G,y=t&a.S,g=t&a.P,b=t&a.B,m=d?e:y?e[n]||(e[n]={}):(e[n]||{})[f],x=d?i:i[n]||(i[n]={}),w=x[f]||(x[f]={});d&&(r=n);for(s in r)l=!p&&m&&void 0!==m[s],h=(l?m:r)[s],v=b&&l?c(h,e):g&&"function"==typeof h?c(Function.call,h):h,m&&u(m,s,h,t&a.U),x[s]!=h&&o(x,s,v),g&&w[s]!=h&&(w[s]=h)};e.core=i,a.F=1,a.G=2,a.S=4,a.P=8,a.B=16,a.W=32,a.U=64,a.R=128,t.exports=a},function(t,n,r){var e=r(6);t.exports=function(t){if(!e(t))throw TypeError(t+" is not an object!");return t}},function(t,n){var r=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=r)},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n){var r=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=r)},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n,r){var e=r(126)("wks"),i=r(76),o=r(3).Symbol,u="function"==typeof o;(t.exports=function(t){return e[t]||(e[t]=u&&o[t]||(u?o:i)("Symbol."+t))}).store=e},function(t,n){var r={}.hasOwnProperty;t.exports=function(t,n){return r.call(t,n)}},function(t,n,r){var e=r(94),i=r(33);t.exports=function(t){return e(i(t))}},function(t,n,r){t.exports=!r(4)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n,r){var e=r(2),i=r(167),o=r(50),u=Object.defineProperty;n.f=r(10)?Object.defineProperty:function(t,n,r){if(e(t),n=o(n,!0),e(r),i)try{return u(t,n,r)}catch(t){}if("get"in r||"set"in r)throw TypeError("Accessors not supported!");return"value"in r&&(t[n]=r.value),t}},function(t,n,r){t.exports=!r(18)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n,r){var e=r(14),i=r(22);t.exports=r(12)?function(t,n,r){return e.f(t,n,i(1,r))}:function(t,n,r){return t[n]=r,t}},function(t,n,r){var e=r(20),i=r(58),o=r(42),u=Object.defineProperty;n.f=r(12)?Object.defineProperty:function(t,n,r){if(e(t),n=o(n,!0),e(r),i)try{return u(t,n,r)}catch(t){}if("get"in r||"set"in r)throw TypeError("Accessors not supported!");return"value"in r&&(t[n]=r.value),t}},function(t,n,r){var e=r(40)("wks"),i=r(23),o=r(5).Symbol,u="function"==typeof o;(t.exports=function(t){return e[t]||(e[t]=u&&o[t]||(u?o:i)("Symbol."+t))}).store=e},function(t,n,r){var e=r(67),i=Math.min;t.exports=function(t){return t>0?i(e(t),9007199254740991):0}},function(t,n,r){var e=r(46);t.exports=function(t){return Object(e(t))}},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n,r){var e=r(63),i=r(34);t.exports=Object.keys||function(t){return e(t,i)}},function(t,n,r){var e=r(21);t.exports=function(t){if(!e(t))throw TypeError(t+" is not an object!");return t}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n){var r=0,e=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++r+e).toString(36))}},function(t,n){var r={}.hasOwnProperty;t.exports=function(t,n){return r.call(t,n)}},function(t,n){var r=t.exports={version:"2.4.0"};"number"==typeof __e&&(__e=r)},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n,r){var e=r(11),i=r(66);t.exports=r(10)?function(t,n,r){return e.f(t,n,i(1,r))}:function(t,n,r){return t[n]=r,t}},function(t,n,r){var e=r(3),i=r(27),o=r(24),u=r(76)("src"),c="toString",f=Function[c],a=(""+f).split(c);r(52).inspectSource=function(t){return f.call(t)},(t.exports=function(t,n,r,c){var f="function"==typeof r;f&&(o(r,"name")||i(r,"name",n)),t[n]!==r&&(f&&(o(r,u)||i(r,u,t[n]?""+t[n]:a.join(String(n)))),t===e?t[n]=r:c?t[n]?t[n]=r:i(t,n,r):(delete t[n],i(t,n,r)))})(Function.prototype,c,function(){return"function"==typeof this&&this[u]||f.call(this)})},function(t,n,r){var e=r(1),i=r(4),o=r(46),u=function(t,n,r,e){var i=String(o(t)),u="<"+n;return""!==r&&(u+=" "+r+'="'+String(e).replace(/"/g,"&quot;")+'"'),u+">"+i+"</"+n+">"};t.exports=function(t,n){var r={};r[t]=n(u),e(e.P+e.F*i(function(){var n=""[t]('"');return n!==n.toLowerCase()||n.split('"').length>3}),"String",r)}},function(t,n,r){var e=r(115),i=r(46);t.exports=function(t){return e(i(t))}},function(t,n,r){var e=r(116),i=r(66),o=r(30),u=r(50),c=r(24),f=r(167),a=Object.getOwnPropertyDescriptor;n.f=r(10)?a:function(t,n){if(t=o(t),n=u(n,!0),f)try{return a(t,n)}catch(t){}if(c(t,n))return i(!e.f.call(t,n),t[n])}},function(t,n,r){var e=r(24),i=r(17),o=r(145)("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=i(t),e(t,o)?t[o]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?u:null}},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,n){t.exports={}},function(t,n){t.exports=!0},function(t,n){n.f={}.propertyIsEnumerable},function(t,n,r){var e=r(14).f,i=r(8),o=r(15)("toStringTag");t.exports=function(t,n,r){t&&!i(t=r?t:t.prototype,o)&&e(t,o,{configurable:!0,value:n})}},function(t,n,r){var e=r(40)("keys"),i=r(23);t.exports=function(t){return e[t]||(e[t]=i(t))}},function(t,n,r){var e=r(5),i="__core-js_shared__",o=e[i]||(e[i]={});t.exports=function(t){return o[t]||(o[t]={})}},function(t,n){var r=Math.ceil,e=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?e:r)(t)}},function(t,n,r){var e=r(21);t.exports=function(t,n){if(!e(t))return t;var r,i;if(n&&"function"==typeof(r=t.toString)&&!e(i=r.call(t)))return i;if("function"==typeof(r=t.valueOf)&&!e(i=r.call(t)))return i;if(!n&&"function"==typeof(r=t.toString)&&!e(i=r.call(t)))return i;throw TypeError("Can't convert object to primitive value")}},function(t,n,r){var e=r(5),i=r(25),o=r(36),u=r(44),c=r(14).f;t.exports=function(t){var n=i.Symbol||(i.Symbol=o?{}:e.Symbol||{});"_"==t.charAt(0)||t in n||c(n,t,{value:u.f(t)})}},function(t,n,r){n.f=r(15)},function(t,n){var r={}.toString;t.exports=function(t){return r.call(t).slice(8,-1)}},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n,r){var e=r(4);t.exports=function(t,n){return!!t&&e(function(){n?t.call(null,function(){},1):t.call(null)})}},function(t,n,r){var e=r(53),i=r(115),o=r(17),u=r(16),c=r(203);t.exports=function(t,n){var r=1==t,f=2==t,a=3==t,s=4==t,l=6==t,h=5==t||l,v=n||c;return function(n,c,p){for(var d,y,g=o(n),b=i(g),m=e(c,p,3),x=u(b.length),w=0,S=r?v(n,x):f?v(n,0):void 0;x>w;w++)if((h||w in b)&&(d=b[w],y=m(d,w,g),t))if(r)S[w]=y;else if(y)switch(t){case 3:return!0;case 5:return d;case 6:return w;case 2:S.push(d)}else if(s)return!1;return l?-1:a||s?s:S}}},function(t,n,r){var e=r(1),i=r(52),o=r(4);t.exports=function(t,n){var r=(i.Object||{})[t]||Object[t],u={};u[t]=n(r),e(e.S+e.F*o(function(){r(1)}),"Object",u)}},function(t,n,r){var e=r(6);t.exports=function(t,n){if(!e(t))return t;var r,i;if(n&&"function"==typeof(r=t.toString)&&!e(i=r.call(t)))return i;if("function"==typeof(r=t.valueOf)&&!e(i=r.call(t)))return i;if(!n&&"function"==typeof(r=t.toString)&&!e(i=r.call(t)))return i;throw TypeError("Can't convert object to primitive value")}},function(t,n,r){var e=r(5),i=r(25),o=r(91),u=r(13),c="prototype",f=function(t,n,r){var a,s,l,h=t&f.F,v=t&f.G,p=t&f.S,d=t&f.P,y=t&f.B,g=t&f.W,b=v?i:i[n]||(i[n]={}),m=b[c],x=v?e:p?e[n]:(e[n]||{})[c];v&&(r=n);for(a in r)(s=!h&&x&&void 0!==x[a])&&a in b||(l=s?x[a]:r[a],b[a]=v&&"function"!=typeof x[a]?r[a]:y&&s?o(l,e):g&&x[a]==l?function(t){var n=function(n,r,e){if(this instanceof t){switch(arguments.length){case 0:return new t;case 1:return new t(n);case 2:return new t(n,r)}return new t(n,r,e)}return t.apply(this,arguments)};return n[c]=t[c],n}(l):d&&"function"==typeof l?o(Function.call,l):l,d&&((b.virtual||(b.virtual={}))[a]=l,t&f.R&&m&&!m[a]&&u(m,a,l)))};f.F=1,f.G=2,f.S=4,f.P=8,f.B=16,f.W=32,f.U=64,f.R=128,t.exports=f},function(t,n){var r=t.exports={version:"2.4.0"};"number"==typeof __e&&(__e=r)},function(t,n,r){var e=r(26);t.exports=function(t,n,r){if(e(t),void 0===n)return t;switch(r){case 1:return function(r){return t.call(n,r)};case 2:return function(r,e){return t.call(n,r,e)};case 3:return function(r,e,i){return t.call(n,r,e,i)}}return function(){return t.apply(n,arguments)}}},function(t,n,r){var e=r(183),i=r(1),o=r(126)("metadata"),u=o.store||(o.store=new(r(186))),c=function(t,n,r){var i=u.get(t);if(!i){if(!r)return;u.set(t,i=new e)}var o=i.get(n);if(!o){if(!r)return;i.set(n,o=new e)}return o},f=function(t,n,r){var e=c(n,r,!1);return void 0!==e&&e.has(t)},a=function(t,n,r){var e=c(n,r,!1);return void 0===e?void 0:e.get(t)},s=function(t,n,r,e){c(r,e,!0).set(t,n)},l=function(t,n){var r=c(t,n,!1),e=[];return r&&r.forEach(function(t,n){e.push(n)}),e},h=function(t){return void 0===t||"symbol"==typeof t?t:String(t)},v=function(t){i(i.S,"Reflect",t)};t.exports={store:u,map:c,has:f,get:a,set:s,keys:l,key:h,exp:v}},function(t,n,r){"use strict";if(r(10)){var e=r(69),i=r(3),o=r(4),u=r(1),c=r(127),f=r(152),a=r(53),s=r(68),l=r(66),h=r(27),v=r(73),p=r(67),d=r(16),y=r(75),g=r(50),b=r(24),m=r(180),x=r(114),w=r(6),S=r(17),_=r(137),O=r(70),E=r(32),P=r(71).f,j=r(154),F=r(76),M=r(7),A=r(48),N=r(117),T=r(146),I=r(155),k=r(80),L=r(123),R=r(74),C=r(130),D=r(160),U=r(11),W=r(31),G=U.f,B=W.f,V=i.RangeError,z=i.TypeError,q=i.Uint8Array,K="ArrayBuffer",J="Shared"+K,Y="BYTES_PER_ELEMENT",H="prototype",$=Array[H],X=f.ArrayBuffer,Q=f.DataView,Z=A(0),tt=A(2),nt=A(3),rt=A(4),et=A(5),it=A(6),ot=N(!0),ut=N(!1),ct=I.values,ft=I.keys,at=I.entries,st=$.lastIndexOf,lt=$.reduce,ht=$.reduceRight,vt=$.join,pt=$.sort,dt=$.slice,yt=$.toString,gt=$.toLocaleString,bt=M("iterator"),mt=M("toStringTag"),xt=F("typed_constructor"),wt=F("def_constructor"),St=c.CONSTR,_t=c.TYPED,Ot=c.VIEW,Et="Wrong length!",Pt=A(1,function(t,n){return Tt(T(t,t[wt]),n)}),jt=o(function(){return 1===new q(new Uint16Array([1]).buffer)[0]}),Ft=!!q&&!!q[H].set&&o(function(){new q(1).set({})}),Mt=function(t,n){if(void 0===t)throw z(Et);var r=+t,e=d(t);if(n&&!m(r,e))throw V(Et);return e},At=function(t,n){var r=p(t);if(r<0||r%n)throw V("Wrong offset!");return r},Nt=function(t){if(w(t)&&_t in t)return t;throw z(t+" is not a typed array!")},Tt=function(t,n){if(!(w(t)&&xt in t))throw z("It is not a typed array constructor!");return new t(n)},It=function(t,n){return kt(T(t,t[wt]),n)},kt=function(t,n){for(var r=0,e=n.length,i=Tt(t,e);e>r;)i[r]=n[r++];return i},Lt=function(t,n,r){G(t,n,{get:function(){return this._d[r]}})},Rt=function(t){var n,r,e,i,o,u,c=S(t),f=arguments.length,s=f>1?arguments[1]:void 0,l=void 0!==s,h=j(c);if(void 0!=h&&!_(h)){for(u=h.call(c),e=[],n=0;!(o=u.next()).done;n++)e.push(o.value);c=e}for(l&&f>2&&(s=a(s,arguments[2],2)),n=0,r=d(c.length),i=Tt(this,r);r>n;n++)i[n]=l?s(c[n],n):c[n];return i},Ct=function(){for(var t=0,n=arguments.length,r=Tt(this,n);n>t;)r[t]=arguments[t++];return r},Dt=!!q&&o(function(){gt.call(new q(1))}),Ut=function(){return gt.apply(Dt?dt.call(Nt(this)):Nt(this),arguments)},Wt={copyWithin:function(t,n){return D.call(Nt(this),t,n,arguments.length>2?arguments[2]:void 0)},every:function(t){return rt(Nt(this),t,arguments.length>1?arguments[1]:void 0)},fill:function(t){return C.apply(Nt(this),arguments)},filter:function(t){return It(this,tt(Nt(this),t,arguments.length>1?arguments[1]:void 0))},find:function(t){return et(Nt(this),t,arguments.length>1?arguments[1]:void 0)},findIndex:function(t){return it(Nt(this),t,arguments.length>1?arguments[1]:void 0)},forEach:function(t){Z(Nt(this),t,arguments.length>1?arguments[1]:void 0)},indexOf:function(t){return ut(Nt(this),t,arguments.length>1?arguments[1]:void 0)},includes:function(t){return ot(Nt(this),t,arguments.length>1?arguments[1]:void 0)},join:function(t){return vt.apply(Nt(this),arguments)},lastIndexOf:function(t){return st.apply(Nt(this),arguments)},map:function(t){return Pt(Nt(this),t,arguments.length>1?arguments[1]:void 0)},reduce:function(t){return lt.apply(Nt(this),arguments)},reduceRight:function(t){return ht.apply(Nt(this),arguments)},reverse:function(){for(var t,n=this,r=Nt(n).length,e=Math.floor(r/2),i=0;i<e;)t=n[i],n[i++]=n[--r],n[r]=t;return n},some:function(t){return nt(Nt(this),t,arguments.length>1?arguments[1]:void 0)},sort:function(t){return pt.call(Nt(this),t)},subarray:function(t,n){var r=Nt(this),e=r.length,i=y(t,e);return new(T(r,r[wt]))(r.buffer,r.byteOffset+i*r.BYTES_PER_ELEMENT,d((void 0===n?e:y(n,e))-i))}},Gt=function(t,n){return It(this,dt.call(Nt(this),t,n))},Bt=function(t){Nt(this);var n=At(arguments[1],1),r=this.length,e=S(t),i=d(e.length),o=0;if(i+n>r)throw V(Et);for(;o<i;)this[n+o]=e[o++]},Vt={entries:function(){return at.call(Nt(this))},keys:function(){return ft.call(Nt(this))},values:function(){return ct.call(Nt(this))}},zt=function(t,n){return w(t)&&t[_t]&&"symbol"!=typeof n&&n in t&&String(+n)==String(n)},qt=function(t,n){return zt(t,n=g(n,!0))?l(2,t[n]):B(t,n)},Kt=function(t,n,r){return!(zt(t,n=g(n,!0))&&w(r)&&b(r,"value"))||b(r,"get")||b(r,"set")||r.configurable||b(r,"writable")&&!r.writable||b(r,"enumerable")&&!r.enumerable?G(t,n,r):(t[n]=r.value,t)};St||(W.f=qt,U.f=Kt),u(u.S+u.F*!St,"Object",{getOwnPropertyDescriptor:qt,defineProperty:Kt}),o(function(){yt.call({})})&&(yt=gt=function(){return vt.call(this)});var Jt=v({},Wt);v(Jt,Vt),h(Jt,bt,Vt.values),v(Jt,{slice:Gt,set:Bt,constructor:function(){},toString:yt,toLocaleString:Ut}),Lt(Jt,"buffer","b"),Lt(Jt,"byteOffset","o"),Lt(Jt,"byteLength","l"),Lt(Jt,"length","e"),G(Jt,mt,{get:function(){return this[_t]}}),t.exports=function(t,n,r,f){f=!!f;var a=t+(f?"Clamped":"")+"Array",l="Uint8Array"!=a,v="get"+t,p="set"+t,y=i[a],g=y||{},b=y&&E(y),m=!y||!c.ABV,S={},_=y&&y[H],j=function(t,r){var e=t._d;return e.v[v](r*n+e.o,jt)},F=function(t,r,e){var i=t._d;f&&(e=(e=Math.round(e))<0?0:e>255?255:255&e),i.v[p](r*n+i.o,e,jt)},M=function(t,n){G(t,n,{get:function(){return j(this,n)},set:function(t){return F(this,n,t)},enumerable:!0})};m?(y=r(function(t,r,e,i){s(t,y,a,"_d");var o,u,c,f,l=0,v=0;if(w(r)){if(!(r instanceof X||(f=x(r))==K||f==J))return _t in r?kt(y,r):Rt.call(y,r);o=r,v=At(e,n);var p=r.byteLength;if(void 0===i){if(p%n)throw V(Et);if((u=p-v)<0)throw V(Et)}else if((u=d(i)*n)+v>p)throw V(Et);c=u/n}else c=Mt(r,!0),u=c*n,o=new X(u);for(h(t,"_d",{b:o,o:v,l:u,e:c,v:new Q(o)});l<c;)M(t,l++)}),_=y[H]=O(Jt),h(_,"constructor",y)):L(function(t){new y(null),new y(t)},!0)||(y=r(function(t,r,e,i){s(t,y,a);var o;return w(r)?r instanceof X||(o=x(r))==K||o==J?void 0!==i?new g(r,At(e,n),i):void 0!==e?new g(r,At(e,n)):new g(r):_t in r?kt(y,r):Rt.call(y,r):new g(Mt(r,l))}),Z(b!==Function.prototype?P(g).concat(P(b)):P(g),function(t){t in y||h(y,t,g[t])}),y[H]=_,e||(_.constructor=y));var A=_[bt],N=!!A&&("values"==A.name||void 0==A.name),T=Vt.values;h(y,xt,!0),h(_,_t,a),h(_,Ot,!0),h(_,wt,y),(f?new y(1)[mt]==a:mt in _)||G(_,mt,{get:function(){return a}}),S[a]=y,u(u.G+u.W+u.F*(y!=g),S),u(u.S,a,{BYTES_PER_ELEMENT:n,from:Rt,of:Ct}),Y in _||h(_,Y,n),u(u.P,a,Wt),R(a),u(u.P+u.F*Ft,a,{set:Bt}),u(u.P+u.F*!N,a,Vt),u(u.P+u.F*(_.toString!=yt),a,{toString:yt}),u(u.P+u.F*o(function(){new y(1).slice()}),a,{slice:Gt}),u(u.P+u.F*(o(function(){return[1,2].toLocaleString()!=new y([1,2]).toLocaleString()})||!o(function(){_.toLocaleString.call([1,2])})),a,{toLocaleString:Ut}),k[a]=N?A:T,e||N||h(_,bt,T)}}else t.exports=function(){}},function(t,n){var r={}.toString;t.exports=function(t){return r.call(t).slice(8,-1)}},function(t,n,r){var e=r(21),i=r(5).document,o=e(i)&&e(i.createElement);t.exports=function(t){return o?i.createElement(t):{}}},function(t,n,r){t.exports=!r(12)&&!r(18)(function(){return 7!=Object.defineProperty(r(57)("div"),"a",{get:function(){return 7}}).a})},function(t,n,r){"use strict";var e=r(36),i=r(51),o=r(64),u=r(13),c=r(8),f=r(35),a=r(96),s=r(38),l=r(103),h=r(15)("iterator"),v=!([].keys&&"next"in[].keys()),p="keys",d="values",y=function(){return this};t.exports=function(t,n,r,g,b,m,x){a(r,n,g);var w,S,_,O=function(t){if(!v&&t in F)return F[t];switch(t){case p:case d:return function(){return new r(this,t)}}return function(){return new r(this,t)}},E=n+" Iterator",P=b==d,j=!1,F=t.prototype,M=F[h]||F["@@iterator"]||b&&F[b],A=M||O(b),N=b?P?O("entries"):A:void 0,T="Array"==n?F.entries||M:M;if(T&&(_=l(T.call(new t)))!==Object.prototype&&(s(_,E,!0),e||c(_,h)||u(_,h,y)),P&&M&&M.name!==d&&(j=!0,A=function(){return M.call(this)}),e&&!x||!v&&!j&&F[h]||u(F,h,A),f[n]=A,f[E]=y,b)if(w={values:P?A:O(d),keys:m?A:O(p),entries:N},x)for(S in w)S in F||o(F,S,w[S]);else i(i.P+i.F*(v||j),n,w);return w}},function(t,n,r){var e=r(20),i=r(100),o=r(34),u=r(39)("IE_PROTO"),c=function(){},f="prototype",a=function(){var t,n=r(57)("iframe"),e=o.length;for(n.style.display="none",r(93).appendChild(n),n.src="javascript:",t=n.contentWindow.document,t.open(),t.write("<script>document.F=Object<\/script>"),t.close(),a=t.F;e--;)delete a[f][o[e]];return a()};t.exports=Object.create||function(t,n){var r;return null!==t?(c[f]=e(t),r=new c,c[f]=null,r[u]=t):r=a(),void 0===n?r:i(r,n)}},function(t,n,r){var e=r(63),i=r(34).concat("length","prototype");n.f=Object.getOwnPropertyNames||function(t){return e(t,i)}},function(t,n){n.f=Object.getOwnPropertySymbols},function(t,n,r){var e=r(8),i=r(9),o=r(90)(!1),u=r(39)("IE_PROTO");t.exports=function(t,n){var r,c=i(t),f=0,a=[];for(r in c)r!=u&&e(c,r)&&a.push(r);for(;n.length>f;)e(c,r=n[f++])&&(~o(a,r)||a.push(r));return a}},function(t,n,r){t.exports=r(13)},function(t,n,r){var e=r(76)("meta"),i=r(6),o=r(24),u=r(11).f,c=0,f=Object.isExtensible||function(){return!0},a=!r(4)(function(){return f(Object.preventExtensions({}))}),s=function(t){u(t,e,{value:{i:"O"+ ++c,w:{}}})},l=function(t,n){if(!i(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!o(t,e)){if(!f(t))return"F";if(!n)return"E";s(t)}return t[e].i},h=function(t,n){if(!o(t,e)){if(!f(t))return!0;if(!n)return!1;s(t)}return t[e].w},v=function(t){return a&&p.NEED&&f(t)&&!o(t,e)&&s(t),t},p=t.exports={KEY:e,NEED:!1,fastKey:l,getWeak:h,onFreeze:v}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n){var r=Math.ceil,e=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?e:r)(t)}},function(t,n){t.exports=function(t,n,r,e){if(!(t instanceof n)||void 0!==e&&e in t)throw TypeError(r+": incorrect invocation!");return t}},function(t,n){t.exports=!1},function(t,n,r){var e=r(2),i=r(173),o=r(133),u=r(145)("IE_PROTO"),c=function(){},f="prototype",a=function(){var t,n=r(132)("iframe"),e=o.length;for(n.style.display="none",r(135).appendChild(n),n.src="javascript:",t=n.contentWindow.document,t.open(),t.write("<script>document.F=Object<\/script>"),t.close(),a=t.F;e--;)delete a[f][o[e]];return a()};t.exports=Object.create||function(t,n){var r;return null!==t?(c[f]=e(t),r=new c,c[f]=null,r[u]=t):r=a(),void 0===n?r:i(r,n)}},function(t,n,r){var e=r(175),i=r(133).concat("length","prototype");n.f=Object.getOwnPropertyNames||function(t){return e(t,i)}},function(t,n,r){var e=r(175),i=r(133);t.exports=Object.keys||function(t){return e(t,i)}},function(t,n,r){var e=r(28);t.exports=function(t,n,r){for(var i in n)e(t,i,n[i],r);return t}},function(t,n,r){"use strict";var e=r(3),i=r(11),o=r(10),u=r(7)("species");t.exports=function(t){var n=e[t];o&&n&&!n[u]&&i.f(n,u,{configurable:!0,get:function(){return this}})}},function(t,n,r){var e=r(67),i=Math.max,o=Math.min;t.exports=function(t,n){return t=e(t),t<0?i(t+n,0):o(t,n)}},function(t,n){var r=0,e=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++r+e).toString(36))}},function(t,n,r){var e=r(33);t.exports=function(t){return Object(e(t))}},function(t,n,r){var e=r(7)("unscopables"),i=Array.prototype;void 0==i[e]&&r(27)(i,e,{}),t.exports=function(t){i[e][t]=!0}},function(t,n,r){var e=r(53),i=r(169),o=r(137),u=r(2),c=r(16),f=r(154),a={},s={},n=t.exports=function(t,n,r,l,h){var v,p,d,y,g=h?function(){return t}:f(t),b=e(r,l,n?2:1),m=0;if("function"!=typeof g)throw TypeError(t+" is not iterable!");if(o(g)){for(v=c(t.length);v>m;m++)if((y=n?b(u(p=t[m])[0],p[1]):b(t[m]))===a||y===s)return y}else for(d=g.call(t);!(p=d.next()).done;)if((y=i(d,b,p.value,n))===a||y===s)return y};n.BREAK=a,n.RETURN=s},function(t,n){t.exports={}},function(t,n,r){var e=r(11).f,i=r(24),o=r(7)("toStringTag");t.exports=function(t,n,r){t&&!i(t=r?t:t.prototype,o)&&e(t,o,{configurable:!0,value:n})}},function(t,n,r){var e=r(1),i=r(46),o=r(4),u=r(150),c="["+u+"]",f="​",a=RegExp("^"+c+c+"*"),s=RegExp(c+c+"*$"),l=function(t,n,r){var i={},c=o(function(){return!!u[t]()||f[t]()!=f}),a=i[t]=c?n(h):u[t];r&&(i[r]=a),e(e.P+e.F*c,"String",i)},h=l.trim=function(t,n){return t=String(i(t)),1&n&&(t=t.replace(a,"")),2&n&&(t=t.replace(s,"")),t};t.exports=l},function(t,n,r){t.exports={default:r(86),__esModule:!0}},function(t,n,r){t.exports={default:r(87),__esModule:!0}},function(t,n,r){"use strict";function e(t){return t&&t.__esModule?t:{default:t}}n.__esModule=!0;var i=r(84),o=e(i),u=r(83),c=e(u),f="function"==typeof c.default&&"symbol"==typeof o.default?function(t){return typeof t}:function(t){return t&&"function"==typeof c.default&&t.constructor===c.default&&t!==c.default.prototype?"symbol":typeof t};n.default="function"==typeof c.default&&"symbol"===f(o.default)?function(t){return void 0===t?"undefined":f(t)}:function(t){return t&&"function"==typeof c.default&&t.constructor===c.default&&t!==c.default.prototype?"symbol":void 0===t?"undefined":f(t)}},function(t,n,r){r(110),r(108),r(111),r(112),t.exports=r(25).Symbol},function(t,n,r){r(109),r(113),t.exports=r(44).f("iterator")},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n){t.exports=function(){}},function(t,n,r){var e=r(9),i=r(106),o=r(105);t.exports=function(t){return function(n,r,u){var c,f=e(n),a=i(f.length),s=o(u,a);if(t&&r!=r){for(;a>s;)if((c=f[s++])!=c)return!0}else for(;a>s;s++)if((t||s in f)&&f[s]===r)return t||s||0;return!t&&-1}}},function(t,n,r){var e=r(88);t.exports=function(t,n,r){if(e(t),void 0===n)return t;switch(r){case 1:return function(r){return t.call(n,r)};case 2:return function(r,e){return t.call(n,r,e)};case 3:return function(r,e,i){return t.call(n,r,e,i)}}return function(){return t.apply(n,arguments)}}},function(t,n,r){var e=r(19),i=r(62),o=r(37);t.exports=function(t){var n=e(t),r=i.f;if(r)for(var u,c=r(t),f=o.f,a=0;c.length>a;)f.call(t,u=c[a++])&&n.push(u);return n}},function(t,n,r){t.exports=r(5).document&&document.documentElement},function(t,n,r){var e=r(56);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==e(t)?t.split(""):Object(t)}},function(t,n,r){var e=r(56);t.exports=Array.isArray||function(t){return"Array"==e(t)}},function(t,n,r){"use strict";var e=r(60),i=r(22),o=r(38),u={};r(13)(u,r(15)("iterator"),function(){return this}),t.exports=function(t,n,r){t.prototype=e(u,{next:i(1,r)}),o(t,n+" Iterator")}},function(t,n){t.exports=function(t,n){return{value:n,done:!!t}}},function(t,n,r){var e=r(19),i=r(9);t.exports=function(t,n){for(var r,o=i(t),u=e(o),c=u.length,f=0;c>f;)if(o[r=u[f++]]===n)return r}},function(t,n,r){var e=r(23)("meta"),i=r(21),o=r(8),u=r(14).f,c=0,f=Object.isExtensible||function(){return!0},a=!r(18)(function(){return f(Object.preventExtensions({}))}),s=function(t){u(t,e,{value:{i:"O"+ ++c,w:{}}})},l=function(t,n){if(!i(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!o(t,e)){if(!f(t))return"F";if(!n)return"E";s(t)}return t[e].i},h=function(t,n){if(!o(t,e)){if(!f(t))return!0;if(!n)return!1;s(t)}return t[e].w},v=function(t){return a&&p.NEED&&f(t)&&!o(t,e)&&s(t),t},p=t.exports={KEY:e,NEED:!1,fastKey:l,getWeak:h,onFreeze:v}},function(t,n,r){var e=r(14),i=r(20),o=r(19);t.exports=r(12)?Object.defineProperties:function(t,n){i(t);for(var r,u=o(n),c=u.length,f=0;c>f;)e.f(t,r=u[f++],n[r]);return t}},function(t,n,r){var e=r(37),i=r(22),o=r(9),u=r(42),c=r(8),f=r(58),a=Object.getOwnPropertyDescriptor;n.f=r(12)?a:function(t,n){if(t=o(t),n=u(n,!0),f)try{return a(t,n)}catch(t){}if(c(t,n))return i(!e.f.call(t,n),t[n])}},function(t,n,r){var e=r(9),i=r(61).f,o={}.toString,u="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],c=function(t){try{return i(t)}catch(t){return u.slice()}};t.exports.f=function(t){return u&&"[object Window]"==o.call(t)?c(t):i(e(t))}},function(t,n,r){var e=r(8),i=r(77),o=r(39)("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=i(t),e(t,o)?t[o]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?u:null}},function(t,n,r){var e=r(41),i=r(33);t.exports=function(t){return function(n,r){var o,u,c=String(i(n)),f=e(r),a=c.length;return f<0||f>=a?t?"":void 0:(o=c.charCodeAt(f),o<55296||o>56319||f+1===a||(u=c.charCodeAt(f+1))<56320||u>57343?t?c.charAt(f):o:t?c.slice(f,f+2):u-56320+(o-55296<<10)+65536)}}},function(t,n,r){var e=r(41),i=Math.max,o=Math.min;t.exports=function(t,n){return t=e(t),t<0?i(t+n,0):o(t,n)}},function(t,n,r){var e=r(41),i=Math.min;t.exports=function(t){return t>0?i(e(t),9007199254740991):0}},function(t,n,r){"use strict";var e=r(89),i=r(97),o=r(35),u=r(9);t.exports=r(59)(Array,"Array",function(t,n){this._t=u(t),this._i=0,this._k=n},function(){var t=this._t,n=this._k,r=this._i++;return!t||r>=t.length?(this._t=void 0,i(1)):"keys"==n?i(0,r):"values"==n?i(0,t[r]):i(0,[r,t[r]])},"values"),o.Arguments=o.Array,e("keys"),e("values"),e("entries")},function(t,n){},function(t,n,r){"use strict";var e=r(104)(!0);r(59)(String,"String",function(t){this._t=String(t),this._i=0},function(){var t,n=this._t,r=this._i;return r>=n.length?{value:void 0,done:!0}:(t=e(n,r),this._i+=t.length,{value:t,done:!1})})},function(t,n,r){"use strict";var e=r(5),i=r(8),o=r(12),u=r(51),c=r(64),f=r(99).KEY,a=r(18),s=r(40),l=r(38),h=r(23),v=r(15),p=r(44),d=r(43),y=r(98),g=r(92),b=r(95),m=r(20),x=r(9),w=r(42),S=r(22),_=r(60),O=r(102),E=r(101),P=r(14),j=r(19),F=E.f,M=P.f,A=O.f,N=e.Symbol,T=e.JSON,I=T&&T.stringify,k="prototype",L=v("_hidden"),R=v("toPrimitive"),C={}.propertyIsEnumerable,D=s("symbol-registry"),U=s("symbols"),W=s("op-symbols"),G=Object[k],B="function"==typeof N,V=e.QObject,z=!V||!V[k]||!V[k].findChild,q=o&&a(function(){return 7!=_(M({},"a",{get:function(){return M(this,"a",{value:7}).a}})).a})?function(t,n,r){var e=F(G,n);e&&delete G[n],M(t,n,r),e&&t!==G&&M(G,n,e)}:M,K=function(t){var n=U[t]=_(N[k]);return n._k=t,n},J=B&&"symbol"==typeof N.iterator?function(t){return"symbol"==typeof t}:function(t){return t instanceof N},Y=function(t,n,r){return t===G&&Y(W,n,r),m(t),n=w(n,!0),m(r),i(U,n)?(r.enumerable?(i(t,L)&&t[L][n]&&(t[L][n]=!1),r=_(r,{enumerable:S(0,!1)})):(i(t,L)||M(t,L,S(1,{})),t[L][n]=!0),q(t,n,r)):M(t,n,r)},H=function(t,n){m(t);for(var r,e=g(n=x(n)),i=0,o=e.length;o>i;)Y(t,r=e[i++],n[r]);return t},$=function(t,n){return void 0===n?_(t):H(_(t),n)},X=function(t){var n=C.call(this,t=w(t,!0));return!(this===G&&i(U,t)&&!i(W,t))&&(!(n||!i(this,t)||!i(U,t)||i(this,L)&&this[L][t])||n)},Q=function(t,n){if(t=x(t),n=w(n,!0),t!==G||!i(U,n)||i(W,n)){var r=F(t,n);return!r||!i(U,n)||i(t,L)&&t[L][n]||(r.enumerable=!0),r}},Z=function(t){for(var n,r=A(x(t)),e=[],o=0;r.length>o;)i(U,n=r[o++])||n==L||n==f||e.push(n);return e},tt=function(t){for(var n,r=t===G,e=A(r?W:x(t)),o=[],u=0;e.length>u;)!i(U,n=e[u++])||r&&!i(G,n)||o.push(U[n]);return o};B||(N=function(){if(this instanceof N)throw TypeError("Symbol is not a constructor!");var t=h(arguments.length>0?arguments[0]:void 0),n=function(r){this===G&&n.call(W,r),i(this,L)&&i(this[L],t)&&(this[L][t]=!1),q(this,t,S(1,r))};return o&&z&&q(G,t,{configurable:!0,set:n}),K(t)},c(N[k],"toString",function(){return this._k}),E.f=Q,P.f=Y,r(61).f=O.f=Z,r(37).f=X,r(62).f=tt,o&&!r(36)&&c(G,"propertyIsEnumerable",X,!0),p.f=function(t){return K(v(t))}),u(u.G+u.W+u.F*!B,{Symbol:N});for(var nt="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),rt=0;nt.length>rt;)v(nt[rt++]);for(var nt=j(v.store),rt=0;nt.length>rt;)d(nt[rt++]);u(u.S+u.F*!B,"Symbol",{for:function(t){return i(D,t+="")?D[t]:D[t]=N(t)},keyFor:function(t){if(J(t))return y(D,t);throw TypeError(t+" is not a symbol!")},useSetter:function(){z=!0},useSimple:function(){z=!1}}),u(u.S+u.F*!B,"Object",{create:$,defineProperty:Y,defineProperties:H,getOwnPropertyDescriptor:Q,getOwnPropertyNames:Z,getOwnPropertySymbols:tt}),T&&u(u.S+u.F*(!B||a(function(){var t=N();return"[null]"!=I([t])||"{}"!=I({a:t})||"{}"!=I(Object(t))})),"JSON",{stringify:function(t){if(void 0!==t&&!J(t)){for(var n,r,e=[t],i=1;arguments.length>i;)e.push(arguments[i++]);return n=e[1],"function"==typeof n&&(r=n),!r&&b(n)||(n=function(t,n){if(r&&(n=r.call(this,t,n)),!J(n))return n}),e[1]=n,I.apply(T,e)}}}),N[k][R]||r(13)(N[k],R,N[k].valueOf),l(N,"Symbol"),l(Math,"Math",!0),l(e.JSON,"JSON",!0)},function(t,n,r){r(43)("asyncIterator")},function(t,n,r){r(43)("observable")},function(t,n,r){r(107);for(var e=r(5),i=r(13),o=r(35),u=r(15)("toStringTag"),c=["NodeList","DOMTokenList","MediaList","StyleSheetList","CSSRuleList"],f=0;f<5;f++){var a=c[f],s=e[a],l=s&&s.prototype;l&&!l[u]&&i(l,u,a),o[a]=o.Array}},function(t,n,r){var e=r(45),i=r(7)("toStringTag"),o="Arguments"==e(function(){return arguments}()),u=function(t,n){try{return t[n]}catch(t){}};t.exports=function(t){var n,r,c;return void 0===t?"Undefined":null===t?"Null":"string"==typeof(r=u(n=Object(t),i))?r:o?e(n):"Object"==(c=e(n))&&"function"==typeof n.callee?"Arguments":c}},function(t,n,r){var e=r(45);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==e(t)?t.split(""):Object(t)}},function(t,n){n.f={}.propertyIsEnumerable},function(t,n,r){var e=r(30),i=r(16),o=r(75);t.exports=function(t){return function(n,r,u){var c,f=e(n),a=i(f.length),s=o(u,a);if(t&&r!=r){for(;a>s;)if((c=f[s++])!=c)return!0}else for(;a>s;s++)if((t||s in f)&&f[s]===r)return t||s||0;return!t&&-1}}},function(t,n,r){"use strict";var e=r(3),i=r(1),o=r(28),u=r(73),c=r(65),f=r(79),a=r(68),s=r(6),l=r(4),h=r(123),v=r(81),p=r(136);t.exports=function(t,n,r,d,y,g){var b=e[t],m=b,x=y?"set":"add",w=m&&m.prototype,S={},_=function(t){var n=w[t];o(w,t,"delete"==t?function(t){return!(g&&!s(t))&&n.call(this,0===t?0:t)}:"has"==t?function(t){return!(g&&!s(t))&&n.call(this,0===t?0:t)}:"get"==t?function(t){return g&&!s(t)?void 0:n.call(this,0===t?0:t)}:"add"==t?function(t){return n.call(this,0===t?0:t),this}:function(t,r){return n.call(this,0===t?0:t,r),this})};if("function"==typeof m&&(g||w.forEach&&!l(function(){(new m).entries().next()}))){var O=new m,E=O[x](g?{}:-0,1)!=O,P=l(function(){O.has(1)}),j=h(function(t){new m(t)}),F=!g&&l(function(){for(var t=new m,n=5;n--;)t[x](n,n);return!t.has(-0)});j||(m=n(function(n,r){a(n,m,t);var e=p(new b,n,m);return void 0!=r&&f(r,y,e[x],e),e}),m.prototype=w,w.constructor=m),(P||F)&&(_("delete"),_("has"),y&&_("get")),(F||E)&&_(x),g&&w.clear&&delete w.clear}else m=d.getConstructor(n,t,y,x),u(m.prototype,r),c.NEED=!0;return v(m,t),S[t]=m,i(i.G+i.W+i.F*(m!=b),S),g||d.setStrong(m,t,y),m}},function(t,n,r){"use strict";var e=r(27),i=r(28),o=r(4),u=r(46),c=r(7);t.exports=function(t,n,r){var f=c(t),a=r(u,f,""[t]),s=a[0],l=a[1];o(function(){var n={};return n[f]=function(){return 7},7!=""[t](n)})&&(i(String.prototype,t,s),e(RegExp.prototype,f,2==n?function(t,n){return l.call(t,this,n)}:function(t){return l.call(t,this)}))}
+},function(t,n,r){"use strict";var e=r(2);t.exports=function(){var t=e(this),n="";return t.global&&(n+="g"),t.ignoreCase&&(n+="i"),t.multiline&&(n+="m"),t.unicode&&(n+="u"),t.sticky&&(n+="y"),n}},function(t,n){t.exports=function(t,n,r){var e=void 0===r;switch(n.length){case 0:return e?t():t.call(r);case 1:return e?t(n[0]):t.call(r,n[0]);case 2:return e?t(n[0],n[1]):t.call(r,n[0],n[1]);case 3:return e?t(n[0],n[1],n[2]):t.call(r,n[0],n[1],n[2]);case 4:return e?t(n[0],n[1],n[2],n[3]):t.call(r,n[0],n[1],n[2],n[3])}return t.apply(r,n)}},function(t,n,r){var e=r(6),i=r(45),o=r(7)("match");t.exports=function(t){var n;return e(t)&&(void 0!==(n=t[o])?!!n:"RegExp"==i(t))}},function(t,n,r){var e=r(7)("iterator"),i=!1;try{var o=[7][e]();o.return=function(){i=!0},Array.from(o,function(){throw 2})}catch(t){}t.exports=function(t,n){if(!n&&!i)return!1;var r=!1;try{var o=[7],u=o[e]();u.next=function(){return{done:r=!0}},o[e]=function(){return u},t(o)}catch(t){}return r}},function(t,n,r){t.exports=r(69)||!r(4)(function(){var t=Math.random();__defineSetter__.call(null,t,function(){}),delete r(3)[t]})},function(t,n){n.f=Object.getOwnPropertySymbols},function(t,n,r){var e=r(3),i="__core-js_shared__",o=e[i]||(e[i]={});t.exports=function(t){return o[t]||(o[t]={})}},function(t,n,r){for(var e,i=r(3),o=r(27),u=r(76),c=u("typed_array"),f=u("view"),a=!(!i.ArrayBuffer||!i.DataView),s=a,l=0,h="Int8Array,Uint8Array,Uint8ClampedArray,Int16Array,Uint16Array,Int32Array,Uint32Array,Float32Array,Float64Array".split(",");l<9;)(e=i[h[l++]])?(o(e.prototype,c,!0),o(e.prototype,f,!0)):s=!1;t.exports={ABV:a,CONSTR:s,TYPED:c,VIEW:f}},function(t,n){"use strict";var r={versions:function(){var t=window.navigator.userAgent;return{trident:t.indexOf("Trident")>-1,presto:t.indexOf("Presto")>-1,webKit:t.indexOf("AppleWebKit")>-1,gecko:t.indexOf("Gecko")>-1&&-1==t.indexOf("KHTML"),mobile:!!t.match(/AppleWebKit.*Mobile.*/),ios:!!t.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),android:t.indexOf("Android")>-1||t.indexOf("Linux")>-1,iPhone:t.indexOf("iPhone")>-1||t.indexOf("Mac")>-1,iPad:t.indexOf("iPad")>-1,webApp:-1==t.indexOf("Safari"),weixin:-1==t.indexOf("MicroMessenger")}}()};t.exports=r},function(t,n,r){"use strict";var e=r(85),i=function(t){return t&&t.__esModule?t:{default:t}}(e),o=function(){function t(t,n,e){return n||e?String.fromCharCode(n||e):r[t]||t}function n(t){return e[t]}var r={"&quot;":'"',"&lt;":"<","&gt;":">","&amp;":"&","&nbsp;":" "},e={};for(var u in r)e[r[u]]=u;return r["&apos;"]="'",e["'"]="&#39;",{encode:function(t){return t?(""+t).replace(/['<> "&]/g,n).replace(/\r?\n/g,"<br/>").replace(/\s/g,"&nbsp;"):""},decode:function(n){return n?(""+n).replace(/<br\s*\/?>/gi,"\n").replace(/&quot;|&lt;|&gt;|&amp;|&nbsp;|&apos;|&#(\d+);|&#(\d+)/g,t).replace(/\u00a0/g," "):""},encodeBase16:function(t){if(!t)return t;t+="";for(var n=[],r=0,e=t.length;e>r;r++)n.push(t.charCodeAt(r).toString(16).toUpperCase());return n.join("")},encodeBase16forJSON:function(t){if(!t)return t;t=t.replace(/[\u4E00-\u9FBF]/gi,function(t){return escape(t).replace("%u","\\u")});for(var n=[],r=0,e=t.length;e>r;r++)n.push(t.charCodeAt(r).toString(16).toUpperCase());return n.join("")},decodeBase16:function(t){if(!t)return t;t+="";for(var n=[],r=0,e=t.length;e>r;r+=2)n.push(String.fromCharCode("0x"+t.slice(r,r+2)));return n.join("")},encodeObject:function(t){if(t instanceof Array)for(var n=0,r=t.length;r>n;n++)t[n]=o.encodeObject(t[n]);else if("object"==(void 0===t?"undefined":(0,i.default)(t)))for(var e in t)t[e]=o.encodeObject(t[e]);else if("string"==typeof t)return o.encode(t);return t},loadScript:function(t){var n=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(n),n.setAttribute("src",t)},addLoadEvent:function(t){var n=window.onload;"function"!=typeof window.onload?window.onload=t:window.onload=function(){n(),t()}}}}();t.exports=o},function(t,n,r){"use strict";var e=r(17),i=r(75),o=r(16);t.exports=function(t){for(var n=e(this),r=o(n.length),u=arguments.length,c=i(u>1?arguments[1]:void 0,r),f=u>2?arguments[2]:void 0,a=void 0===f?r:i(f,r);a>c;)n[c++]=t;return n}},function(t,n,r){"use strict";var e=r(11),i=r(66);t.exports=function(t,n,r){n in t?e.f(t,n,i(0,r)):t[n]=r}},function(t,n,r){var e=r(6),i=r(3).document,o=e(i)&&e(i.createElement);t.exports=function(t){return o?i.createElement(t):{}}},function(t,n){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,n,r){var e=r(7)("match");t.exports=function(t){var n=/./;try{"/./"[t](n)}catch(r){try{return n[e]=!1,!"/./"[t](n)}catch(t){}}return!0}},function(t,n,r){t.exports=r(3).document&&document.documentElement},function(t,n,r){var e=r(6),i=r(144).set;t.exports=function(t,n,r){var o,u=n.constructor;return u!==r&&"function"==typeof u&&(o=u.prototype)!==r.prototype&&e(o)&&i&&i(t,o),t}},function(t,n,r){var e=r(80),i=r(7)("iterator"),o=Array.prototype;t.exports=function(t){return void 0!==t&&(e.Array===t||o[i]===t)}},function(t,n,r){var e=r(45);t.exports=Array.isArray||function(t){return"Array"==e(t)}},function(t,n,r){"use strict";var e=r(70),i=r(66),o=r(81),u={};r(27)(u,r(7)("iterator"),function(){return this}),t.exports=function(t,n,r){t.prototype=e(u,{next:i(1,r)}),o(t,n+" Iterator")}},function(t,n,r){"use strict";var e=r(69),i=r(1),o=r(28),u=r(27),c=r(24),f=r(80),a=r(139),s=r(81),l=r(32),h=r(7)("iterator"),v=!([].keys&&"next"in[].keys()),p="keys",d="values",y=function(){return this};t.exports=function(t,n,r,g,b,m,x){a(r,n,g);var w,S,_,O=function(t){if(!v&&t in F)return F[t];switch(t){case p:case d:return function(){return new r(this,t)}}return function(){return new r(this,t)}},E=n+" Iterator",P=b==d,j=!1,F=t.prototype,M=F[h]||F["@@iterator"]||b&&F[b],A=M||O(b),N=b?P?O("entries"):A:void 0,T="Array"==n?F.entries||M:M;if(T&&(_=l(T.call(new t)))!==Object.prototype&&(s(_,E,!0),e||c(_,h)||u(_,h,y)),P&&M&&M.name!==d&&(j=!0,A=function(){return M.call(this)}),e&&!x||!v&&!j&&F[h]||u(F,h,A),f[n]=A,f[E]=y,b)if(w={values:P?A:O(d),keys:m?A:O(p),entries:N},x)for(S in w)S in F||o(F,S,w[S]);else i(i.P+i.F*(v||j),n,w);return w}},function(t,n){var r=Math.expm1;t.exports=!r||r(10)>22025.465794806718||r(10)<22025.465794806718||-2e-17!=r(-2e-17)?function(t){return 0==(t=+t)?t:t>-1e-6&&t<1e-6?t+t*t/2:Math.exp(t)-1}:r},function(t,n){t.exports=Math.sign||function(t){return 0==(t=+t)||t!=t?t:t<0?-1:1}},function(t,n,r){var e=r(3),i=r(151).set,o=e.MutationObserver||e.WebKitMutationObserver,u=e.process,c=e.Promise,f="process"==r(45)(u);t.exports=function(){var t,n,r,a=function(){var e,i;for(f&&(e=u.domain)&&e.exit();t;){i=t.fn,t=t.next;try{i()}catch(e){throw t?r():n=void 0,e}}n=void 0,e&&e.enter()};if(f)r=function(){u.nextTick(a)};else if(o){var s=!0,l=document.createTextNode("");new o(a).observe(l,{characterData:!0}),r=function(){l.data=s=!s}}else if(c&&c.resolve){var h=c.resolve();r=function(){h.then(a)}}else r=function(){i.call(e,a)};return function(e){var i={fn:e,next:void 0};n&&(n.next=i),t||(t=i,r()),n=i}}},function(t,n,r){var e=r(6),i=r(2),o=function(t,n){if(i(t),!e(n)&&null!==n)throw TypeError(n+": can't set as prototype!")};t.exports={set:Object.setPrototypeOf||("__proto__"in{}?function(t,n,e){try{e=r(53)(Function.call,r(31).f(Object.prototype,"__proto__").set,2),e(t,[]),n=!(t instanceof Array)}catch(t){n=!0}return function(t,r){return o(t,r),n?t.__proto__=r:e(t,r),t}}({},!1):void 0),check:o}},function(t,n,r){var e=r(126)("keys"),i=r(76);t.exports=function(t){return e[t]||(e[t]=i(t))}},function(t,n,r){var e=r(2),i=r(26),o=r(7)("species");t.exports=function(t,n){var r,u=e(t).constructor;return void 0===u||void 0==(r=e(u)[o])?n:i(r)}},function(t,n,r){var e=r(67),i=r(46);t.exports=function(t){return function(n,r){var o,u,c=String(i(n)),f=e(r),a=c.length;return f<0||f>=a?t?"":void 0:(o=c.charCodeAt(f),o<55296||o>56319||f+1===a||(u=c.charCodeAt(f+1))<56320||u>57343?t?c.charAt(f):o:t?c.slice(f,f+2):u-56320+(o-55296<<10)+65536)}}},function(t,n,r){var e=r(122),i=r(46);t.exports=function(t,n,r){if(e(n))throw TypeError("String#"+r+" doesn't accept regex!");return String(i(t))}},function(t,n,r){"use strict";var e=r(67),i=r(46);t.exports=function(t){var n=String(i(this)),r="",o=e(t);if(o<0||o==1/0)throw RangeError("Count can't be negative");for(;o>0;(o>>>=1)&&(n+=n))1&o&&(r+=n);return r}},function(t,n){t.exports="\t\n\v\f\r   ᠎             　\u2028\u2029\ufeff"},function(t,n,r){var e,i,o,u=r(53),c=r(121),f=r(135),a=r(132),s=r(3),l=s.process,h=s.setImmediate,v=s.clearImmediate,p=s.MessageChannel,d=0,y={},g="onreadystatechange",b=function(){var t=+this;if(y.hasOwnProperty(t)){var n=y[t];delete y[t],n()}},m=function(t){b.call(t.data)};h&&v||(h=function(t){for(var n=[],r=1;arguments.length>r;)n.push(arguments[r++]);return y[++d]=function(){c("function"==typeof t?t:Function(t),n)},e(d),d},v=function(t){delete y[t]},"process"==r(45)(l)?e=function(t){l.nextTick(u(b,t,1))}:p?(i=new p,o=i.port2,i.port1.onmessage=m,e=u(o.postMessage,o,1)):s.addEventListener&&"function"==typeof postMessage&&!s.importScripts?(e=function(t){s.postMessage(t+"","*")},s.addEventListener("message",m,!1)):e=g in a("script")?function(t){f.appendChild(a("script"))[g]=function(){f.removeChild(this),b.call(t)}}:function(t){setTimeout(u(b,t,1),0)}),t.exports={set:h,clear:v}},function(t,n,r){"use strict";var e=r(3),i=r(10),o=r(69),u=r(127),c=r(27),f=r(73),a=r(4),s=r(68),l=r(67),h=r(16),v=r(71).f,p=r(11).f,d=r(130),y=r(81),g="ArrayBuffer",b="DataView",m="prototype",x="Wrong length!",w="Wrong index!",S=e[g],_=e[b],O=e.Math,E=e.RangeError,P=e.Infinity,j=S,F=O.abs,M=O.pow,A=O.floor,N=O.log,T=O.LN2,I="buffer",k="byteLength",L="byteOffset",R=i?"_b":I,C=i?"_l":k,D=i?"_o":L,U=function(t,n,r){var e,i,o,u=Array(r),c=8*r-n-1,f=(1<<c)-1,a=f>>1,s=23===n?M(2,-24)-M(2,-77):0,l=0,h=t<0||0===t&&1/t<0?1:0;for(t=F(t),t!=t||t===P?(i=t!=t?1:0,e=f):(e=A(N(t)/T),t*(o=M(2,-e))<1&&(e--,o*=2),t+=e+a>=1?s/o:s*M(2,1-a),t*o>=2&&(e++,o/=2),e+a>=f?(i=0,e=f):e+a>=1?(i=(t*o-1)*M(2,n),e+=a):(i=t*M(2,a-1)*M(2,n),e=0));n>=8;u[l++]=255&i,i/=256,n-=8);for(e=e<<n|i,c+=n;c>0;u[l++]=255&e,e/=256,c-=8);return u[--l]|=128*h,u},W=function(t,n,r){var e,i=8*r-n-1,o=(1<<i)-1,u=o>>1,c=i-7,f=r-1,a=t[f--],s=127&a;for(a>>=7;c>0;s=256*s+t[f],f--,c-=8);for(e=s&(1<<-c)-1,s>>=-c,c+=n;c>0;e=256*e+t[f],f--,c-=8);if(0===s)s=1-u;else{if(s===o)return e?NaN:a?-P:P;e+=M(2,n),s-=u}return(a?-1:1)*e*M(2,s-n)},G=function(t){return t[3]<<24|t[2]<<16|t[1]<<8|t[0]},B=function(t){return[255&t]},V=function(t){return[255&t,t>>8&255]},z=function(t){return[255&t,t>>8&255,t>>16&255,t>>24&255]},q=function(t){return U(t,52,8)},K=function(t){return U(t,23,4)},J=function(t,n,r){p(t[m],n,{get:function(){return this[r]}})},Y=function(t,n,r,e){var i=+r,o=l(i);if(i!=o||o<0||o+n>t[C])throw E(w);var u=t[R]._b,c=o+t[D],f=u.slice(c,c+n);return e?f:f.reverse()},H=function(t,n,r,e,i,o){var u=+r,c=l(u);if(u!=c||c<0||c+n>t[C])throw E(w);for(var f=t[R]._b,a=c+t[D],s=e(+i),h=0;h<n;h++)f[a+h]=s[o?h:n-h-1]},$=function(t,n){s(t,S,g);var r=+n,e=h(r);if(r!=e)throw E(x);return e};if(u.ABV){if(!a(function(){new S})||!a(function(){new S(.5)})){S=function(t){return new j($(this,t))};for(var X,Q=S[m]=j[m],Z=v(j),tt=0;Z.length>tt;)(X=Z[tt++])in S||c(S,X,j[X]);o||(Q.constructor=S)}var nt=new _(new S(2)),rt=_[m].setInt8;nt.setInt8(0,2147483648),nt.setInt8(1,2147483649),!nt.getInt8(0)&&nt.getInt8(1)||f(_[m],{setInt8:function(t,n){rt.call(this,t,n<<24>>24)},setUint8:function(t,n){rt.call(this,t,n<<24>>24)}},!0)}else S=function(t){var n=$(this,t);this._b=d.call(Array(n),0),this[C]=n},_=function(t,n,r){s(this,_,b),s(t,S,b);var e=t[C],i=l(n);if(i<0||i>e)throw E("Wrong offset!");if(r=void 0===r?e-i:h(r),i+r>e)throw E(x);this[R]=t,this[D]=i,this[C]=r},i&&(J(S,k,"_l"),J(_,I,"_b"),J(_,k,"_l"),J(_,L,"_o")),f(_[m],{getInt8:function(t){return Y(this,1,t)[0]<<24>>24},getUint8:function(t){return Y(this,1,t)[0]},getInt16:function(t){var n=Y(this,2,t,arguments[1]);return(n[1]<<8|n[0])<<16>>16},getUint16:function(t){var n=Y(this,2,t,arguments[1]);return n[1]<<8|n[0]},getInt32:function(t){return G(Y(this,4,t,arguments[1]))},getUint32:function(t){return G(Y(this,4,t,arguments[1]))>>>0},getFloat32:function(t){return W(Y(this,4,t,arguments[1]),23,4)},getFloat64:function(t){return W(Y(this,8,t,arguments[1]),52,8)},setInt8:function(t,n){H(this,1,t,B,n)},setUint8:function(t,n){H(this,1,t,B,n)},setInt16:function(t,n){H(this,2,t,V,n,arguments[2])},setUint16:function(t,n){H(this,2,t,V,n,arguments[2])},setInt32:function(t,n){H(this,4,t,z,n,arguments[2])},setUint32:function(t,n){H(this,4,t,z,n,arguments[2])},setFloat32:function(t,n){H(this,4,t,K,n,arguments[2])},setFloat64:function(t,n){H(this,8,t,q,n,arguments[2])}});y(S,g),y(_,b),c(_[m],u.VIEW,!0),n[g]=S,n[b]=_},function(t,n,r){var e=r(3),i=r(52),o=r(69),u=r(182),c=r(11).f;t.exports=function(t){var n=i.Symbol||(i.Symbol=o?{}:e.Symbol||{});"_"==t.charAt(0)||t in n||c(n,t,{value:u.f(t)})}},function(t,n,r){var e=r(114),i=r(7)("iterator"),o=r(80);t.exports=r(52).getIteratorMethod=function(t){if(void 0!=t)return t[i]||t["@@iterator"]||o[e(t)]}},function(t,n,r){"use strict";var e=r(78),i=r(170),o=r(80),u=r(30);t.exports=r(140)(Array,"Array",function(t,n){this._t=u(t),this._i=0,this._k=n},function(){var t=this._t,n=this._k,r=this._i++;return!t||r>=t.length?(this._t=void 0,i(1)):"keys"==n?i(0,r):"values"==n?i(0,t[r]):i(0,[r,t[r]])},"values"),o.Arguments=o.Array,e("keys"),e("values"),e("entries")},function(t,n){function r(t,n){t.classList?t.classList.add(n):t.className+=" "+n}t.exports=r},function(t,n){function r(t,n){if(t.classList)t.classList.remove(n);else{var r=new RegExp("(^|\\b)"+n.split(" ").join("|")+"(\\b|$)","gi");t.className=t.className.replace(r," ")}}t.exports=r},function(t,n){function r(){throw new Error("setTimeout has not been defined")}function e(){throw new Error("clearTimeout has not been defined")}function i(t){if(s===setTimeout)return setTimeout(t,0);if((s===r||!s)&&setTimeout)return s=setTimeout,setTimeout(t,0);try{return s(t,0)}catch(n){try{return s.call(null,t,0)}catch(n){return s.call(this,t,0)}}}function o(t){if(l===clearTimeout)return clearTimeout(t);if((l===e||!l)&&clearTimeout)return l=clearTimeout,clearTimeout(t);try{return l(t)}catch(n){try{return l.call(null,t)}catch(n){return l.call(this,t)}}}function u(){d&&v&&(d=!1,v.length?p=v.concat(p):y=-1,p.length&&c())}function c(){if(!d){var t=i(u);d=!0;for(var n=p.length;n;){for(v=p,p=[];++y<n;)v&&v[y].run();y=-1,n=p.length}v=null,d=!1,o(t)}}function f(t,n){this.fun=t,this.array=n}function a(){}var s,l,h=t.exports={};!function(){try{s="function"==typeof setTimeout?setTimeout:r}catch(t){s=r}try{l="function"==typeof clearTimeout?clearTimeout:e}catch(t){l=e}}();var v,p=[],d=!1,y=-1;h.nextTick=function(t){var n=new Array(arguments.length-1);if(arguments.length>1)for(var r=1;r<arguments.length;r++)n[r-1]=arguments[r];p.push(new f(t,n)),1!==p.length||d||i(c)},f.prototype.run=function(){this.fun.apply(null,this.array)},h.title="browser",h.browser=!0,h.env={},h.argv=[],h.version="",h.versions={},h.on=a,h.addListener=a,h.once=a,h.off=a,h.removeListener=a,h.removeAllListeners=a,h.emit=a,h.prependListener=a,h.prependOnceListener=a,h.listeners=function(t){return[]},h.binding=function(t){throw new Error("process.binding is not supported")},h.cwd=function(){return"/"},h.chdir=function(t){throw new Error("process.chdir is not supported")},h.umask=function(){return 0}},function(t,n,r){var e=r(45);t.exports=function(t,n){if("number"!=typeof t&&"Number"!=e(t))throw TypeError(n);return+t}},function(t,n,r){"use strict";var e=r(17),i=r(75),o=r(16);t.exports=[].copyWithin||function(t,n){var r=e(this),u=o(r.length),c=i(t,u),f=i(n,u),a=arguments.length>2?arguments[2]:void 0,s=Math.min((void 0===a?u:i(a,u))-f,u-c),l=1;for(f<c&&c<f+s&&(l=-1,f+=s-1,c+=s-1);s-- >0;)f in r?r[c]=r[f]:delete r[c],c+=l,f+=l;return r}},function(t,n,r){var e=r(79);t.exports=function(t,n){var r=[];return e(t,!1,r.push,r,n),r}},function(t,n,r){var e=r(26),i=r(17),o=r(115),u=r(16);t.exports=function(t,n,r,c,f){e(n);var a=i(t),s=o(a),l=u(a.length),h=f?l-1:0,v=f?-1:1;if(r<2)for(;;){if(h in s){c=s[h],h+=v;break}if(h+=v,f?h<0:l<=h)throw TypeError("Reduce of empty array with no initial value")}for(;f?h>=0:l>h;h+=v)h in s&&(c=n(c,s[h],h,a));return c}},function(t,n,r){"use strict";var e=r(26),i=r(6),o=r(121),u=[].slice,c={},f=function(t,n,r){if(!(n in c)){for(var e=[],i=0;i<n;i++)e[i]="a["+i+"]";c[n]=Function("F,a","return new F("+e.join(",")+")")}return c[n](t,r)};t.exports=Function.bind||function(t){var n=e(this),r=u.call(arguments,1),c=function(){var e=r.concat(u.call(arguments));return this instanceof c?f(n,e.length,e):o(n,e,t)};return i(n.prototype)&&(c.prototype=n.prototype),c}},function(t,n,r){"use strict";var e=r(11).f,i=r(70),o=r(73),u=r(53),c=r(68),f=r(46),a=r(79),s=r(140),l=r(170),h=r(74),v=r(10),p=r(65).fastKey,d=v?"_s":"size",y=function(t,n){var r,e=p(n);if("F"!==e)return t._i[e];for(r=t._f;r;r=r.n)if(r.k==n)return r};t.exports={getConstructor:function(t,n,r,s){var l=t(function(t,e){c(t,l,n,"_i"),t._i=i(null),t._f=void 0,t._l=void 0,t[d]=0,void 0!=e&&a(e,r,t[s],t)});return o(l.prototype,{clear:function(){for(var t=this,n=t._i,r=t._f;r;r=r.n)r.r=!0,r.p&&(r.p=r.p.n=void 0),delete n[r.i];t._f=t._l=void 0,t[d]=0},delete:function(t){var n=this,r=y(n,t);if(r){var e=r.n,i=r.p;delete n._i[r.i],r.r=!0,i&&(i.n=e),e&&(e.p=i),n._f==r&&(n._f=e),n._l==r&&(n._l=i),n[d]--}return!!r},forEach:function(t){c(this,l,"forEach");for(var n,r=u(t,arguments.length>1?arguments[1]:void 0,3);n=n?n.n:this._f;)for(r(n.v,n.k,this);n&&n.r;)n=n.p},has:function(t){return!!y(this,t)}}),v&&e(l.prototype,"size",{get:function(){return f(this[d])}}),l},def:function(t,n,r){var e,i,o=y(t,n);return o?o.v=r:(t._l=o={i:i=p(n,!0),k:n,v:r,p:e=t._l,n:void 0,r:!1},t._f||(t._f=o),e&&(e.n=o),t[d]++,"F"!==i&&(t._i[i]=o)),t},getEntry:y,setStrong:function(t,n,r){s(t,n,function(t,n){this._t=t,this._k=n,this._l=void 0},function(){for(var t=this,n=t._k,r=t._l;r&&r.r;)r=r.p;return t._t&&(t._l=r=r?r.n:t._t._f)?"keys"==n?l(0,r.k):"values"==n?l(0,r.v):l(0,[r.k,r.v]):(t._t=void 0,l(1))},r?"entries":"values",!r,!0),h(n)}}},function(t,n,r){var e=r(114),i=r(161);t.exports=function(t){return function(){if(e(this)!=t)throw TypeError(t+"#toJSON isn't generic");return i(this)}}},function(t,n,r){"use strict";var e=r(73),i=r(65).getWeak,o=r(2),u=r(6),c=r(68),f=r(79),a=r(48),s=r(24),l=a(5),h=a(6),v=0,p=function(t){return t._l||(t._l=new d)},d=function(){this.a=[]},y=function(t,n){return l(t.a,function(t){return t[0]===n})};d.prototype={get:function(t){var n=y(this,t);if(n)return n[1]},has:function(t){return!!y(this,t)},set:function(t,n){var r=y(this,t);r?r[1]=n:this.a.push([t,n])},delete:function(t){var n=h(this.a,function(n){return n[0]===t});return~n&&this.a.splice(n,1),!!~n}},t.exports={getConstructor:function(t,n,r,o){var a=t(function(t,e){c(t,a,n,"_i"),t._i=v++,t._l=void 0,void 0!=e&&f(e,r,t[o],t)});return e(a.prototype,{delete:function(t){if(!u(t))return!1;var n=i(t);return!0===n?p(this).delete(t):n&&s(n,this._i)&&delete n[this._i]},has:function(t){if(!u(t))return!1;var n=i(t);return!0===n?p(this).has(t):n&&s(n,this._i)}}),a},def:function(t,n,r){var e=i(o(n),!0);return!0===e?p(t).set(n,r):e[t._i]=r,t},ufstore:p}},function(t,n,r){t.exports=!r(10)&&!r(4)(function(){return 7!=Object.defineProperty(r(132)("div"),"a",{get:function(){return 7}}).a})},function(t,n,r){var e=r(6),i=Math.floor;t.exports=function(t){return!e(t)&&isFinite(t)&&i(t)===t}},function(t,n,r){var e=r(2);t.exports=function(t,n,r,i){try{return i?n(e(r)[0],r[1]):n(r)}catch(n){var o=t.return;throw void 0!==o&&e(o.call(t)),n}}},function(t,n){t.exports=function(t,n){return{value:n,done:!!t}}},function(t,n){t.exports=Math.log1p||function(t){return(t=+t)>-1e-8&&t<1e-8?t-t*t/2:Math.log(1+t)}},function(t,n,r){"use strict";var e=r(72),i=r(125),o=r(116),u=r(17),c=r(115),f=Object.assign;t.exports=!f||r(4)(function(){var t={},n={},r=Symbol(),e="abcdefghijklmnopqrst";return t[r]=7,e.split("").forEach(function(t){n[t]=t}),7!=f({},t)[r]||Object.keys(f({},n)).join("")!=e})?function(t,n){for(var r=u(t),f=arguments.length,a=1,s=i.f,l=o.f;f>a;)for(var h,v=c(arguments[a++]),p=s?e(v).concat(s(v)):e(v),d=p.length,y=0;d>y;)l.call(v,h=p[y++])&&(r[h]=v[h]);return r}:f},function(t,n,r){var e=r(11),i=r(2),o=r(72);t.exports=r(10)?Object.defineProperties:function(t,n){i(t);for(var r,u=o(n),c=u.length,f=0;c>f;)e.f(t,r=u[f++],n[r]);return t}},function(t,n,r){var e=r(30),i=r(71).f,o={}.toString,u="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],c=function(t){try{return i(t)}catch(t){return u.slice()}};t.exports.f=function(t){return u&&"[object Window]"==o.call(t)?c(t):i(e(t))}},function(t,n,r){var e=r(24),i=r(30),o=r(117)(!1),u=r(145)("IE_PROTO");t.exports=function(t,n){var r,c=i(t),f=0,a=[];for(r in c)r!=u&&e(c,r)&&a.push(r);for(;n.length>f;)e(c,r=n[f++])&&(~o(a,r)||a.push(r));return a}},function(t,n,r){var e=r(72),i=r(30),o=r(116).f;t.exports=function(t){return function(n){for(var r,u=i(n),c=e(u),f=c.length,a=0,s=[];f>a;)o.call(u,r=c[a++])&&s.push(t?[r,u[r]]:u[r]);return s}}},function(t,n,r){var e=r(71),i=r(125),o=r(2),u=r(3).Reflect;t.exports=u&&u.ownKeys||function(t){var n=e.f(o(t)),r=i.f;return r?n.concat(r(t)):n}},function(t,n,r){var e=r(3).parseFloat,i=r(82).trim;t.exports=1/e(r(150)+"-0")!=-1/0?function(t){var n=i(String(t),3),r=e(n);return 0===r&&"-"==n.charAt(0)?-0:r}:e},function(t,n,r){var e=r(3).parseInt,i=r(82).trim,o=r(150),u=/^[\-+]?0[xX]/;t.exports=8!==e(o+"08")||22!==e(o+"0x16")?function(t,n){var r=i(String(t),3);return e(r,n>>>0||(u.test(r)?16:10))}:e},function(t,n){t.exports=Object.is||function(t,n){return t===n?0!==t||1/t==1/n:t!=t&&n!=n}},function(t,n,r){var e=r(16),i=r(149),o=r(46);t.exports=function(t,n,r,u){var c=String(o(t)),f=c.length,a=void 0===r?" ":String(r),s=e(n);if(s<=f||""==a)return c;var l=s-f,h=i.call(a,Math.ceil(l/a.length));return h.length>l&&(h=h.slice(0,l)),u?h+c:c+h}},function(t,n,r){n.f=r(7)},function(t,n,r){"use strict";var e=r(164);t.exports=r(118)("Map",function(t){return function(){return t(this,arguments.length>0?arguments[0]:void 0)}},{get:function(t){var n=e.getEntry(this,t);return n&&n.v},set:function(t,n){return e.def(this,0===t?0:t,n)}},e,!0)},function(t,n,r){r(10)&&"g"!=/./g.flags&&r(11).f(RegExp.prototype,"flags",{configurable:!0,get:r(120)})},function(t,n,r){"use strict";var e=r(164);t.exports=r(118)("Set",function(t){return function(){return t(this,arguments.length>0?arguments[0]:void 0)}},{add:function(t){return e.def(this,t=0===t?0:t,t)}},e)},function(t,n,r){"use strict";var e,i=r(48)(0),o=r(28),u=r(65),c=r(172),f=r(166),a=r(6),s=u.getWeak,l=Object.isExtensible,h=f.ufstore,v={},p=function(t){return function(){return t(this,arguments.length>0?arguments[0]:void 0)}},d={get:function(t){if(a(t)){var n=s(t);return!0===n?h(this).get(t):n?n[this._i]:void 0}},set:function(t,n){return f.def(this,t,n)}},y=t.exports=r(118)("WeakMap",p,d,f,!0,!0);7!=(new y).set((Object.freeze||Object)(v),7).get(v)&&(e=f.getConstructor(p),c(e.prototype,d),u.NEED=!0,i(["delete","has","get","set"],function(t){var n=y.prototype,r=n[t];o(n,t,function(n,i){if(a(n)&&!l(n)){this._f||(this._f=new e);var o=this._f[t](n,i);return"set"==t?this:o}return r.call(this,n,i)})}))},,,,function(t,n){"use strict";function r(){var t=document.querySelector("#page-nav");if(t&&!document.querySelector("#page-nav .extend.prev")&&(t.innerHTML='<a class="extend prev disabled" rel="prev">&laquo; Prev</a>'+t.innerHTML),t&&!document.querySelector("#page-nav .extend.next")&&(t.innerHTML=t.innerHTML+'<a class="extend next disabled" rel="next">Next &raquo;</a>'),yiliaConfig&&yiliaConfig.open_in_new){document.querySelectorAll(".article-entry a:not(.article-more-a)").forEach(function(t){var n=t.getAttribute("target");n&&""!==n||t.setAttribute("target","_blank")})}if(yiliaConfig&&yiliaConfig.toc_hide_index){document.querySelectorAll(".toc-number").forEach(function(t){t.style.display="none"})}var n=document.querySelector("#js-aboutme");n&&0!==n.length&&(n.innerHTML=n.innerText)}t.exports={init:r}},function(t,n,r){"use strict";function e(t){return t&&t.__esModule?t:{default:t}}function i(t,n){var r=/\/|index.html/g;return t.replace(r,"")===n.replace(r,"")}function o(){for(var t=document.querySelectorAll(".js-header-menu li a"),n=window.location.pathname,r=0,e=t.length;r<e;r++){var o=t[r];i(n,o.getAttribute("href"))&&(0,h.default)(o,"active")}}function u(t){for(var n=t.offsetLeft,r=t.offsetParent;null!==r;)n+=r.offsetLeft,r=r.offsetParent;return n}function c(t){for(var n=t.offsetTop,r=t.offsetParent;null!==r;)n+=r.offsetTop,r=r.offsetParent;return n}function f(t,n,r,e,i){var o=u(t),f=c(t)-n;if(f-r<=i){var a=t.$newDom;a||(a=t.cloneNode(!0),(0,d.default)(t,a),t.$newDom=a,a.style.position="fixed",a.style.top=(r||f)+"px",a.style.left=o+"px",a.style.zIndex=e||2,a.style.width="100%",a.style.color="#fff"),a.style.visibility="visible",t.style.visibility="hidden"}else{t.style.visibility="visible";var s=t.$newDom;s&&(s.style.visibility="hidden")}}function a(){var t=document.querySelector(".js-overlay"),n=document.querySelector(".js-header-menu");f(t,document.body.scrollTop,-63,2,0),f(n,document.body.scrollTop,1,3,0)}function s(){document.querySelector("#container").addEventListener("scroll",function(t){a()}),window.addEventListener("scroll",function(t){a()}),a()}var l=r(156),h=e(l),v=r(157),p=(e(v),r(382)),d=e(p),y=r(128),g=e(y),b=r(190),m=e(b),x=r(129);(function(){g.default.versions.mobile&&window.screen.width<800&&(o(),s())})(),(0,x.addLoadEvent)(function(){m.default.init()}),t.exports={}},,,,function(t,n,r){(function(t){"use strict";function n(t,n,r){t[n]||Object[e](t,n,{writable:!0,configurable:!0,value:r})}if(r(381),r(391),r(198),t._babelPolyfill)throw new Error("only one instance of babel-polyfill is allowed");t._babelPolyfill=!0;var e="defineProperty";n(String.prototype,"padLeft","".padStart),n(String.prototype,"padRight","".padEnd),"pop,reverse,shift,keys,values,entries,indexOf,every,some,forEach,map,filter,find,findIndex,includes,join,slice,concat,push,splice,unshift,sort,lastIndexOf,reduce,reduceRight,copyWithin,fill".split(",").forEach(function(t){[][t]&&n(Array,t,Function.call.bind([][t]))})}).call(n,function(){return this}())},,,function(t,n,r){r(210),t.exports=r(52).RegExp.escape},,,,function(t,n,r){var e=r(6),i=r(138),o=r(7)("species");t.exports=function(t){var n;return i(t)&&(n=t.constructor,"function"!=typeof n||n!==Array&&!i(n.prototype)||(n=void 0),e(n)&&null===(n=n[o])&&(n=void 0)),void 0===n?Array:n}},function(t,n,r){var e=r(202);t.exports=function(t,n){return new(e(t))(n)}},function(t,n,r){"use strict";var e=r(2),i=r(50),o="number";t.exports=function(t){if("string"!==t&&t!==o&&"default"!==t)throw TypeError("Incorrect hint");return i(e(this),t!=o)}},function(t,n,r){var e=r(72),i=r(125),o=r(116);t.exports=function(t){var n=e(t),r=i.f;if(r)for(var u,c=r(t),f=o.f,a=0;c.length>a;)f.call(t,u=c[a++])&&n.push(u);return n}},function(t,n,r){var e=r(72),i=r(30);t.exports=function(t,n){for(var r,o=i(t),u=e(o),c=u.length,f=0;c>f;)if(o[r=u[f++]]===n)return r}},function(t,n,r){"use strict";var e=r(208),i=r(121),o=r(26);t.exports=function(){for(var t=o(this),n=arguments.length,r=Array(n),u=0,c=e._,f=!1;n>u;)(r[u]=arguments[u++])===c&&(f=!0);return function(){var e,o=this,u=arguments.length,a=0,s=0;if(!f&&!u)return i(t,r,o);if(e=r.slice(),f)for(;n>a;a++)e[a]===c&&(e[a]=arguments[s++]);for(;u>s;)e.push(arguments[s++]);return i(t,e,o)}}},function(t,n,r){t.exports=r(3)},function(t,n){t.exports=function(t,n){var r=n===Object(n)?function(t){return n[t]}:n;return function(n){return String(n).replace(t,r)}}},function(t,n,r){var e=r(1),i=r(209)(/[\\^$*+?.()|[\]{}]/g,"\\$&");e(e.S,"RegExp",{escape:function(t){return i(t)}})},function(t,n,r){var e=r(1);e(e.P,"Array",{copyWithin:r(160)}),r(78)("copyWithin")},function(t,n,r){"use strict";var e=r(1),i=r(48)(4);e(e.P+e.F*!r(47)([].every,!0),"Array",{every:function(t){return i(this,t,arguments[1])}})},function(t,n,r){var e=r(1);e(e.P,"Array",{fill:r(130)}),r(78)("fill")},function(t,n,r){"use strict";var e=r(1),i=r(48)(2);e(e.P+e.F*!r(47)([].filter,!0),"Array",{filter:function(t){return i(this,t,arguments[1])}})},function(t,n,r){"use strict";var e=r(1),i=r(48)(6),o="findIndex",u=!0;o in[]&&Array(1)[o](function(){u=!1}),e(e.P+e.F*u,"Array",{findIndex:function(t){return i(this,t,arguments.length>1?arguments[1]:void 0)}}),r(78)(o)},function(t,n,r){"use strict";var e=r(1),i=r(48)(5),o="find",u=!0;o in[]&&Array(1)[o](function(){u=!1}),e(e.P+e.F*u,"Array",{find:function(t){return i(this,t,arguments.length>1?arguments[1]:void 0)}}),r(78)(o)},function(t,n,r){"use strict";var e=r(1),i=r(48)(0),o=r(47)([].forEach,!0);e(e.P+e.F*!o,"Array",{forEach:function(t){return i(this,t,arguments[1])}})},function(t,n,r){"use strict";var e=r(53),i=r(1),o=r(17),u=r(169),c=r(137),f=r(16),a=r(131),s=r(154);i(i.S+i.F*!r(123)(function(t){Array.from(t)}),"Array",{from:function(t){var n,r,i,l,h=o(t),v="function"==typeof this?this:Array,p=arguments.length,d=p>1?arguments[1]:void 0,y=void 0!==d,g=0,b=s(h);if(y&&(d=e(d,p>2?arguments[2]:void 0,2)),void 0==b||v==Array&&c(b))for(n=f(h.length),r=new v(n);n>g;g++)a(r,g,y?d(h[g],g):h[g]);else for(l=b.call(h),r=new v;!(i=l.next()).done;g++)a(r,g,y?u(l,d,[i.value,g],!0):i.value);return r.length=g,r}})},function(t,n,r){"use strict";var e=r(1),i=r(117)(!1),o=[].indexOf,u=!!o&&1/[1].indexOf(1,-0)<0;e(e.P+e.F*(u||!r(47)(o)),"Array",{indexOf:function(t){return u?o.apply(this,arguments)||0:i(this,t,arguments[1])}})},function(t,n,r){var e=r(1);e(e.S,"Array",{isArray:r(138)})},function(t,n,r){"use strict";var e=r(1),i=r(30),o=[].join;e(e.P+e.F*(r(115)!=Object||!r(47)(o)),"Array",{join:function(t){return o.call(i(this),void 0===t?",":t)}})},function(t,n,r){"use strict";var e=r(1),i=r(30),o=r(67),u=r(16),c=[].lastIndexOf,f=!!c&&1/[1].lastIndexOf(1,-0)<0;e(e.P+e.F*(f||!r(47)(c)),"Array",{lastIndexOf:function(t){if(f)return c.apply(this,arguments)||0;var n=i(this),r=u(n.length),e=r-1;for(arguments.length>1&&(e=Math.min(e,o(arguments[1]))),e<0&&(e=r+e);e>=0;e--)if(e in n&&n[e]===t)return e||0;return-1}})},function(t,n,r){"use strict";var e=r(1),i=r(48)(1);e(e.P+e.F*!r(47)([].map,!0),"Array",{map:function(t){return i(this,t,arguments[1])}})},function(t,n,r){"use strict";var e=r(1),i=r(131);e(e.S+e.F*r(4)(function(){function t(){}return!(Array.of.call(t)instanceof t)}),"Array",{of:function(){for(var t=0,n=arguments.length,r=new("function"==typeof this?this:Array)(n);n>t;)i(r,t,arguments[t++]);return r.length=n,r}})},function(t,n,r){"use strict";var e=r(1),i=r(162);e(e.P+e.F*!r(47)([].reduceRight,!0),"Array",{reduceRight:function(t){return i(this,t,arguments.length,arguments[1],!0)}})},function(t,n,r){"use strict";var e=r(1),i=r(162);e(e.P+e.F*!r(47)([].reduce,!0),"Array",{reduce:function(t){return i(this,t,arguments.length,arguments[1],!1)}})},function(t,n,r){"use strict";var e=r(1),i=r(135),o=r(45),u=r(75),c=r(16),f=[].slice;e(e.P+e.F*r(4)(function(){i&&f.call(i)}),"Array",{slice:function(t,n){var r=c(this.length),e=o(this);if(n=void 0===n?r:n,"Array"==e)return f.call(this,t,n);for(var i=u(t,r),a=u(n,r),s=c(a-i),l=Array(s),h=0;h<s;h++)l[h]="String"==e?this.charAt(i+h):this[i+h];return l}})},function(t,n,r){"use strict";var e=r(1),i=r(48)(3);e(e.P+e.F*!r(47)([].some,!0),"Array",{some:function(t){return i(this,t,arguments[1])}})},function(t,n,r){"use strict";var e=r(1),i=r(26),o=r(17),u=r(4),c=[].sort,f=[1,2,3];e(e.P+e.F*(u(function(){f.sort(void 0)})||!u(function(){f.sort(null)})||!r(47)(c)),"Array",{sort:function(t){return void 0===t?c.call(o(this)):c.call(o(this),i(t))}})},function(t,n,r){r(74)("Array")},function(t,n,r){var e=r(1);e(e.S,"Date",{now:function(){return(new Date).getTime()}})},function(t,n,r){"use strict";var e=r(1),i=r(4),o=Date.prototype.getTime,u=function(t){return t>9?t:"0"+t};e(e.P+e.F*(i(function(){return"0385-07-25T07:06:39.999Z"!=new Date(-5e13-1).toISOString()})||!i(function(){new Date(NaN).toISOString()})),"Date",{toISOString:function(){
+if(!isFinite(o.call(this)))throw RangeError("Invalid time value");var t=this,n=t.getUTCFullYear(),r=t.getUTCMilliseconds(),e=n<0?"-":n>9999?"+":"";return e+("00000"+Math.abs(n)).slice(e?-6:-4)+"-"+u(t.getUTCMonth()+1)+"-"+u(t.getUTCDate())+"T"+u(t.getUTCHours())+":"+u(t.getUTCMinutes())+":"+u(t.getUTCSeconds())+"."+(r>99?r:"0"+u(r))+"Z"}})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(50);e(e.P+e.F*r(4)(function(){return null!==new Date(NaN).toJSON()||1!==Date.prototype.toJSON.call({toISOString:function(){return 1}})}),"Date",{toJSON:function(t){var n=i(this),r=o(n);return"number"!=typeof r||isFinite(r)?n.toISOString():null}})},function(t,n,r){var e=r(7)("toPrimitive"),i=Date.prototype;e in i||r(27)(i,e,r(204))},function(t,n,r){var e=Date.prototype,i="Invalid Date",o="toString",u=e[o],c=e.getTime;new Date(NaN)+""!=i&&r(28)(e,o,function(){var t=c.call(this);return t===t?u.call(this):i})},function(t,n,r){var e=r(1);e(e.P,"Function",{bind:r(163)})},function(t,n,r){"use strict";var e=r(6),i=r(32),o=r(7)("hasInstance"),u=Function.prototype;o in u||r(11).f(u,o,{value:function(t){if("function"!=typeof this||!e(t))return!1;if(!e(this.prototype))return t instanceof this;for(;t=i(t);)if(this.prototype===t)return!0;return!1}})},function(t,n,r){var e=r(11).f,i=r(66),o=r(24),u=Function.prototype,c="name",f=Object.isExtensible||function(){return!0};c in u||r(10)&&e(u,c,{configurable:!0,get:function(){try{var t=this,n=(""+t).match(/^\s*function ([^ (]*)/)[1];return o(t,c)||!f(t)||e(t,c,i(5,n)),n}catch(t){return""}}})},function(t,n,r){var e=r(1),i=r(171),o=Math.sqrt,u=Math.acosh;e(e.S+e.F*!(u&&710==Math.floor(u(Number.MAX_VALUE))&&u(1/0)==1/0),"Math",{acosh:function(t){return(t=+t)<1?NaN:t>94906265.62425156?Math.log(t)+Math.LN2:i(t-1+o(t-1)*o(t+1))}})},function(t,n,r){function e(t){return isFinite(t=+t)&&0!=t?t<0?-e(-t):Math.log(t+Math.sqrt(t*t+1)):t}var i=r(1),o=Math.asinh;i(i.S+i.F*!(o&&1/o(0)>0),"Math",{asinh:e})},function(t,n,r){var e=r(1),i=Math.atanh;e(e.S+e.F*!(i&&1/i(-0)<0),"Math",{atanh:function(t){return 0==(t=+t)?t:Math.log((1+t)/(1-t))/2}})},function(t,n,r){var e=r(1),i=r(142);e(e.S,"Math",{cbrt:function(t){return i(t=+t)*Math.pow(Math.abs(t),1/3)}})},function(t,n,r){var e=r(1);e(e.S,"Math",{clz32:function(t){return(t>>>=0)?31-Math.floor(Math.log(t+.5)*Math.LOG2E):32}})},function(t,n,r){var e=r(1),i=Math.exp;e(e.S,"Math",{cosh:function(t){return(i(t=+t)+i(-t))/2}})},function(t,n,r){var e=r(1),i=r(141);e(e.S+e.F*(i!=Math.expm1),"Math",{expm1:i})},function(t,n,r){var e=r(1),i=r(142),o=Math.pow,u=o(2,-52),c=o(2,-23),f=o(2,127)*(2-c),a=o(2,-126),s=function(t){return t+1/u-1/u};e(e.S,"Math",{fround:function(t){var n,r,e=Math.abs(t),o=i(t);return e<a?o*s(e/a/c)*a*c:(n=(1+c/u)*e,r=n-(n-e),r>f||r!=r?o*(1/0):o*r)}})},function(t,n,r){var e=r(1),i=Math.abs;e(e.S,"Math",{hypot:function(t,n){for(var r,e,o=0,u=0,c=arguments.length,f=0;u<c;)r=i(arguments[u++]),f<r?(e=f/r,o=o*e*e+1,f=r):r>0?(e=r/f,o+=e*e):o+=r;return f===1/0?1/0:f*Math.sqrt(o)}})},function(t,n,r){var e=r(1),i=Math.imul;e(e.S+e.F*r(4)(function(){return-5!=i(4294967295,5)||2!=i.length}),"Math",{imul:function(t,n){var r=65535,e=+t,i=+n,o=r&e,u=r&i;return 0|o*u+((r&e>>>16)*u+o*(r&i>>>16)<<16>>>0)}})},function(t,n,r){var e=r(1);e(e.S,"Math",{log10:function(t){return Math.log(t)/Math.LN10}})},function(t,n,r){var e=r(1);e(e.S,"Math",{log1p:r(171)})},function(t,n,r){var e=r(1);e(e.S,"Math",{log2:function(t){return Math.log(t)/Math.LN2}})},function(t,n,r){var e=r(1);e(e.S,"Math",{sign:r(142)})},function(t,n,r){var e=r(1),i=r(141),o=Math.exp;e(e.S+e.F*r(4)(function(){return-2e-17!=!Math.sinh(-2e-17)}),"Math",{sinh:function(t){return Math.abs(t=+t)<1?(i(t)-i(-t))/2:(o(t-1)-o(-t-1))*(Math.E/2)}})},function(t,n,r){var e=r(1),i=r(141),o=Math.exp;e(e.S,"Math",{tanh:function(t){var n=i(t=+t),r=i(-t);return n==1/0?1:r==1/0?-1:(n-r)/(o(t)+o(-t))}})},function(t,n,r){var e=r(1);e(e.S,"Math",{trunc:function(t){return(t>0?Math.floor:Math.ceil)(t)}})},function(t,n,r){"use strict";var e=r(3),i=r(24),o=r(45),u=r(136),c=r(50),f=r(4),a=r(71).f,s=r(31).f,l=r(11).f,h=r(82).trim,v="Number",p=e[v],d=p,y=p.prototype,g=o(r(70)(y))==v,b="trim"in String.prototype,m=function(t){var n=c(t,!1);if("string"==typeof n&&n.length>2){n=b?n.trim():h(n,3);var r,e,i,o=n.charCodeAt(0);if(43===o||45===o){if(88===(r=n.charCodeAt(2))||120===r)return NaN}else if(48===o){switch(n.charCodeAt(1)){case 66:case 98:e=2,i=49;break;case 79:case 111:e=8,i=55;break;default:return+n}for(var u,f=n.slice(2),a=0,s=f.length;a<s;a++)if((u=f.charCodeAt(a))<48||u>i)return NaN;return parseInt(f,e)}}return+n};if(!p(" 0o1")||!p("0b1")||p("+0x1")){p=function(t){var n=arguments.length<1?0:t,r=this;return r instanceof p&&(g?f(function(){y.valueOf.call(r)}):o(r)!=v)?u(new d(m(n)),r,p):m(n)};for(var x,w=r(10)?a(d):"MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger".split(","),S=0;w.length>S;S++)i(d,x=w[S])&&!i(p,x)&&l(p,x,s(d,x));p.prototype=y,y.constructor=p,r(28)(e,v,p)}},function(t,n,r){var e=r(1);e(e.S,"Number",{EPSILON:Math.pow(2,-52)})},function(t,n,r){var e=r(1),i=r(3).isFinite;e(e.S,"Number",{isFinite:function(t){return"number"==typeof t&&i(t)}})},function(t,n,r){var e=r(1);e(e.S,"Number",{isInteger:r(168)})},function(t,n,r){var e=r(1);e(e.S,"Number",{isNaN:function(t){return t!=t}})},function(t,n,r){var e=r(1),i=r(168),o=Math.abs;e(e.S,"Number",{isSafeInteger:function(t){return i(t)&&o(t)<=9007199254740991}})},function(t,n,r){var e=r(1);e(e.S,"Number",{MAX_SAFE_INTEGER:9007199254740991})},function(t,n,r){var e=r(1);e(e.S,"Number",{MIN_SAFE_INTEGER:-9007199254740991})},function(t,n,r){var e=r(1),i=r(178);e(e.S+e.F*(Number.parseFloat!=i),"Number",{parseFloat:i})},function(t,n,r){var e=r(1),i=r(179);e(e.S+e.F*(Number.parseInt!=i),"Number",{parseInt:i})},function(t,n,r){"use strict";var e=r(1),i=r(67),o=r(159),u=r(149),c=1..toFixed,f=Math.floor,a=[0,0,0,0,0,0],s="Number.toFixed: incorrect invocation!",l="0",h=function(t,n){for(var r=-1,e=n;++r<6;)e+=t*a[r],a[r]=e%1e7,e=f(e/1e7)},v=function(t){for(var n=6,r=0;--n>=0;)r+=a[n],a[n]=f(r/t),r=r%t*1e7},p=function(){for(var t=6,n="";--t>=0;)if(""!==n||0===t||0!==a[t]){var r=String(a[t]);n=""===n?r:n+u.call(l,7-r.length)+r}return n},d=function(t,n,r){return 0===n?r:n%2==1?d(t,n-1,r*t):d(t*t,n/2,r)},y=function(t){for(var n=0,r=t;r>=4096;)n+=12,r/=4096;for(;r>=2;)n+=1,r/=2;return n};e(e.P+e.F*(!!c&&("0.000"!==8e-5.toFixed(3)||"1"!==.9.toFixed(0)||"1.25"!==1.255.toFixed(2)||"1000000000000000128"!==(0xde0b6b3a7640080).toFixed(0))||!r(4)(function(){c.call({})})),"Number",{toFixed:function(t){var n,r,e,c,f=o(this,s),a=i(t),g="",b=l;if(a<0||a>20)throw RangeError(s);if(f!=f)return"NaN";if(f<=-1e21||f>=1e21)return String(f);if(f<0&&(g="-",f=-f),f>1e-21)if(n=y(f*d(2,69,1))-69,r=n<0?f*d(2,-n,1):f/d(2,n,1),r*=4503599627370496,(n=52-n)>0){for(h(0,r),e=a;e>=7;)h(1e7,0),e-=7;for(h(d(10,e,1),0),e=n-1;e>=23;)v(1<<23),e-=23;v(1<<e),h(1,1),v(2),b=p()}else h(0,r),h(1<<-n,0),b=p()+u.call(l,a);return a>0?(c=b.length,b=g+(c<=a?"0."+u.call(l,a-c)+b:b.slice(0,c-a)+"."+b.slice(c-a))):b=g+b,b}})},function(t,n,r){"use strict";var e=r(1),i=r(4),o=r(159),u=1..toPrecision;e(e.P+e.F*(i(function(){return"1"!==u.call(1,void 0)})||!i(function(){u.call({})})),"Number",{toPrecision:function(t){var n=o(this,"Number#toPrecision: incorrect invocation!");return void 0===t?u.call(n):u.call(n,t)}})},function(t,n,r){var e=r(1);e(e.S+e.F,"Object",{assign:r(172)})},function(t,n,r){var e=r(1);e(e.S,"Object",{create:r(70)})},function(t,n,r){var e=r(1);e(e.S+e.F*!r(10),"Object",{defineProperties:r(173)})},function(t,n,r){var e=r(1);e(e.S+e.F*!r(10),"Object",{defineProperty:r(11).f})},function(t,n,r){var e=r(6),i=r(65).onFreeze;r(49)("freeze",function(t){return function(n){return t&&e(n)?t(i(n)):n}})},function(t,n,r){var e=r(30),i=r(31).f;r(49)("getOwnPropertyDescriptor",function(){return function(t,n){return i(e(t),n)}})},function(t,n,r){r(49)("getOwnPropertyNames",function(){return r(174).f})},function(t,n,r){var e=r(17),i=r(32);r(49)("getPrototypeOf",function(){return function(t){return i(e(t))}})},function(t,n,r){var e=r(6);r(49)("isExtensible",function(t){return function(n){return!!e(n)&&(!t||t(n))}})},function(t,n,r){var e=r(6);r(49)("isFrozen",function(t){return function(n){return!e(n)||!!t&&t(n)}})},function(t,n,r){var e=r(6);r(49)("isSealed",function(t){return function(n){return!e(n)||!!t&&t(n)}})},function(t,n,r){var e=r(1);e(e.S,"Object",{is:r(180)})},function(t,n,r){var e=r(17),i=r(72);r(49)("keys",function(){return function(t){return i(e(t))}})},function(t,n,r){var e=r(6),i=r(65).onFreeze;r(49)("preventExtensions",function(t){return function(n){return t&&e(n)?t(i(n)):n}})},function(t,n,r){var e=r(6),i=r(65).onFreeze;r(49)("seal",function(t){return function(n){return t&&e(n)?t(i(n)):n}})},function(t,n,r){var e=r(1);e(e.S,"Object",{setPrototypeOf:r(144).set})},function(t,n,r){"use strict";var e=r(114),i={};i[r(7)("toStringTag")]="z",i+""!="[object z]"&&r(28)(Object.prototype,"toString",function(){return"[object "+e(this)+"]"},!0)},function(t,n,r){var e=r(1),i=r(178);e(e.G+e.F*(parseFloat!=i),{parseFloat:i})},function(t,n,r){var e=r(1),i=r(179);e(e.G+e.F*(parseInt!=i),{parseInt:i})},function(t,n,r){"use strict";var e,i,o,u=r(69),c=r(3),f=r(53),a=r(114),s=r(1),l=r(6),h=r(26),v=r(68),p=r(79),d=r(146),y=r(151).set,g=r(143)(),b="Promise",m=c.TypeError,x=c.process,w=c[b],x=c.process,S="process"==a(x),_=function(){},O=!!function(){try{var t=w.resolve(1),n=(t.constructor={})[r(7)("species")]=function(t){t(_,_)};return(S||"function"==typeof PromiseRejectionEvent)&&t.then(_)instanceof n}catch(t){}}(),E=function(t,n){return t===n||t===w&&n===o},P=function(t){var n;return!(!l(t)||"function"!=typeof(n=t.then))&&n},j=function(t){return E(w,t)?new F(t):new i(t)},F=i=function(t){var n,r;this.promise=new t(function(t,e){if(void 0!==n||void 0!==r)throw m("Bad Promise constructor");n=t,r=e}),this.resolve=h(n),this.reject=h(r)},M=function(t){try{t()}catch(t){return{error:t}}},A=function(t,n){if(!t._n){t._n=!0;var r=t._c;g(function(){for(var e=t._v,i=1==t._s,o=0;r.length>o;)!function(n){var r,o,u=i?n.ok:n.fail,c=n.resolve,f=n.reject,a=n.domain;try{u?(i||(2==t._h&&I(t),t._h=1),!0===u?r=e:(a&&a.enter(),r=u(e),a&&a.exit()),r===n.promise?f(m("Promise-chain cycle")):(o=P(r))?o.call(r,c,f):c(r)):f(e)}catch(t){f(t)}}(r[o++]);t._c=[],t._n=!1,n&&!t._h&&N(t)})}},N=function(t){y.call(c,function(){var n,r,e,i=t._v;if(T(t)&&(n=M(function(){S?x.emit("unhandledRejection",i,t):(r=c.onunhandledrejection)?r({promise:t,reason:i}):(e=c.console)&&e.error&&e.error("Unhandled promise rejection",i)}),t._h=S||T(t)?2:1),t._a=void 0,n)throw n.error})},T=function(t){if(1==t._h)return!1;for(var n,r=t._a||t._c,e=0;r.length>e;)if(n=r[e++],n.fail||!T(n.promise))return!1;return!0},I=function(t){y.call(c,function(){var n;S?x.emit("rejectionHandled",t):(n=c.onrejectionhandled)&&n({promise:t,reason:t._v})})},k=function(t){var n=this;n._d||(n._d=!0,n=n._w||n,n._v=t,n._s=2,n._a||(n._a=n._c.slice()),A(n,!0))},L=function(t){var n,r=this;if(!r._d){r._d=!0,r=r._w||r;try{if(r===t)throw m("Promise can't be resolved itself");(n=P(t))?g(function(){var e={_w:r,_d:!1};try{n.call(t,f(L,e,1),f(k,e,1))}catch(t){k.call(e,t)}}):(r._v=t,r._s=1,A(r,!1))}catch(t){k.call({_w:r,_d:!1},t)}}};O||(w=function(t){v(this,w,b,"_h"),h(t),e.call(this);try{t(f(L,this,1),f(k,this,1))}catch(t){k.call(this,t)}},e=function(t){this._c=[],this._a=void 0,this._s=0,this._d=!1,this._v=void 0,this._h=0,this._n=!1},e.prototype=r(73)(w.prototype,{then:function(t,n){var r=j(d(this,w));return r.ok="function"!=typeof t||t,r.fail="function"==typeof n&&n,r.domain=S?x.domain:void 0,this._c.push(r),this._a&&this._a.push(r),this._s&&A(this,!1),r.promise},catch:function(t){return this.then(void 0,t)}}),F=function(){var t=new e;this.promise=t,this.resolve=f(L,t,1),this.reject=f(k,t,1)}),s(s.G+s.W+s.F*!O,{Promise:w}),r(81)(w,b),r(74)(b),o=r(52)[b],s(s.S+s.F*!O,b,{reject:function(t){var n=j(this);return(0,n.reject)(t),n.promise}}),s(s.S+s.F*(u||!O),b,{resolve:function(t){if(t instanceof w&&E(t.constructor,this))return t;var n=j(this);return(0,n.resolve)(t),n.promise}}),s(s.S+s.F*!(O&&r(123)(function(t){w.all(t).catch(_)})),b,{all:function(t){var n=this,r=j(n),e=r.resolve,i=r.reject,o=M(function(){var r=[],o=0,u=1;p(t,!1,function(t){var c=o++,f=!1;r.push(void 0),u++,n.resolve(t).then(function(t){f||(f=!0,r[c]=t,--u||e(r))},i)}),--u||e(r)});return o&&i(o.error),r.promise},race:function(t){var n=this,r=j(n),e=r.reject,i=M(function(){p(t,!1,function(t){n.resolve(t).then(r.resolve,e)})});return i&&e(i.error),r.promise}})},function(t,n,r){var e=r(1),i=r(26),o=r(2),u=(r(3).Reflect||{}).apply,c=Function.apply;e(e.S+e.F*!r(4)(function(){u(function(){})}),"Reflect",{apply:function(t,n,r){var e=i(t),f=o(r);return u?u(e,n,f):c.call(e,n,f)}})},function(t,n,r){var e=r(1),i=r(70),o=r(26),u=r(2),c=r(6),f=r(4),a=r(163),s=(r(3).Reflect||{}).construct,l=f(function(){function t(){}return!(s(function(){},[],t)instanceof t)}),h=!f(function(){s(function(){})});e(e.S+e.F*(l||h),"Reflect",{construct:function(t,n){o(t),u(n);var r=arguments.length<3?t:o(arguments[2]);if(h&&!l)return s(t,n,r);if(t==r){switch(n.length){case 0:return new t;case 1:return new t(n[0]);case 2:return new t(n[0],n[1]);case 3:return new t(n[0],n[1],n[2]);case 4:return new t(n[0],n[1],n[2],n[3])}var e=[null];return e.push.apply(e,n),new(a.apply(t,e))}var f=r.prototype,v=i(c(f)?f:Object.prototype),p=Function.apply.call(t,v,n);return c(p)?p:v}})},function(t,n,r){var e=r(11),i=r(1),o=r(2),u=r(50);i(i.S+i.F*r(4)(function(){Reflect.defineProperty(e.f({},1,{value:1}),1,{value:2})}),"Reflect",{defineProperty:function(t,n,r){o(t),n=u(n,!0),o(r);try{return e.f(t,n,r),!0}catch(t){return!1}}})},function(t,n,r){var e=r(1),i=r(31).f,o=r(2);e(e.S,"Reflect",{deleteProperty:function(t,n){var r=i(o(t),n);return!(r&&!r.configurable)&&delete t[n]}})},function(t,n,r){"use strict";var e=r(1),i=r(2),o=function(t){this._t=i(t),this._i=0;var n,r=this._k=[];for(n in t)r.push(n)};r(139)(o,"Object",function(){var t,n=this,r=n._k;do{if(n._i>=r.length)return{value:void 0,done:!0}}while(!((t=r[n._i++])in n._t));return{value:t,done:!1}}),e(e.S,"Reflect",{enumerate:function(t){return new o(t)}})},function(t,n,r){var e=r(31),i=r(1),o=r(2);i(i.S,"Reflect",{getOwnPropertyDescriptor:function(t,n){return e.f(o(t),n)}})},function(t,n,r){var e=r(1),i=r(32),o=r(2);e(e.S,"Reflect",{getPrototypeOf:function(t){return i(o(t))}})},function(t,n,r){function e(t,n){var r,c,s=arguments.length<3?t:arguments[2];return a(t)===s?t[n]:(r=i.f(t,n))?u(r,"value")?r.value:void 0!==r.get?r.get.call(s):void 0:f(c=o(t))?e(c,n,s):void 0}var i=r(31),o=r(32),u=r(24),c=r(1),f=r(6),a=r(2);c(c.S,"Reflect",{get:e})},function(t,n,r){var e=r(1);e(e.S,"Reflect",{has:function(t,n){return n in t}})},function(t,n,r){var e=r(1),i=r(2),o=Object.isExtensible;e(e.S,"Reflect",{isExtensible:function(t){return i(t),!o||o(t)}})},function(t,n,r){var e=r(1);e(e.S,"Reflect",{ownKeys:r(177)})},function(t,n,r){var e=r(1),i=r(2),o=Object.preventExtensions;e(e.S,"Reflect",{preventExtensions:function(t){i(t);try{return o&&o(t),!0}catch(t){return!1}}})},function(t,n,r){var e=r(1),i=r(144);i&&e(e.S,"Reflect",{setPrototypeOf:function(t,n){i.check(t,n);try{return i.set(t,n),!0}catch(t){return!1}}})},function(t,n,r){function e(t,n,r){var f,h,v=arguments.length<4?t:arguments[3],p=o.f(s(t),n);if(!p){if(l(h=u(t)))return e(h,n,r,v);p=a(0)}return c(p,"value")?!(!1===p.writable||!l(v)||(f=o.f(v,n)||a(0),f.value=r,i.f(v,n,f),0)):void 0!==p.set&&(p.set.call(v,r),!0)}var i=r(11),o=r(31),u=r(32),c=r(24),f=r(1),a=r(66),s=r(2),l=r(6);f(f.S,"Reflect",{set:e})},function(t,n,r){var e=r(3),i=r(136),o=r(11).f,u=r(71).f,c=r(122),f=r(120),a=e.RegExp,s=a,l=a.prototype,h=/a/g,v=/a/g,p=new a(h)!==h;if(r(10)&&(!p||r(4)(function(){return v[r(7)("match")]=!1,a(h)!=h||a(v)==v||"/a/i"!=a(h,"i")}))){a=function(t,n){var r=this instanceof a,e=c(t),o=void 0===n;return!r&&e&&t.constructor===a&&o?t:i(p?new s(e&&!o?t.source:t,n):s((e=t instanceof a)?t.source:t,e&&o?f.call(t):n),r?this:l,a)};for(var d=u(s),y=0;d.length>y;)!function(t){t in a||o(a,t,{configurable:!0,get:function(){return s[t]},set:function(n){s[t]=n}})}(d[y++]);l.constructor=a,a.prototype=l,r(28)(e,"RegExp",a)}r(74)("RegExp")},function(t,n,r){r(119)("match",1,function(t,n,r){return[function(r){"use strict";var e=t(this),i=void 0==r?void 0:r[n];return void 0!==i?i.call(r,e):new RegExp(r)[n](String(e))},r]})},function(t,n,r){r(119)("replace",2,function(t,n,r){return[function(e,i){"use strict";var o=t(this),u=void 0==e?void 0:e[n];return void 0!==u?u.call(e,o,i):r.call(String(o),e,i)},r]})},function(t,n,r){r(119)("search",1,function(t,n,r){return[function(r){"use strict";var e=t(this),i=void 0==r?void 0:r[n];return void 0!==i?i.call(r,e):new RegExp(r)[n](String(e))},r]})},function(t,n,r){r(119)("split",2,function(t,n,e){"use strict";var i=r(122),o=e,u=[].push,c="split",f="length",a="lastIndex";if("c"=="abbc"[c](/(b)*/)[1]||4!="test"[c](/(?:)/,-1)[f]||2!="ab"[c](/(?:ab)*/)[f]||4!="."[c](/(.?)(.?)/)[f]||"."[c](/()()/)[f]>1||""[c](/.?/)[f]){var s=void 0===/()??/.exec("")[1];e=function(t,n){var r=String(this);if(void 0===t&&0===n)return[];if(!i(t))return o.call(r,t,n);var e,c,l,h,v,p=[],d=(t.ignoreCase?"i":"")+(t.multiline?"m":"")+(t.unicode?"u":"")+(t.sticky?"y":""),y=0,g=void 0===n?4294967295:n>>>0,b=new RegExp(t.source,d+"g");for(s||(e=new RegExp("^"+b.source+"$(?!\\s)",d));(c=b.exec(r))&&!((l=c.index+c[0][f])>y&&(p.push(r.slice(y,c.index)),!s&&c[f]>1&&c[0].replace(e,function(){for(v=1;v<arguments[f]-2;v++)void 0===arguments[v]&&(c[v]=void 0)}),c[f]>1&&c.index<r[f]&&u.apply(p,c.slice(1)),h=c[0][f],y=l,p[f]>=g));)b[a]===c.index&&b[a]++;return y===r[f]?!h&&b.test("")||p.push(""):p.push(r.slice(y)),p[f]>g?p.slice(0,g):p}}else"0"[c](void 0,0)[f]&&(e=function(t,n){return void 0===t&&0===n?[]:o.call(this,t,n)});return[function(r,i){var o=t(this),u=void 0==r?void 0:r[n];return void 0!==u?u.call(r,o,i):e.call(String(o),r,i)},e]})},function(t,n,r){"use strict";r(184);var e=r(2),i=r(120),o=r(10),u="toString",c=/./[u],f=function(t){r(28)(RegExp.prototype,u,t,!0)};r(4)(function(){return"/a/b"!=c.call({source:"a",flags:"b"})})?f(function(){var t=e(this);return"/".concat(t.source,"/","flags"in t?t.flags:!o&&t instanceof RegExp?i.call(t):void 0)}):c.name!=u&&f(function(){return c.call(this)})},function(t,n,r){"use strict";r(29)("anchor",function(t){return function(n){return t(this,"a","name",n)}})},function(t,n,r){"use strict";r(29)("big",function(t){return function(){return t(this,"big","","")}})},function(t,n,r){"use strict";r(29)("blink",function(t){return function(){return t(this,"blink","","")}})},function(t,n,r){"use strict";r(29)("bold",function(t){return function(){return t(this,"b","","")}})},function(t,n,r){"use strict";var e=r(1),i=r(147)(!1);e(e.P,"String",{codePointAt:function(t){return i(this,t)}})},function(t,n,r){"use strict";var e=r(1),i=r(16),o=r(148),u="endsWith",c=""[u];e(e.P+e.F*r(134)(u),"String",{endsWith:function(t){var n=o(this,t,u),r=arguments.length>1?arguments[1]:void 0,e=i(n.length),f=void 0===r?e:Math.min(i(r),e),a=String(t);return c?c.call(n,a,f):n.slice(f-a.length,f)===a}})},function(t,n,r){"use strict";r(29)("fixed",function(t){return function(){return t(this,"tt","","")}})},function(t,n,r){"use strict";r(29)("fontcolor",function(t){return function(n){return t(this,"font","color",n)}})},function(t,n,r){"use strict";r(29)("fontsize",function(t){return function(n){return t(this,"font","size",n)}})},function(t,n,r){var e=r(1),i=r(75),o=String.fromCharCode,u=String.fromCodePoint;e(e.S+e.F*(!!u&&1!=u.length),"String",{fromCodePoint:function(t){for(var n,r=[],e=arguments.length,u=0;e>u;){if(n=+arguments[u++],i(n,1114111)!==n)throw RangeError(n+" is not a valid code point");r.push(n<65536?o(n):o(55296+((n-=65536)>>10),n%1024+56320))}return r.join("")}})},function(t,n,r){"use strict";var e=r(1),i=r(148),o="includes";e(e.P+e.F*r(134)(o),"String",{includes:function(t){return!!~i(this,t,o).indexOf(t,arguments.length>1?arguments[1]:void 0)}})},function(t,n,r){"use strict";r(29)("italics",function(t){return function(){return t(this,"i","","")}})},function(t,n,r){"use strict";var e=r(147)(!0);r(140)(String,"String",function(t){this._t=String(t),this._i=0},function(){var t,n=this._t,r=this._i;return r>=n.length?{value:void 0,done:!0}:(t=e(n,r),this._i+=t.length,{value:t,done:!1})})},function(t,n,r){"use strict";r(29)("link",function(t){return function(n){return t(this,"a","href",n)}})},function(t,n,r){var e=r(1),i=r(30),o=r(16);e(e.S,"String",{raw:function(t){for(var n=i(t.raw),r=o(n.length),e=arguments.length,u=[],c=0;r>c;)u.push(String(n[c++])),c<e&&u.push(String(arguments[c]));return u.join("")}})},function(t,n,r){var e=r(1);e(e.P,"String",{repeat:r(149)})},function(t,n,r){"use strict";r(29)("small",function(t){return function(){return t(this,"small","","")}})},function(t,n,r){"use strict";var e=r(1),i=r(16),o=r(148),u="startsWith",c=""[u];e(e.P+e.F*r(134)(u),"String",{startsWith:function(t){var n=o(this,t,u),r=i(Math.min(arguments.length>1?arguments[1]:void 0,n.length)),e=String(t);return c?c.call(n,e,r):n.slice(r,r+e.length)===e}})},function(t,n,r){"use strict";r(29)("strike",function(t){return function(){return t(this,"strike","","")}})},function(t,n,r){"use strict";r(29)("sub",function(t){return function(){return t(this,"sub","","")}})},function(t,n,r){"use strict";r(29)("sup",function(t){return function(){return t(this,"sup","","")}})},function(t,n,r){"use strict";r(82)("trim",function(t){return function(){return t(this,3)}})},function(t,n,r){"use strict";var e=r(3),i=r(24),o=r(10),u=r(1),c=r(28),f=r(65).KEY,a=r(4),s=r(126),l=r(81),h=r(76),v=r(7),p=r(182),d=r(153),y=r(206),g=r(205),b=r(138),m=r(2),x=r(30),w=r(50),S=r(66),_=r(70),O=r(174),E=r(31),P=r(11),j=r(72),F=E.f,M=P.f,A=O.f,N=e.Symbol,T=e.JSON,I=T&&T.stringify,k="prototype",L=v("_hidden"),R=v("toPrimitive"),C={}.propertyIsEnumerable,D=s("symbol-registry"),U=s("symbols"),W=s("op-symbols"),G=Object[k],B="function"==typeof N,V=e.QObject,z=!V||!V[k]||!V[k].findChild,q=o&&a(function(){return 7!=_(M({},"a",{get:function(){return M(this,"a",{value:7}).a}})).a})?function(t,n,r){var e=F(G,n);e&&delete G[n],M(t,n,r),e&&t!==G&&M(G,n,e)}:M,K=function(t){var n=U[t]=_(N[k]);return n._k=t,n},J=B&&"symbol"==typeof N.iterator?function(t){return"symbol"==typeof t}:function(t){return t instanceof N},Y=function(t,n,r){return t===G&&Y(W,n,r),m(t),n=w(n,!0),m(r),i(U,n)?(r.enumerable?(i(t,L)&&t[L][n]&&(t[L][n]=!1),r=_(r,{enumerable:S(0,!1)})):(i(t,L)||M(t,L,S(1,{})),t[L][n]=!0),q(t,n,r)):M(t,n,r)},H=function(t,n){m(t);for(var r,e=g(n=x(n)),i=0,o=e.length;o>i;)Y(t,r=e[i++],n[r]);return t},$=function(t,n){return void 0===n?_(t):H(_(t),n)},X=function(t){var n=C.call(this,t=w(t,!0));return!(this===G&&i(U,t)&&!i(W,t))&&(!(n||!i(this,t)||!i(U,t)||i(this,L)&&this[L][t])||n)},Q=function(t,n){if(t=x(t),n=w(n,!0),t!==G||!i(U,n)||i(W,n)){var r=F(t,n);return!r||!i(U,n)||i(t,L)&&t[L][n]||(r.enumerable=!0),r}},Z=function(t){for(var n,r=A(x(t)),e=[],o=0;r.length>o;)i(U,n=r[o++])||n==L||n==f||e.push(n);return e},tt=function(t){for(var n,r=t===G,e=A(r?W:x(t)),o=[],u=0;e.length>u;)!i(U,n=e[u++])||r&&!i(G,n)||o.push(U[n]);return o};B||(N=function(){if(this instanceof N)throw TypeError("Symbol is not a constructor!");var t=h(arguments.length>0?arguments[0]:void 0),n=function(r){this===G&&n.call(W,r),i(this,L)&&i(this[L],t)&&(this[L][t]=!1),q(this,t,S(1,r))};return o&&z&&q(G,t,{configurable:!0,set:n}),K(t)},c(N[k],"toString",function(){return this._k}),E.f=Q,P.f=Y,r(71).f=O.f=Z,r(116).f=X,r(125).f=tt,o&&!r(69)&&c(G,"propertyIsEnumerable",X,!0),p.f=function(t){return K(v(t))}),u(u.G+u.W+u.F*!B,{Symbol:N});for(var nt="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),rt=0;nt.length>rt;)v(nt[rt++]);for(var nt=j(v.store),rt=0;nt.length>rt;)d(nt[rt++]);u(u.S+u.F*!B,"Symbol",{for:function(t){return i(D,t+="")?D[t]:D[t]=N(t)},keyFor:function(t){if(J(t))return y(D,t);throw TypeError(t+" is not a symbol!")},useSetter:function(){z=!0},useSimple:function(){z=!1}}),u(u.S+u.F*!B,"Object",{create:$,defineProperty:Y,defineProperties:H,getOwnPropertyDescriptor:Q,getOwnPropertyNames:Z,getOwnPropertySymbols:tt}),T&&u(u.S+u.F*(!B||a(function(){var t=N();return"[null]"!=I([t])||"{}"!=I({a:t})||"{}"!=I(Object(t))})),"JSON",{stringify:function(t){if(void 0!==t&&!J(t)){for(var n,r,e=[t],i=1;arguments.length>i;)e.push(arguments[i++]);return n=e[1],"function"==typeof n&&(r=n),!r&&b(n)||(n=function(t,n){if(r&&(n=r.call(this,t,n)),!J(n))return n}),e[1]=n,I.apply(T,e)}}}),N[k][R]||r(27)(N[k],R,N[k].valueOf),l(N,"Symbol"),l(Math,"Math",!0),l(e.JSON,"JSON",!0)},function(t,n,r){"use strict";var e=r(1),i=r(127),o=r(152),u=r(2),c=r(75),f=r(16),a=r(6),s=r(3).ArrayBuffer,l=r(146),h=o.ArrayBuffer,v=o.DataView,p=i.ABV&&s.isView,d=h.prototype.slice,y=i.VIEW,g="ArrayBuffer";e(e.G+e.W+e.F*(s!==h),{ArrayBuffer:h}),e(e.S+e.F*!i.CONSTR,g,{isView:function(t){return p&&p(t)||a(t)&&y in t}}),e(e.P+e.U+e.F*r(4)(function(){return!new h(2).slice(1,void 0).byteLength}),g,{slice:function(t,n){if(void 0!==d&&void 0===n)return d.call(u(this),t);for(var r=u(this).byteLength,e=c(t,r),i=c(void 0===n?r:n,r),o=new(l(this,h))(f(i-e)),a=new v(this),s=new v(o),p=0;e<i;)s.setUint8(p++,a.getUint8(e++));return o}}),r(74)(g)},function(t,n,r){var e=r(1);e(e.G+e.W+e.F*!r(127).ABV,{DataView:r(152).DataView})},function(t,n,r){r(55)("Float32",4,function(t){return function(n,r,e){return t(this,n,r,e)}})},function(t,n,r){r(55)("Float64",8,function(t){return function(n,r,e){return t(this,n,r,e)}})},function(t,n,r){r(55)("Int16",2,function(t){return function(n,r,e){return t(this,n,r,e)}})},function(t,n,r){r(55)("Int32",4,function(t){return function(n,r,e){return t(this,n,r,e)}})},function(t,n,r){r(55)("Int8",1,function(t){return function(n,r,e){return t(this,n,r,e)}})},function(t,n,r){r(55)("Uint16",2,function(t){return function(n,r,e){return t(this,n,r,e)}})},function(t,n,r){r(55)("Uint32",4,function(t){return function(n,r,e){return t(this,n,r,e)}})},function(t,n,r){r(55)("Uint8",1,function(t){return function(n,r,e){return t(this,n,r,e)}})},function(t,n,r){r(55)("Uint8",1,function(t){return function(n,r,e){return t(this,n,r,e)}},!0)},function(t,n,r){"use strict";var e=r(166);r(118)("WeakSet",function(t){return function(){return t(this,arguments.length>0?arguments[0]:void 0)}},{add:function(t){return e.def(this,t,!0)}},e,!1,!0)},function(t,n,r){"use strict";var e=r(1),i=r(117)(!0);e(e.P,"Array",{includes:function(t){return i(this,t,arguments.length>1?arguments[1]:void 0)}}),r(78)("includes")},function(t,n,r){var e=r(1),i=r(143)(),o=r(3).process,u="process"==r(45)(o);e(e.G,{asap:function(t){var n=u&&o.domain;i(n?n.bind(t):t)}})},function(t,n,r){var e=r(1),i=r(45);e(e.S,"Error",{isError:function(t){return"Error"===i(t)}})},function(t,n,r){var e=r(1);e(e.P+e.R,"Map",{toJSON:r(165)("Map")})},function(t,n,r){var e=r(1);e(e.S,"Math",{iaddh:function(t,n,r,e){var i=t>>>0,o=n>>>0,u=r>>>0;return o+(e>>>0)+((i&u|(i|u)&~(i+u>>>0))>>>31)|0}})},function(t,n,r){var e=r(1);e(e.S,"Math",{imulh:function(t,n){var r=65535,e=+t,i=+n,o=e&r,u=i&r,c=e>>16,f=i>>16,a=(c*u>>>0)+(o*u>>>16);return c*f+(a>>16)+((o*f>>>0)+(a&r)>>16)}})},function(t,n,r){var e=r(1);e(e.S,"Math",{isubh:function(t,n,r,e){var i=t>>>0,o=n>>>0,u=r>>>0;return o-(e>>>0)-((~i&u|~(i^u)&i-u>>>0)>>>31)|0}})},function(t,n,r){var e=r(1);e(e.S,"Math",{umulh:function(t,n){var r=65535,e=+t,i=+n,o=e&r,u=i&r,c=e>>>16,f=i>>>16,a=(c*u>>>0)+(o*u>>>16);return c*f+(a>>>16)+((o*f>>>0)+(a&r)>>>16)}})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(26),u=r(11);r(10)&&e(e.P+r(124),"Object",{__defineGetter__:function(t,n){u.f(i(this),t,{get:o(n),enumerable:!0,configurable:!0})}})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(26),u=r(11);r(10)&&e(e.P+r(124),"Object",{__defineSetter__:function(t,n){u.f(i(this),t,{set:o(n),enumerable:!0,configurable:!0})}})},function(t,n,r){var e=r(1),i=r(176)(!0);e(e.S,"Object",{entries:function(t){return i(t)}})},function(t,n,r){var e=r(1),i=r(177),o=r(30),u=r(31),c=r(131);e(e.S,"Object",{getOwnPropertyDescriptors:function(t){for(var n,r=o(t),e=u.f,f=i(r),a={},s=0;f.length>s;)c(a,n=f[s++],e(r,n));return a}})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(50),u=r(32),c=r(31).f;r(10)&&e(e.P+r(124),"Object",{__lookupGetter__:function(t){var n,r=i(this),e=o(t,!0);do{if(n=c(r,e))return n.get}while(r=u(r))}})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(50),u=r(32),c=r(31).f;r(10)&&e(e.P+r(124),"Object",{__lookupSetter__:function(t){var n,r=i(this),e=o(t,!0);do{if(n=c(r,e))return n.set}while(r=u(r))}})},function(t,n,r){var e=r(1),i=r(176)(!1);e(e.S,"Object",{values:function(t){return i(t)}})},function(t,n,r){"use strict";var e=r(1),i=r(3),o=r(52),u=r(143)(),c=r(7)("observable"),f=r(26),a=r(2),s=r(68),l=r(73),h=r(27),v=r(79),p=v.RETURN,d=function(t){return null==t?void 0:f(t)},y=function(t){var n=t._c;n&&(t._c=void 0,n())},g=function(t){return void 0===t._o},b=function(t){g(t)||(t._o=void 0,y(t))},m=function(t,n){a(t),this._c=void 0,this._o=t,t=new x(this);try{var r=n(t),e=r;null!=r&&("function"==typeof r.unsubscribe?r=function(){e.unsubscribe()}:f(r),this._c=r)}catch(n){return void t.error(n)}g(this)&&y(this)};m.prototype=l({},{unsubscribe:function(){b(this)}});var x=function(t){this._s=t};x.prototype=l({},{next:function(t){var n=this._s;if(!g(n)){var r=n._o;try{var e=d(r.next);if(e)return e.call(r,t)}catch(t){try{b(n)}finally{throw t}}}},error:function(t){var n=this._s;if(g(n))throw t;var r=n._o;n._o=void 0;try{var e=d(r.error);if(!e)throw t;t=e.call(r,t)}catch(t){try{y(n)}finally{throw t}}return y(n),t},complete:function(t){var n=this._s;if(!g(n)){var r=n._o;n._o=void 0;try{var e=d(r.complete);t=e?e.call(r,t):void 0}catch(t){try{y(n)}finally{throw t}}return y(n),t}}});var w=function(t){s(this,w,"Observable","_f")._f=f(t)};l(w.prototype,{subscribe:function(t){return new m(t,this._f)},forEach:function(t){var n=this;return new(o.Promise||i.Promise)(function(r,e){f(t);var i=n.subscribe({next:function(n){try{return t(n)}catch(t){e(t),i.unsubscribe()}},error:e,complete:r})})}}),l(w,{from:function(t){var n="function"==typeof this?this:w,r=d(a(t)[c]);if(r){var e=a(r.call(t));return e.constructor===n?e:new n(function(t){return e.subscribe(t)})}return new n(function(n){var r=!1;return u(function(){if(!r){try{if(v(t,!1,function(t){if(n.next(t),r)return p})===p)return}catch(t){if(r)throw t;return void n.error(t)}n.complete()}}),function(){r=!0}})},of:function(){for(var t=0,n=arguments.length,r=Array(n);t<n;)r[t]=arguments[t++];return new("function"==typeof this?this:w)(function(t){var n=!1;return u(function(){if(!n){for(var e=0;e<r.length;++e)if(t.next(r[e]),n)return;t.complete()}}),function(){n=!0}})}}),h(w.prototype,c,function(){return this}),e(e.G,{Observable:w}),r(74)("Observable")},function(t,n,r){var e=r(54),i=r(2),o=e.key,u=e.set;e.exp({defineMetadata:function(t,n,r,e){u(t,n,i(r),o(e))}})},function(t,n,r){var e=r(54),i=r(2),o=e.key,u=e.map,c=e.store;e.exp({deleteMetadata:function(t,n){var r=arguments.length<3?void 0:o(arguments[2]),e=u(i(n),r,!1);if(void 0===e||!e.delete(t))return!1;if(e.size)return!0;var f=c.get(n);return f.delete(r),!!f.size||c.delete(n)}})},function(t,n,r){var e=r(185),i=r(161),o=r(54),u=r(2),c=r(32),f=o.keys,a=o.key,s=function(t,n){var r=f(t,n),o=c(t);if(null===o)return r;var u=s(o,n);return u.length?r.length?i(new e(r.concat(u))):u:r};o.exp({getMetadataKeys:function(t){return s(u(t),arguments.length<2?void 0:a(arguments[1]))}})},function(t,n,r){var e=r(54),i=r(2),o=r(32),u=e.has,c=e.get,f=e.key,a=function(t,n,r){if(u(t,n,r))return c(t,n,r);var e=o(n);return null!==e?a(t,e,r):void 0};e.exp({getMetadata:function(t,n){return a(t,i(n),arguments.length<3?void 0:f(arguments[2]))}})},function(t,n,r){var e=r(54),i=r(2),o=e.keys,u=e.key;e.exp({getOwnMetadataKeys:function(t){
+return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var e=r(54),i=r(2),o=e.get,u=e.key;e.exp({getOwnMetadata:function(t,n){return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){var e=r(54),i=r(2),o=r(32),u=e.has,c=e.key,f=function(t,n,r){if(u(t,n,r))return!0;var e=o(n);return null!==e&&f(t,e,r)};e.exp({hasMetadata:function(t,n){return f(t,i(n),arguments.length<3?void 0:c(arguments[2]))}})},function(t,n,r){var e=r(54),i=r(2),o=e.has,u=e.key;e.exp({hasOwnMetadata:function(t,n){return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){var e=r(54),i=r(2),o=r(26),u=e.key,c=e.set;e.exp({metadata:function(t,n){return function(r,e){c(t,n,(void 0!==e?i:o)(r),u(e))}}})},function(t,n,r){var e=r(1);e(e.P+e.R,"Set",{toJSON:r(165)("Set")})},function(t,n,r){"use strict";var e=r(1),i=r(147)(!0);e(e.P,"String",{at:function(t){return i(this,t)}})},function(t,n,r){"use strict";var e=r(1),i=r(46),o=r(16),u=r(122),c=r(120),f=RegExp.prototype,a=function(t,n){this._r=t,this._s=n};r(139)(a,"RegExp String",function(){var t=this._r.exec(this._s);return{value:t,done:null===t}}),e(e.P,"String",{matchAll:function(t){if(i(this),!u(t))throw TypeError(t+" is not a regexp!");var n=String(this),r="flags"in f?String(t.flags):c.call(t),e=new RegExp(t.source,~r.indexOf("g")?r:"g"+r);return e.lastIndex=o(t.lastIndex),new a(e,n)}})},function(t,n,r){"use strict";var e=r(1),i=r(181);e(e.P,"String",{padEnd:function(t){return i(this,t,arguments.length>1?arguments[1]:void 0,!1)}})},function(t,n,r){"use strict";var e=r(1),i=r(181);e(e.P,"String",{padStart:function(t){return i(this,t,arguments.length>1?arguments[1]:void 0,!0)}})},function(t,n,r){"use strict";r(82)("trimLeft",function(t){return function(){return t(this,1)}},"trimStart")},function(t,n,r){"use strict";r(82)("trimRight",function(t){return function(){return t(this,2)}},"trimEnd")},function(t,n,r){r(153)("asyncIterator")},function(t,n,r){r(153)("observable")},function(t,n,r){var e=r(1);e(e.S,"System",{global:r(3)})},function(t,n,r){for(var e=r(155),i=r(28),o=r(3),u=r(27),c=r(80),f=r(7),a=f("iterator"),s=f("toStringTag"),l=c.Array,h=["NodeList","DOMTokenList","MediaList","StyleSheetList","CSSRuleList"],v=0;v<5;v++){var p,d=h[v],y=o[d],g=y&&y.prototype;if(g){g[a]||u(g,a,l),g[s]||u(g,s,d),c[d]=l;for(p in e)g[p]||i(g,p,e[p],!0)}}},function(t,n,r){var e=r(1),i=r(151);e(e.G+e.B,{setImmediate:i.set,clearImmediate:i.clear})},function(t,n,r){var e=r(3),i=r(1),o=r(121),u=r(207),c=e.navigator,f=!!c&&/MSIE .\./.test(c.userAgent),a=function(t){return f?function(n,r){return t(o(u,[].slice.call(arguments,2),"function"==typeof n?n:Function(n)),r)}:t};i(i.G+i.B+i.F*f,{setTimeout:a(e.setTimeout),setInterval:a(e.setInterval)})},function(t,n,r){r(330),r(269),r(271),r(270),r(273),r(275),r(280),r(274),r(272),r(282),r(281),r(277),r(278),r(276),r(268),r(279),r(283),r(284),r(236),r(238),r(237),r(286),r(285),r(256),r(266),r(267),r(257),r(258),r(259),r(260),r(261),r(262),r(263),r(264),r(265),r(239),r(240),r(241),r(242),r(243),r(244),r(245),r(246),r(247),r(248),r(249),r(250),r(251),r(252),r(253),r(254),r(255),r(317),r(322),r(329),r(320),r(312),r(313),r(318),r(323),r(325),r(308),r(309),r(310),r(311),r(314),r(315),r(316),r(319),r(321),r(324),r(326),r(327),r(328),r(231),r(233),r(232),r(235),r(234),r(220),r(218),r(224),r(221),r(227),r(229),r(217),r(223),r(214),r(228),r(212),r(226),r(225),r(219),r(222),r(211),r(213),r(216),r(215),r(230),r(155),r(302),r(307),r(184),r(303),r(304),r(305),r(306),r(287),r(183),r(185),r(186),r(342),r(331),r(332),r(337),r(340),r(341),r(335),r(338),r(336),r(339),r(333),r(334),r(288),r(289),r(290),r(291),r(292),r(295),r(293),r(294),r(296),r(297),r(298),r(299),r(301),r(300),r(343),r(369),r(372),r(371),r(373),r(374),r(370),r(375),r(376),r(354),r(357),r(353),r(351),r(352),r(355),r(356),r(346),r(368),r(377),r(345),r(347),r(349),r(348),r(350),r(359),r(360),r(362),r(361),r(364),r(363),r(365),r(366),r(367),r(344),r(358),r(380),r(379),r(378),t.exports=r(52)},function(t,n){function r(t,n){if("string"==typeof n)return t.insertAdjacentHTML("afterend",n);var r=t.nextSibling;return r?t.parentNode.insertBefore(n,r):t.parentNode.appendChild(n)}t.exports=r},,,,,,,,,function(t,n,r){(function(n,r){!function(n){"use strict";function e(t,n,r,e){var i=n&&n.prototype instanceof o?n:o,u=Object.create(i.prototype),c=new p(e||[]);return u._invoke=s(t,r,c),u}function i(t,n,r){try{return{type:"normal",arg:t.call(n,r)}}catch(t){return{type:"throw",arg:t}}}function o(){}function u(){}function c(){}function f(t){["next","throw","return"].forEach(function(n){t[n]=function(t){return this._invoke(n,t)}})}function a(t){function n(r,e,o,u){var c=i(t[r],t,e);if("throw"!==c.type){var f=c.arg,a=f.value;return a&&"object"==typeof a&&m.call(a,"__await")?Promise.resolve(a.__await).then(function(t){n("next",t,o,u)},function(t){n("throw",t,o,u)}):Promise.resolve(a).then(function(t){f.value=t,o(f)},u)}u(c.arg)}function e(t,r){function e(){return new Promise(function(e,i){n(t,r,e,i)})}return o=o?o.then(e,e):e()}"object"==typeof r&&r.domain&&(n=r.domain.bind(n));var o;this._invoke=e}function s(t,n,r){var e=P;return function(o,u){if(e===F)throw new Error("Generator is already running");if(e===M){if("throw"===o)throw u;return y()}for(r.method=o,r.arg=u;;){var c=r.delegate;if(c){var f=l(c,r);if(f){if(f===A)continue;return f}}if("next"===r.method)r.sent=r._sent=r.arg;else if("throw"===r.method){if(e===P)throw e=M,r.arg;r.dispatchException(r.arg)}else"return"===r.method&&r.abrupt("return",r.arg);e=F;var a=i(t,n,r);if("normal"===a.type){if(e=r.done?M:j,a.arg===A)continue;return{value:a.arg,done:r.done}}"throw"===a.type&&(e=M,r.method="throw",r.arg=a.arg)}}}function l(t,n){var r=t.iterator[n.method];if(r===g){if(n.delegate=null,"throw"===n.method){if(t.iterator.return&&(n.method="return",n.arg=g,l(t,n),"throw"===n.method))return A;n.method="throw",n.arg=new TypeError("The iterator does not provide a 'throw' method")}return A}var e=i(r,t.iterator,n.arg);if("throw"===e.type)return n.method="throw",n.arg=e.arg,n.delegate=null,A;var o=e.arg;return o?o.done?(n[t.resultName]=o.value,n.next=t.nextLoc,"return"!==n.method&&(n.method="next",n.arg=g),n.delegate=null,A):o:(n.method="throw",n.arg=new TypeError("iterator result is not an object"),n.delegate=null,A)}function h(t){var n={tryLoc:t[0]};1 in t&&(n.catchLoc=t[1]),2 in t&&(n.finallyLoc=t[2],n.afterLoc=t[3]),this.tryEntries.push(n)}function v(t){var n=t.completion||{};n.type="normal",delete n.arg,t.completion=n}function p(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(h,this),this.reset(!0)}function d(t){if(t){var n=t[w];if(n)return n.call(t);if("function"==typeof t.next)return t;if(!isNaN(t.length)){var r=-1,e=function n(){for(;++r<t.length;)if(m.call(t,r))return n.value=t[r],n.done=!1,n;return n.value=g,n.done=!0,n};return e.next=e}}return{next:y}}function y(){return{value:g,done:!0}}var g,b=Object.prototype,m=b.hasOwnProperty,x="function"==typeof Symbol?Symbol:{},w=x.iterator||"@@iterator",S=x.asyncIterator||"@@asyncIterator",_=x.toStringTag||"@@toStringTag",O="object"==typeof t,E=n.regeneratorRuntime;if(E)return void(O&&(t.exports=E));E=n.regeneratorRuntime=O?t.exports:{},E.wrap=e;var P="suspendedStart",j="suspendedYield",F="executing",M="completed",A={},N={};N[w]=function(){return this};var T=Object.getPrototypeOf,I=T&&T(T(d([])));I&&I!==b&&m.call(I,w)&&(N=I);var k=c.prototype=o.prototype=Object.create(N);u.prototype=k.constructor=c,c.constructor=u,c[_]=u.displayName="GeneratorFunction",E.isGeneratorFunction=function(t){var n="function"==typeof t&&t.constructor;return!!n&&(n===u||"GeneratorFunction"===(n.displayName||n.name))},E.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,c):(t.__proto__=c,_ in t||(t[_]="GeneratorFunction")),t.prototype=Object.create(k),t},E.awrap=function(t){return{__await:t}},f(a.prototype),a.prototype[S]=function(){return this},E.AsyncIterator=a,E.async=function(t,n,r,i){var o=new a(e(t,n,r,i));return E.isGeneratorFunction(n)?o:o.next().then(function(t){return t.done?t.value:o.next()})},f(k),k[_]="Generator",k.toString=function(){return"[object Generator]"},E.keys=function(t){var n=[];for(var r in t)n.push(r);return n.reverse(),function r(){for(;n.length;){var e=n.pop();if(e in t)return r.value=e,r.done=!1,r}return r.done=!0,r}},E.values=d,p.prototype={constructor:p,reset:function(t){if(this.prev=0,this.next=0,this.sent=this._sent=g,this.done=!1,this.delegate=null,this.method="next",this.arg=g,this.tryEntries.forEach(v),!t)for(var n in this)"t"===n.charAt(0)&&m.call(this,n)&&!isNaN(+n.slice(1))&&(this[n]=g)},stop:function(){this.done=!0;var t=this.tryEntries[0],n=t.completion;if("throw"===n.type)throw n.arg;return this.rval},dispatchException:function(t){function n(n,e){return o.type="throw",o.arg=t,r.next=n,e&&(r.method="next",r.arg=g),!!e}if(this.done)throw t;for(var r=this,e=this.tryEntries.length-1;e>=0;--e){var i=this.tryEntries[e],o=i.completion;if("root"===i.tryLoc)return n("end");if(i.tryLoc<=this.prev){var u=m.call(i,"catchLoc"),c=m.call(i,"finallyLoc");if(u&&c){if(this.prev<i.catchLoc)return n(i.catchLoc,!0);if(this.prev<i.finallyLoc)return n(i.finallyLoc)}else if(u){if(this.prev<i.catchLoc)return n(i.catchLoc,!0)}else{if(!c)throw new Error("try statement without catch or finally");if(this.prev<i.finallyLoc)return n(i.finallyLoc)}}}},abrupt:function(t,n){for(var r=this.tryEntries.length-1;r>=0;--r){var e=this.tryEntries[r];if(e.tryLoc<=this.prev&&m.call(e,"finallyLoc")&&this.prev<e.finallyLoc){var i=e;break}}i&&("break"===t||"continue"===t)&&i.tryLoc<=n&&n<=i.finallyLoc&&(i=null);var o=i?i.completion:{};return o.type=t,o.arg=n,i?(this.method="next",this.next=i.finallyLoc,A):this.complete(o)},complete:function(t,n){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&n&&(this.next=n),A},finish:function(t){for(var n=this.tryEntries.length-1;n>=0;--n){var r=this.tryEntries[n];if(r.finallyLoc===t)return this.complete(r.completion,r.afterLoc),v(r),A}},catch:function(t){for(var n=this.tryEntries.length-1;n>=0;--n){var r=this.tryEntries[n];if(r.tryLoc===t){var e=r.completion;if("throw"===e.type){var i=e.arg;v(r)}return i}}throw new Error("illegal catch attempt")},delegateYield:function(t,n,r){return this.delegate={iterator:d(t),resultName:n,nextLoc:r},"next"===this.method&&(this.arg=g),A}}}("object"==typeof n?n:"object"==typeof window?window:"object"==typeof self?self:this)}).call(n,function(){return this}(),r(158))}])</script><script src="/./main.0cf68a.js"></script><script>!function(){!function(e){var t=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(t),t.setAttribute("src",e)}("/slider.e37972.js")}()</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-nav header-menu">
+    
+    
+      
+      
+      
+    
+      
+      
+      
+    
+      
+      
+      
+    
+    
+
+    <ul style="width: 70%">
+    
+    
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
+      
+        
+      
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      
+        
+    </ul>
+  </div>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">lua</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">图形学</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">其他</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">算法导论</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">专业课</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            3、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: false
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">Like What I Do and Do What I Like</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
