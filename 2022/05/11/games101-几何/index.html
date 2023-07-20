@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://ycy666666.github.io">
   <title>games101 几何 | WEBSITE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="几何归类隐式几何只表示各个点之间满足的关系，比如球在三维空间中的表示：x² + y² + z²  &#x3D; R² 可以很容易的判断一个点在物体内还是外，但是很难画出这样的几何体，不容易找到所有点。 显式几何参数映射：通过一个函数，把二维空间上的点坐标当做参数，映射到三维空间上。 如：f(u,v)&#x3D;( (2 + cos u) 8 cos v,(2 + cos u) * sin v,si">
+  <meta name="description" content="几何归类隐式几何只表示各个点之间满足的关系，比如球在三维空间中的表示：x² + y² + z²  &#x3D; R² 可以很容易的判断一个点在物体内还是外，但是很难画出这样的几何体，不容易找到所有点。 显式几何参数映射：通过一个函数，把二维空间上的点坐标当做参数，映射到三维空间上。 如：f(u,v)&#x3D;( (2 + cos u) 8 cos v,(2 + cos u) * sin v,sin u) 更多的隐式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="games101 几何">
 <meta property="og:url" content="https://ycy666666.github.io/2022/05/11/games101-%E5%87%A0%E4%BD%95/index.html">
 <meta property="og:site_name" content="WEBSITE">
-<meta property="og:description" content="几何归类隐式几何只表示各个点之间满足的关系，比如球在三维空间中的表示：x² + y² + z²  &#x3D; R² 可以很容易的判断一个点在物体内还是外，但是很难画出这样的几何体，不容易找到所有点。 显式几何参数映射：通过一个函数，把二维空间上的点坐标当做参数，映射到三维空间上。 如：f(u,v)&#x3D;( (2 + cos u) 8 cos v,(2 + cos u) * sin v,si">
+<meta property="og:description" content="几何归类隐式几何只表示各个点之间满足的关系，比如球在三维空间中的表示：x² + y² + z²  &#x3D; R² 可以很容易的判断一个点在物体内还是外，但是很难画出这样的几何体，不容易找到所有点。 显式几何参数映射：通过一个函数，把二维空间上的点坐标当做参数，映射到三维空间上。 如：f(u,v)&#x3D;( (2 + cos u) 8 cos v,(2 + cos u) * sin v,sin u) 更多的隐式">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://ycy666666.github.io/2022/05/11/games101-%E5%87%A0%E4%BD%95/image-20220508171907714.png">
 <meta property="og:image" content="https://ycy666666.github.io/2022/05/11/games101-%E5%87%A0%E4%BD%95/image-20220508172539255.png">
@@ -179,58 +179,61 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="几何归类"><a href="#几何归类" class="headerlink" title="几何归类"></a>几何归类</h1><h2 id="隐式几何"><a href="#隐式几何" class="headerlink" title="隐式几何"></a>隐式几何</h2><p>只表示各个点之间满足的关系，比如球在三维空间中的表示：x² + y² + z²  &#x3D; R²</p>
+        <h1 id="几何归类"><a href="#几何归类" class="headerlink" title="几何归类"></a>几何归类</h1><h2 id="隐式几何"><a href="#隐式几何" class="headerlink" title="隐式几何"></a>隐式几何</h2><p>只表示各个点之间满足的关系，比如球在三维空间中的表示：x² + y² + z²  = R²</p>
 <p>可以很容易的判断一个点在物体内还是外，但是很难画出这样的几何体，不容易找到所有点。</p>
 <h2 id="显式几何"><a href="#显式几何" class="headerlink" title="显式几何"></a>显式几何</h2><p>参数映射：通过一个函数，把二维空间上的点坐标当做参数，映射到三维空间上。</p>
-<p>如：f(u,v)&#x3D;( (2 + cos u) 8 cos v,(2 + cos u) * sin v,sin u)</p>
+<p>如：f(u,v)=( (2 + cos u) 8 cos v,(2 + cos u) * sin v,sin u)</p>
 <h2 id="更多的隐式表示方法"><a href="#更多的隐式表示方法" class="headerlink" title="更多的隐式表示方法"></a>更多的隐式表示方法</h2><h3 id="Constructive-Solid-Geometry（构造立体几何法）"><a href="#Constructive-Solid-Geometry（构造立体几何法）" class="headerlink" title="Constructive Solid Geometry（构造立体几何法）"></a>Constructive Solid Geometry（构造立体几何法）</h3><p>通过布尔运算表示复杂几何体</p>
 <p><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/image-20220508171907714.png" alt="image-20220508171907714"></p>
 <span id="more"></span>
-
 <h3 id="距离函数"><a href="#距离函数" class="headerlink" title="距离函数"></a>距离函数</h3><p>给出空间中的每个点到几何体上的最短距离，如果在内部则为负</p>
 <p>可以表示出渐变的运动过程</p>
 <p><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/image-20220508172539255.png" alt="image-20220508172539255"></p>
-<p>A、B分别对应的是起始状态和终止状态，如果我们直接融合会产生黑灰白各占1&#x2F;3的图像，这表现不出运动的过程</p>
-<p>我们可以融合距离函数SDF来表示中间状态，根据到边界的距离划分为正负，这样融合之后就会生成黑白各占1&#x2F;3的图像</p>
+<p>A、B分别对应的是起始状态和终止状态，如果我们直接融合会产生黑灰白各占1/3的图像，这表现不出运动的过程</p>
+<p>我们可以融合距离函数SDF来表示中间状态，根据到边界的距离划分为正负，这样融合之后就会生成黑白各占1/3的图像</p>
 <p>我们还能这样表示两个几何体逐渐融合的过程</p>
 <p><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/image-20220508172925399.png" alt="image-20220508172925399"></p>
 <h3 id="水平集-Level-Set-Methods"><a href="#水平集-Level-Set-Methods" class="headerlink" title="水平集(Level Set Methods)"></a>水平集(Level Set Methods)</h3><p>和距离函数的区别仅仅是表示方式不同，他表现在网格格式上，类似于等高线</p>
 <h3 id="分形-Fractals"><a href="#分形-Fractals" class="headerlink" title="分形(Fractals)"></a>分形(Fractals)</h3><p>在物体内部展现出自相似型，类似于递归的过程</p>
 <!--more-->
-
-<h1 id="曲线"><a href="#曲线" class="headerlink" title="曲线"></a>曲线</h1><h2 id="贝塞尔曲线"><a href="#贝塞尔曲线" class="headerlink" title="贝塞尔曲线"></a>贝塞尔曲线</h2><p>定义：二次贝塞尔曲线的路径由给定点P0,P1,P2的函数B(t)给出：<br>$$<br>B(t)&#x3D;(1-t)^2P_0+2t(1-t)P_1+t^2P_2,t\in [0,1]<br>$$<br><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/20200304113229429.gif" alt="20200304113229429"></p>
-<p> 假设P0 P1上的点为A，P1 P2上的点为B，AB上的点为C（也即C为曲线上的点)。则根据一次贝塞尔曲线公式有：<br>$$<br>A&#x3D;(1-t)P_0+tP_1<br>$$</p>
-<p>$$<br>B&#x3D;(1-t)P_1+tP_2<br>$$</p>
-<p>$$<br>C&#x3D;(1-t)A+tB<br>$$</p>
-<p>将上式中的A、B带入C中，即可得到二次贝塞尔曲线的公式：<br>$$<br>B(t)&#x3D;(1-t)^2P_0+2t(1-t)P_1+t^2P_2 , t\in [0,1]<br>$$<br>同理可得三次贝塞尔曲线</p>
+<h1 id="曲线"><a href="#曲线" class="headerlink" title="曲线"></a>曲线</h1><h2 id="贝塞尔曲线"><a href="#贝塞尔曲线" class="headerlink" title="贝塞尔曲线"></a>贝塞尔曲线</h2><p>定义：二次贝塞尔曲线的路径由给定点P0,P1,P2的函数B(t)给出：</p>
+<script type="math/tex; mode=display">
+B(t)=(1-t)^2P_0+2t(1-t)P_1+t^2P_2,t\in [0,1]</script><p><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/20200304113229429.gif" alt="20200304113229429"></p>
+<p> 假设P0 P1上的点为A，P1 P2上的点为B，AB上的点为C（也即C为曲线上的点)。则根据一次贝塞尔曲线公式有：</p>
+<script type="math/tex; mode=display">
+A=(1-t)P_0+tP_1</script><script type="math/tex; mode=display">
+B=(1-t)P_1+tP_2</script><script type="math/tex; mode=display">
+C=(1-t)A+tB</script><p>将上式中的A、B带入C中，即可得到二次贝塞尔曲线的公式：</p>
+<script type="math/tex; mode=display">
+B(t)=(1-t)^2P_0+2t(1-t)P_1+t^2P_2 , t\in [0,1]</script><p>同理可得三次贝塞尔曲线</p>
 <p><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/20200304113511298.gif" alt="20200304113511298"></p>
 <h3 id="凸包性质："><a href="#凸包性质：" class="headerlink" title="凸包性质："></a>凸包性质：</h3><p>贝塞尔曲线始终会在<strong>包含了所有控制点的最小凸多边形</strong>中, 不是按照控制点的顺序围成的最小多边形. 也就是说可以通过控制点的凸包来限制规划曲线的范围，在路径规划是很需要的一个性质．</p>
 <h2 id="逐段贝塞尔曲线"><a href="#逐段贝塞尔曲线" class="headerlink" title="逐段贝塞尔曲线"></a>逐段贝塞尔曲线</h2><p>虽然贝塞尔曲线的阶数可以很高，但是如果曲线的阶数过高，调整控制点对曲线的影响就比较小，调整起来相当麻烦。</p>
 <p>于是，我们常常使用分段的贝塞尔曲线，保证每一小段不会太复杂。这样每次只用调小段，还可以做到只调局部不影响大局，那就相当舒服了。</p>
 <p>分段带来的唯一问题是，<strong>曲线在段与段的交界处，如何保证平滑？</strong></p>
 <p>所谓平滑，其实就是一阶导数连续，也就是左右导数的极限相同。</p>
-<p>对两侧的贝塞尔曲线求导，分别代入 t&#x3D;0 和 t&#x3D;1 （即贝塞尔曲线的开始和结束时间），让二者相等。</p>
+<p>对两侧的贝塞尔曲线求导，分别代入 t=0 和 t=1 （即贝塞尔曲线的开始和结束时间），让二者相等。</p>
 <p>此时能发现，当两侧控制点与分段交接点<strong>共线且</strong>形成的线段<strong>长度相等</strong>时，满足曲线平滑性质。</p>
-<h3 id="贝塞尔曲面"><a href="#贝塞尔曲面" class="headerlink" title="贝塞尔曲面"></a>贝塞尔曲面</h3><p><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/v2-1c7b63501741bee61934d27e833f991b_r.jpg"></p>
-<p>如果说对于曲线来说只有一个参数<br>$$<br>t\in [0,1]<br>$$<br>那么对于一个面来说，就应该有两个参数，分别设<br>$$<br>u\in [0,1]<br>$$</p>
-<p>$$<br>v\in [0,1]<br>$$</p>
-<p>，具体过程如下图所示:</p>
+<h3 id="贝塞尔曲面"><a href="#贝塞尔曲面" class="headerlink" title="贝塞尔曲面"></a>贝塞尔曲面</h3><p><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/v2-1c7b63501741bee61934d27e833f991b_r.jpg" alt></p>
+<p>如果说对于曲线来说只有一个参数 </p>
+<script type="math/tex; mode=display">
+t\in [0,1]</script><p>那么对于一个面来说，就应该有两个参数，分别设</p>
+<script type="math/tex; mode=display">
+u\in [0,1]</script><script type="math/tex; mode=display">
+v\in [0,1]</script><p>，具体过程如下图所示:</p>
 <p><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/image-20220510223406757.png" alt="image-20220510223406757"></p>
 <p><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/v2-cbe5f7054203ce2e7625068524c1ad2c_720w.jpg" alt="img"></p>
-<p>首先规定一共4x4 &#x3D; 16个控制点，其水平面位置如图中16个黑点所示(并未表示出高度，防止图形太乱)，将这16个点分成4列，图中红色圈中的为一列的具体例子。</p>
+<p>首先规定一共4x4 = 16个控制点，其水平面位置如图中16个黑点所示(并未表示出高度，防止图形太乱)，将这16个点分成4列，图中红色圈中的为一列的具体例子。</p>
 <p><strong>第1步 在这4个控制点之下利用第一个参数u 运用计算贝塞尔曲线的方法得到灰色曲线，因为有4列，所以一共可以得到某时刻下如图所示的4个蓝色点。(灰色曲线分别为每列4个点所对应的贝塞尔曲线)</strong></p>
 <p><strong>第2步 在得到4个蓝色顶点之后，将四个蓝色顶点作为控制点，利用第二个参数v 便可以成功得出贝塞尔曲面上的正确一点</strong></p>
 <p><strong>第3步 遍历所有的 u，v值就可以成功得到一个贝塞尔曲面</strong></p>
 <h1 id="面的细分"><a href="#面的细分" class="headerlink" title="面的细分"></a>面的细分</h1><h2 id="LOOP细分"><a href="#LOOP细分" class="headerlink" title="LOOP细分"></a>LOOP细分</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>网格细分是通过按一定规则给网格增加顶点和面片的数量，让网格模型变得更加光滑。Loop细分方法是最早一种基于<strong>三角网格</strong>的细分方法。Loop细分在每条边上都增加一个顶点，并且同一个三角形内的顶点用新增顶点连接起来，以构成新的三角形。</p>
 <p>一次细分的过程分为两步骤，第一步是增加顶点；第二步是对顶点位置进行调整，使得网格更加光滑。</p>
 <p>对于新增顶点</p>
-<img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/image-20220511151105560.png" alt="image-20220511151105560" style="zoom: 50%;">
-
+<p><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/image-20220511151105560.png" alt="image-20220511151105560" style="zoom: 50%;"></p>
 <p>改变原有顶点</p>
-<img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/image-20220511151231598.png" alt="image-20220511151231598" style="zoom:50%;">
-
-<img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/image-20220511151839768.png" alt="image-20220511151839768" style="zoom: 80%;">
-
+<p><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/image-20220511151231598.png" alt="image-20220511151231598" style="zoom:50%;"></p>
+<p><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/image-20220511151839768.png" alt="image-20220511151839768" style="zoom: 80%;"></p>
 <h2 id="Catmull-Clark细分曲面过程"><a href="#Catmull-Clark细分曲面过程" class="headerlink" title="Catmull-Clark细分曲面过程"></a>Catmull-Clark细分曲面过程</h2><p>Catmull-Clark主要是针对<strong>四边形网格</strong>细分的算法</p>
 <p><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/image-20220511152202597.png" alt="image-20220511152202597"></p>
 <h1 id="面的简化"><a href="#面的简化" class="headerlink" title="面的简化"></a>面的简化</h1><h2 id="边塌缩"><a href="#边塌缩" class="headerlink" title="边塌缩"></a>边塌缩</h2><p>边坍缩操作是移动一条边的两个使它们重合，以消除一条边。</p>

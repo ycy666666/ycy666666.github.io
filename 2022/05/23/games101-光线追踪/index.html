@@ -195,10 +195,10 @@
 <p><img src="https://img-blog.csdn.net/20160520003255489" alt="img"></p>
 <h2 id="软硬阴影"><a href="#软硬阴影" class="headerlink" title="软硬阴影"></a>软硬阴影</h2><p>在下面的图中，a点与光源之间没有任何物体遮挡，因此是照亮（lit）的。而地面也就是接受者（receiver）上的 c 点被遮挡者（occluder）立方体遮挡，处于本影区（umbra）。b 点处于被部分遮挡形成的半影区（penumbra）。<br><img src="https://img-blog.csdnimg.cn/20200108152330691.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvZG93bmxvYWQy,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <span id="more"></span>
-
 <h1 id="光线追踪"><a href="#光线追踪" class="headerlink" title="光线追踪"></a>光线追踪</h1><p>为什么选用光线追踪？</p>
 <p>光栅化并不能很好的描述全局效果，比如软阴影、间接光照。</p>
 <p>光栅化质量不高但特别快，光线追踪则相反。因此主要是离线运算，比如电影等</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -207,7 +207,8 @@
 <th>光栅化 rasterization</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>外层循环</td>
 <td>每一个像素</td>
 <td>每一个物体</td>
@@ -227,7 +228,9 @@
 <td>最开始进行离散化</td>
 <td>最后进行离散化</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="图形学关于光线的几个假设"><a href="#图形学关于光线的几个假设" class="headerlink" title="图形学关于光线的几个假设"></a>图形学关于光线的几个假设</h2><ol>
 <li>光线沿直线传播</li>
 <li>光线之间不发生碰撞</li>
@@ -244,9 +247,9 @@
 <p><strong>那么我们如何计算光线和方块状物体交互</strong></p>
 <p>使用三组对面来描述长方体</p>
 <p><img src="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/image-20220512102624942.png" alt="image-20220512102624942"></p>
-<p>$$<br>t_{enter}&#x3D; max（t_{min}）<br>$$</p>
-<p>$$<br>t_{exit}&#x3D;min（t_{max}）<br>$$</p>
-<p>，已经进入三个对面才算进入盒子，只要离开一个对面就算出去盒子</p>
+<script type="math/tex; mode=display">
+t_{enter}= max（t_{min}）</script><script type="math/tex; mode=display">
+t_{exit}=min（t_{max}）</script><p>，已经进入三个对面才算进入盒子，只要离开一个对面就算出去盒子</p>
 <p><strong>为啥使用轴对称</strong>（Axis-Aligned Bounding Boxes）</p>
 <p><img src="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/image-20220512104433801.png" alt="image-20220512104433801"></p>
 <p>减少了大量运算</p>
@@ -295,8 +298,11 @@
 <p><strong>渲染方程不再区分光线是由光源发出还是由物体反射，都把他们当作光源</strong></p>
 <p><img src="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/image-20220522160349431.png" alt="image-20220522160349431"></p>
 <p>由图可知，想要解出反射光只有入射光不可知</p>
-<p>将这个方程简写为<br>$$<br>l(u) &#x3D; e(u) + \int l(v)K(u,v)dv<br>$$<br>再将这个方程简写，使其变为矩阵形式的 递归定义</p>
-<p>$$<br>L &#x3D; E +KL<br>$$<br>用E和K表示L后，再利用二项式定理展开，最后结果为</p>
+<p>将这个方程简写为</p>
+<script type="math/tex; mode=display">
+l(u) = e(u) + \int l(v)K(u,v)dv</script><p>再将这个方程简写，使其变为矩阵形式的 递归定义</p>
+<script type="math/tex; mode=display">
+L = E +KL</script><p>用E和K表示L后，再利用二项式定理展开，最后结果为</p>
 <p><img src="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/image-20220522161413860.png" alt="image-20220522161413860"></p>
 <p> <img src="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/image-20220522163014776.png" alt="image-20220522163014776"></p>
 <h1 id="路径追踪"><a href="#路径追踪" class="headerlink" title="路径追踪"></a>路径追踪</h1><h2 id="蒙特卡洛积分"><a href="#蒙特卡洛积分" class="headerlink" title="蒙特卡洛积分"></a>蒙特卡洛积分</h2><p>  <img src="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/image-20220522205632637.png" alt="image-20220522205632637"></p>
@@ -305,7 +311,7 @@
 <p><img src="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/image-20220522212806004.png" alt="image-20220522212806004"></p>
 <h2 id="待解决的问题"><a href="#待解决的问题" class="headerlink" title="待解决的问题"></a>待解决的问题</h2><h3 id="弹射光线迅速增多"><a href="#弹射光线迅速增多" class="headerlink" title="弹射光线迅速增多"></a>弹射光线迅速增多</h3><p><img src="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/image-20220523184158079.png" alt=" "></p>
 <p>我们在计算光线的漫反射时，有多个点都会有反射光线到达，再次反射时，所需计算的光线会指数级别增加。</p>
-<p>所以我们假设每条N &#x3D; 1，只有一条路径，以此来做蒙特卡洛积分，<strong>这就叫路径追踪</strong></p>
+<p>所以我们假设每条N = 1，只有一条路径，以此来做蒙特卡洛积分，<strong>这就叫路径追踪</strong></p>
 <p>但是只有一条路径产生的画面会有很大的噪声，所以我们在单个像素上追踪足够多的路径来改善画面 </p>
 <p><img src="/2022/05/23/games101-%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/image-20220523184652294.png" alt="image-20220523184652294"></p>
 <h3 id="采样效率不高"><a href="#采样效率不高" class="headerlink" title="采样效率不高"></a>采样效率不高</h3><p>如果我们对着色点进行采样，那么可能追踪的路径只有少数才会到达光源，这样对于光源的采样效率会很低</p>

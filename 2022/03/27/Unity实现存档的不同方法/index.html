@@ -185,14 +185,13 @@
 <li>具有可序列化的 <code>fieldtype</code>。</li>
 </ul>
 <span id="more"></span>
-
 <h4 id="可序列化的简单字段类型"><a href="#可序列化的简单字段类型" class="headerlink" title="可序列化的简单字段类型"></a>可序列化的简单字段类型</h4><ul>
 <li>具有 <code>Serializable</code> 属性的自定义非抽象、非泛型类</li>
 <li>具有 <code>Serializable</code> 属性的自定义结构</li>
 <li>可序列化的简单字段类型的数组、 <code>List&lt;T&gt;</code></li>
 <li>原始数据类型（<code>int</code>、<code>float</code>、<code>double</code>、<code>bool</code>、<code>string</code> 等）</li>
 <li>枚举类型</li>
-<li>某些 Unity 内置类型：<code>Vector2</code>、<code>Vector3</code>、<code>Vector4</code>、<code>Rect</code>、<code>Quaternion</code>、<code>Matrix4x4</code>、&#96;<img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16.png" alt="在这里插入图片描述"></li>
+<li>某些 Unity 内置类型：<code>Vector2</code>、<code>Vector3</code>、<code>Vector4</code>、<code>Rect</code>、<code>Quaternion</code>、<code>Matrix4x4</code>、`<img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16.png" alt="在这里插入图片描述"></li>
 </ul>
 <h4 id="存储无法序列化类的解决方法"><a href="#存储无法序列化类的解决方法" class="headerlink" title="存储无法序列化类的解决方法"></a>存储无法序列化类的解决方法</h4><p><img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16-16898653347183.png" alt="在这里插入图片描述"></p>
 <p>总之，确保自定义类可序列化需要具有 <a target="_blank" rel="noopener" href="https://docs.unity3d.com/cn/2020.3/ScriptReference/Serializable.html">Serializable</a> 属性、非抽象、非静态、非泛型（但可继承自泛型类）</p>
@@ -202,8 +201,8 @@
 <p>解决此问题的方法是在 MonoBehaviour.Start中而不是在构造函数中调用脚本 API。</p>
 <h1 id="Json类"><a href="#Json类" class="headerlink" title="Json类"></a>Json类</h1><p>之所以要了解序列化的知识，就是因为Json存储就是通过序列化来实现的</p>
 <p>首先我们需要创建一个类来表明需要存储哪些数据</p>
-<p><img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_14,color_FFFFFF,t_70,g_se,x_16.png"></p>
-<h2 id="Json文件如何转化"><a href="#Json文件如何转化" class="headerlink" title="Json文件如何转化"></a>Json文件如何转化</h2><p>使用unity中的JsonUtility类可以让可序列化对象和Json数据相互转换<br><img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16-16898653414078.png"><br><img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16-168986535164414.png"><br><img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16-168986534942111.png" alt="在这里插入图片描述"></p>
+<p><img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_14,color_FFFFFF,t_70,g_se,x_16.png" alt></p>
+<h2 id="Json文件如何转化"><a href="#Json文件如何转化" class="headerlink" title="Json文件如何转化"></a>Json文件如何转化</h2><p>使用unity中的JsonUtility类可以让可序列化对象和Json数据相互转换<br><img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16-16898653414078.png" alt><br><img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16-168986535164414.png" alt><br><img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16-168986534942111.png" alt="在这里插入图片描述"></p>
 <p>注意：</p>
 <ul>
 <li>File类需要<code>using System.IO</code></li>
@@ -212,8 +211,8 @@
 <li>File.WriteAllText(string path,string contents)</li>
 </ul>
 <p>我们创建该类的实例便可以储存，如果是敌人的话，创建多个实例存储即可</p>
-<p><img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_18,color_FFFFFF,t_70,g_se,x_16.png"></p>
-<p><img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/483625da5a4f4706820d0c4e30f34ab6.png"></p>
+<p><img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_18,color_FFFFFF,t_70,g_se,x_16.png" alt></p>
+<p><img src="/2022/03/27/Unity%E5%AE%9E%E7%8E%B0%E5%AD%98%E6%A1%A3%E7%9A%84%E4%B8%8D%E5%90%8C%E6%96%B9%E6%B3%95/483625da5a4f4706820d0c4e30f34ab6.png" alt></p>
 <p>此外呢，还有.FromJsonOverwrite可以重写原有数据，用于覆盖存档</p>
 
       

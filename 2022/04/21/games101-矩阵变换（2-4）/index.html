@@ -193,7 +193,6 @@
 <p><img src="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/888345d06344424da85f93f4beabe47a.png" alt="在这里插入图片描述"></p>
 <p><strong>图形学中的作用</strong>：判断前与后（点乘结果正数为同一方向和方向接近还是远离，获取向量在另一方向上的投影或他们之间夹角</p>
 <span id="more"></span>
-
 <h3 id="叉乘："><a href="#叉乘：" class="headerlink" title="叉乘："></a>叉乘：</h3><p><img src="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/89b675cf38c4437e891e7a6aa59e8d45.png" alt="在这里插入图片描述"></p>
 <p>叉乘获得的向量垂直于a、b向量所在的平面（右手定则，由a向b ）</p>
 <p><img src="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/dc81d88b88754fe3863c858af7410fd0.png" alt="在这里插入图片描述"></p>
@@ -215,7 +214,7 @@
 <p>同时在这种定义下可以验证 向量相加仍是向量 ，点与向量相加得到变换后的点，两点相减表示变换所需的向量</p>
 <p><strong>引入了三维向量表示变换后，所有变换都可以用矩阵相乘来表示</strong>：</p>
 <p><img src="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/5abcd4dd8eb74a5aa3dddc57da97006b.png" alt="在这里插入图片描述"></p>
-<h1 id="变换的组合"><a href="#变换的组合" class="headerlink" title="变换的组合"></a>变换的组合</h1><p>矩阵变幻的顺序对最终变换结果有影响（矩阵从右到左进行变换）P&#96; &#x3D; T(2) * T(1) * P</p>
+<h1 id="变换的组合"><a href="#变换的组合" class="headerlink" title="变换的组合"></a>变换的组合</h1><p>矩阵变幻的顺序对最终变换结果有影响（矩阵从右到左进行变换）P` = T(2) <em> T(1) </em> P</p>
 <h2 id="围绕某一点旋转"><a href="#围绕某一点旋转" class="headerlink" title="围绕某一点旋转"></a>围绕某一点旋转</h2><p>先平移变换到原点坐标，旋转变换完成之后在变换到原位置</p>
 <p>围绕固定点缩放同理</p>
 <h2 id="三维绕轴旋转"><a href="#三维绕轴旋转" class="headerlink" title="三维绕轴旋转"></a>三维绕轴旋转</h2><p><img src="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16.png" alt="在这里插入图片描述"></p>
@@ -225,27 +224,23 @@
 <p>第一步： 平移物体，使旋转轴通过原点</p>
 <p><strong>第二步:</strong> 旋转物体使旋转轴与z轴重合分两步</p>
 <ul>
-<li><pre><code>将向量U绕x轴旋转到xz平面上: Rx(α)
-</code></pre>
-</li>
-<li><pre><code>将向量U绕y轴旋转到z轴上: Ry(β)
-</code></pre>
-</li>
+<li>将向量U绕x轴旋转到xz平面上: Rx(α)</li>
+<li>将向量U绕y轴旋转到z轴上: Ry(β)</li>
 </ul>
 <p><img src="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/54b6d3d6a97e455bbf0902425c83bc47.png" alt="在这里插入图片描述"></p>
 <p>第三步：完成指定旋转Rz(θ)</p>
 <p>第四步：反向旋转</p>
 <p>第五步：反向平移</p>
 <p>对于任意轴旋转的复合矩阵</p>
-<p><img src="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/4aa03bcf18c04e099360d89c3aa4f5e5.png"></p>
+<p><img src="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/4aa03bcf18c04e099360d89c3aa4f5e5.png" alt></p>
 <h1 id="观测变换"><a href="#观测变换" class="headerlink" title="观测变换"></a>观测变换</h1><h2 id="视图变换"><a href="#视图变换" class="headerlink" title="视图变换"></a>视图变换</h2><p>如果物体和相机应用相同变换，变换相机也会变换物体，直到相机位于原点，up位于y轴（世界坐标），look位于  <strong>-Z</strong></p>
 <p>旋转矩阵的逆矩阵就是他的转置矩阵  </p>
 <h2 id="观测变换-1"><a href="#观测变换-1" class="headerlink" title="观测变换"></a>观测变换</h2><h3 id="正交投影"><a href="#正交投影" class="headerlink" title="正交投影"></a>正交投影</h3><p><img src="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/92f25efce1ec4c29802d2aab1b6613c6.png" alt="在这里插入图片描述"></p>
 <h3 id="透视投影"><a href="#透视投影" class="headerlink" title="透视投影"></a>透视投影</h3><p>我们如何将远平面投影到近平面上呢？当然是相似三角形</p>
-<p><img src="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/10a9f5415b11472dbf611082a4d48cd0.png">)</p>
+<p><img src="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/10a9f5415b11472dbf611082a4d48cd0.png" alt>)</p>
 <p>第三行我们仍然不知道，当我们直到任何在近平面上的点不会改变，远平面上的点z轴不会改变</p>
 <p><img src="/2022/04/21/games101-%E7%9F%A9%E9%98%B5%E5%8F%98%E6%8D%A2%EF%BC%882-4%EF%BC%89/9c2cfd5f2d3c4b7eb14895916da7fcb9.png" alt="在这里插入图片描述"></p>
-<p>最后我们能得到A和B的值了 A &#x3D; n + f     B &#x3D; -n f</p>
+<p>最后我们能得到A和B的值了 A = n + f     B = -n f</p>
 
       
 

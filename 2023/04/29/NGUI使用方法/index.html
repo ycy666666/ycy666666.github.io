@@ -15,8 +15,8 @@
 <meta property="og:site_name" content="WEBSITE">
 <meta property="og:description" content="基本用法很多基本模块比如按钮、slider等都能从Prefab中直接拖拽到场景中实现，但都需要有一个Collider（Prefab已经自带） 因为不仅是UI，所有带有Collider的游戏物体都能接收到OnClick， OnPress这样的事件——前提是需要在Main Camera里面添加上event System组件，然后自定义脚本添加以下函数：  如果不想写代码，也可以直接拖拽UIEventT">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://ycy666666.github.io/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/%E8%8E%89%E8%8E%89%E4%B8%9D%E9%A3%9E%E4%B9%A620230412-142107.jpg">
-<meta property="og:image" content="https://ycy666666.github.io/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/%E8%8E%89%E8%8E%89%E4%B8%9D%E9%A3%9E%E4%B9%A620230412-143328.jpg">
+<meta property="og:image" content="https://ycy666666.github.io/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/莉莉丝飞书20230412-142107.jpg">
+<meta property="og:image" content="https://ycy666666.github.io/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/莉莉丝飞书20230412-143328.jpg">
 <meta property="og:image" content="https://ycy666666.github.io/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/v2-74aa8940d4cc2e8235c5126f2a8c9735_720w.webp">
 <meta property="og:image" content="https://ycy666666.github.io/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/v2-9e39aca5c3d80e8929fc2188ee903fcc_720w.webp">
 <meta property="og:image" content="https://ycy666666.github.io/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/v2-a8083694077f2067ea794be249cd7b54_720w.webp">
@@ -29,7 +29,7 @@
 <meta property="article:author" content="YCY">
 <meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ycy666666.github.io/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/%E8%8E%89%E8%8E%89%E4%B8%9D%E9%A3%9E%E4%B9%A620230412-142107.jpg">
+<meta name="twitter:image" content="https://ycy666666.github.io/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/莉莉丝飞书20230412-142107.jpg">
   
     <link rel="alternative" href="/atom.xml" title="WEBSITE" type="application/atom+xml">
   
@@ -177,20 +177,21 @@
       
         <h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><p>很多基本模块比如按钮、slider等都能从Prefab中直接拖拽到场景中实现，但都需要有一个Collider（Prefab已经自带）</p>
 <p>因为不仅是UI，所有带有Collider的游戏物体都能接收到OnClick， OnPress这样的事件——前提是需要在Main Camera里面添加上event System组件，然后自定义脚本添加以下函数：</p>
-<p><img src="/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/%E8%8E%89%E8%8E%89%E4%B8%9D%E9%A3%9E%E4%B9%A620230412-142107.jpg" alt="莉莉丝飞书20230412-142107"></p>
+<p><img src="/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/莉莉丝飞书20230412-142107.jpg" alt="莉莉丝飞书20230412-142107"></p>
 <p>如果不想写代码，也可以直接拖拽UIEventTrugger脚本来实现相关功能</p>
-<p><img src="/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/%E8%8E%89%E8%8E%89%E4%B8%9D%E9%A3%9E%E4%B9%A620230412-143328.jpg" alt="莉莉丝飞书20230412-143328"></p>
+<p><img src="/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/莉莉丝飞书20230412-143328.jpg" alt="莉莉丝飞书20230412-143328"></p>
 <p>与此同时，我们也可以给其中一个事件绑定多个函数，比如滑动条的变更既改变音量大小也能改变滑动条背景颜色。也能在On Finished中指定动作完成后发生的下一动作</p>
 <span id="more"></span>
-
 <h2 id="核心组件"><a href="#核心组件" class="headerlink" title="核心组件"></a>核心组件</h2><h3 id="UILabel-标签"><a href="#UILabel-标签" class="headerlink" title="UILabel (标签)"></a>UILabel (标签)</h3><p><img src="/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/v2-74aa8940d4cc2e8235c5126f2a8c9735_720w.webp" alt="img"></p>
 <p>用于创建各种类型的文本标签和标注，除了基本的文本属性外，NGUI的UILabel还具有文本对齐方式（alignment）, 渐变和模糊（gradient和blur属性）</p>
 <h3 id="UISlider-进度条"><a href="#UISlider-进度条" class="headerlink" title="UISlider (进度条)"></a>UISlider (进度条)</h3><p><strong>Appearance [添加进度条显示组件]</strong></p>
 <ol>
-<li>Foreground [表层进度条]</li>
+<li>Foreground [表层进度条]<ol>
 <li>Background [背景进度条]</li>
 <li>Thumb [滑块]</li>
 <li>Direction [进度条方向]</li>
+</ol>
+</li>
 </ol>
 <h3 id="UIInput-输入框"><a href="#UIInput-输入框" class="headerlink" title="UIInput (输入框)"></a>UIInput (输入框)</h3><p><img src="/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/v2-9e39aca5c3d80e8929fc2188ee903fcc_720w.webp" alt="img"></p>
 <ul>
@@ -201,7 +202,7 @@
 </blockquote>
 <ul>
 <li>Saved As [设置输入的内容在PlayerPref中哪个字段保存] 这里通常不用设置,它会自动保存</li>
-<li>**KeyboardType [文本输入时键盘类型设定]**： 电话号码、URL、隐藏输入等</li>
+<li><strong>KeyboardType [文本输入时键盘类型设定]</strong>： 电话号码、URL、隐藏输入等</li>
 <li>On Submit ：提交输入内容时触发事件函数设定</li>
 <li>OnChange： 当输入内容改变时触发事件函数设定</li>
 <li>Validation [验证输入类型] 只能验证指定输入类型,通过下拉框选择</li>
@@ -266,7 +267,7 @@
 <h1 id="NGUI-相较于-UGUI的区别"><a href="#NGUI-相较于-UGUI的区别" class="headerlink" title="NGUI 相较于 UGUI的区别"></a>NGUI 相较于 UGUI的区别</h1><p>UGUI中UI元素被当作添加了UI组件的GameObject使用，更方便于单个使用。<br>NGUI使用仅有一个脚本挂载的GameObject，更方便控制所有UI元素</p>
 <h2 id="从性能来看，UGUI比NGUI有底层优势"><a href="#从性能来看，UGUI比NGUI有底层优势" class="headerlink" title="从性能来看，UGUI比NGUI有底层优势"></a><strong>从性能来看，UGUI比NGUI有底层优势</strong></h2><p>UGUI的排序及合批逻辑都在C++层处理，采用EventSystem的分发模式，效率更高；</p>
 <h2 id="UI动画-1"><a href="#UI动画-1" class="headerlink" title="UI动画"></a><strong>UI动画</strong></h2><p>NGUI整合了ITween，并将ITween的使用封装成脚本，可以非常方便制作出各种旋转、平移、缩放的效果，易用性很强。</p>
-<p>UGUI官方文档建议是采用Animation System来制作UI动画，但是有个比较明显的缺陷，在UI频繁显隐的时候（Active&#x2F;Inactive），Animator会重新Rebind一次Controller，导致无意义的性能损耗。所以UGUI的动画实现，一般通过整合DoTween来实现。Dotween不存在Animation的反复初始化问题，并且它使用了一些缓存策略，相对于ITween来说，每帧耗时更短，效率更高，产生GC更少</p>
+<p>UGUI官方文档建议是采用Animation System来制作UI动画，但是有个比较明显的缺陷，在UI频繁显隐的时候（Active/Inactive），Animator会重新Rebind一次Controller，导致无意义的性能损耗。所以UGUI的动画实现，一般通过整合DoTween来实现。Dotween不存在Animation的反复初始化问题，并且它使用了一些缓存策略，相对于ITween来说，每帧耗时更短，效率更高，产生GC更少</p>
 <h2 id="交互形式"><a href="#交互形式" class="headerlink" title="交互形式"></a>交互形式</h2><p>在NGUI中，默认控件是不参与交互的，除非加上Collider；而在UGUI中，默认控件是参与交互的，除非使用canvas Group组件来禁止交互（可以通过去掉勾选raycast Target来禁止）</p>
 <p>NGUI的交互事件是通过SendMessage来发送消息的，相比较于Delegate的性能，Delegate会快10倍左右。UGUI的交互事件改为通过事件回调机制来发送消息，性能上提升不少，比较直接反馈是scroll view的滑动流畅度。</p>
 <h1 id="NGUI重要类的UML图"><a href="#NGUI重要类的UML图" class="headerlink" title="NGUI重要类的UML图"></a>NGUI重要类的UML图</h1><p><img src="/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/image-20230429210221355.png" alt="image-20230429210221355"></p>

@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://ycy666666.github.io">
   <title>射线与碰撞范围检测【踩坑记录】 | WEBSITE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="射线检测射线检测在2D和3D的区别比较大  一定要加上对应的Collider组件  对应的函数只检测对应的Collider，Physics.Raycast是不会检测到Collider 2D的（这个让我有一次debug了好久才发现）  对应API如下   1234567Physics.Raycast(Vector3 origin,Vector3 direction,out RaycastHit hi">
+  <meta name="description" content="射线检测射线检测在2D和3D的区别比较大  一定要加上对应的Collider组件  对应的函数只检测对应的Collider，Physics.Raycast是不会检测到Collider 2D的（这个让我有一次debug了好久才发现）  对应API如下  1234567Physics.Raycast(Vector3 origin,Vector3 direction,out RaycastHit hit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="射线与碰撞范围检测【踩坑记录】">
 <meta property="og:url" content="https://ycy666666.github.io/2022/07/07/%E5%B0%84%E7%BA%BF%E4%B8%8E%E7%A2%B0%E6%92%9E%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E3%80%91/index.html">
 <meta property="og:site_name" content="WEBSITE">
-<meta property="og:description" content="射线检测射线检测在2D和3D的区别比较大  一定要加上对应的Collider组件  对应的函数只检测对应的Collider，Physics.Raycast是不会检测到Collider 2D的（这个让我有一次debug了好久才发现）  对应API如下   1234567Physics.Raycast(Vector3 origin,Vector3 direction,out RaycastHit hi">
+<meta property="og:description" content="射线检测射线检测在2D和3D的区别比较大  一定要加上对应的Collider组件  对应的函数只检测对应的Collider，Physics.Raycast是不会检测到Collider 2D的（这个让我有一次debug了好久才发现）  对应API如下  1234567Physics.Raycast(Vector3 origin,Vector3 direction,out RaycastHit hit">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://ycy666666.github.io/2022/07/07/%E5%B0%84%E7%BA%BF%E4%B8%8E%E7%A2%B0%E6%92%9E%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E3%80%91/image-20220707222931506.png">
 <meta property="og:image" content="https://ycy666666.github.io/2022/07/07/%E5%B0%84%E7%BA%BF%E4%B8%8E%E7%A2%B0%E6%92%9E%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E3%80%91/image-20220707230947043.png">
@@ -176,13 +176,10 @@
 </li>
 <li><p>对应的函数只检测对应的Collider，<code>Physics.Raycast</code>是不会检测到Collider 2D的（这个让我有一次debug了好久才发现）</p>
 </li>
-<li><p>对应API如下</p>
-</li>
+<li>对应API如下</li>
 </ul>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Physics.Raycast(Vector3 origin,Vector3 direction,<span class="keyword">out</span> RaycastHit hitinfo,<span class="built_in">float</span> distance,<span class="built_in">int</span> LayerMask);</span><br><span class="line"><span class="comment">//origin:射线的起始点，因为是位置坐标所以使用Vector3表示</span></span><br><span class="line"><span class="comment">//direction：射线的方向，因为是方向坐标所以使用Vector3表示</span></span><br><span class="line"><span class="comment">//hitinfo：一个结构体，可以储存碰撞体的所有信息。你可以声明一个空的然后直接代入就可以</span></span><br><span class="line"><span class="comment">//下面是可选参数：</span></span><br><span class="line"><span class="comment">//distance:射线检测的距离</span></span><br><span class="line"><span class="comment">//LayerMask：图层，如果输入图层的序号就可以只检测这个图层的相应物体，</span></span><br></pre></td></tr></table></figure>
-
 <span id="more"></span>
-
 <p>可以使用<code>Debug.DrawLine(Vector3 origin,Vector3 destination,Color color)</code>和<code>Debug.DrawRay(Vector3 origin,Vector3 direction,Color color)</code>来使射线可视化</p>
 <p>此外因为Ray都是由两个Vector3变量构造而成的，而2D世界都是<code>Vector2</code>，只能用<code>Vector2</code>变量表示了。</p>
 <p>当从物体中心点发出时，检测到的第一个碰撞体却是自己。</p>
@@ -204,10 +201,8 @@
 </ul>
 <h2 id="碰撞事件"><a href="#碰撞事件" class="headerlink" title="碰撞事件"></a>碰撞事件</h2><p>我们除了可以在碰撞者和被碰撞者上监听碰撞事件外，如果监听碰撞的元素比较多，还能将碰撞事件抛出去由外部统一处理。</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    CollisionLi1stener.onCollisionEnter2D.AddListener(delegace (GameObject g1, GameObject g2） &#123;</span><br><span class="line">    	Debug.LogFormat ( <span class="string">&quot;&#123;0&#125;开始碰撞&#123;1&#125;&quot;</span>,g1.name , g2.name);</span><br><span class="line">    &#125;);</span><br><span class="line">                                                      </span><br><span class="line">    CollisionLi1stener.onCollisionStay2D.AddListener(delegace (GameObject g1, GameObject g2） &#123;</span><br><span class="line">    	Debug.LogFormat ( <span class="string">&quot;&#123;0&#125;碰撞中&#123;1&#125;&quot;</span>,g1.name , g2.name);</span><br><span class="line">    &#125;);</span><br><span class="line">                                                      </span><br><span class="line">    CollisionLi1stener.onCollisionExit2D.AddListener(delegace (GameObject g1, GameObject g2） &#123;</span><br><span class="line">    	Debug.LogFormat ( <span class="string">&quot;&#123;0&#125;结束碰撞&#123;1&#125;&quot;</span>,g1.name , g2.name);</span><br><span class="line">    &#125;);</span><br><span class="line">                                                      </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <h3 id="碰撞方向"><a href="#碰撞方向" class="headerlink" title="碰撞方向"></a>碰撞方向</h3><p>Unity2D并没有提供方法来判断方向，但是提供了碰撞发生的坐标点，需要我们自己来计算碰撞方向。</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> OnCollisionStav2D（Collision2D coll)&#123;</span><br><span class="line">    <span class="keyword">foreach</span> (ContactPoint2D contact <span class="keyword">in</span> coll.contacts)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//绘制线</span></span><br><span class="line">        Debug.DrawLine ( contact.point, transform.position, Color.red);</span><br><span class="line">        <span class="keyword">var</span> direction = transform.InverseTransformPoint (contact.point);</span><br><span class="line">        <span class="keyword">if</span>（direction.x &gt; <span class="number">0f</span>)&#123; </span><br><span class="line">            print( <span class="string">&quot;右碰撞&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>（direction.x &lt; <span class="number">0f</span>)&#123;</span><br><span class="line">        	print(<span class="string">&quot;左碰撞&quot;</span>);&#125;</span><br><span class="line">        <span class="keyword">if</span>（direction.y &gt; <span class="number">0f</span>）&#123;</span><br><span class="line">       	 	print (<span class="string">&quot;上碰撞&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(direction.y &lt; <span class="number">0f</span>)&#123;</span><br><span class="line">       		 print (<span class="string">&quot;下碰撞&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <h2 id="Effector"><a href="#Effector" class="headerlink" title="Effector"></a>Effector</h2><p>unity可以给Collider 2D组件添加的额外效果</p>
 <ul>
 <li>Platform Effector 2D: 单向板地面，能从下往上跳，却掉不下来</li>
@@ -229,20 +224,17 @@
 <p>可以在此基础上使用Gizmos 辅助线框来实现在Scence中更好的视觉效果</p>
 <p>如果是2D则使用<a target="_blank" rel="noopener" href="https://docs.unity3d.com/ScriptReference/Physics2D.html">Physics2D</a>.开头的一系列函数</p>
 <h1 id="3D碰撞检测"><a href="#3D碰撞检测" class="headerlink" title="3D碰撞检测"></a>3D碰撞检测</h1><h2 id="碰撞检测穿透"><a href="#碰撞检测穿透" class="headerlink" title="碰撞检测穿透"></a>碰撞检测穿透</h2><p>只要是跟碰撞相关的基本都是离不开Rigidbody这个组件，当中的Collision detection参数可以选择碰撞检测方式</p>
-<img src="/2022/07/07/%E5%B0%84%E7%BA%BF%E4%B8%8E%E7%A2%B0%E6%92%9E%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E3%80%91/image-20220707230947043.png" alt="image-20220707230947043" style="zoom:80%;">
-
+<p><img src="/2022/07/07/%E5%B0%84%E7%BA%BF%E4%B8%8E%E7%A2%B0%E6%92%9E%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E3%80%91/image-20220707230947043.png" alt="image-20220707230947043" style="zoom:80%;"></p>
 <p>主要用于处理高速s运动的物体，会有时候直接穿过其他物体的时候</p>
 <p><img src="/2022/07/07/%E5%B0%84%E7%BA%BF%E4%B8%8E%E7%A2%B0%E6%92%9E%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E3%80%91/image-20220707225916964.png" alt="image-20220707225916964"></p>
 <p>（上图每个箭头两端均指的是两个即将碰撞的物体的Collision Detection属性的值，箭头中间的属性值所指的是这两个物体时间碰撞所用的碰撞检测模式)</p>
 <ul>
-<li><p>Discrete（离散型检测模式）就是普通的默认状态；</p>
-</li>
+<li>Discrete（离散型检测模式）就是普通的默认状态；</li>
 <li><p>Continuous（连续检测）则是更加精细的碰撞检测，但是很耗资源；</p>
 </li>
 <li><p>Continuous和Continuous Dynamic的<strong>共同点</strong>在于，对待没有刚体和设置为Continuous Dynamic的物体都使用连续碰撞检测，对待刚体设置为Discrete的物体都使用离散碰撞检测。</p>
 </li>
-<li><p><strong>不同点</strong>在于，Continuous Dynamic在检测另一个设置为Continuous的物体使用的仍然是连续碰撞检测模式，而Continuous检测另一个Continuous的物体时使用的却是离散碰撞检测。</p>
-</li>
+<li><strong>不同点</strong>在于，Continuous Dynamic在检测另一个设置为Continuous的物体使用的仍然是连续碰撞检测模式，而Continuous检测另一个Continuous的物体时使用的却是离散碰撞检测。</li>
 </ul>
 <p><img src="/2022/07/07/%E5%B0%84%E7%BA%BF%E4%B8%8E%E7%A2%B0%E6%92%9E%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B%E3%80%90%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E3%80%91/474fe252af9a3f2993f794c86cc454ee.gif" alt="474fe252af9a3f2993f794c86cc454ee"></p>
 <p>此两类方法由于依赖于连续（线性）扫描，所以会忽略物体的角速度，当物体迅速旋转时，仍然会有穿墙的情况发生</p>
