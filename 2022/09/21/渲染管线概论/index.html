@@ -8,26 +8,22 @@
   <link rel="dns-prefetch" href="https://ycy666666.github.io">
   <title>渲染管线概论 | WEBSITE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="什么是渲染管线渲染管线（渲染流水线）是将三维场景模型转换到屏幕像素空间输出的过程。图形渲染管线主要包括两个功能：一是将物体3D坐标转变为屏幕空间2D坐标，二是为屏幕每个像素点进行着色。 渲染管线的流程渲染管线的一般流程如下图所示。分别是：顶点数据的输入、顶点着色器、曲面细分过程、几何着色器、图元组装、裁剪剔除、光栅化、片段着色器以及混合测试。  此外还可以抽象为4个阶段">
+  <meta name="description" content="什么是渲染管线渲染管线（渲染流水线）是将三维场景模型转换到屏幕像素空间输出的过程。图形渲染管线主要包括两个功能：一是将物体3D坐标转变为屏幕空间2D坐标，二是为屏幕每个像素点进行着色。 渲染管线的流程渲染管线的一般流程如下图所示。分别是：顶点数据的输入、顶点着色器、曲面细分过程、几何着色器、图元组装、裁剪剔除、光栅化、片段着色器以及混合测试。 ![Image [1]](渲染管线概论&#x2F;Im">
 <meta property="og:type" content="article">
 <meta property="og:title" content="渲染管线概论">
 <meta property="og:url" content="https://ycy666666.github.io/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/index.html">
 <meta property="og:site_name" content="WEBSITE">
-<meta property="og:description" content="什么是渲染管线渲染管线（渲染流水线）是将三维场景模型转换到屏幕像素空间输出的过程。图形渲染管线主要包括两个功能：一是将物体3D坐标转变为屏幕空间2D坐标，二是为屏幕每个像素点进行着色。 渲染管线的流程渲染管线的一般流程如下图所示。分别是：顶点数据的输入、顶点着色器、曲面细分过程、几何着色器、图元组装、裁剪剔除、光栅化、片段着色器以及混合测试。  此外还可以抽象为4个阶段">
+<meta property="og:description" content="什么是渲染管线渲染管线（渲染流水线）是将三维场景模型转换到屏幕像素空间输出的过程。图形渲染管线主要包括两个功能：一是将物体3D坐标转变为屏幕空间2D坐标，二是为屏幕每个像素点进行着色。 渲染管线的流程渲染管线的一般流程如下图所示。分别是：顶点数据的输入、顶点着色器、曲面细分过程、几何着色器、图元组装、裁剪剔除、光栅化、片段着色器以及混合测试。 ![Image [1]](渲染管线概论&#x2F;Im">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://ycy666666.github.io/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/Image%20[1].png">
 <meta property="og:image" content="https://ycy666666.github.io/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/image-20220920175951721.png">
 <meta property="og:image" content="https://ycy666666.github.io/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/v2-385c4e1a6da6e85f0725f1dca9a801cc_720w.jpg">
 <meta property="og:image" content="https://ycy666666.github.io/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/v2-579bdb7ac479bbbcf52358ca67725bd6_1440w-16636687571604.jpg">
-<meta property="og:image" content="https://ycy666666.github.io/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/Image%20[81].png">
-<meta property="og:image" content="https://ycy666666.github.io/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/Image%20[11].png">
-<meta property="og:image" content="https://ycy666666.github.io/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/Image%20[13].png">
 <meta property="article:published_time" content="2022-09-21T08:08:09.000Z">
 <meta property="article:modified_time" content="2022-09-21T08:09:01.087Z">
 <meta property="article:author" content="YCY">
 <meta property="article:tag" content="图形学">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ycy666666.github.io/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/Image%20[1].png">
+<meta name="twitter:image" content="https://ycy666666.github.io/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/image-20220920175951721.png">
   
     <link rel="alternative" href="/atom.xml" title="WEBSITE" type="application/atom+xml">
   
@@ -175,10 +171,11 @@
       
         <h1 id="什么是渲染管线"><a href="#什么是渲染管线" class="headerlink" title="什么是渲染管线"></a>什么是渲染管线</h1><p>渲染管线（渲染流水线）是将三维场景模型转换到屏幕像素空间输出的过程。图形渲染管线主要包括两个功能：一是将物体3D坐标转变为屏幕空间2D坐标，二是为屏幕每个像素点进行着色。</p>
 <h2 id="渲染管线的流程"><a href="#渲染管线的流程" class="headerlink" title="渲染管线的流程"></a>渲染管线的流程</h2><p>渲染管线的一般流程如下图所示。分别是：顶点数据的输入、顶点着色器、曲面细分过程、几何着色器、图元组装、裁剪剔除、光栅化、片段着色器以及混合测试。</p>
-<p><img src="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/Image [1].png" alt="Image [1]"></p>
+<p>![Image [1]](渲染管线概论&#x2F;Image [1].png)</p>
 <p>此外还可以抽象为4个阶段</p>
 <p><img src="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/image-20220920175951721.png" alt="image-20220920175951721"></p>
 <span id="more"></span>
+
 <ol>
 <li><p>应用阶段：由<strong>CPU</strong>主要负责的阶段，且完全由开发人员掌控。CPU将决定递给GPU什么样的数据（目标场景的灯光、模型），有时候还会对这些数据进行处理（将摄像机不可见的元素被<strong>剔除（culling）</strong>出去），并且告诉GPU这些数据的渲染状态（譬如纹理、材质、着色器等）。</p>
 <p><strong>这一阶段最重要的输出是渲染所需的几何信息</strong>，即<strong>渲染图元</strong>（通俗来讲可以是点、线、面等）</p>
@@ -192,21 +189,21 @@
 </ol>
 <p><strong>应用程序阶段在CPU端完成，后面的所有阶段都是在GPU端完成</strong>（所以又称GPU渲染管线）</p>
 <h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>渲染管线的一个特点就是每个阶段都会把前一个阶段的输出作为该阶段的输入。</p>
-<p>例如，片段着色器会将光栅化后的片段(以及片段的数据块)作为输入进行光照计算。除了图元组装和光栅化几个阶段是由硬件自动完成之外，管线的其他阶段管线都是可编程/可配置的。</p>
+<p>例如，片段着色器会将光栅化后的片段(以及片段的数据块)作为输入进行光照计算。除了图元组装和光栅化几个阶段是由硬件自动完成之外，管线的其他阶段管线都是可编程&#x2F;可配置的。</p>
 <h1 id="各个阶段的功能"><a href="#各个阶段的功能" class="headerlink" title="各个阶段的功能"></a>各个阶段的功能</h1><h2 id="应用阶段"><a href="#应用阶段" class="headerlink" title="应用阶段"></a>应用阶段</h2><p>渲染管线的起点是CPU，CPU与GPU的通信即上文的<strong>应用阶段</strong></p>
-<p><strong>（1）把数据加载到显存</strong>：将数据加载到显存中能使GPU更快的访问这些数据，当把数据加载到显存后，便可以释放了数据，但一些数据仍需留在内存中，如CPU需要网格数据进行碰撞检测。<br><strong>（2）设置渲染状态</strong>：渲染状态的一个通俗解释就是，定义了场景中的网格是怎样被渲染的。例如，使用哪个顶点着色器/片段着色器、光源属性、材质等。如果不设置渲染状态，那所有的网格将使用同一种渲染，显然这是不希望得到的结果。<br><strong>（3）调用Draw Call</strong>：当所有的数据准备好后，CPU就需要调用一个渲染指令告诉GPU，按照上述设置进行渲染，<strong>这个渲染命令就是Draw Call</strong>。Draw Call命令仅仅指向被渲染的图元列表，而不包含任何材质信息</p>
+<p><strong>（1）把数据加载到显存</strong>：将数据加载到显存中能使GPU更快的访问这些数据，当把数据加载到显存后，便可以释放了数据，但一些数据仍需留在内存中，如CPU需要网格数据进行碰撞检测。<br><strong>（2）设置渲染状态</strong>：渲染状态的一个通俗解释就是，定义了场景中的网格是怎样被渲染的。例如，使用哪个顶点着色器&#x2F;片段着色器、光源属性、材质等。如果不设置渲染状态，那所有的网格将使用同一种渲染，显然这是不希望得到的结果。<br><strong>（3）调用Draw Call</strong>：当所有的数据准备好后，CPU就需要调用一个渲染指令告诉GPU，按照上述设置进行渲染，<strong>这个渲染命令就是Draw Call</strong>。Draw Call命令仅仅指向被渲染的图元列表，而不包含任何材质信息</p>
 <p>在实际的渲染中，GPU的渲染速度往往超过了CPU提交命令的速度，这导致<strong>渲染中大部分时间都消耗在了CPU提交Draw Call</strong>上。有一种解决这种问题的方法是使用<strong>批处理（Batching）</strong>，即把要渲染的模型合并在一起提交给GPU</p>
 <p><img src="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/v2-385c4e1a6da6e85f0725f1dca9a801cc_720w.jpg" alt="v2-385c4e1a6da6e85f0725f1dca9a801cc_720w"></p>
 <h2 id="GPU渲染管线"><a href="#GPU渲染管线" class="headerlink" title="GPU渲染管线"></a>GPU渲染管线</h2><p><img src="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/v2-579bdb7ac479bbbcf52358ca67725bd6_1440w-16636687571604.jpg" alt="v2-579bdb7ac479bbbcf52358ca67725bd6_1440w"></p>
 <p>绿色表示开发者可以完全编程控制的部分，<strong>虚线外框</strong>表示此阶段不是必需的，<strong>黄色</strong>表示开发者无法完全控制的部分（但可以进行一些配置），<strong>紫色</strong>表示开发者无法控制的阶段（已经由GPU固定实现）</p>
 <h2 id="几何阶段"><a href="#几何阶段" class="headerlink" title="几何阶段"></a>几何阶段</h2><h3 id="顶点着色器"><a href="#顶点着色器" class="headerlink" title="顶点着色器"></a>顶点着色器</h3><p>顶点着色器的处理单位是顶点，但是每次处理都是独立的，因此无法创建或销毁任何一个顶点，也不能得到与其他顶点的关系</p>
 <p>顶点着色器主要功能是进行坐标变换。将输入的局部坐标变换到世界坐标、观察坐标和裁剪坐标。</p>
-<p>虽然我们也会在顶点着色器进行光照计算(称作<strong>高洛德着色)</strong>，然后经过光栅化插值得到各个片段的颜色，但这种得到的光照比较不自然，所以一般在片段着色器进行光照计算</p>
+<p>虽然我们也会在顶点着色器进行光照计算(称作**高洛德着色)**，然后经过光栅化插值得到各个片段的颜色，但这种得到的光照比较不自然，所以一般在片段着色器进行光照计算</p>
 <h3 id="曲面细分着色器"><a href="#曲面细分着色器" class="headerlink" title="曲面细分着色器"></a>曲面细分着色器</h3><p>曲面细分是利用镶嵌化处理技术对三角面进行细分，以此来增加物体表面的三角面的数量，是渲染管线一个可选的阶段</p>
 <h3 id="几何着色器"><a href="#几何着色器" class="headerlink" title="几何着色器"></a>几何着色器</h3><p>在这个阶段，开发者可以控制GPU对顶点进行增删改操作</p>
 <h3 id="投影"><a href="#投影" class="headerlink" title="投影"></a>投影</h3><p>GPU将顶点从摄像机观察空间转换到裁剪空间（又被称为齐次裁剪空间），为之后的剔除过程以及投射到二维平面做准备。</p>
 <p>常见的投影方式有透视投影与正交投影。</p>
-<p>在三维中原有的三个分量x、y、z上又额外增加了w=1分量，使得可以通过矩阵乘的方式为三维坐标实现平移的效果。</p>
+<p>在三维中原有的三个分量x、y、z上又额外增加了w&#x3D;1分量，使得可以通过矩阵乘的方式为三维坐标实现平移的效果。</p>
 <h3 id="裁剪"><a href="#裁剪" class="headerlink" title="裁剪"></a>裁剪</h3><p>只有当图元部分或全部位于视椎体内时，我们才会将它送到流水线的下个阶段，也就是光栅化阶段。对于部分位于视椎体的图元，位于外部的顶点将被裁剪掉，而且在视椎体与线段的交界处产生新的顶点。</p>
 <p>在把不需要的顶点裁剪掉后，GPU需要把顶点映射到屏幕空间，这是一个从三维空间转换到二维空间的操作。</p>
 <ul>
@@ -239,7 +236,7 @@
 <h4 id="裁切测试"><a href="#裁切测试" class="headerlink" title="裁切测试"></a>裁切测试</h4><p>在裁剪测试中，允许程序员开设一个裁剪框，只有在裁剪框内的片元才会被显示出来，在裁剪框外的片元皆被剔除。</p>
 <h4 id="模板测试"><a href="#模板测试" class="headerlink" title="模板测试"></a>模板测试</h4><p>模板测试通常用来限制渲染的区域，渲染阴影，轮廓渲染等</p>
 <p>在模板测试中，GPU将读取片元的模板值与模板缓冲区的模板值进行比较，比较函数由开发者指定，如果比较不通过，这个片元将被舍弃</p>
-<p><img src="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/Image [81].png" alt="Image [81]"></p>
+<p>![Image [81]](渲染管线概论&#x2F;Image [81].png)</p>
 <h4 id="深度测试"><a href="#深度测试" class="headerlink" title="深度测试"></a>深度测试</h4><p>现实生活中，近的物体会遮挡住远处的物体，深度缓冲就是用来实现这种效果的。</p>
 <p>GPU将读取片元的深度值（就是我们前面留下来的坐标z分量）与缓冲区的深度值进行比较，和模板测试一样，如何渲染物体之间的遮挡关系也是自定义的（可以让GPU把没有被遮挡的部分隐藏了，让被遮挡的部分显示出来的。）</p>
 <blockquote>
@@ -250,20 +247,20 @@
 <p>合并有两种主要的方式，一种是直接进行颜色的替换，另一种是根据不透明度进行<strong>混合（Blend）</strong></p>
 <p>如果开启了混合，GPU会取出片元着色器得到的颜色（<strong>源颜色</strong>）和颜色缓冲区存在的颜色（<strong>目标颜色</strong>），之后按照设定的函数进行混合，可以设定透明度通道进行相加，相减还是相乘。</p>
 <p>最后GPU会使用<strong>双重缓冲（Double Buffering）</strong>的策略，即屏幕上显示<strong>前置缓冲（Front Buffer）</strong>，而渲染好的颜色先被送入<strong>后置缓冲（Back Buffer）</strong>，再替换前置缓冲，以此避免在屏幕上显示正在光栅化的图元</p>
-<h1 id="渲染管线中的坐标系变换"><a href="#渲染管线中的坐标系变换" class="headerlink" title="渲染管线中的坐标系变换"></a>渲染管线中的坐标系变换</h1><p><img src="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/Image [11].png" alt="Image [11]"></p>
+<h1 id="渲染管线中的坐标系变换"><a href="#渲染管线中的坐标系变换" class="headerlink" title="渲染管线中的坐标系变换"></a>渲染管线中的坐标系变换</h1><p>![Image [11]](渲染管线概论&#x2F;Image [11].png)</p>
 <ul>
 <li>我们从建模工具得到的是物体的局部坐标(Local Coordinate)，</li>
 <li>局部坐标通过模型矩阵Model变换到世界坐标(World Coordinate)，</li>
 </ul>
-<p>​        光照计算一般都是在世界空间进行的，所以输入的顶点坐标需要通过乘以模型矩阵变换到世界空间。在模型变换时，通常还需要将法线变换到世界空间中，对于法线变换不能简单的使用模型变换矩阵来变换法线，对于包含非均匀缩放的变换，需要求解模型变换的<strong>逆转置矩阵</strong></p>
+<p>​		光照计算一般都是在世界空间进行的，所以输入的顶点坐标需要通过乘以模型矩阵变换到世界空间。在模型变换时，通常还需要将法线变换到世界空间中，对于法线变换不能简单的使用模型变换矩阵来变换法线，对于包含非均匀缩放的变换，需要求解模型变换的<strong>逆转置矩阵</strong></p>
 <ul>
 <li><p>世界坐标通过观察矩阵View变换到观察坐标(View Coordinate)，</p>
 <p>虚拟摄像机定义了我们的观察空间。虚拟摄像机的位置是坐标的原点，观察方向沿着Z轴的负方向。我们可以通过摄像机的位置(EyePosition)、观察目标点(FocusPosition)和向上的方向向量(UpDirection)来构建观察矩阵。</p>
-<p><img src="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/Image [13].png" alt="Image [13]"></p>
+<p>![Image [13]](渲染管线概论&#x2F;Image [13].png)</p>
 </li>
 <li><p>观察坐标经过投影矩阵Projection变换到裁剪坐标(Clip Coordinate)，</p>
-<p>​    裁剪空间的目标是能够方便的对图元进行裁剪，这块空间是由视锥体决定的，视锥体外为看不到的区域，也就是被裁剪的部分。当时不同的视锥体有不同的处理过程，而且透视投影判断点是否在视锥体内比较麻烦，通过一个投影矩阵将顶点转换到裁剪空间中是一种通用、方便的方式。——常见的投影矩阵有透视投影和正交投影</p>
-<p>​    投影矩阵并没有真正的进行投影工作，而是为投影做准备，真正的投影发生在<strong>齐次除法</strong>过程中，这发生在<strong>屏幕空间</strong>映射阶段</p>
+<p>​	裁剪空间的目标是能够方便的对图元进行裁剪，这块空间是由视锥体决定的，视锥体外为看不到的区域，也就是被裁剪的部分。当时不同的视锥体有不同的处理过程，而且透视投影判断点是否在视锥体内比较麻烦，通过一个投影矩阵将顶点转换到裁剪空间中是一种通用、方便的方式。——常见的投影矩阵有透视投影和正交投影</p>
+<p>​	投影矩阵并没有真正的进行投影工作，而是为投影做准备，真正的投影发生在<strong>齐次除法</strong>过程中，这发生在<strong>屏幕空间</strong>映射阶段</p>
 </li>
 <li><p>裁剪坐标经过透射除法(Perspective Division)得到标准设备空间(Normalized Device Coordinates，NDC)，</p>
 </li>

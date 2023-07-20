@@ -176,6 +176,7 @@
 <p>CLR并不关心是使用何种语言进行编程开发，只要编译器是面向CLR而进行编译的即可，这个中间的结果，就是IL(Intermediate Language), 最终面向CLR编译得到的结果是：IL语句以及托管数据(元数据)组成的托管模块</p>
 <p><img src="/2022/11/14/%E6%B5%85%E6%9E%90GC-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6/image-20221114185011460.png" alt="image-20221114185011460"></p>
 <span id="more"></span>
+
 <h2 id="托管资源与非托管资源"><a href="#托管资源与非托管资源" class="headerlink" title="托管资源与非托管资源"></a>托管资源与非托管资源</h2><p>托管就是.net framework 负责帮你管理内存及资源释放，不需要自己控制。</p>
 <p>对于引用类型，栈上保存着一个地址而已，当栈释放后， 即使对象已经没有用了，但<strong>堆上分配的内存还在</strong>，只能等<strong>GC收集时才能真正释放</strong>。但对于值类型，GC会<strong>自动释放</strong>他们占用的内存，不需要GC来<strong>回收释放</strong></p>
 <ul>
@@ -202,8 +203,7 @@
 <p>根对象：相当于是当前存活对象的合集，GC去搜索能被该集合直接或者是间接指向的对象</p>
 </blockquote>
 <ul>
-<li>GC的准备阶段：<pre><code>在这个阶段，CLR会暂停进程中的所有线程，这是为了防止线程在CLR检查根期间访问堆。
-</code></pre></li>
+<li>GC的准备阶段：<br>在这个阶段，CLR会暂停进程中的所有线程，这是为了防止线程在CLR检查根期间访问堆。</li>
 <li>GC的标记阶段：<br>当GC开始运行时，它会假设托管堆上的所有对象都是垃圾。然后GC开始遍历根对象并让所有与之有引用关系的对象构成一个<strong>对象图</strong>，假如一个根对象指向null，GC会忽略这个根并继续检查下个根。</li>
 </ul>
 <p>下图是<strong>回收之前的托管堆模型</strong>，根直接引用了对象A，C，D，F。标记对象D时，垃圾回收器发现这个对象含有一个引用对象H的字段，所以H也会被标记，整个过程一直持续到所有根检查完毕。<code>NextObjPtr</code>对象始终保持指向最后一个对象放入托管堆的地址</p>
@@ -255,15 +255,15 @@
 <li>将GC的运行时间延迟，避免在关键时候触发，比如可以在场景加载的时候调用GC</li>
 </ul>
 <p>分别对应着三个策略：</p>
+<p>- </p>
 <ul>
-<li></li>
-<li><p>对游戏进行重构，减少堆内存的分配和引用的分配。更少的变量和引用会减少GC操作中的检测个数从而提高GC的运行效率。</p>
-</li>
+<li>对游戏进行重构，减少堆内存的分配和引用的分配。更少的变量和引用会减少GC操作中的检测个数从而提高GC的运行效率。</li>
 <li>降低堆内存分配和回收的频率，尤其是在关键时刻。也就是说更少的事件触发GC操作，同时也降低堆内存的碎片化。</li>
 <li>我们可以试着按照可预测的顺序执行。当然这样操作的难度极大</li>
 </ul>
 <h2 id="缓存变量"><a href="#缓存变量" class="headerlink" title="缓存变量"></a>缓存变量</h2><p>如果在代码中反复调用某些造成堆内存分配的函数但是其返回结果并没有使用，这就会造成不必要的内存垃圾，我们可以缓存这些变量来重复利用</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下面的代码每次调用的时候就会新分配一个数组，造成堆内存分配</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">     Renderer[] allRenderers = FindObjectsOfType&lt;Renderer&gt;();</span><br><span class="line">     ExampleFunction(allRenderers);      </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// --------修改为---------</span></span><br><span class="line"><span class="keyword">private</span> Renderer[] allRenderers;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Start</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">   allRenderers = FindObjectsOfType&lt;Renderer&gt;();</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">OnTriggerEnter</span>(<span class="params">Collider other</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    ExampleFunction(allRenderers);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>如果是链表等数据结构，记得需要先调用 <code>Clear()</code>函数</p>
 <p>同时也要避免在 <code>Update</code>等函数中反复进行堆内存分配</p>
 <h2 id="对象池方法"><a href="#对象池方法" class="headerlink" title="对象池方法"></a>对象池方法</h2><p>如果游戏有大量的对象需要产生和销毁依然会造成GC。对象池技术可以通过重复使用对象来降低堆内存的分配和回收频率。对象池在游戏中广泛的使用，特别是在游戏中需要频繁的创建和销毁相同的游戏对象的时候，例如枪的子弹</p>
@@ -272,10 +272,12 @@
 <p>c#中的字符串在创建后是不可变更的。每次在对字符串进行操作的时候（例如运“加”操作），会新建一个字符串用来存储新的字符串，使得旧的字符串被废弃，这样就会造成内存垃圾</p>
 <p>在Text文本组件中，我们可以分离常量字符串和需要修改的字符串（尤其是表示UI数字的Text），去除 + 操作符，实施创建的字符串还可以使用 <code>StringBuilder</code> </p>
 <h2 id="Unity函数调用"><a href="#Unity函数调用" class="headerlink" title="Unity函数调用"></a>Unity函数调用</h2><h3 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h3><figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下面的代码中对于每个迭代器都会产生一个新的数组</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ExampleFunction</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>; i &lt; myMesh.normals.Length;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        Vector3 normal = myMesh.normals[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ----修改为---------</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ExampleFunction</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    Vector3[] meshNormals = myMesh.normals;</span><br><span class="line">    <span class="keyword">for</span>(<span class="built_in">int</span> i=<span class="number">0</span>; i &lt; meshNormals.Length;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        Vector3 normal = meshNormals[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h3><p>调用 StartCoroutine()会产生少量的内存垃圾，因为unity会生成实体来管理协程。所以在游戏的关键时刻应该限制该函数的调用</p>
 <p>yield在协程中不会产生堆内存分配，但是如果yield带有参数返回，则会造成不必要的内存垃圾，比如应该将 <code>yield return 0</code> 改为 <code>yield return null</code>,否则会引发装箱</p>
 <p>也尽量少返回一个新创建的变量</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(!isComplete)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">yield</span> <span class="keyword">return</span> <span class="keyword">new</span> <span class="title">WaitForSeconds</span>(<span class="params"><span class="number">1f</span></span>)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 我们可以采用缓存来避免这样的内存垃圾产生：</span></span><br><span class="line"></span><br><span class="line">WaitForSeconds delay = <span class="keyword">new</span> WaiForSeconds(<span class="number">1f</span>);</span><br><span class="line"><span class="keyword">while</span>(!isComplete)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> delay;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
 <li>LINQ和常量表达式以装箱的方式实现，所以在使用的时候最好进行性能测试</li>
 <li>struct是值类型的变量，但是如果struct中包含有引用类型的变量，那么GC就必须检测整个struct。</li>

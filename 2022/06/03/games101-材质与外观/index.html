@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://ycy666666.github.io">
   <title>games101 材质与外观 | WEBSITE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="材质材质就是BRDF，BRDF定义了光线与物体如何交互，从而不同的材质产生了不同的视觉效果  BRDF的R指的是反射(Reflection)，但折射显然不是反射。 BTDF的T指的是折射(Transmitte)。 BRDF和BTDF统称为BSDF，这里的S指的是散射(Scatter)。  Diffuse &#x2F; Lambertian Material(BRDF) 漫反射首先认为现在在研究的这个漫反射材">
+  <meta name="description" content="材质材质就是BRDF，BRDF定义了光线与物体如何交互，从而不同的材质产生了不同的视觉效果  BRDF的R指的是反射(Reflection)，但折射显然不是反射。 BTDF的T指的是折射(Transmitte)。 BRDF和BTDF统称为BSDF，这里的S指的是散射(Scatter)。  Diffuse &#x2F; Lambertian Material(BRDF) 漫反射首先认为现在在研究的这">
 <meta property="og:type" content="article">
 <meta property="og:title" content="games101 材质与外观">
 <meta property="og:url" content="https://ycy666666.github.io/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/index.html">
 <meta property="og:site_name" content="WEBSITE">
-<meta property="og:description" content="材质材质就是BRDF，BRDF定义了光线与物体如何交互，从而不同的材质产生了不同的视觉效果  BRDF的R指的是反射(Reflection)，但折射显然不是反射。 BTDF的T指的是折射(Transmitte)。 BRDF和BTDF统称为BSDF，这里的S指的是散射(Scatter)。  Diffuse &#x2F; Lambertian Material(BRDF) 漫反射首先认为现在在研究的这个漫反射材">
+<meta property="og:description" content="材质材质就是BRDF，BRDF定义了光线与物体如何交互，从而不同的材质产生了不同的视觉效果  BRDF的R指的是反射(Reflection)，但折射显然不是反射。 BTDF的T指的是折射(Transmitte)。 BRDF和BTDF统称为BSDF，这里的S指的是散射(Scatter)。  Diffuse &#x2F; Lambertian Material(BRDF) 漫反射首先认为现在在研究的这">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://ycy666666.github.io/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530145517043.png">
 <meta property="og:image" content="https://ycy666666.github.io/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530144639294.png">
@@ -192,7 +192,7 @@
 <li>BTDF的T指的是折射(Transmitte)。</li>
 <li>BRDF和BTDF统称为BSDF，这里的S指的是散射(Scatter)。</li>
 </ul>
-<h2 id="Diffuse-Lambertian-Material-BRDF-漫反射"><a href="#Diffuse-Lambertian-Material-BRDF-漫反射" class="headerlink" title="Diffuse / Lambertian Material(BRDF) 漫反射"></a>Diffuse / Lambertian Material(BRDF) 漫反射</h2><p>首先认为现在在研究的这个漫反射材质是均匀的，这也意味着：</p>
+<h2 id="Diffuse-x2F-Lambertian-Material-BRDF-漫反射"><a href="#Diffuse-x2F-Lambertian-Material-BRDF-漫反射" class="headerlink" title="Diffuse &#x2F; Lambertian Material(BRDF) 漫反射"></a>Diffuse &#x2F; Lambertian Material(BRDF) 漫反射</h2><p>首先认为现在在研究的这个漫反射材质是均匀的，这也意味着：</p>
 <ul>
 <li><p>假设入射光是各个方向均匀射向这个着色点的，并且每一个入射光的光强都是相同的；</p>
 </li>
@@ -202,18 +202,21 @@
 <p><img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530145517043.png" alt="image-20220530145517043"></p>
 </li>
 </ul>
-<p>我们可以定义一个名为<strong>反射率</strong>这么一个该概念，英文名为<strong>albedo(color)</strong>，albedo可以是单通道的一个数，也可以是三个数RGB，我们定义他的<strong>范围在[0，1]区间内</strong>，引入不同颜色BRDF，所以这个BRDF的值就是<code>fr</code>,范围为[0, 1 / pi]</p>
+<p>我们可以定义一个名为<strong>反射率</strong>这么一个该概念，英文名为<strong>albedo(color)<strong>，albedo可以是单通道的一个数，也可以是三个数RGB，我们定义他的</strong>范围在[0，1]区间内</strong>，引入不同颜色BRDF，所以这个BRDF的值就是<code>fr</code>,范围为[0, 1 &#x2F; pi]</p>
 <span id="more"></span>
+
 <h2 id="镜面折射（Specular-Refraction）"><a href="#镜面折射（Specular-Refraction）" class="headerlink" title="镜面折射（Specular Refraction）"></a>镜面折射（Specular Refraction）</h2><h3 id="Snell’s-Law"><a href="#Snell’s-Law" class="headerlink" title="Snell’s Law"></a>Snell’s Law</h3><p><img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530144639294.png" alt="image-20220530144639294"></p>
 <p>如果结果不是一个实数，则说明折射不会发生，也就是入射的介质的折射率大于折射的介质的折射率，这种情况就可能出现没有折射这种现象，这种现象也成为全反射现象。</p>
-<h3 id="Snell’s-Window"><a href="#Snell’s-Window" class="headerlink" title="Snell’s Window"></a>Snell’s Window</h3><p><img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530144848764.png" alt="image-20220530144848764" style="zoom:67%;"></p>
+<h3 id="Snell’s-Window"><a href="#Snell’s-Window" class="headerlink" title="Snell’s Window"></a>Snell’s Window</h3><img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530144848764.png" alt="image-20220530144848764" style="zoom:67%;">
+
 <p>当人从水里外天空看的时候，只能看到一个锥形的范围，锥形范围之外的都看不见，就是因为发生了全反射现象</p>
-<h2 id="Fresnel-Reflection-Term-菲涅尔项"><a href="#Fresnel-Reflection-Term-菲涅尔项" class="headerlink" title="Fresnel Reflection / Term(菲涅尔项)"></a>Fresnel Reflection / Term(菲涅尔项)</h2><p>光线照射到物体表面后，一部分发生折射，一部分发生反射。那么发生反射部分的比例是多少，可以用菲涅尔项来描述。</p>
+<h2 id="Fresnel-Reflection-x2F-Term-菲涅尔项"><a href="#Fresnel-Reflection-x2F-Term-菲涅尔项" class="headerlink" title="Fresnel Reflection &#x2F; Term(菲涅尔项)"></a>Fresnel Reflection &#x2F; Term(菲涅尔项)</h2><p>光线照射到物体表面后，一部分发生折射，一部分发生反射。那么发生反射部分的比例是多少，可以用菲涅尔项来描述。</p>
 <ul>
 <li>如果一根入射光线和物体表面几乎平行，就认为大量能量会被反射。上图中光线与法线角度成90度就是表示光线与物体表面平行。</li>
 <li>如果入射光线和物体表面垂直，就会有更多能量会穿过物体，发生折射，反射的能量就会比较少。</li>
 </ul>
-<p><img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530145313583.png" alt="image-20220530145313583" style="zoom:50%;"></p>
+<img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530145313583.png" alt="image-20220530145313583" style="zoom:50%;">
+
 <h3 id="简化的计算公式"><a href="#简化的计算公式" class="headerlink" title="简化的计算公式"></a>简化的计算公式</h3><p><img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530150629108.png" alt="image-20220530150629108"></p>
 <h2 id="微表面材质-Microfacet-BRDF"><a href="#微表面材质-Microfacet-BRDF" class="headerlink" title="微表面材质(Microfacet BRDF)"></a>微表面材质(Microfacet BRDF)</h2><p>几何表面的凹凸变化在远处看来就是材质，关键是微表面法线的分布：</p>
 <p><img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530151819611.png" alt="image-20220530151819611"></p>
@@ -226,13 +229,12 @@
 <li>G： 几何项， 反射的过程中，有一部分的光被自身几何结构遮挡了，有多少比例的反射光没有被遮挡。光几乎是平行着物体表面，打到这个物体表面上时容易发生这种自投影(自遮挡)的现象</li>
 <li>D：法线分布函数，在所有的分布里，有多少比例的微平面的法线方向沿着半程向量。</li>
 </ul>
-<h2 id="各向同性和各向异性Isotropic-Anisotropic-Materials-BRDFs"><a href="#各向同性和各向异性Isotropic-Anisotropic-Materials-BRDFs" class="headerlink" title="各向同性和各向异性Isotropic / Anisotropic Materials(BRDFs)"></a>各向同性和各向异性Isotropic / Anisotropic Materials(BRDFs)</h2><p><img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530154204966.png" alt="image-20220530154204966"></p>
+<h2 id="各向同性和各向异性Isotropic-x2F-Anisotropic-Materials-BRDFs"><a href="#各向同性和各向异性Isotropic-x2F-Anisotropic-Materials-BRDFs" class="headerlink" title="各向同性和各向异性Isotropic &#x2F; Anisotropic Materials(BRDFs)"></a>各向同性和各向异性Isotropic &#x2F; Anisotropic Materials(BRDFs)</h2><p><img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530154204966.png" alt="image-20220530154204966"></p>
 <p>在方位角上旋转，得到的不是相同的BRDF，就将其成为各向异性（Anisotropic）的材质。</p>
 <p>就是在一个平面上有一对入射角和出射角，可知他们的半程向量是垂直于平面的，这时半程向量的方向不动，旋转这对角，这时他们相对的位置没有变化。</p>
 <h2 id="BRDFS的性质"><a href="#BRDFS的性质" class="headerlink" title="BRDFS的性质"></a>BRDFS的性质</h2><ol>
-<li><p>BRDF的值非负</p>
-<script type="math/tex; mode=display">
-f_r(w_i → w_r) > 0</script></li>
+<li><p>BRDF的值非负<br>$$<br>f_r(w_i → w_r) &gt; 0<br>$$</p>
+</li>
 <li><p>可以拆分计算</p>
 <p><img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530154730247.png" alt="image-20220530154730247"></p>
 </li>
@@ -242,7 +244,7 @@ f_r(w_i → w_r) > 0</script></li>
 <li><p>能量守恒</p>
 </li>
 </ol>
-<p>​    <img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530154805894.png" alt="image-20220530154805894"></p>
+<p>​	<img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530154805894.png" alt="image-20220530154805894"></p>
 <h2 id="基于图像的-BRDF-测量"><a href="#基于图像的-BRDF-测量" class="headerlink" title="基于图像的 BRDF 测量"></a>基于图像的 BRDF 测量</h2><p>确定一个相机，确定一个光源。使用光源从四面八方照射物体，再用相机从四面八方取拍它，这样就可以覆盖BRDF的所有可能的输入方向和输出方向</p>
 <p>提升效率：</p>
 <ul>
@@ -261,12 +263,10 @@ f_r(w_i → w_r) > 0</script></li>
 <ol>
 <li>从光源发射光子，直到打在漫反射表面</li>
 <li>从相机发射光子，直到打在漫反射表面</li>
-<li>计算局部密度评估 </li>
+<li>计算局部密度评估</li>
 </ol>
 <p>为什么光子映射有偏？</p>
-<p>我们计算</p>
-<script type="math/tex; mode=display">
-dN / dA != \Delta N / \Delta A</script><p>如果光子打出无限多，那么结果与正确结果无限接近</p>
+<p>我们计算<br>$$<br>dN &#x2F; dA !&#x3D; \Delta N &#x2F; \Delta A<br>$$<br>如果光子打出无限多，那么结果与正确结果无限接近</p>
 <h3 id="VCM"><a href="#VCM" class="headerlink" title="VCM"></a>VCM</h3><p>双向路线追踪和光子映射结合</p>
 <p><img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220601154157031.png" alt="image-20220601154157031"></p>
 <p>当BDPT的路径在一个局部面上时，尽管他们没有相交但仍然可以把他们当作光子而不是光路，以此来做光子映射</p>

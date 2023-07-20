@@ -15,8 +15,8 @@
 <meta property="og:site_name" content="WEBSITE">
 <meta property="og:description" content="动态规划的原理动态规划的思想与分治、递归都有些类似，为何我们要使用动态规划？ 动态规划相比于递归，他不用重复计算子问题，他将已经解决过的问题存储下来，每个问题都可以划分为子问题求解。是一种空间换时间的手段 动态规划的步骤我们知道了动态规划是利用历史记录来避免重复计算，因此我们一般用数组来保存记录（一维或者是二维）  明确记录的数组元素代表着什么 找出如何通过子问题的解求出父问题，也就是找出通项公式">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://ycy666666.github.io/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/QQ截图20220807215647.png">
-<meta property="og:image" content="https://ycy666666.github.io/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/QQ截图20220807215657.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/QQ%E6%88%AA%E5%9B%BE20220807215647.png">
+<meta property="og:image" content="https://ycy666666.github.io/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/QQ%E6%88%AA%E5%9B%BE20220807215657.png">
 <meta property="og:image" content="https://ycy666666.github.io/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/3.gif">
 <meta property="og:image" content="https://ycy666666.github.io/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/kmp.gif">
 <meta property="og:image" content="https://ycy666666.github.io/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/shadow1.jpg">
@@ -26,7 +26,7 @@
 <meta property="article:author" content="YCY">
 <meta property="article:tag" content="算法导论">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://ycy666666.github.io/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/QQ截图20220807215647.png">
+<meta name="twitter:image" content="https://ycy666666.github.io/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/QQ%E6%88%AA%E5%9B%BE20220807215647.png">
   
     <link rel="alternative" href="/atom.xml" title="WEBSITE" type="application/atom+xml">
   
@@ -187,6 +187,7 @@
 <li>求存在性：能否选出k个数和为Sum，取石子游戏先手是否必胜</li>
 </ol>
 <span id="more"></span>
+
 <h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h2><p>背包问题定义的理解：给定一个背包容量target，再给定一个数组nums(物品)，能否按一定方式选取nums中的元素得到target</p>
 <h3 id="背包问题的类型"><a href="#背包问题的类型" class="headerlink" title="背包问题的类型"></a>背包问题的类型</h3><ul>
 <li><strong>01背包问题：</strong>每个元素最多取1次。具体来讲：一共有 N 件物品，第 i（i 从 1 开始）件物品的重量为 w[i]，价值为 v[i]。在总重量不超过背包承载上限 V 的情况下，能够装入背包的最大价值是多少？</li>
@@ -194,13 +195,13 @@
 <li><strong>分组背包问题：</strong>有多个背包，需要对每个背包放入物品，每个背包的处理情况与完全背包完全相同。</li>
 </ul>
 <h3 id="解题模板"><a href="#解题模板" class="headerlink" title="解题模板"></a><strong>解题模板</strong></h3><p>背包问题大体的解题模板是<strong>两层循环</strong>，分别遍历物品nums和背包容量target，然后写转移方程，根据背包的分类我们确定物品和容量遍历的先后顺序，根据问题的分类我们确定状态转移方程的写法。</p>
-<p>1、0/1背包：外循环nums,内循环target,target倒序且target&gt;=nums[i];<br>2、完全背包（组合）：外循环nums,内循环target,target正序且target&gt;=nums[i];<br>3、完全背包（排列）：外循环target,内循环nums,target正序且target&gt;=nums[i];<br>4、分组背包：这个比较特殊，需要多重循环：外循环nums,内部循环根据题目的要求构建多重背包循环</p>
+<p>1、0&#x2F;1背包：外循环nums,内循环target,target倒序且target&gt;&#x3D;nums[i];<br>2、完全背包（组合）：外循环nums,内循环target,target正序且target&gt;&#x3D;nums[i];<br>3、完全背包（排列）：外循环target,内循环nums,target正序且target&gt;&#x3D;nums[i];<br>4、分组背包：这个比较特殊，需要多重循环：外循环nums,内部循环根据题目的要求构建多重背包循环</p>
 <h3 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/partition-equal-subset-sum/">LeetCode416. 分割等和子集</a></p>
 <blockquote>
 <p>一个只包含正整数 的 非空 数组 nums 。请你判断是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。</p>
 </blockquote>
 <p><strong>思路</strong></p>
-<p><strong>01背包问题</strong>，这道题相当于找到一个子集，其和为 sum / 2，这个 sum / 2 就是 target（target 间接给出）。于是转化为是否可以用 nums 中的数组合和成 target。</p>
+<p><strong>01背包问题</strong>，这道题相当于找到一个子集，其和为 sum &#x2F; 2，这个 sum &#x2F; 2 就是 target（target 间接给出）。于是转化为是否可以用 nums 中的数组合和成 target。</p>
 <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/word-break/">LeetCode139. 单词拆分</a></p>
 <blockquote>
 <p>给你一个字符串 s 和一个字符串列表 <code>wordDict</code> 作为字典。请你判断是否可以利用字典中出现的单词拼接出 s 。</p>
@@ -220,20 +221,20 @@
 <p><strong>注意：</strong>在看到一道背包问题时，应该用搜索还是动态规划呢？</p>
 <p>首先，可以从数据范围中得到命题人意图的线索。如果一个背包问题可以用动态规划解，<strong>背包容量（V）</strong>一定不能很大，否则O(VN)的算法无法承受，而一般的搜索解法都是仅与<strong>物品种类（N）</strong>有关，与V无关的。所以，V很大时（例如上百万），应该是考察搜索。另一方面，N较大时（例如上百），就可能考察动态规划</p>
 <h2 id="线性动态规划"><a href="#线性动态规划" class="headerlink" title="线性动态规划"></a>线性动态规划</h2><p>这里的线性指的是状态的排布是呈线性的</p>
-<p><img src="/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/QQ截图20220807215647.png" alt></p>
-<p><img src="/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/QQ截图20220807215657.png" alt></p>
+<p><img src="/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/QQ%E6%88%AA%E5%9B%BE20220807215647.png"></p>
+<p><img src="/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/QQ%E6%88%AA%E5%9B%BE20220807215657.png"></p>
 <h2 id="区间模型"><a href="#区间模型" class="headerlink" title="区间模型"></a><strong>区间模型</strong></h2><p>区间模型的状态表示一般为d[i][j]，表示区间[i, j]上的最优解，然后通过状态转移计算出[i+1, j]或者[i, j+1]上的最优解，逐步扩大区间的范围，最终求得[1, len]的最优解。</p>
 <p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/minimum-insertion-steps-to-make-a-string-palindrome/">1312. 让字符串成为回文串的最少插入次数 </a></p>
 <blockquote>
-<p>给定一个长度为n（n &lt;= 1000）的字符串A，求插入最少多少个字符使得它变成一个回文串</p>
+<p>给定一个长度为n（n &lt;&#x3D; 1000）的字符串A，求插入最少多少个字符使得它变成一个回文串</p>
 </blockquote>
 <p>我们用 <code>dp[i][j]</code> 表示对于字符串 <code>s</code> 的子串从[i] 到[j]（包含两端），最少添加的字符数量，使得 <code>s[i:j]</code> 变为回文串</p>
 <p>从外向内考虑：</p>
 <ul>
-<li>如果 s[i] == s[j]，那么最外层已经形成了回文，我们只需要继续考虑 s[i+1:j-1]；</li>
-<li>如果 s[i] != s[j]，那么我们要么在 s[i:j] 的末尾添加字符 s[i]，要么在 s[i:j] 的开头添加字符 s[j]，取两者最小值</li>
+<li>如果 s[i] &#x3D;&#x3D; s[j]，那么最外层已经形成了回文，我们只需要继续考虑 s[i+1:j-1]；</li>
+<li>如果 s[i] !&#x3D; s[j]，那么我们要么在 s[i:j] 的末尾添加字符 s[i]，要么在 s[i:j] 的开头添加字符 s[j]，取两者最小值</li>
 </ul>
-<p>注意该动态规划为区间动态规划，需要注意 dp[i] [j] 的计算顺序。一种可行的方法是，我们递增地枚举子串 s[i:j] 的长度 span = j - i + 1，再枚举起始位置 i，通过 j = i + span - 1 得到 j 的值并计算 dp[i] [j]。<strong>这样的计算顺序可以保证在计算 dp[i] [j] 时，状态转移方程中的状态 dp[i + 1] [j]，dp[i] [j - 1] 和 dp[i + 1] [j - 1] 均已计算过。</strong></p>
+<p>注意该动态规划为区间动态规划，需要注意 dp[i] [j] 的计算顺序。一种可行的方法是，我们递增地枚举子串 s[i:j] 的长度 span &#x3D; j - i + 1，再枚举起始位置 i，通过 j &#x3D; i + span - 1 得到 j 的值并计算 dp[i] [j]。<strong>这样的计算顺序可以保证在计算 dp[i] [j] 时，状态转移方程中的状态 dp[i + 1] [j]，dp[i] [j - 1] 和 dp[i + 1] [j - 1] 均已计算过。</strong></p>
 <h2 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h2><ul>
 <li>给定一个序列</li>
 <li>动态规划方程f[i]中的下标i表示前i个元素a[0]、a[1]、…a[i-1]的某种性质<ul>
@@ -253,6 +254,7 @@
 <p>因此我们设油漆前i栋房子并且房子i-1是红色、蓝色、绿色的最小花费分别是f[i] [0],f[i] [1],f[i] [2]</p>
 <p>通过转移公式：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dp[i][<span class="number">0</span>] = min&#123;dp[i<span class="number">-1</span>][<span class="number">1</span>] + cost[i][<span class="number">0</span>],dp[i<span class="number">-1</span>][<span class="number">2</span>] + cost[i][<span class="number">0</span>]&#125;;</span><br><span class="line">dp[i][<span class="number">1</span>] = min&#123;dp[i<span class="number">-1</span>][<span class="number">0</span>] + cost[i][<span class="number">1</span>],dp[i<span class="number">-1</span>][<span class="number">2</span>] + cost[i][<span class="number">1</span>]&#125;;</span><br><span class="line">dp[i][<span class="number">2</span>] = min&#123;dp[i<span class="number">-1</span>][<span class="number">0</span>] + cost[i][<span class="number">2</span>],dp[i<span class="number">-1</span>][<span class="number">1</span>] + cost[i][<span class="number">2</span>]&#125;;</span><br></pre></td></tr></table></figure>
+
 <p><strong>Paint House II</strong></p>
 <blockquote>
 <p>有一排N栋房子，每栋房子要漆成K种颜色中的一种,任何两栋相邻的房子不能漆成同样的颜色,房子i染成第j种颜色的花费是cost[i][j],问最少需要花多少钱油漆这些房子</p>
@@ -263,13 +265,13 @@
 <p><strong>空间压缩的核心思路就是，将二维数组「投影」到一维数组</strong>。也就是d[i] [j]的元素是否跟前一行或者后一行相关,如果相关可以利用temp变量存储起来，只需要用到一维数组。</p>
 <h2 id="博弈模型"><a href="#博弈模型" class="headerlink" title="博弈模型"></a>博弈模型</h2><h3 id="Nim问题"><a href="#Nim问题" class="headerlink" title="Nim问题"></a>Nim问题</h3><p><strong>定义：</strong>有若干堆石子，每堆石子的数量都是有限的，合法的移动是“选择一堆石子并拿走若干颗（不能不拿）”，如果轮到某个人时所有的石子堆都已经被拿空了，则判负</p>
 <p><strong>结论：把每一堆石子的数量进行异或操作，得到结果 res。</strong></p>
-<p>​            <strong>若 res != 0，则先手必胜；</strong></p>
-<p>​            <strong>若 res == 0，则先手必败；</strong></p>
+<p>​			<strong>若 res !&#x3D; 0，则先手必胜；</strong></p>
+<p>​			<strong>若 res &#x3D;&#x3D; 0，则先手必败；</strong></p>
 <blockquote>
 <p><strong>证明过程：</strong></p>
-<p>考虑必胜的局面，就是当先手面对只有一堆石子的情况，这个时候直接全部取走就可以获胜，而这种情况 res 一定满足 res != 0。并且在异或操作中只需要一步就可以把 res != 0 的情况转化成 res == 0 的情况。</p>
-<p>因此如果先手面对的局面 res != 0 的话，他就可以一步取走某个数量的石子，将 res == 0 的局面对给对方。</p>
-<p>而在 res == 0 的局面下，不管如何取石子，都会破坏这个局面成为 res != 0 的情况。</p>
+<p>考虑必胜的局面，就是当先手面对只有一堆石子的情况，这个时候直接全部取走就可以获胜，而这种情况 res 一定满足 res !&#x3D; 0。并且在异或操作中只需要一步就可以把 res !&#x3D; 0 的情况转化成 res &#x3D;&#x3D; 0 的情况。</p>
+<p>因此如果先手面对的局面 res !&#x3D; 0 的话，他就可以一步取走某个数量的石子，将 res &#x3D;&#x3D; 0 的局面对给对方。</p>
+<p>而在 res &#x3D;&#x3D; 0 的局面下，不管如何取石子，都会破坏这个局面成为 res !&#x3D; 0 的情况。</p>
 <p>先手方下回合继续执行上面的步骤即可，这样最终就可以获得游戏胜利。</p>
 </blockquote>
 <p>很多博弈类型都可以转化为Nim问题</p>
@@ -284,6 +286,7 @@
 </blockquote>
 <p>有了Nim问题的特征，我们能轻易写出转移方程</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(f[i<span class="number">-1</span>] == <span class="literal">false</span> || f[i<span class="number">-2</span>] == <span class="literal">false</span>)</span><br><span class="line">    <span class="comment">//拿一个或者两个能获胜</span></span><br><span class="line">	f[i] = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">if</span>(f[i<span class="number">-1</span>] == <span class="literal">true</span> || f[i<span class="number">-2</span>] == <span class="literal">true</span>)</span><br><span class="line">    <span class="comment">//必败</span></span><br><span class="line">    f[i] = <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
+
 <h1 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h1><p><strong>用 <code>pat</code> 表示模式串，长度为 <code>M</code>，<code>txt</code> 表示文本串，长度为 <code>N</code>。KMP 算法是在 <code>txt</code> 中查找子串 <code>pat</code>，如果存在，返回这个子串的起始索引，否则返回 -1</strong></p>
 <p>相对于暴力算法而言，动态规划并不会回退指向<code>txt</code>的指针——因此时间复杂度为O(N)。而是借助dp数组中的信息将<code>pat</code>移到正确的位置继续匹配——因此空间复杂度为O(M)</p>
 <p><img src="/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/3.gif" alt="3"></p>
@@ -295,23 +298,27 @@
 <p><strong>要确定状态转移的行为，得明确两个变量，一个是当前的匹配状态，另一个是遇到的字符</strong>；确定了这两个变量后，就可以知道这个情况下应该转移到哪个状态。</p>
 <p>我们定义一个二维数组来表示状态转移图：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">dp[j][c] = next</span><br><span class="line"><span class="number">0</span> &lt;= j &lt; M，<span class="comment">//代表当前的状态</span></span><br><span class="line"><span class="number">0</span> &lt;= c &lt; <span class="number">256</span>，<span class="comment">//代表遇到的字符（ASCII 码）</span></span><br><span class="line"><span class="number">0</span> &lt;= next &lt;= M，<span class="comment">//代表下一个状态</span></span><br><span class="line"></span><br><span class="line">dp[<span class="number">4</span>][<span class="string">&#x27;A&#x27;</span>] = <span class="number">3</span></span><br><span class="line"><span class="comment">//表示：当前是状态 4，如果遇到字符 A，</span></span><br><span class="line"><span class="comment">//pat 应该转移到状态 3</span></span><br><span class="line"></span><br><span class="line">dp[<span class="number">1</span>][<span class="string">&#x27;B&#x27;</span>] = <span class="number">2</span> </span><br><span class="line"><span class="comment">//表示：当前是状态 1，如果遇到字符 B，</span></span><br><span class="line"><span class="comment">//pat 应该转移到状态 2</span></span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="comment">//查找函数</span></span><br><span class="line">public <span class="type">int</span> search(String txt) &#123;</span><br><span class="line">    <span class="type">int</span> M = pat.length();</span><br><span class="line">    <span class="type">int</span> N = txt.length();</span><br><span class="line">    <span class="comment">// pat 的初始态为 0</span></span><br><span class="line">    <span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">        <span class="comment">// 当前是状态 j，遇到字符 txt[i]，</span></span><br><span class="line">        <span class="comment">// pat 应该转移到哪个状态？</span></span><br><span class="line">        j = dp[j][txt.charAt(i)];</span><br><span class="line">        <span class="comment">// 如果达到终止态，返回匹配开头的索引</span></span><br><span class="line">        <span class="keyword">if</span> (j == M) <span class="keyword">return</span> i - M + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 没到达终止态，匹配失败</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="构建状态转移图"><a href="#构建状态转移图" class="headerlink" title="构建状态转移图"></a>构建状态转移图</h2><p>我们要根据<code>pat</code>字符串构建<code>dp</code>数组，这样在遇到需要匹配多个字符串时还能减少重复操作</p>
 <p>这个 next 状态应该怎么求呢？</p>
 <ol>
 <li>显然，<strong>如果遇到的字符 <code>c</code> 和 <code>pat[j]</code> 匹配的话</strong>，状态就应该向前推进一个，也就是说 <code>next = j + 1</code>，我们不妨称这种情况为<strong>状态推进</strong>：</li>
 <li><strong>如果字符 <code>c</code> 和 <code>pat[j]</code> 不匹配的话</strong>，状态就要回退（或者原地不动），我们不妨称这种情况为<strong>状态重启</strong>：</li>
 <li>我们需要在<strong>和当前状态具有相同的前缀</strong>的位置重启，用变量X来表示</li>
-<li>当前状态 <code>j = 4</code>，其影子状态为 <code>X = 2</code>，它们都有相同的前缀 “AB”。因为状态 <code>X</code> 和状态 <code>j</code> 存在相同的前缀，，可以通过 <code>X</code> 的状态转移图来获得<strong>最近的重启位置</strong>。也就是 <strong><code>dp[j][&#39;A&#39;] = dp[X][&#39;A&#39;]</code></strong>：—— <code>X</code> 怎么知道遇到字符 “B” 要回退到状态 0 呢？因为 <code>X</code> 跟在 <code>j</code> 的身后，状态 <code>X</code> 如何转移，在之前就已经算出来了。<strong>动态规划算法就是利用过去的结果解决现在的问题</strong></li>
+<li>当前状态 <code>j = 4</code>，其影子状态为 <code>X = 2</code>，它们都有相同的前缀 “AB”。因为状态 <code>X</code> 和状态 <code>j</code> 存在相同的前缀，，可以通过 <code>X</code> 的状态转移图来获得<strong>最近的重启位置</strong>。也就是 <strong><code>dp[j][&#39;A&#39;] = dp[X][&#39;A&#39;]</code><strong>：—— <code>X</code> 怎么知道遇到字符 “B” 要回退到状态 0 呢？因为 <code>X</code> 跟在 <code>j</code> 的身后，状态 <code>X</code> 如何转移，在之前就已经算出来了。</strong>动态规划算法就是利用过去的结果解决现在的问题</strong></li>
 </ol>
-<p><img src="/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/shadow1.jpg" alt="shadow1" style="zoom:67%;"></p>
+<img src="/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/shadow1.jpg" alt="shadow1" style="zoom:67%;">
+
 <p>现在还有一个问题， <code>X</code> 是如何得到？</p>
 <p>影子状态 <code>X</code> 是先初始化为 0，然后随着 <code>j</code> 的前进而不断更新的，更新 <code>X</code> 其实和 <code>search</code> 函数中更新状态 <code>j</code> 的过程相似</p>
 <p><strong>注意代码中 for 循环的变量初始值</strong>，可以这样理解：后者是在 <code>txt</code> 中匹配 <code>pat</code>，前者是在 <code>pat</code> 中匹配 <code>pat[1..end]</code>，状态 <code>X</code> 总是落后状态 <code>j</code> 一个状态，与 <code>j</code> 具有最长的相同前缀</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//更新状态 X </span></span><br><span class="line"><span class="type">int</span> X = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt; M; j++) &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// 更新影子状态</span></span><br><span class="line">    <span class="comment">// 当前是状态 X，遇到字符 pat[j]，</span></span><br><span class="line">    <span class="comment">// pat 应该转移到哪个状态？</span></span><br><span class="line">    X = dp[X][pat.charAt(j)];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//更新状态 j</span></span><br><span class="line"><span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">    <span class="comment">// 当前是状态 j，遇到字符 txt[i]，</span></span><br><span class="line">    <span class="comment">// pat 应该转移到哪个状态？</span></span><br><span class="line">    j = dp[j][txt.charAt(i)];</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>完整构造图：</p>
 <p><img src="/2022/08/11/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%88%B7%E9%A2%98%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/dfa.gif" alt="dfa"></p>
 <p>完整代码：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">KMP</span> &#123;</span></span><br><span class="line">    private <span class="type">int</span>[][] dp;</span><br><span class="line">    private String pat;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//构建状态转移图</span></span><br><span class="line">    public <span class="title function_">KMP</span><span class="params">(String pat)</span> &#123;</span><br><span class="line">        this.pat = pat;</span><br><span class="line">        <span class="type">int</span> M = pat.length();</span><br><span class="line">        <span class="comment">// dp[状态][字符] = 下个状态</span></span><br><span class="line">        dp = new <span class="type">int</span>[M][<span class="number">256</span>];</span><br><span class="line">        <span class="comment">// base case</span></span><br><span class="line">        dp[<span class="number">0</span>][pat.charAt(<span class="number">0</span>)] = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 影子状态 X 初始为 0</span></span><br><span class="line">        <span class="type">int</span> X = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 构建状态转移图（稍改的更紧凑了）</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt; M; j++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> c = <span class="number">0</span>; c &lt; <span class="number">256</span>; c++)</span><br><span class="line">                dp[j][c] = dp[X][c];</span><br><span class="line">            dp[j][pat.charAt(j)] = j + <span class="number">1</span>;<span class="comment">//状态前进</span></span><br><span class="line">            <span class="comment">// 更新影子状态</span></span><br><span class="line">            X = dp[X][pat.charAt(j)];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//搜索函数</span></span><br><span class="line">    public <span class="type">int</span> <span class="title function_">search</span><span class="params">(String txt)</span> &#123;</span><br><span class="line">        <span class="type">int</span> M = pat.length();</span><br><span class="line">        <span class="type">int</span> N = txt.length();</span><br><span class="line">        <span class="comment">// pat 的初始态为 0</span></span><br><span class="line">        <span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; N; i++) &#123;</span><br><span class="line">            <span class="comment">// 计算 pat 的下一个状态</span></span><br><span class="line">            j = dp[j][txt.charAt(i)];</span><br><span class="line">            <span class="comment">// 到达终止态，返回结果</span></span><br><span class="line">            <span class="keyword">if</span> (j == M) <span class="keyword">return</span> i - M + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 没到达终止态，匹配失败</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
 

@@ -249,6 +249,7 @@
 <p><strong>3、结束条件：也就是到达决策树底层，无法再做选择的条件。</strong></p>
 <p>伪代码框架如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">result = []</span><br><span class="line">def <span class="title function_">backtrack</span><span class="params">(路径, 选择列表)</span>:</span><br><span class="line">    <span class="keyword">if</span> 满足结束条件:</span><br><span class="line">        result.add(路径)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> 选择 in 选择列表:</span><br><span class="line">        做选择</span><br><span class="line">        backtrack(路径, 选择列表)</span><br><span class="line">        撤销选择</span><br></pre></td></tr></table></figure>
+
 <p><strong>其核心就是 for 循环里面的递归，在递归调用之前「做选择」，在递归调用之后「撤销选择」</strong></p>
         
           <a class="article-more-a" href="/2022/09/03/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E4%B8%8EBFS/#more">more >></a>
@@ -328,7 +329,7 @@
         <h1 id="解题的思维模式"><a href="#解题的思维模式" class="headerlink" title="解题的思维模式"></a>解题的思维模式</h1><p><strong>1、是否可以通过遍历一遍二叉树得到答案</strong>？如果可以，用一个 <code>traverse</code> 函数配合外部变量来实现，这叫「遍历」的思维模式。</p>
 <p><strong>2、是否可以定义一个递归函数，通过子问题（子树）的答案推导出原问题的答案</strong>？如果可以，写出这个递归函数的定义，并充分利用这个函数的返回值，这叫「分解问题」的思维模式。</p>
 <p><strong>这两类思路分别对应着 回溯算法核心框架 和 动态规划核心框架</strong>。</p>
-<p>不论哪种方法都要考虑吧<strong>如果单独抽出一个二叉树节点，它需要做什么事情？需要在什么时候（前/中/后序位置）做？</strong>其他的节点不用你操心，递归函数会帮你在所有节点上执行相同的操作</p>
+<p>不论哪种方法都要考虑吧<strong>如果单独抽出一个二叉树节点，它需要做什么事情？需要在什么时候（前&#x2F;中&#x2F;后序位置）做？</strong>其他的节点不用你操心，递归函数会帮你在所有节点上执行相同的操作</p>
         
           <a class="article-more-a" href="/2022/08/25/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/#more">more >></a>
         
@@ -581,15 +582,10 @@
         <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p><img src="/2022/08/02/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/0B319B38-B70E-4118-B897-74EFA7E368F9.png" alt="0B319B38-B70E-4118-B897-74EFA7E368F9"></p>
 <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>Θ 渐进紧确界</p>
 <blockquote>
-<p>存在正常量 n 0 , c 1 , c 2，使得</p>
-<script type="math/tex; mode=display">
-c_1g(n)\leq f(n)\leq c_2g(n) where :n\ge n_0</script><p>那么称为g ( n ) g(n)g(n)为f ( n ) f(n)f(n)的渐进紧确界，记为：</p>
-<script type="math/tex; mode=display">
-f(n)= \Theta(g(n))</script></blockquote>
+<p>存在正常量 n 0 , c 1 , c 2，使得<br>$$<br>c_1g(n)\leq f(n)\leq c_2g(n) where :n\ge n_0<br>$$<br>那么称为g ( n ) g(n)g(n)为f ( n ) f(n)f(n)的渐进紧确界，记为：<br>$$<br>f(n)&#x3D; \Theta(g(n))<br>$$</p>
+</blockquote>
 <p>同理可理解 O 渐进上界与Ω 渐进下界</p>
-<h2 id="递归式时间复杂度"><a href="#递归式时间复杂度" class="headerlink" title="递归式时间复杂度"></a>递归式时间复杂度</h2><p>一般情况下，算法的时间递归式都可以写成如下形式：</p>
-<script type="math/tex; mode=display">
-T(n)=aT(n/b)+f(n)</script><p>表示为：规模为 n，算法所耗费的时间等于<strong>划分时间 f(n)</strong> 加上同样算法作用在<strong>规模为n/b</strong> 的时间T(n/b)的 a 倍。</p>
+<h2 id="递归式时间复杂度"><a href="#递归式时间复杂度" class="headerlink" title="递归式时间复杂度"></a>递归式时间复杂度</h2><p>一般情况下，算法的时间递归式都可以写成如下形式：<br>$$<br>T(n)&#x3D;aT(n&#x2F;b)+f(n)<br>$$<br>表示为：规模为 n，算法所耗费的时间等于<strong>划分时间 f(n)</strong> 加上同样算法作用在<strong>规模为n&#x2F;b</strong> 的时间T(n&#x2F;b)的 a 倍。</p>
         
           <a class="article-more-a" href="/2022/08/02/%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/#more">more >></a>
         
@@ -754,8 +750,8 @@ T(n)=aT(n/b)+f(n)</script><p>表示为：规模为 n，算法所耗费的时间�
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="主要集合类"><a href="#主要集合类" class="headerlink" title="主要集合类"></a>主要集合类</h1><h2 id="接口层级接口结构"><a href="#接口层级接口结构" class="headerlink" title="接口层级接口结构"></a>接口层级接口结构</h2><p><img src="/2022/07/25/CSharp%20%E8%87%AA%E5%AE%9A%E4%B9%89%E9%9B%86%E5%90%88/IMG_20220724_173612.jpg" alt="IMG_20220724_173612"></p>
-<p><img src="/2022/07/25/CSharp%20%E8%87%AA%E5%AE%9A%E4%B9%89%E9%9B%86%E5%90%88/IMG_20220724_171918.jpg" alt="IMG_20220724_171918"></p>
+        <h1 id="主要集合类"><a href="#主要集合类" class="headerlink" title="主要集合类"></a>主要集合类</h1><h2 id="接口层级接口结构"><a href="#接口层级接口结构" class="headerlink" title="接口层级接口结构"></a>接口层级接口结构</h2><p>![IMG_20220724_173612](CSharp 自定义集合&#x2F;IMG_20220724_173612.jpg)</p>
+<p>![IMG_20220724_171918](CSharp 自定义集合&#x2F;IMG_20220724_171918.jpg)</p>
 <h2 id="列表集合：List-lt-T-gt"><a href="#列表集合：List-lt-T-gt" class="headerlink" title="列表集合：List&lt;T&gt;"></a>列表集合：<code>List&lt;T&gt;</code></h2><h3 id="自定义集合排序"><a href="#自定义集合排序" class="headerlink" title="自定义集合排序"></a>自定义集合排序</h3><p>每个元素都可以通过索引来单独访问，<code>List&lt;T&gt;</code>是有序集合，在调用自带方法 <code>Sort()</code>之后会是元素按照字母顺序重新排序。</p>
 <p>如果元素类型实现了泛型 <code>IComparable&lt;T&gt;</code>或者非泛型接口 <code>IComparable</code>排序算法就默认用它来决定排序的顺序。</p>
 <p>如果没有实现，或者是默认逻辑不符合要求，可以调用 <code>List&lt;T&gt;.Sort()</code>的重载版本，他获取一个 <code>IComparaer&lt;T&gt;</code>作为实参</p>
