@@ -142,96 +142,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="article-CSharp-再述值类型" class="article article-type-article  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/10/CSharp-%E5%86%8D%E8%BF%B0%E5%80%BC%E7%B1%BB%E5%9E%8B/">C# 再述值类型</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/10/CSharp-%E5%86%8D%E8%BF%B0%E5%80%BC%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2022-07-10T14:49:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="类型的分类"><a href="#类型的分类" class="headerlink" title="类型的分类"></a>类型的分类</h1><p>值类型和引用类型的主要区别在于<strong>复制策略的不同</strong>，这就造成了在内存中以不同的方式存储。</p>
-<h2 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h2><p>值类型的变量直接包含值，变量引用的位置就是值在内存中的实际存储位置。值类型变量之间进行赋值时，会在新变量的位置创建一个内存副本，不可能引用同一个副本（除非其中一个时out或ref参数，根据定义，表示这个参数是另一个变量的别名）</p>
-<blockquote>
-<p>创建的值类型通常不要大于16字节，这样复制效率不如引用类型</p>
-</blockquote>
-<p>值类型的值一般都是短时间存在的，大多情况下只是作为表达式的一部分或者是用于激活方法。在这种情况下，值类型的变量和临时值通常是存储在被称为“<strong>栈</strong>”的临时存储池中，他的清理代价低于需要进行垃圾回收的堆</p>
-<h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><p>他的值是对一个对象实例的引用，</p>
-<p><img src="/2022/07/10/CSharp-%E5%86%8D%E8%BF%B0%E5%80%BC%E7%B1%BB%E5%9E%8B/20200928.png" alt="20200928233153432-16574464217701"></p>
-<h1 id="结构-Struct"><a href="#结构-Struct" class="headerlink" title="结构 Struct"></a>结构 Struct</h1><p>除了string和object外，所有C#内建类型都是值类型</p>
-<blockquote>
-<p>对于使用值类型的一种良好规范是确保值类型不可变，一旦实例化了值类型就不能修改它。要修改就只能创建新的一个实例。</p>
-<p>首先，在做整数之间的加法时，没有人会期望其中的值是会变化的，因此加数是不可变的，生成一个新的数作为返回结果</p>
-<p>其次，因为值类型是按照值复制的，我们有时会被迷惑，认为一个值类型变量的变化在另一个变量上也会被观察到</p>
-</blockquote>
-<p><strong>我们要创建不可变的值类型</strong></p>
-        
-          <a class="article-more-a" href="/2022/07/10/CSharp-%E5%86%8D%E8%BF%B0%E5%80%BC%E7%B1%BB%E5%9E%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/10/CSharp-%E5%86%8D%E8%BF%B0%E5%80%BC%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="article-射线与碰撞范围检测【踩坑记录】" class="article article-type-article  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -959,6 +869,85 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/05/11/games101-%E5%87%A0%E4%BD%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="article-games101-着色（7-9）" class="article article-type-article  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/">games101 着色（7~9）</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2022-05-06T02:05:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="深度缓存"><a href="#深度缓存" class="headerlink" title="深度缓存"></a>深度缓存</h1><h2 id="1-何为深度"><a href="#1-何为深度" class="headerlink" title="1. 何为深度"></a>1. 何为深度</h2><p>深度其实就是该象素点在3D世界中距离摄象机的距离（绘制坐标），深度缓存中存储着每个象素点（绘制在屏幕上的）的深度值！深度值（Z值）越大，则离摄像机越远。</p>
+<h2 id="2-为什么需要深度？"><a href="#2-为什么需要深度？" class="headerlink" title="2. 为什么需要深度？"></a>2. 为什么需要深度？</h2><p>在不使用深度测试的时候，如果我们先绘制一个距离较近的物体，再绘制距离较远的物体，则距离远的物体因为后绘制，会把距离近的物体覆盖掉，这样的效果并不是我们所希望的。</p>
+<p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20220428120250042.png" alt="image-20220428120250042"></p>
+<p>而且如果出现上图这种情况，这种方法便失效了。而有了深度缓冲以后，绘制物体的顺序就不那么重要了，都能按照远近（Z值)正常显示，这很关键。</p>
+        
+          <a class="article-more-a" href="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">图形学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/">展开全文 >></a>
         </p>
       
 

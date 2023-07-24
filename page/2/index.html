@@ -388,92 +388,6 @@
 
 
   
-    <article id="post-帧同步和状态同步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/11/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/">帧同步和状态同步</a>
-    </h1>
-  
-
-        
-        <a href="/2022/11/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/" class="archive-article-date">
-  	<time datetime="2022-11-09T11:22:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-11-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="网络同步"><a href="#网络同步" class="headerlink" title="网络同步"></a>网络同步</h1><p>网络同步主要目的在于保证各个端口的游戏表现一致，<strong>网络同步就在于实时的多段数据同步和实时的多端表现。</strong></p>
-<p>而对于大多数游戏，不仅客户端的表现要一致，而且需要客户端和服务端的数据是一致的。所以，同步是一个网络游戏概念，只有网络游戏才需要同步，而单机游戏是不需要同步的。</p>
-<h1 id="帧同步与状态同步的区别"><a href="#帧同步与状态同步的区别" class="headerlink" title="帧同步与状态同步的区别"></a>帧同步与状态同步的区别</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
-<li><strong>帧同步（Lock Step）</strong>：同步的是客户端的操作指令。客户端上传操作到服务器，并且服务器并不做过多的处理，然后将当前帧间隔内收集到的操作指令广播给每一个客户端，各个客户端在一致环境下，处理同样的操作输入，则会得到同样的结果。</li>
-</ul>
-<p><img src="/2022/11/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/image-20221109171737311.png" alt="image-20221109171737311"></p>
-<ul>
-<li><p><strong>状态同步（State Synchronization）</strong>：同步的是游戏中的各种状态。一般的流程是客户端上传操作到服务器，服务器收到后计算游戏行为的结果，然后以广播的方式下发游戏中各种状态，客户端收到状态后再根据状态显示内容。</p>
-<p><img src="/2022/11/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/image-20221109180036949.png" alt="image-20221109180036949"></p>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2022/11/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/11/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="article-游戏设计模式杂谈（一）" class="article article-type-article  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -925,6 +839,85 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="article-图论算法个人总结" class="article article-type-article  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/06/%E5%9B%BE%E8%AE%BA%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/">图论算法个人总结</a>
+    </h1>
+  
+
+        
+        <a href="/2022/09/06/%E5%9B%BE%E8%AE%BA%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" class="archive-article-date">
+  	<time datetime="2022-09-06T14:34:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="图论基础以及遍历算法"><a href="#图论基础以及遍历算法" class="headerlink" title="图论基础以及遍历算法"></a>图论基础以及遍历算法</h1><p>图和多叉树的结构十分类似,不过一般通过邻接表和邻接矩阵来实现</p>
+<p><img src="/2022/09/06/%E5%9B%BE%E8%AE%BA%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/23a5281e86ad2de62a3225af0861a32a.png" alt="23a5281e86ad2de62a3225af0861a32a"></p>
+<p><img src="/2022/09/06/%E5%9B%BE%E8%AE%BA%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/afee463971dede1b937cd0cfa4c82867.png" alt="afee463971dede1b937cd0cfa4c82867"></p>
+<h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2>
+        
+          <a class="article-more-a" href="/2022/09/06/%E5%9B%BE%E8%AE%BA%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法导论</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/09/06/%E5%9B%BE%E8%AE%BA%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/">展开全文 >></a>
         </p>
       
 

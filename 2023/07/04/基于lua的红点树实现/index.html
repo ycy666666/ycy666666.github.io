@@ -31,9 +31,8 @@
 <meta property="og:image" content="https://ycy666666.github.io/2023/07/04/%E5%9F%BA%E4%BA%8Elua%E7%9A%84%E7%BA%A2%E7%82%B9%E6%A0%91%E5%AE%9E%E7%8E%B0/image-20230704233524474.png">
 <meta property="og:image" content="https://ycy666666.github.io/2023/07/04/%E5%9F%BA%E4%BA%8Elua%E7%9A%84%E7%BA%A2%E7%82%B9%E6%A0%91%E5%AE%9E%E7%8E%B0/image-20230704233601210.png">
 <meta property="og:image" content="https://ycy666666.github.io/2023/07/04/%E5%9F%BA%E4%BA%8Elua%E7%9A%84%E7%BA%A2%E7%82%B9%E6%A0%91%E5%AE%9E%E7%8E%B0/image-20230704233627073.png">
-<meta property="og:image" content="https://ycy666666.github.io/2023/07/04/%E5%9F%BA%E4%BA%8Elua%E7%9A%84%E7%BA%A2%E7%82%B9%E6%A0%91%E5%AE%9E%E7%8E%B0/image-20230704233934691.png">
 <meta property="article:published_time" content="2023-07-04T15:51:26.000Z">
-<meta property="article:modified_time" content="2023-07-04T15:52:25.162Z">
+<meta property="article:modified_time" content="2023-07-24T13:20:01.714Z">
 <meta property="article:author" content="YCY">
 <meta property="article:tag" content="Unity">
 <meta property="article:tag" content="lua">
@@ -196,10 +195,25 @@
 </li>
 </ol>
 <h1 id="红点树配置"><a href="#红点树配置" class="headerlink" title="红点树配置"></a>红点树配置</h1><span id="more"></span>
+<h2 id="红点分类"><a href="#红点分类" class="headerlink" title="红点分类"></a>红点分类</h2><p>红点配置表区分”静态红点”和“动态红点”</p>
+<p>静态红点: RedDot表Type列标记为”Static”。游戏初始化时，直接读取配置，自动生成</p>
+<p>动态红点: RedDot表Type列标记为”Dynamic”。此为红点模板，由程序动态创建。 如装备红点，不希望策划在红点表中将所有装备全部遍历配置出来，所以只需要设置为动态红点，由程序代码创建</p>
+<p>而ParentRedDot列可配置父节点ID</p>
 <h2 id="生成过程"><a href="#生成过程" class="headerlink" title="生成过程"></a>生成过程</h2><p>获得新装备之后，物品所属种类的页面就会出现红点，如果他同时也可升级、熔炼等，其他界面也会出现红点。</p>
 <p><img src="/2023/07/04/%E5%9F%BA%E4%BA%8Elua%E7%9A%84%E7%BA%A2%E7%82%B9%E6%A0%91%E5%AE%9E%E7%8E%B0/image-20230702234024938.png" alt="image-20230702234024938"></p>
 <p><strong>配置过程：</strong></p>
 <p>​    从需求可以看出，一个子红点可能有多个父红点。因此最终的api可定义为AddRedHintItem(key, …)， key为子节点， …为不定数量父节点</p>
+<h2 id="职责分工"><a href="#职责分工" class="headerlink" title="职责分工"></a>职责分工</h2><ul>
+<li>配置表:负责红点树的关联和维护</li>
+<li>UIPrefab: 将红点节点直接拖拽进UIPrefab，静态红点设置好红点key</li>
+<li>代码逻辑: 负责具体某个红点的赋值 、创建动态红点、设置prefab上动态红点的Key<ul>
+<li><code>RedHintUtil.lua</code> 对外暴露的红点系统操作接口, 创建、获取、增删、开关红点屏蔽等</li>
+<li><code>RedDotModel.lua</code> 数据层，不暴露</li>
+<li><code>RedDotComponent.lua</code> 表现层， 用于动态设置红点和绑定红点刷新事件</li>
+<li><code>UIRedDot.cs</code> C#组件挂载在Prefab上, 包含了红点对应的key和数字、图片等</li>
+</ul>
+</li>
+</ul>
 <h1 id="红点树数据设置"><a href="#红点树数据设置" class="headerlink" title="红点树数据设置"></a>红点树数据设置</h1><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>采用的是将所有红点存储在map中， key为红点名称， value’为红点具体信息。</p>
 <p><img src="/2023/07/04/%E5%9F%BA%E4%BA%8Elua%E7%9A%84%E7%BA%A2%E7%82%B9%E6%A0%91%E5%AE%9E%E7%8E%B0/image-20230702234738411.png" alt="image-20230702234738411"></p>
 <ul>
@@ -210,7 +224,7 @@
 </ul>
 <h2 id="红点创建与关联"><a href="#红点创建与关联" class="headerlink" title="红点创建与关联"></a>红点创建与关联</h2><p>要实现之前定义的api——<code>AddRedHintItem（key, ...）</code> , 我们需要期望能够双向关联红点， 也就是能在子红点<code>parentsArr</code>中插入父红点， 父红点<code>childrenArr</code>中插入子红点</p>
 <p><img src="/2023/07/04/%E5%9F%BA%E4%BA%8Elua%E7%9A%84%E7%BA%A2%E7%82%B9%E6%A0%91%E5%AE%9E%E7%8E%B0/image-20230702235642422.png" alt="image-20230702235642422"></p>
-<h2 id><a href="#" class="headerlink" title=" "></a> </h2><p>selfValue为自身红点的值， 以装备为例： 新装备的selfValue为1，尽管背包入口也有红点，当selfValue仍然为0</p>
+<p>selfValue为自身红点的值， 以装备为例： 新装备的selfValue为1，尽管背包入口也有红点，当selfValue仍然为0</p>
 <p>cacheValue为当前节点与子节点所有selfValue之和，为了避免反复计算， 将该值存储到cacheValue中</p>
 <p>注意， 如果获得了另一个新装备， 父层红点缓存的cacheValue也就成为错误的旧数据， 因此每次设置红点时需要将父层红点的cacheValue清空</p>
 <p>设置新红点的流程图：</p>
@@ -269,9 +283,6 @@
 <li><p>再次打开背包界面时，因为各红点节点的cacheValue均已赋值，直接读取即可</p>
 </li>
 </ol>
-<h1 id="预制体设置"><a href="#预制体设置" class="headerlink" title="预制体设置"></a>预制体设置</h1><p>做好单个的红点预制体后，放置在对应按钮处成为其子物体，并且再UserData的Element处配置上该红点的key</p>
-<p><img src="/2023/07/04/%E5%9F%BA%E4%BA%8Elua%E7%9A%84%E7%BA%A2%E7%82%B9%E6%A0%91%E5%AE%9E%E7%8E%B0/image-20230704233934691.png" alt="image-20230704233934691"></p>
-<p>对于红点的刷新，当收到获得新装备的服务器协议，设置新装备的红点为1，然后触发红点刷新的广播机制</p>
 
       
 
