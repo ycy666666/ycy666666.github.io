@@ -204,7 +204,9 @@
 <p><img src="/2022/03/27/CSharp-%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%B3%9B%E5%9E%8B%E3%80%81partial%E7%B1%BB%E3%80%81%E6%9E%9A%E4%B8%BE%E3%80%81%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_17,color_FFFFFF,t_70,g_se,x_16.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p> 想到的方法是用Object这个类，但是呢得到货物的属性就格外困难。</p>
 <span id="more"></span>
+
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Apple apple = <span class="keyword">new</span> Apple()&#123;Color = <span class="string">&quot;Red&quot;</span>&#125;;</span><br><span class="line">Book book = <span class="keyword">new</span> Book()&#123;Name = <span class="string">&quot;New Book&quot;</span>&#125;;</span><br><span class="line">Box box1 = <span class="keyword">new</span> Box()&#123;Cargo = apple&#125;;</span><br><span class="line">Box box2 = <span class="keyword">new</span> Box()&#123;Cargo = book&#125;;</span><br><span class="line">Console.WriteLine((box1.Cargo <span class="keyword">as</span> Apple)?.color);</span><br></pre></td></tr></table></figure>
+
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p>放东西简单，拿出来就不好使了</p>
 <h2 id="接下来泛型登场！！！！！！！！"><a href="#接下来泛型登场！！！！！！！！" class="headerlink" title="接下来泛型登场！！！！！！！！"></a>接下来泛型登场！！！！！！！！</h2><p><img src="/2022/03/27/CSharp-%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%B3%9B%E5%9E%8B%E3%80%81partial%E7%B1%BB%E3%80%81%E6%9E%9A%E4%B8%BE%E3%80%81%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89/3ce25f0772754d45a51f4b1e93b56945.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
@@ -215,6 +217,7 @@
 <p><img src="/2022/03/27/CSharp-%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%B3%9B%E5%9E%8B%E3%80%81partial%E7%B1%BB%E3%80%81%E6%9E%9A%E4%B8%BE%E3%80%81%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16-16898651015007.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p> 学生类有了个泛型接口，自己也变成了泛型类捏。假如学生太多啦！int都不够用啦！那简单，</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Student&lt;ulong&gt; stu = new Student&lt;ulong&gt;();</span><br><span class="line"></span><br><span class="line">stu.ID = 1000001;</span><br></pre></td></tr></table></figure>
+
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p>在这里我们也可以直接实现特化之后的接口，这样Student也不是泛型类了，ID直接就是ulong类型</p>
 <p><img src="/2022/03/27/CSharp-%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%B3%9B%E5%9E%8B%E3%80%81partial%E7%B1%BB%E3%80%81%E6%9E%9A%E4%B8%BE%E3%80%81%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%89/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_14,color_FFFFFF,t_70,g_se,x_16.png" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
@@ -466,11 +469,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">

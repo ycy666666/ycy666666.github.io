@@ -142,6 +142,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="article-CSharp-再述值类型" class="article article-type-article  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/07/10/CSharp-%E5%86%8D%E8%BF%B0%E5%80%BC%E7%B1%BB%E5%9E%8B/">C# 再述值类型</a>
+    </h1>
+  
+
+        
+        <a href="/2022/07/10/CSharp-%E5%86%8D%E8%BF%B0%E5%80%BC%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2022-07-10T14:49:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="类型的分类"><a href="#类型的分类" class="headerlink" title="类型的分类"></a>类型的分类</h1><p>值类型和引用类型的主要区别在于<strong>复制策略的不同</strong>，这就造成了在内存中以不同的方式存储。</p>
+<h2 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h2><p>值类型的变量直接包含值，变量引用的位置就是值在内存中的实际存储位置。值类型变量之间进行赋值时，会在新变量的位置创建一个内存副本，不可能引用同一个副本（除非其中一个时out或ref参数，根据定义，表示这个参数是另一个变量的别名）</p>
+<blockquote>
+<p>创建的值类型通常不要大于16字节，这样复制效率不如引用类型</p>
+</blockquote>
+<p>值类型的值一般都是短时间存在的，大多情况下只是作为表达式的一部分或者是用于激活方法。在这种情况下，值类型的变量和临时值通常是存储在被称为“<strong>栈</strong>”的临时存储池中，他的清理代价低于需要进行垃圾回收的堆</p>
+<h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><p>他的值是对一个对象实例的引用，</p>
+<p><img src="/2022/07/10/CSharp-%E5%86%8D%E8%BF%B0%E5%80%BC%E7%B1%BB%E5%9E%8B/20200928.png" alt="20200928233153432-16574464217701"></p>
+<h1 id="结构-Struct"><a href="#结构-Struct" class="headerlink" title="结构 Struct"></a>结构 Struct</h1><p>除了string和object外，所有C#内建类型都是值类型</p>
+<blockquote>
+<p>对于使用值类型的一种良好规范是确保值类型不可变，一旦实例化了值类型就不能修改它。要修改就只能创建新的一个实例。</p>
+<p>首先，在做整数之间的加法时，没有人会期望其中的值是会变化的，因此加数是不可变的，生成一个新的数作为返回结果</p>
+<p>其次，因为值类型是按照值复制的，我们有时会被迷惑，认为一个值类型变量的变化在另一个变量上也会被观察到</p>
+</blockquote>
+<p><strong>我们要创建不可变的值类型</strong></p>
+        
+          <a class="article-more-a" href="/2022/07/10/CSharp-%E5%86%8D%E8%BF%B0%E5%80%BC%E7%B1%BB%E5%9E%8B/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/07/10/CSharp-%E5%86%8D%E8%BF%B0%E5%80%BC%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="article-射线与碰撞范围检测【踩坑记录】" class="article article-type-article  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -168,7 +258,8 @@
 </li>
 <li><p>对应的函数只检测对应的Collider，<code>Physics.Raycast</code>是不会检测到Collider 2D的（这个让我有一次debug了好久才发现）</p>
 </li>
-<li>对应API如下</li>
+<li><p>对应API如下</p>
+</li>
 </ul>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Physics.Raycast(Vector3 origin,Vector3 direction,<span class="keyword">out</span> RaycastHit hitinfo,<span class="built_in">float</span> distance,<span class="built_in">int</span> LayerMask);</span><br><span class="line"><span class="comment">//origin:射线的起始点，因为是位置坐标所以使用Vector3表示</span></span><br><span class="line"><span class="comment">//direction：射线的方向，因为是方向坐标所以使用Vector3表示</span></span><br><span class="line"><span class="comment">//hitinfo：一个结构体，可以储存碰撞体的所有信息。你可以声明一个空的然后直接代入就可以</span></span><br><span class="line"><span class="comment">//下面是可选参数：</span></span><br><span class="line"><span class="comment">//distance:射线检测的距离</span></span><br><span class="line"><span class="comment">//LayerMask：图层，如果输入图层的序号就可以只检测这个图层的相应物体，</span></span><br></pre></td></tr></table></figure>
         
@@ -329,9 +420,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="相机"><a href="#相机" class="headerlink" title="相机"></a>相机</h1><h2 id="FOV（视场）"><a href="#FOV（视场）" class="headerlink" title="FOV（视场）"></a>FOV（视场）</h2><p><img src="/2022/06/20/games101%20%E7%9B%B8%E6%9C%BA%E3%80%81%E9%80%8F%E9%95%9C%E3%80%81%E5%85%89%E5%9C%BA%E3%80%81%E8%89%B2%E5%BD%A9/image-20220604191453737.png" alt="image-20220604191453737" style="zoom:67%;"></p>
+        <h1 id="相机"><a href="#相机" class="headerlink" title="相机"></a>相机</h1><h2 id="FOV（视场）"><a href="#FOV（视场）" class="headerlink" title="FOV（视场）"></a>FOV（视场）</h2><img src="/2022/06/20/games101%20%E7%9B%B8%E6%9C%BA%E3%80%81%E9%80%8F%E9%95%9C%E3%80%81%E5%85%89%E5%9C%BA%E3%80%81%E8%89%B2%E5%BD%A9/image-20220604191453737.png" alt="image-20220604191453737" style="zoom:67%;">
+
 <p>对于更小的传感器想要得到相同的FOV，需要将焦距调小（Focal length） </p>
-<h2 id="曝光"><a href="#曝光" class="headerlink" title="曝光"></a>曝光</h2><p>H =  T x E</p>
+<h2 id="曝光"><a href="#曝光" class="headerlink" title="曝光"></a>曝光</h2><p>H &#x3D;  T x E</p>
 <p>T: 曝光时间，被快门（Shutter）控制</p>
 <p>E: Irradiance (辐照度)</p>
         
@@ -411,12 +503,12 @@
       
         <h1 id="第1章-计算机网络和因特网"><a href="#第1章-计算机网络和因特网" class="headerlink" title="第1章-计算机网络和因特网"></a>第1章-计算机网络和因特网</h1><p><img src="/2022/06/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/image-20220610155822384.png" alt="image-20220610155822384"></p>
 <h2 id="Internet"><a href="#Internet" class="headerlink" title="Internet"></a>Internet</h2><h3 id="Internet的具体构成"><a href="#Internet的具体构成" class="headerlink" title="Internet的具体构成"></a>Internet的具体构成</h3><p><strong>数以亿计的计算互连设备：</strong></p>
-<p>主机（host）= 端系统（end system）</p>
+<p>主机（host）&#x3D; 端系统（end system）</p>
 <p>运行网络应用程序</p>
 <p><strong>分组(packet)交换设备</strong>：</p>
 <p><strong>通信链路(link)：</strong></p>
 <p>fiber, copper, radio, satellite</p>
-<p>传输速率 = 带宽(bandwidth)</p>
+<p>传输速率 &#x3D; 带宽(bandwidth)</p>
 <p><strong>网络 (Networks)：</strong></p>
 <p>设备、路由器、交换机和链路的集合，由机构组织管理</p>
 <h3 id="Internet的服务描述"><a href="#Internet的服务描述" class="headerlink" title="Internet的服务描述"></a>Internet的服务描述</h3>
@@ -495,7 +587,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="第一章-操作系统引论"><a href="#第一章-操作系统引论" class="headerlink" title="第一章 操作系统引论"></a>第一章 操作系统引论</h1><p><img src="/2022/06/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/网页捕获_7-6-2022_204248_.jpeg" alt="网页捕获_7-6-2022_204248_"></p>
+        <h1 id="第一章-操作系统引论"><a href="#第一章-操作系统引论" class="headerlink" title="第一章 操作系统引论"></a>第一章 操作系统引论</h1><p><img src="/2022/06/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E7%BD%91%E9%A1%B5%E6%8D%95%E8%8E%B7_7-6-2022_204248_.jpeg" alt="网页捕获_7-6-2022_204248_"></p>
 <h2 id="操作系统的目标"><a href="#操作系统的目标" class="headerlink" title="操作系统的目标"></a>操作系统的目标</h2><ul>
 <li>方便性:操作系统使计算机更易于使用。</li>
 <li>有效性:操作系统允许以更有效的方式使用计算机系统资源。<ul>
@@ -587,7 +679,7 @@
 <li>BTDF的T指的是折射(Transmitte)。</li>
 <li>BRDF和BTDF统称为BSDF，这里的S指的是散射(Scatter)。</li>
 </ul>
-<h2 id="Diffuse-Lambertian-Material-BRDF-漫反射"><a href="#Diffuse-Lambertian-Material-BRDF-漫反射" class="headerlink" title="Diffuse / Lambertian Material(BRDF) 漫反射"></a>Diffuse / Lambertian Material(BRDF) 漫反射</h2><p>首先认为现在在研究的这个漫反射材质是均匀的，这也意味着：</p>
+<h2 id="Diffuse-x2F-Lambertian-Material-BRDF-漫反射"><a href="#Diffuse-x2F-Lambertian-Material-BRDF-漫反射" class="headerlink" title="Diffuse &#x2F; Lambertian Material(BRDF) 漫反射"></a>Diffuse &#x2F; Lambertian Material(BRDF) 漫反射</h2><p>首先认为现在在研究的这个漫反射材质是均匀的，这也意味着：</p>
 <ul>
 <li><p>假设入射光是各个方向均匀射向这个着色点的，并且每一个入射光的光强都是相同的；</p>
 </li>
@@ -597,7 +689,7 @@
 <p><img src="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/image-20220530145517043.png" alt="image-20220530145517043"></p>
 </li>
 </ul>
-<p>我们可以定义一个名为<strong>反射率</strong>这么一个该概念，英文名为<strong>albedo(color)</strong>，albedo可以是单通道的一个数，也可以是三个数RGB，我们定义他的<strong>范围在[0，1]区间内</strong>，引入不同颜色BRDF，所以这个BRDF的值就是<code>fr</code>,范围为[0, 1 / pi]</p>
+<p>我们可以定义一个名为<strong>反射率</strong>这么一个该概念，英文名为<strong>albedo(color)<strong>，albedo可以是单通道的一个数，也可以是三个数RGB，我们定义他的</strong>范围在[0，1]区间内</strong>，引入不同颜色BRDF，所以这个BRDF的值就是<code>fr</code>,范围为[0, 1 &#x2F; pi]</p>
         
           <a class="article-more-a" href="/2022/06/03/games101-%E6%9D%90%E8%B4%A8%E4%B8%8E%E5%A4%96%E8%A7%82/#more">more >></a>
         
@@ -677,7 +769,7 @@
 <p>关节链 – 将一系列依次相连的刚体通过关节连接而成的开链</p>
 <p>末端影响器 – 关节链的自由末端(End effector)</p>
 <p>关节链结构的自由度（Degree of freedom - DOF） – 状态空间的维 度，完全确定关节链结构状态所需的独立变量个数</p>
-<h2 id="正向运动学（direct-forward-kinematics）"><a href="#正向运动学（direct-forward-kinematics）" class="headerlink" title="正向运动学（direct/forward kinematics）"></a>正向运动学（direct/forward kinematics）</h2><p>研究如何从给定的状态向量计算各个链杆的位置（包括各个关节的位置），尤其是末端影响器的位置</p>
+<h2 id="正向运动学（direct-x2F-forward-kinematics）"><a href="#正向运动学（direct-x2F-forward-kinematics）" class="headerlink" title="正向运动学（direct&#x2F;forward kinematics）"></a>正向运动学（direct&#x2F;forward kinematics）</h2><p>研究如何从给定的状态向量计算各个链杆的位置（包括各个关节的位置），尤其是末端影响器的位置</p>
 <p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524162616780.png" alt="image-20220524162616780"></p>
 <p>𝜃1，𝜃2和𝜃3之间相互独立，因此三 链杆关节链状态空间的维度为3</p>
 <p>三链杆关节链末端影响器位置坐标： </p>
@@ -837,10 +929,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="几何归类"><a href="#几何归类" class="headerlink" title="几何归类"></a>几何归类</h1><h2 id="隐式几何"><a href="#隐式几何" class="headerlink" title="隐式几何"></a>隐式几何</h2><p>只表示各个点之间满足的关系，比如球在三维空间中的表示：x² + y² + z²  = R²</p>
+        <h1 id="几何归类"><a href="#几何归类" class="headerlink" title="几何归类"></a>几何归类</h1><h2 id="隐式几何"><a href="#隐式几何" class="headerlink" title="隐式几何"></a>隐式几何</h2><p>只表示各个点之间满足的关系，比如球在三维空间中的表示：x² + y² + z²  &#x3D; R²</p>
 <p>可以很容易的判断一个点在物体内还是外，但是很难画出这样的几何体，不容易找到所有点。</p>
 <h2 id="显式几何"><a href="#显式几何" class="headerlink" title="显式几何"></a>显式几何</h2><p>参数映射：通过一个函数，把二维空间上的点坐标当做参数，映射到三维空间上。</p>
-<p>如：f(u,v)=( (2 + cos u) 8 cos v,(2 + cos u) * sin v,sin u)</p>
+<p>如：f(u,v)&#x3D;( (2 + cos u) 8 cos v,(2 + cos u) * sin v,sin u)</p>
 <h2 id="更多的隐式表示方法"><a href="#更多的隐式表示方法" class="headerlink" title="更多的隐式表示方法"></a>更多的隐式表示方法</h2><h3 id="Constructive-Solid-Geometry（构造立体几何法）"><a href="#Constructive-Solid-Geometry（构造立体几何法）" class="headerlink" title="Constructive Solid Geometry（构造立体几何法）"></a>Constructive Solid Geometry（构造立体几何法）</h3><p>通过布尔运算表示复杂几何体</p>
 <p><img src="/2022/05/11/games101-%E5%87%A0%E4%BD%95/image-20220508171907714.png" alt="image-20220508171907714"></p>
         
@@ -869,85 +961,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/05/11/games101-%E5%87%A0%E4%BD%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="article-games101-着色（7-9）" class="article article-type-article  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/">games101 着色（7~9）</a>
-    </h1>
-  
-
-        
-        <a href="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2022-05-06T02:05:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="深度缓存"><a href="#深度缓存" class="headerlink" title="深度缓存"></a>深度缓存</h1><h2 id="1-何为深度"><a href="#1-何为深度" class="headerlink" title="1. 何为深度"></a>1. 何为深度</h2><p>深度其实就是该象素点在3D世界中距离摄象机的距离（绘制坐标），深度缓存中存储着每个象素点（绘制在屏幕上的）的深度值！深度值（Z值）越大，则离摄像机越远。</p>
-<h2 id="2-为什么需要深度？"><a href="#2-为什么需要深度？" class="headerlink" title="2. 为什么需要深度？"></a>2. 为什么需要深度？</h2><p>在不使用深度测试的时候，如果我们先绘制一个距离较近的物体，再绘制距离较远的物体，则距离远的物体因为后绘制，会把距离近的物体覆盖掉，这样的效果并不是我们所希望的。</p>
-<p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20220428120250042.png" alt="image-20220428120250042"></p>
-<p>而且如果出现上图这种情况，这种方法便失效了。而有了深度缓冲以后，绘制物体的顺序就不那么重要了，都能按照远近（Z值)正常显示，这很关键。</p>
-        
-          <a class="article-more-a" href="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">图形学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/">展开全文 >></a>
         </p>
       
 
@@ -1074,11 +1087,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">

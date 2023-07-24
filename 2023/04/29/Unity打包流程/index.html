@@ -178,22 +178,22 @@
       
         <h1 id="一般打包流程"><a href="#一般打包流程" class="headerlink" title="一般打包流程"></a><strong>一般打包流程</strong></h1><p>通常打包流程主要是通过 <code>Building setting</code>来选择需要打包的场景后出包到指定文件夹位置，也可以采用 <code>[MenuItem(&quot;MyMenu/Do Something&quot;)]</code>中使用static函数来选择打包路径和打包方式——需要将该脚本放置在 <code>Editor</code>文件夹下</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">MenuItem(<span class="string">&quot;Test/BuildAndroid&quot;</span>)</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">BuildAndroid</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">string</span> path = Path.GetFullPath(<span class="string">&quot;D:\\Packages&quot;</span>) + <span class="string">&quot;/Backbag&quot;</span> + <span class="string">&quot;.apk&quot;</span>;</span><br><span class="line">    BuildPipeline.BuildPlayer(GetBuildScence(), path, BuildTarget.Android, BuildOptions.None);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="命令行控制"><a href="#命令行控制" class="headerlink" title="命令行控制"></a><strong>命令行控制</strong></h2><ol>
 <li>Launching Unity</li>
 <li>首先我们需要在<code>Unity.exe</code>所在目录下执行</li>
 <li>选择对应Option</li>
 </ol>
 <span id="more"></span>
-<h3 id="命令语句解释"><a href="#命令语句解释" class="headerlink" title="命令语句解释"></a><strong>命令语句解释</strong></h3><div class="table-container">
-<table>
+
+<h3 id="命令语句解释"><a href="#命令语句解释" class="headerlink" title="命令语句解释"></a><strong>命令语句解释</strong></h3><table>
 <thead>
 <tr>
 <th>命令语句</th>
 <th>解释</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>-batchmode</td>
 <td>以批处理模式运行 Unity。在批处理模式下，Unity 无需人为操作即可运行命令行参数。它还抑制了部分弹出窗口（例如“保存场景”窗口）；但是，Unity 编辑器本身会照常打开。使用命令行参数时，您应该始终以批处理模式运行 Unity，因为它允许自动化不间断地运行</td>
 </tr>
@@ -202,16 +202,13 @@
 <td>其他命令执行完毕后将退出Unity编辑器。但会导致错误消息被隐藏（显示在Editor.log文件）</td>
 </tr>
 <tr>
-<td>-executeMethod <ClassName.MethodName></ClassName.MethodName></td>
+<td>-executeMethod &lt;ClassName.MethodName&gt;</td>
 <td>Unity 打开项目后立即执行静态方法，并在可选的资产服务器更新完成后执行。执行方法所在脚本必须在Editor文件中而且是static的。要从命令行进程返回错误，要么抛出异常导致 Unity 退出并返回代码 1，要么调用 EditorApplication.Exit 并返回非零代码</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p>此外Unity Standalone Player平台中也能执行一些参数（官方文档中指Mac、Windows和Linux）</p>
 <p>要在从命令行以批处理模式启动输入 <code>PATH_TO_STANDALONE_BUILD -projectPath PROJECT_PATH -batchMode</code></p>
-<p>比如 <code>C:\projects\myproject\builds\myproject.exe</code><strong><code>-batchMode</code></strong></p>
-<div class="table-container">
+<p>比如 <code>C:\projects\myproject\builds\myproject.exe </code><strong><code>-batchMode</code></strong></p>
 <table>
 <thead>
 <tr>
@@ -219,8 +216,7 @@
 <th>解释</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>-batchmode</td>
 <td>在”headless”模式下运行游戏。游戏将不显示任何内容，或接受用户输入。主要作用于网络游戏的服务器</td>
 </tr>
@@ -236,9 +232,7 @@
 <td>-screen-(…)</td>
 <td>重新规定屏幕的大小或者是出现方式（弹窗或全屏）</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h1 id="Player-Setting——PC"><a href="#Player-Setting——PC" class="headerlink" title="Player Setting——PC"></a><strong>Player Setting——PC</strong></h1><p>Player Settings提供了各种选项来帮助你完成最终游戏的出包，虽然说有很多不同的平台，但是大体上的设置会分为以下几个部分</p>
 <h2 id="Icon"><a href="#Icon" class="headerlink" title="Icon"></a><strong>Icon</strong></h2><p>图标，在桌面上显示的默认图标</p>
 <h2 id="Resolution-and-Presentation"><a href="#Resolution-and-Presentation" class="headerlink" title="Resolution and Presentation"></a><strong>Resolution and Presentation</strong></h2><p>分辨率和启动前窗口设置，包括了支持的分辨率比例和是否默认全屏启动等选项；</p>
@@ -267,10 +261,10 @@
 <h2 id="Other-Setting"><a href="#Other-Setting" class="headerlink" title="Other Setting"></a><strong>Other Setting</strong></h2><h3 id="Rendering"><a href="#Rendering" class="headerlink" title="Rendering"></a><strong>Rendering</strong></h3><p><img src="/2023/04/29/Unity%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/16827735791913.png" alt="img"></p>
 <ul>
 <li><strong>Color Space：</strong>颜色空间，很重要的选项，手机上只能选择Gamma，而一般3A大作都是Linear，Linear显示效果更加真实</li>
-<li>Auto Graphics API for Windows/ Mac/ Linux:  自动选择最佳的图形API，如果不勾选，可以自行添加支持的图形API</li>
+<li>Auto Graphics API for Windows&#x2F; Mac&#x2F; Linux:  自动选择最佳的图形API，如果不勾选，可以自行添加支持的图形API</li>
 <li><strong>Static Batching</strong>:  静态批处理。——将静态（非移动）游戏对象组合成大网格，并以更快的方式渲染它们</li>
 <li><strong>Dynamic Batching</strong>：动态批处理，自动化Unity进程，一次性批量化渲染多个网络以优化图形性能，该技术转换 CPU 上的所有 GameObject 顶点并将许多相似的顶点组合在一起。 （当可编程渲染管线处于活动状态时，动态批处理没有效果）</li>
-<li>GPU Skinning / Compute Skinning : 使用GPU处理骨骼与皮肤联系的过程,释放CPU资源</li>
+<li>GPU Skinning &#x2F; Compute Skinning : 使用GPU处理骨骼与皮肤联系的过程,释放CPU资源</li>
 <li><strong>Graphics Jobs</strong> ： 可以使游戏将一些渲染任务交给其他CPU核心进行处理，增加游戏的处理效率</li>
 <li>Frame Timing Stats： 帧时序状态。启用此属性以收集 CPU 和 GPU 帧时间统计信息。 将其与动态分辨率相机设置一起使用以确定您的应用程序是 CPU 还是 GPU 受限。</li>
 </ul>
@@ -292,8 +286,8 @@
 <p>以及一部分涉及到Roslyn Analyzers的选项，它可以静态地分析代码，并在代码中检测到潜在的错误、漏洞和优化机会</p>
 <h4 id="Scripting-Define-Symbols"><a href="#Scripting-Define-Symbols" class="headerlink" title="Scripting Define Symbols"></a><strong>Scripting Define Symbols</strong></h4><p>脚本编译时的标志设置，能够根据定义在编译阶段包含或者剔除一些代码，示例代码：</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">if</span> UNITY_STANDALONE_WIN</span></span><br><span class="line"></span><br><span class="line">  Debug.Log(<span class="string">&quot;Standalone Windows&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
 <p><strong>Platform scripting symbols</strong>：（平台标识）</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -301,33 +295,29 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>UNITY_EDITOR</td>
 <td>用于从游戏脚本调用Editor下的符号</td>
 </tr>
 <tr>
 <td>UNITY_EDITOR_XXX</td>
-<td>在XXX平台上的Editor时编译/执行代码</td>
+<td>在XXX平台上的Editor时编译&#x2F;执行代码</td>
 </tr>
 <tr>
 <td>UNITY_STANDALONE</td>
-<td>在任意独立平台（Mac OS X, Windows or Linux）上的应用中编译/执行的代码</td>
+<td>在任意独立平台（Mac OS X, Windows or Linux）上的应用中编译&#x2F;执行的代码</td>
 </tr>
 <tr>
 <td>UNITY_STANDALONE_XXX</td>
-<td>在XXX平台上的应用中编译/执行的代码</td>
+<td>在XXX平台上的应用中编译&#x2F;执行的代码</td>
 </tr>
 <tr>
 <td>UNITY_XXX</td>
-<td>在XXX平台（除了独立平台外）上的编译/执行的代码</td>
+<td>在XXX平台（除了独立平台外）上的编译&#x2F;执行的代码</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p><strong>Editor version Scripting symbols</strong>：（引擎版本标识）</p>
 <p>可选择unity版本号，可具体到X_Y_Z任意版本</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -335,8 +325,7 @@
 <th>Unity2019版本，包括2019.Y.Z等所有版本</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>UNITY_2019_4</td>
 <td>Unity2019.4版本，包括2019.4.Z等所有版本</td>
 </tr>
@@ -344,11 +333,8 @@
 <td>UNITY_2019_4_14</td>
 <td>Unity2019.4.14版本</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p><strong>其余标识</strong>：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -356,8 +342,7 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>CSHARP_7_3_OR_NEWER</td>
 <td>支持 C# 7.3 及以上版本</td>
 </tr>
@@ -377,9 +362,7 @@
 <td>UNITY_SERVER</td>
 <td>在Build Setting勾选Server Build选项</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h3 id="Optimization-（优化）"><a href="#Optimization-（优化）" class="headerlink" title="Optimization （优化）"></a><strong>Optimization （优化）</strong></h3><p><img src="/2023/04/29/Unity%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/16827735791916.png" alt="img"></p>
 <ul>
 <li><strong>Prebake Collision Meshes</strong>：只在build游戏时添加碰撞盒；</li>
@@ -394,7 +377,6 @@
 <h1 id="Player-Setting——Android"><a href="#Player-Setting——Android" class="headerlink" title="Player Setting——Android"></a><strong>Player Setting——Android</strong></h1><p>大多数比较类似，只介绍重要的差异部分</p>
 <h2 id="Resolution-and-Presentation-1"><a href="#Resolution-and-Presentation-1" class="headerlink" title="Resolution and Presentation"></a><strong>Resolution and Presentation</strong></h2><h3 id="Orientation"><a href="#Orientation" class="headerlink" title="Orientation"></a><strong>Orientation</strong></h3><p>方向， 自定义与设备上应用程序方向相关的设置。</p>
 <p><img src="/2023/04/29/Unity%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/16827735791918.png" alt="img"></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -402,8 +384,7 @@
 <th>Description</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>Portrait</td>
 <td>纵向，底部与设备顶部对齐</td>
 </tr>
@@ -423,11 +404,8 @@
 <td>Auto Rotation</td>
 <td>屏幕可以旋转到您在“Allowed Orientations for Auto Rotation”部分中指定的任何方向。</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h2 id="Other-Setting-1"><a href="#Other-Setting-1" class="headerlink" title="Other Setting"></a><strong>Other Setting</strong></h2><h3 id="Identification"><a href="#Identification" class="headerlink" title="Identification"></a><strong>Identification</strong></h3><p><img src="/2023/04/29/Unity%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/16827735791919.png" alt="img"></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -435,8 +413,7 @@
 <th>Function</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>Override Default Package Name</td>
 <td>表示是否替换掉应用的默认包名——同样会影响macOS，IOS和Android</td>
 </tr>
@@ -452,9 +429,7 @@
 <td>Bundle Version Code</td>
 <td>内部版本号，只用于比较哪个版本更新（数字大表示最新）,并不展示给用户。可以见x.y转换为整数或者是每次发布版本简单的加1</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 
       
 
@@ -548,8 +523,8 @@
     </a>
   
   
-    <a href="/2022/12/26/lua%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">lua面向对象</div>
+    <a href="/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">帧同步和状态同步</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -675,11 +650,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">

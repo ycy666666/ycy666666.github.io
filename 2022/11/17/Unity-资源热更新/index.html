@@ -183,6 +183,7 @@
 <p>X：【巨大版本号】这一位其实就是1，没事一般不会动他，除非有太巨大的变化，目前反正还是1；<br>Y：【整包更新版本号】：我们游戏一般一个月会有一个比较大的版本迭代，这种版本会走商店，每次提交Y值+1；<br>Z：【服务器协议版本号】，一个月度版本周期内，万一SDK有问题或者C#层有发现bug，需要更新商店，这一位会+1，这里单独留一个Z处理这种商店版本号，是因为不想影响Y值，而商店提交新包要求版本号必须有增加，buildNum也是商店要求必须要升的；<br>W：【编译版本号\热更版本号】，每次热更都+1 。<br>【第2位加1之后，3、4位全部清0】</p>
 </blockquote>
 <span id="more"></span>
+
 <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>相对于Resources下的资源，AB包可以更好地管理资源，更灵活方便，更易于做热更新相关工作</p>
 <p><img src="/2022/11/17/Unity-%E8%B5%84%E6%BA%90%E7%83%AD%E6%9B%B4%E6%96%B0/image-20221117200824511.png" alt="image-20221117200824511"></p>
 <h1 id="AssetBundle"><a href="#AssetBundle" class="headerlink" title="AssetBundle"></a>AssetBundle</h1><p><strong>AssetBundle</strong> 是一个存档文件，包含可在运行时由 Unity 加载的特定于平台的非代码资源（比如模型、纹理、预制件、音频剪辑甚至整个场景）。AssetBundle 可以表示彼此之间的依赖关系；例如，一个 AssetBundle 中的材质可以引用另一个 AssetBundle 中的纹理。</p>
@@ -465,11 +466,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">

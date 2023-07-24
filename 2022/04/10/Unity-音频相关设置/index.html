@@ -175,7 +175,6 @@
         <h1 id="认识音频组件"><a href="#认识音频组件" class="headerlink" title="认识音频组件"></a>认识音频组件</h1><h2 id="AudioClip"><a href="#AudioClip" class="headerlink" title="AudioClip"></a>AudioClip</h2><p>想要播放的音频文件，存储在Assets文件夹中</p>
 <h2 id="AudioSource"><a href="#AudioSource" class="headerlink" title="AudioSource"></a>AudioSource</h2><p> 播放音频文件，能调节音量，3D效果音。音频源就像一个控制器，用于启动和停止该剪辑音源的播放，以及修改其他音频属性。</p>
 <p><strong>Priority</strong>：从场景中存在的所有音频源中确定此音频源的优先级。（Priority值为0 表示优先级最高。值为256， 表示优先级最低。默认值为 128）。对于音轨值应为 0，避免被意外擦除。</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -183,8 +182,7 @@
 <th>声音衰减的速度。此值越高，监听器必须越接近才能听到声音。（这取决于图）。</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><strong>- Logarithmic Rolloff</strong></td>
 <td>靠近音频源时，声音很大，但离开对象时，声音降低得非常快。</td>
 </tr>
@@ -196,10 +194,9 @@
 <td><strong>- Custom Rolloff</strong></td>
 <td>音频源的音频效果是根据曲线图的设置变化的。</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h3 id="距离函数"><a href="#距离函数" class="headerlink" title="距离函数"></a>距离函数</h3><span id="more"></span>
+
 <p>可按音频源与音频监听器之间距离的函数形式修改音频的若干属性。</p>
 <p><strong>Volume</strong>：随着距离变化的幅度（0.0 到 1.0）。</p>
 <p><strong>Spatial Blend</strong>（设置 3D 引擎对音频源的影响程度。）：2D（原始声道映射）到 3D（所有声道下混为单声道并根据距离和方向衰减）。</p>
@@ -211,30 +208,26 @@
 <h2 id="AudioListener"><a href="#AudioListener" class="headerlink" title="AudioListener"></a>AudioListener</h2><p> 作为玩家耳朵使用，每个场景只能有一个才能正常使用、</p>
 <h1 id="混响区"><a href="#混响区" class="headerlink" title="混响区"></a>混响区</h1><p>混响区（Audio Reverb Zone）获取音频剪辑并根据音频监听器在混响区内的位置使音频剪辑失真。从没有环境效果的点逐渐到有环境效果的点（例如进入洞穴时），便可使用混响区，如果是太空什么的就完全不用</p>
 <h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p><img src="/2022/04/10/Unity-%E9%9F%B3%E9%A2%91%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/803d5e3e66b5fb14c5f36b27d76f0e12.png" alt="img"></p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:left">属性</th>
-<th style="text-align:left">功能</th>
+<th align="left">属性</th>
+<th align="left">功能</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>Min Distance</strong></td>
-<td style="text-align:left">表示辅助图标中内圆的半径，决定了逐渐出现混响效果的区域和完整的混响区。</td>
+<tbody><tr>
+<td align="left"><strong>Min Distance</strong></td>
+<td align="left">表示辅助图标中内圆的半径，决定了逐渐出现混响效果的区域和完整的混响区。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Max Distance</strong></td>
-<td style="text-align:left">表示辅助图标中外圆的半径，决定了没有效果的区域和开始逐渐应用混响的区域。</td>
+<td align="left"><strong>Max Distance</strong></td>
+<td align="left">表示辅助图标中外圆的半径，决定了没有效果的区域和开始逐渐应用混响的区域。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Reverb Preset</strong></td>
-<td style="text-align:left">决定了混响区将使用的混响效果。</td>
+<td align="left"><strong>Reverb Preset</strong></td>
+<td align="left">决定了混响区将使用的混响效果。</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p>此图说明了混响区的属性。</p>
 <p><img src="/2022/04/10/Unity-%E9%9F%B3%E9%A2%91%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/20dbe9751867c4bec6fd7d05ab631a89.png" alt="声音在混响区中的工作方式"></p>
 <p>声音在混响区中的工作方式</p>
@@ -245,7 +238,7 @@
 <p>事件触发音乐也需要新建一个快照，而且需要使用<code>AudioSource.Transition(int 转换使用的时间)</code>，比如需要降低背景音乐的音量</p>
 <h2 id="使用滑动条调节音量"><a href="#使用滑动条调节音量" class="headerlink" title="使用滑动条调节音量"></a>使用滑动条调节音量</h2><p>**①创建AudioMixer并配置</p>
 <p>我们希望能调节主音量,背景音,特效音三种,目前只有一个音轨,并不符合我们的要求,</p>
-<p>需要新增两条音轨,比如叫背景音和特效音，创建好了之后,并不能直接在代码里控制他们,因为需要将它们<strong>暴露出去,</strong>暴露出去后才能在代码控制</p>
+<p>需要新增两条音轨,比如叫背景音和特效音，创建好了之后,并不能直接在代码里控制他们,因为需要将它们**暴露出去,**暴露出去后才能在代码控制</p>
 <p><strong><img src="/2022/04/10/Unity-%E9%9F%B3%E9%A2%91%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/c4c623449cc5d3b755b728416f88f586.png" alt="img"></strong></p>
 <p>将这三个分别设置为<strong>Main,BGM,Texiao</strong></p>
 <p><strong>②将音效片段中OutPut 指定音轨</strong></p>
@@ -253,6 +246,7 @@
 <p>例如这个音效是背景音,就选中BGM音轨</p>
 <p><strong>③将 AudioMixer和Slider建立连接</strong></p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//控制主音量</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">ControlMainVolume</span>(<span class="params"><span class="built_in">float</span> v</span>)</span>&#123;</span><br><span class="line">		audioMixer.SetFloat(<span class="string">&quot;Main&quot;</span>, v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>然后把<strong>滑动条</strong>和创建好的<strong>AudioMixer</strong>拖入代码公开变量中</p>
 <p><strong>④配置Slider,并添加事件</strong></p>
 <p>进入游戏中根据Edit in play mode 中滑动db条，来选择Min Value和Max Value，一般为（-80，0）</p>
@@ -478,11 +472,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">

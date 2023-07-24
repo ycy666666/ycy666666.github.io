@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://ycy666666.github.io">
   <title>物理动画基础 | WEBSITE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关节动画基本概念关节 – 如果两个刚体互相连接且能够发生相对运动，则这两个刚体的关联部分称为关节 关节链 – 将一系列依次相连的刚体通过关节连接而成的开链 末端影响器 – 关节链的自由末端(End effector) 关节链结构的自由度（Degree of freedom - DOF） – 状态空间的维 度，完全确定关节链结构状态所需的独立变量个数 正向运动学（direct&#x2F;forward kin">
+  <meta name="description" content="关节动画基本概念关节 – 如果两个刚体互相连接且能够发生相对运动，则这两个刚体的关联部分称为关节 关节链 – 将一系列依次相连的刚体通过关节连接而成的开链 末端影响器 – 关节链的自由末端(End effector) 关节链结构的自由度（Degree of freedom - DOF） – 状态空间的维 度，完全确定关节链结构状态所需的独立变量个数 正向运动学（direct&#x2F;forwar">
 <meta property="og:type" content="article">
 <meta property="og:title" content="物理动画基础">
 <meta property="og:url" content="https://ycy666666.github.io/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="WEBSITE">
-<meta property="og:description" content="关节动画基本概念关节 – 如果两个刚体互相连接且能够发生相对运动，则这两个刚体的关联部分称为关节 关节链 – 将一系列依次相连的刚体通过关节连接而成的开链 末端影响器 – 关节链的自由末端(End effector) 关节链结构的自由度（Degree of freedom - DOF） – 状态空间的维 度，完全确定关节链结构状态所需的独立变量个数 正向运动学（direct&#x2F;forward kin">
+<meta property="og:description" content="关节动画基本概念关节 – 如果两个刚体互相连接且能够发生相对运动，则这两个刚体的关联部分称为关节 关节链 – 将一系列依次相连的刚体通过关节连接而成的开链 末端影响器 – 关节链的自由末端(End effector) 关节链结构的自由度（Degree of freedom - DOF） – 状态空间的维 度，完全确定关节链结构状态所需的独立变量个数 正向运动学（direct&#x2F;forwar">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://ycy666666.github.io/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524162616780.png">
 <meta property="og:image" content="https://ycy666666.github.io/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524162656999.png">
@@ -193,12 +193,13 @@
 <p>关节链 – 将一系列依次相连的刚体通过关节连接而成的开链</p>
 <p>末端影响器 – 关节链的自由末端(End effector)</p>
 <p>关节链结构的自由度（Degree of freedom - DOF） – 状态空间的维 度，完全确定关节链结构状态所需的独立变量个数</p>
-<h2 id="正向运动学（direct-forward-kinematics）"><a href="#正向运动学（direct-forward-kinematics）" class="headerlink" title="正向运动学（direct/forward kinematics）"></a>正向运动学（direct/forward kinematics）</h2><p>研究如何从给定的状态向量计算各个链杆的位置（包括各个关节的位置），尤其是末端影响器的位置</p>
+<h2 id="正向运动学（direct-x2F-forward-kinematics）"><a href="#正向运动学（direct-x2F-forward-kinematics）" class="headerlink" title="正向运动学（direct&#x2F;forward kinematics）"></a>正向运动学（direct&#x2F;forward kinematics）</h2><p>研究如何从给定的状态向量计算各个链杆的位置（包括各个关节的位置），尤其是末端影响器的位置</p>
 <p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524162616780.png" alt="image-20220524162616780"></p>
 <p>𝜃1，𝜃2和𝜃3之间相互独立，因此三 链杆关节链状态空间的维度为3</p>
 <p>三链杆关节链末端影响器位置坐标： </p>
 <p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524162656999.png" alt="image-20220524162656999"></p>
 <h2 id="逆向运动学（inverse-kinematics）"><a href="#逆向运动学（inverse-kinematics）" class="headerlink" title="逆向运动学（inverse kinematics）"></a>逆向运动学（inverse kinematics）</h2><span id="more"></span>
+
 <h3 id="解析法"><a href="#解析法" class="headerlink" title="解析法"></a>解析法</h3><p>逆向动力学是一种目标驱动技术，即研究如何从末端位置计算状态向量的位置</p>
 <p>动画设计者只需要控制末端位置， 而不需要控制整个关节链结构， 系统求解满足要求的关节，从而简化动画设计</p>
 <p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524165558542.png" alt="image-20220524165558542"></p>
@@ -210,15 +211,14 @@
 </li>
 <li><p>计算f（x0）和切线斜率f ‘ (x0 )</p>
 </li>
-<li><p>计算切线与x轴交点x1，通常x1会比x0更接近f（x）= 0的解</p>
+<li><p>计算切线与x轴交点x1，通常x1会比x0更接近f（x）&#x3D; 0的解</p>
 </li>
 <li><p>利用x1进行下一轮迭代</p>
 <p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524170958946.png" alt="image-20220524170958946"></p>
 </li>
 </ol>
-<p>牛顿迭代法收敛速度很快，其最大优点在于通常能以较快的速度 不断靠近方程的根 。但是不保证能求得最优解，只是计算方程的一个近似值</p>
-<script type="math/tex; mode=display">
-x_{n+1} = x_n - {f(x_n)\over f'(x_n)}</script><h4 id="应用在三链杆关节链上"><a href="#应用在三链杆关节链上" class="headerlink" title="应用在三链杆关节链上"></a>应用在三链杆关节链上</h4><p>已知末端影响器的位置x和y，求解𝜃1、𝜃2和𝜃3。令：</p>
+<p>牛顿迭代法收敛速度很快，其最大优点在于通常能以较快的速度 不断靠近方程的根 。但是不保证能求得最优解，只是计算方程的一个近似值<br>$$<br>x_{n+1} &#x3D; x_n - {f(x_n)\over f’(x_n)}<br>$$</p>
+<h4 id="应用在三链杆关节链上"><a href="#应用在三链杆关节链上" class="headerlink" title="应用在三链杆关节链上"></a>应用在三链杆关节链上</h4><p>已知末端影响器的位置x和y，求解𝜃1、𝜃2和𝜃3。令：</p>
 <p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524171734370.png" alt="image-20220524171734370"></p>
 <p>要使用牛顿法就需要知道偏导数，偏导数矩阵如图所示：</p>
 <p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524171811958.png" alt="image-20220524171811958"></p>
@@ -234,22 +234,23 @@ x_{n+1} = x_n - {f(x_n)\over f'(x_n)}</script><h4 id="应用在三链杆关节�
 <p>• 首先将人体骨骼抽象成为关节和链杆组成的模型</p>
 <p>• 然后选取其中的某个关节作为根节点，建立骨架树</p>
 <p>• 骨架树建立后，通过关节链的正向运动学和逆向运动学求解骨架树的正向和逆向运动</p>
-<p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524173153096.png" alt="image-20220524173153096" style="zoom:67%;"></p>
+<img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524173153096.png" alt="image-20220524173153096" style="zoom:67%;">
+
 <h3 id="顶点混合"><a href="#顶点混合" class="headerlink" title="顶点混合"></a>顶点混合</h3><p>前臂和后臂仍单独设置动画，但关节处用一柔性的 “skin”来连接。</p>
 <p>柔性部分的一部分顶点由前臂的矩阵来变换，另一部分由后臂的 矩阵来变换。即：一个三角形的顶点可以由不同的矩阵来变换， 而不是一个矩阵</p>
 <p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524180715247.png" alt="image-20220524180715247"> </p>
-<h1 id="运动学模拟"><a href="#运动学模拟" class="headerlink" title="运动学模拟"></a>运动学模拟</h1><h2 id="时间积分"><a href="#时间积分" class="headerlink" title="时间积分"></a>时间积分</h2><h3 id="显式（前向）欧拉积分"><a href="#显式（前向）欧拉积分" class="headerlink" title="显式（前向）欧拉积分"></a>显式（前向）欧拉积分</h3><script type="math/tex; mode=display">
-𝑣_{𝑛+1} = 𝑣_𝑛 + {1\over𝑚} 𝑓(𝑝_𝑛) Δt</script><script type="math/tex; mode=display">
-𝑝_{𝑛+1} = 𝑝_𝑛 + Δ𝑡𝑣_𝑛</script><p>注：𝑓( 𝑝( 𝑡𝑛) ) = 𝑓(𝑝𝑛)             𝑓(𝑝𝑛)表示物体在𝑡𝑛时刻位于 位置𝑝(𝑡𝑛)所受的力</p>
+<h1 id="运动学模拟"><a href="#运动学模拟" class="headerlink" title="运动学模拟"></a>运动学模拟</h1><h2 id="时间积分"><a href="#时间积分" class="headerlink" title="时间积分"></a>时间积分</h2><h3 id="显式（前向）欧拉积分"><a href="#显式（前向）欧拉积分" class="headerlink" title="显式（前向）欧拉积分"></a>显式（前向）欧拉积分</h3><p>$$<br>𝑣_{𝑛+1} &#x3D; 𝑣_𝑛 + {1\over𝑚} 𝑓(𝑝_𝑛) Δt<br>$$</p>
+<p>$$<br>𝑝_{𝑛+1} &#x3D; 𝑝_𝑛 + Δ𝑡𝑣_𝑛<br>$$</p>
+<p>注：𝑓( 𝑝( 𝑡𝑛) ) &#x3D; 𝑓(𝑝𝑛)			 𝑓(𝑝𝑛)表示物体在𝑡𝑛时刻位于 位置𝑝(𝑡𝑛)所受的力</p>
 <p>存在问题： 因为真实位置比推算位置小，随着时间进行，相当于势能就减小的少，物体能量 （动能+势能）变大。达到某个值后，系统爆炸。因此，很少使用</p>
-<h3 id="辛欧拉积分"><a href="#辛欧拉积分" class="headerlink" title="辛欧拉积分"></a>辛欧拉积分</h3><script type="math/tex; mode=display">
-𝑣_{𝑛+1} = 𝑣_𝑛 + {𝑓(𝑝_𝑛)\over𝑚}Δt</script><script type="math/tex; mode=display">
-𝑝_{𝑛+1} = 𝑝_𝑛 + 𝑣_{𝑛+1}Δ𝑡</script><p>• 物体能量（动能+势能）长期维持稳定 </p>
+<h3 id="辛欧拉积分"><a href="#辛欧拉积分" class="headerlink" title="辛欧拉积分"></a>辛欧拉积分</h3><p>$$<br>𝑣_{𝑛+1} &#x3D; 𝑣_𝑛 + {𝑓(𝑝_𝑛)\over𝑚}Δt<br>$$</p>
+<p>$$<br>𝑝_{𝑛+1} &#x3D; 𝑝<em>𝑛 + 𝑣</em>{𝑛+1}Δ𝑡<br>$$</p>
+<p>• 物体能量（动能+势能）长期维持稳定 </p>
 <p>• 在某个值附近波动</p>
 <p> • 依赖于时间步长</p>
-<h3 id="隐式（后向）欧拉积分"><a href="#隐式（后向）欧拉积分" class="headerlink" title="隐式（后向）欧拉积分"></a>隐式（后向）欧拉积分</h3><script type="math/tex; mode=display">
-𝑣_{𝑛+1} = 𝑣_𝑛 + {1\over𝑚} 𝑓(𝑝_{𝑛+1}) Δt</script><script type="math/tex; mode=display">
-𝑝_{𝑛+1} = 𝑝_𝑛 + 𝑣_{𝑛+1}Δ𝑡</script><p>物体能量（动能+势能）已知 一直减小</p>
+<h3 id="隐式（后向）欧拉积分"><a href="#隐式（后向）欧拉积分" class="headerlink" title="隐式（后向）欧拉积分"></a>隐式（后向）欧拉积分</h3><p>$$<br>𝑣_{𝑛+1} &#x3D; 𝑣<em>𝑛 + {1\over𝑚} 𝑓(𝑝</em>{𝑛+1}) Δt<br>$$</p>
+<p>$$<br>𝑝_{𝑛+1} &#x3D; 𝑝<em>𝑛 + 𝑣</em>{𝑛+1}Δ𝑡<br>$$</p>
+<p>物体能量（动能+势能）已知 一直减小</p>
 <h1 id="弹性网格"><a href="#弹性网格" class="headerlink" title="弹性网格"></a>弹性网格</h1><p>布料、头发、果冻都属于弹性对象</p>
 <p>他们都有如下共同特征</p>
 <ul>
@@ -274,10 +275,12 @@ x_{n+1} = x_n - {f(x_n)\over f'(x_n)}</script><h4 id="应用在三链杆关节�
 <p>1）无法抵抗错切方向上施力 </p>
 <p>2）无法抵抗折叠形变</p>
 <p>改进方案： </p>
-<p>​    1）增加抵抗错切方向上施力的弹簧</p>
-<p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524203438590.png" alt="image-20220524203438590" style="zoom:67%;"></p>
-<p>​    2）解决折叠形变 红色弹簧弹性系数弱于蓝色弹簧</p>
-<p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524203444670.png" alt="image-20220524203444670" style="zoom: 67%;"></p>
+<p>​	1）增加抵抗错切方向上施力的弹簧</p>
+<img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524203438590.png" alt="image-20220524203438590" style="zoom:67%;">
+
+<p>​	2）解决折叠形变 红色弹簧弹性系数弱于蓝色弹簧</p>
+<img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524203444670.png" alt="image-20220524203444670" style="zoom: 67%;">
+
 <p>最终模型</p>
 <p>ps：布料就是由若干个质点，在任意两个连续的质点之 间加入带阻尼的虚拟弹簧构成</p>
 <p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524203814077.png" alt="image-20220524203814077"></p>
@@ -286,25 +289,23 @@ x_{n+1} = x_n - {f(x_n)\over f'(x_n)}</script><h4 id="应用在三链杆关节�
 <p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524204902565.png" alt="image-20220524204902565"></p>
 <h3 id="大步长隐式方法"><a href="#大步长隐式方法" class="headerlink" title="大步长隐式方法"></a>大步长隐式方法</h3><p>布料模拟的积分计算部分的主要开销在由于稳定性限制计算步长只能取很小值，因而被迫在两帧画面之间计算多次。  因此，设法取较大的时间步长可以有效的提高算法效率。</p>
 <p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524204819077.png" alt="image-20220524204819077"></p>
-<h3 id="韦尔莱法积分"><a href="#韦尔莱法积分" class="headerlink" title="韦尔莱法积分"></a>韦尔莱法积分</h3><script type="math/tex; mode=display">
-p(t + \Delta t) = 2p(t) - p(t-\Delta t) + a(t)\Delta t^2</script><p>通过t时刻以及他之前一段时刻的位置推到在t+ dt的位置</p>
+<h3 id="韦尔莱法积分"><a href="#韦尔莱法积分" class="headerlink" title="韦尔莱法积分"></a>韦尔莱法积分</h3><p>$$<br>p(t + \Delta t) &#x3D; 2p(t) - p(t-\Delta t) + a(t)\Delta t^2<br>$$</p>
+<p>通过t时刻以及他之前一段时刻的位置推到在t+ dt的位置</p>
 <p>记录了物体的当前位置和之前的位置，并不需要计算物体的运动速度</p>
 <h1 id="水面模拟"><a href="#水面模拟" class="headerlink" title="水面模拟"></a>水面模拟</h1><h2 id="水面建模"><a href="#水面建模" class="headerlink" title="水面建模"></a>水面建模</h2><p>水面外观与地形外观非常相似  不同点在于水面外观高度是随着时间变化的 </p>
 <p>首先将平面看作普通的均匀网格，每一个网格点 (x, y)对应一个水面高度值  </p>
 <p>水面是动态的随着时间变化的，因此其网格高度值 是一个与时间相关的函数H (x, y, t）</p>
-<h3 id="单振源"><a href="#单振源" class="headerlink" title="单振源"></a>单振源</h3><p>振源处振幅随时间变化函数H(t)为</p>
-<script type="math/tex; mode=display">
-H(t) =Asin({2\pi * t\over T})</script><p>A为振幅大小； T为波的振动周期；</p>
+<h3 id="单振源"><a href="#单振源" class="headerlink" title="单振源"></a>单振源</h3><p>振源处振幅随时间变化函数H(t)为<br>$$<br>H(t) &#x3D;Asin({2\pi * t\over T})<br>$$<br>A为振幅大小； T为波的振动周期；</p>
 <p>在t时刻，距离振源距离 l 处振幅大小H（l,t）为</p>
 <p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524213045481.png" alt="image-20220524213045481"></p>
-<p>波的传播速度为S ，波长为L，则振动周期满足 T = L / S</p>
+<p>波的传播速度为S ，波长为L，则振动周期满足 T &#x3D; L &#x2F; S</p>
 <p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220524213140559.png" alt="image-20220524213140559"></p>
 <h3 id="多振源"><a href="#多振源" class="headerlink" title="多振源"></a>多振源</h3><ul>
 <li>对于大面积水体（如海面），定向波浪比较适 用于表达受风吹动的水面 </li>
 <li>对于小的水池，通常产生波动的振源通常不是风 ,较常见的如水滴滴落，此时用圆型波浪模拟水面比较合适</li>
 </ul>
-<h3 id="模拟方法"><a href="#模拟方法" class="headerlink" title="模拟方法"></a>模拟方法</h3><h4 id="正弦波叠加"><a href="#正弦波叠加" class="headerlink" title="正弦波叠加"></a>正弦波叠加</h4><script type="math/tex; mode=display">
-H(x,y,t) = \sum_i H_i(x,y,t)</script><h4 id="幂指数模型"><a href="#幂指数模型" class="headerlink" title="幂指数模型"></a>幂指数模型</h4><p>正余弦波的波峰和波谷波的弧度都是均匀的，但实际上水波的波峰要尖一些，波谷则要圆滑些</p>
+<h3 id="模拟方法"><a href="#模拟方法" class="headerlink" title="模拟方法"></a>模拟方法</h3><h4 id="正弦波叠加"><a href="#正弦波叠加" class="headerlink" title="正弦波叠加"></a>正弦波叠加</h4><p>$$<br>H(x,y,t) &#x3D; \sum_i H_i(x,y,t)<br>$$</p>
+<h4 id="幂指数模型"><a href="#幂指数模型" class="headerlink" title="幂指数模型"></a>幂指数模型</h4><p>正余弦波的波峰和波谷波的弧度都是均匀的，但实际上水波的波峰要尖一些，波谷则要圆滑些</p>
 <p><img src="/2022/05/25/%E7%89%A9%E7%90%86%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/image-20220603204003493.png" alt="image-20220603204003493"></p>
 
       
@@ -526,11 +527,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">

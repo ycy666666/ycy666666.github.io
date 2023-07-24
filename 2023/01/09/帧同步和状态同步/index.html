@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://ycy666666.github.io">
-  <title>Archives: 2022/1 | WEBSITE</title>
+  <title>帧同步和状态同步 | WEBSITE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="WEBSITE">
-<meta property="og:url" content="https://ycy666666.github.io/archives/2022/01/index.html">
+  <meta name="description" content="网络同步网络同步主要目的在于保证各个端口的游戏表现一致，网络同步就在于实时的多段数据同步和实时的多端表现。 而对于大多数游戏，不仅客户端的表现要一致，而且需要客户端和服务端的数据是一致的。所以，同步是一个网络游戏概念，只有网络游戏才需要同步，而单机游戏是不需要同步的。 同步目的首先我们慢慢说明如何实现简单的坐标同步 很多时候我们都在讨论 “该用帧同步还是状态同步”，似乎这已经变成了一个二选一的问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="帧同步和状态同步">
+<meta property="og:url" content="https://ycy666666.github.io/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/index.html">
 <meta property="og:site_name" content="WEBSITE">
+<meta property="og:description" content="网络同步网络同步主要目的在于保证各个端口的游戏表现一致，网络同步就在于实时的多段数据同步和实时的多端表现。 而对于大多数游戏，不仅客户端的表现要一致，而且需要客户端和服务端的数据是一致的。所以，同步是一个网络游戏概念，只有网络游戏才需要同步，而单机游戏是不需要同步的。 同步目的首先我们慢慢说明如何实现简单的坐标同步 很多时候我们都在讨论 “该用帧同步还是状态同步”，似乎这已经变成了一个二选一的问题">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://ycy666666.github.io/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/0c69b560fed3480f95d36ad74dae4248tplv-k3u1fbpfcp-zoom-in-crop-mark1512000.webp">
+<meta property="og:image" content="https://ycy666666.github.io/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/f71f9d5295b246d987fbf135af9f2634tplv-k3u1fbpfcp-zoom-in-crop-mark1512000-16902081786267.webp">
+<meta property="og:image" content="https://ycy666666.github.io/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/image-20221109180036949.png">
+<meta property="article:published_time" content="2023-01-09T11:22:52.000Z">
+<meta property="article:modified_time" content="2023-07-24T15:08:02.671Z">
 <meta property="article:author" content="YCY">
+<meta property="article:tag" content="Unity">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ycy666666.github.io/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/0c69b560fed3480f95d36ad74dae4248tplv-k3u1fbpfcp-zoom-in-crop-mark1512000.webp">
   
     <link rel="alternative" href="/atom.xml" title="WEBSITE" type="application/atom+xml">
   
@@ -140,36 +149,206 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-帧同步和状态同步" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2022" class="archive-year">2022</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2022/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/" class="archive-article-date">
-  	<time datetime="2022-01-09T11:22:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-01-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2022/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/">帧同步和状态同步</a>
+    <h1 class="article-title" itemprop="name">
+      帧同步和状态同步
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/" class="archive-article-date">
+  	<time datetime="2023-01-09T11:22:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="网络同步"><a href="#网络同步" class="headerlink" title="网络同步"></a>网络同步</h1><p>网络同步主要目的在于保证各个端口的游戏表现一致，<strong>网络同步就在于实时的多段数据同步和实时的多端表现。</strong></p>
+<p>而对于大多数游戏，不仅客户端的表现要一致，而且需要客户端和服务端的数据是一致的。所以，同步是一个网络游戏概念，只有网络游戏才需要同步，而单机游戏是不需要同步的。</p>
+<h2 id="同步目的"><a href="#同步目的" class="headerlink" title="同步目的"></a>同步目的</h2><p>首先我们慢慢说明如何实现简单的坐标同步</p>
+<p>很多时候我们都在讨论 “该用帧同步还是状态同步”，似乎这已经变成了一个二选一的问题。 但事实上，帧同步和状态同步不但 <strong>不是</strong> 二选一的关系，甚至可以 <strong>相互替代</strong> 和 <strong>混合使用</strong>。</p>
+<p>因为，<strong>帧同步和状态同步最终都是同步状态。</strong></p>
+<span id="more"></span>
+
+<p>假设我们要实现一堆人在一个房间里跑，无论你用状态同步 —— 直接发送你的坐标，或是帧同步 —— 发送移动操作再由客户端计算出最终坐标，对于表现层组件而言，需要的都是你的最终状态 —— 位置坐标。 所以实际上帧同步和状态同步更多讨论的是，网络传输什么，状态在哪里计算 —— 看起来更像一个成本问题。</p>
+<h1 id="同步策略"><a href="#同步策略" class="headerlink" title="同步策略"></a>同步策略</h1><p>–&gt;<a target="_blank" rel="noopener" href="https://juejin.cn/post/7041560950897377293#comment">下述材料借鉴自这里</a>–&lt;</p>
+<h2 id="无优化策略"><a href="#无优化策略" class="headerlink" title="无优化策略"></a>无优化策略</h2><ol>
+<li>本地按下按键，发出操作指令。</li>
+<li>指令发送给服务器，服务器得到最新状态，并广播给所有人。<ul>
+<li>帧同步广播操作指令，状态同步广播结果</li>
+</ul>
+</li>
+<li>前端收到服务器的发送来的新状态后，刷新界面显示</li>
+</ol>
+<p><img src="/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/0c69b560fed3480f95d36ad74dae4248tplv-k3u1fbpfcp-zoom-in-crop-mark1512000.webp" alt="img"></p>
+<p>按下左&#x2F;右按键后，需要等待服务器返回，导致操作延迟。而且逻辑帧率（每秒 3 次）慢于显示帧率（每秒 60 帧）导致画面卡顿</p>
+<h2 id="逻辑与表现分离"><a href="#逻辑与表现分离" class="headerlink" title="逻辑与表现分离"></a>逻辑与表现分离</h2><p>多人实时游戏，通常会划分为表现层和逻辑层。 <strong>表现层指游戏画面的显示和用户输入的获取； 逻辑层指渲染无关的、只关注状态变化和计算的玩法逻辑。</strong>因此我们就能通过预测、和解、插值来消除卡顿和操作延迟</p>
+<p>逻辑层和表现层最终是面向数据的，例如玩家的位置、生命值等，我们把这些数据统称为 <strong>状态</strong>。 我们把所有能影响状态变化的因素称为 <strong>输入</strong>，例如玩家操作（如移动）、系统事件（如被击中）、时间流逝等等</p>
+<p>在实现逻辑层的过程中，有几个重要的点需要关注：</p>
+<ul>
+<li><strong>无输入，不变化</strong>：状态变更仅发生在输入时刻，没有输入时状态不会改变</li>
+<li><strong>无外部依赖</strong>：状态计算应该没有任何外部依赖，例如 <code>Date.now()</code>、<code>Math.random()</code> 等，所有这些都应该显式成为输入的一部分</li>
+<li><strong>结果的一致性</strong>：在相同的状态和输入下，得到的新状态应该是一致的</li>
+</ul>
+<h3 id="预测"><a href="#预测" class="headerlink" title="预测"></a>预测</h3><p><strong>预测就是将玩家的输入立即应用到本地状态，而无需等待服务端返回。</strong></p>
+<p>解决方案就是：玩家做出任何操作后，立刻将输入应用到本地状态，并刷新表现层显示。 例如按下了 “右”，那么就立即向右移动，而无需等待服务端返回，效果如图：</p>
+<p><img src="/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/f71f9d5295b246d987fbf135af9f2634tplv-k3u1fbpfcp-zoom-in-crop-mark1512000-16902081786267.webp" alt="img"></p>
+<p>但在移动过程中会接收来自服务端的同步，而服务端发来的状态总是滞后的，会导致抽搐。<strong>服务端同步过来的状态与本地预测的状态不一致，所以我们需要 “和解” 它们。</strong></p>
+<h3 id="和解"><a href="#和解" class="headerlink" title="和解"></a>和解</h3><p><strong>和解：预测状态 &#x3D; 权威状态 + 预测输入</strong></p>
+<p>我们认为服务器总是权威的，从服务端接收到的输入称为 <strong>权威输入</strong>，经权威输入计算出来的状态称为 <strong>权威状态</strong>。 同样的，当我们发出一个输入，但尚未得到服务端的返回确认时，这个输入称为非权威输入，也叫 <strong>预测输入</strong>。</p>
+<blockquote>
+<p>在前述预测的基础上，和解就是我们处理服务端同步的状态的方式。如果使用的是状态同步，那么这个过程是：</p>
+<ol>
+<li>收到服务端同步来的 <strong>权威状态</strong></li>
+<li>将本地状态立即设为此权威状态</li>
+<li>在权威状态的基础上，应用当前所有 <strong>预测输入</strong></li>
+</ol>
+<p>如果使用的是帧同步，那么这个过程是：</p>
+<ol>
+<li>收到服务端同步来的<strong>权威输入</strong></li>
+<li>将本地状态立即 <strong>回滚</strong> 至 <strong>上一次的权威状态</strong></li>
+<li>将权威输入应用到当前状态，得到此次的 <strong>权威状态</strong></li>
+<li>在权威状态的基础上，应用当前所有 <strong>预测输入</strong></li>
+</ol>
+<p>由此可见，状态同步和帧同步只是网络传输的内容不同，但它们是完全可以相互替代的 —— 最终目的都是为了同步权威状态。</p>
+</blockquote>
+<p>在没有冲突时，网络延迟可以完全不影响操作延迟，如果不发生冲突（例如与它人碰撞），即便网络延迟有 10 秒，你也可以毫无延迟并且平滑的移动</p>
+<h3 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h3><p>如果发生了冲突，比如，你发送了 4 次移动指令，但在服务端，第 2 次移动指令之后，服务端收到了另一个客户端的输入—— “你被眩晕了”。这意味着你的后两次移动指令将不会生效，详细过程如下：</p>
+<blockquote>
+<p>你的坐标是 <code>(0,0)</code></p>
+<p>你发出了 2 个 <code>右移</code> 指令（每次向右移动 1 个单位），服务器尚未返回</p>
+<ul>
+<li>权威状态：<code>(0,0)</code></li>
+<li>预测输入：<code>右移#1</code> <code>右移#2</code></li>
+<li>预测状态：<code>(2,0)</code></li>
+</ul>
+<p>你又发出了 2 个 <code>右移</code> 指令，服务器尚未返回</p>
+<ul>
+<li>权威状态：<code>(0,0)</code></li>
+<li>预测输入：<code>右移#1</code> <code>右移#2</code> <code>右移#3</code> <code>右移#4</code></li>
+<li>预测状态：<code>(4,0)</code></li>
+</ul>
+<p>服务端发回了你的前 2 个右移指令</p>
+<ul>
+<li>权威状态：<code>(2,0)</code></li>
+<li>预测输入：<code>右移#3</code> <code>右移#4</code> （<code>#1</code>、<code>#2</code> 变成了权威输入）</li>
+<li>预测状态：<code>(4,0)</code></li>
+</ul>
+<p>服务端发回了与预期冲突的新输入</p>
+<ul>
+<li>上一次的权威状态：<code>(2,0)</code></li>
+<li>权威输入：<code>你被拍晕了</code> <code>右移#3</code> <code>右移#4</code></li>
+<li>权威状态：<code>(2,0)</code> （因为先被拍晕了，所以后两个右移指令无效）</li>
+<li>预测输入：无 （所有预测输入都已变为权威输入）</li>
+<li>预测状态：<code>(2,0)</code></li>
+</ul>
+</blockquote>
+<p>因此你会从 <code>(4,0)</code>被拉回到 <code>(2,0)</code>, 并展示为眩晕，这在网络不良时都会经常遇见</p>
+<h3 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h3><blockquote>
+<p><strong>插值指在表现层更新 “其它人” 的状态变化时使用插值动画去平滑过渡。</strong></p>
+<p>预测+和解是解决 <strong>自己</strong> 的问题，发生在 <strong>逻辑层</strong>；插值是解决 <strong>其它人</strong> 的问题，发生在 <strong>表现层</strong> 。</p>
+</blockquote>
+<p>到目前为止，本地已经输入无延迟。但在其它玩家的眼中，我们依旧是卡顿的。<strong>这是由于同步帧率和显示帧率不一致导致的</strong>，所以我们在更新其它人的状态时，并非一步到位的更新，而是通过插值动画来平滑过渡。</p>
+<h1 id="帧同步（Lock-Step）"><a href="#帧同步（Lock-Step）" class="headerlink" title="帧同步（Lock Step）"></a><strong>帧同步（Lock Step）</strong></h1><h2 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h2><p>帧同步最基本的理念是，<strong>相同的输入+相同的时机&#x3D;相同的显示</strong>。简单来说，每个客户端接收到的操作是一样的，那么每个客户端的显示也是一样的。为了达成这一目标，就要保证每个客户端的运算都要绝对一致，不能依赖本地数据，而是依赖网络传输。包括一些随机数种子也是由服务器下发。</p>
+<p><strong>帧同步的重点在于相同的输入和时序，客户端的表现和逻辑必然是分开的。</strong>为了保证所有客户端在相同的时间点得到输入指令，诞生了逻辑帧的概念，客户端和服务器遵循相同的逻辑帧，服务器在每个逻辑顿收集客户端输入，再统一下发给每个客户端。如果客户端没有收到服务器的消息那么表现就会不一致，所以客户端在收到回包之后需要确认。所以早期游戏都是用的TCP协议</p>
+<p>显然这样有很多问题，虽然这保证了每个客户端的同步，但只要有一个客户端没有响应，便会阻断所有客户端的进程，并且也不能支持断线重连。早期的部分PC游戏，服务器只有在接受到所有客户端的输入数据后，才会继续执行，否则会等待直到认为该客户端超时断线</p>
+<h2 id="基于UDP"><a href="#基于UDP" class="headerlink" title="基于UDP"></a>基于UDP</h2><p>基于UDP的话，服务器不在需要等待客户端数据全部传入，但这个时候就会出现延迟干扰同步，比如服务器在第二顿时收到客户端第一帧的输入数据。</p>
+<p>UDP协议虽然快速，但是代价是不可靠，再加上网络环境的不确定性，丢包延迟的情况是不可避免的。为了在尽量使用UDP快速的优势下，又要保证传输的可靠性，所以诞生了可靠的UDP。<strong>所谓可靠的UDP，其实本质上不过是在应用层重新实现了一遍TCP协议。TCP协议为了保证可靠做了很多工作，比如确认包和滑动窗口机制等等。</strong>由应用层重新实现TCP协议，意味着应用可以自主地动态调整可靠性机制，优先保证传输速度。</p>
+<p><strong>但只需要保证客户端接收到服务器的逻辑顿是连续的就行。</strong>客户端可以选择每帧都发送数据，没有玩家输入数据的话，就发送一个空的确认包，服务器收到客户端的确认包会更新客户端的当前帧序号。同时为了保证可靠会发送最近3帧的数据，可以保证在网络波动下能恢复丢包的数据。</p>
+<h1 id="状态同步（State-Synchronization）"><a href="#状态同步（State-Synchronization）" class="headerlink" title="状态同步（State Synchronization）"></a><strong>状态同步（State Synchronization）</strong></h1><h2 id="基本原理-1"><a href="#基本原理-1" class="headerlink" title="基本原理"></a>基本原理</h2><p>状态同步有时也叫做快照同步，<strong>区别于帧同步策略同步每帧的输入，状态同步是同步每帧的游戏状态，或者说是每帧的游戏结果</strong>，例如物体的位置，怪物的血量变化等等。状态同步的服务器会运行所有游戏逻辑，但不包含表现（特效、UI、动画等在状态同步的服务器上是被省略的）。客户端收到服务器的每顿状态后，计算客户端的表现，包括特效、动画等。</p>
+<p><strong>状态同步其实是一种不严谨的同步，玩家屏幕上的表现的一致性并不是重要的指标，只要保证每个操作的结果相同即可。</strong>因为表现是每个客户端独立完成的，所以状态同步只保证了核心游戏逻辑的一致性，但每个客户端的显示效果可以是不一样的。</p>
+<h2 id="网络优化"><a href="#网络优化" class="headerlink" title="网络优化"></a>网络优化</h2><p>由于要同步游戏的所有状态变化，状态同步对网络带宽的要求比较高，这是相对于帧同步最大的缺点，所以状态同步更关注一些网络优化方法。</p>
+<ul>
+<li>帧同步使用的可靠UDP同样也适用于状态同步。</li>
+<li>基于变化的属性同步，例如UE4引擎。只会同步有变化的属性，只同步属性变化的一个增量。</li>
+<li>还需要一些手段减少每次需要同步的客户端数量，比如通过视野范围裁剪、区域裁剪、划分频道等相关性算法。计算每个客户端 (Connection) 之间的相关性，对每个客户端只同步相关性比较高的属性变化，比如在视野之外的变化不同步。</li>
+</ul>
+<h2 id="简单流程"><a href="#简单流程" class="headerlink" title="简单流程"></a>简单流程</h2><ol>
+<li>客户端玩家操作后，这些指令会立刻发给服务器，同时本地开始执行预测</li>
+<li>服务器会将这一帧收到的所有玩家的输入进行处理和计算。</li>
+<li>服务器上每个对象的变化都会被记录并保存，并且持续积累</li>
+<li>在每个同步间隔，服务器根据相关性算法和其他网络优化算法等计算需要同步给每个客户端 (Conenction) 的数据并同步给客户端</li>
+<li>客户端收到服务器的数据，验证自己的预测，同时清除掉验证过的数据或者回滚。</li>
+</ol>
+<p><img src="/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/image-20221109180036949.png" alt="image-20221109180036949"></p>
+<h1 id="帧同步与状态同步的区别"><a href="#帧同步与状态同步的区别" class="headerlink" title="帧同步与状态同步的区别"></a>帧同步与状态同步的区别</h1><p><strong>两者最大的区别在于，同步的游戏逻辑运行在客户端，服务端只做转发，而状态同步的游戏逻辑运行在服务端，客户端只做表现</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>帧同步（LockStep）</th>
+<th>状态同步</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>确定性</strong></td>
+<td>逻辑上绝对一致，因此严格确定</td>
+<td>表现不一定一致，只要保证每个操作的结果相同即可</td>
+</tr>
+<tr>
+<td>响应速度</td>
+<td>操作需要发送到服务器再等服务器返回按帧执行，也可以做预表现但很受限，<strong>响应性较差</strong></td>
+<td>更好的进行预表现，<strong>响应性较好</strong>，因此大多FPS采用</td>
+</tr>
+<tr>
+<td>带宽</td>
+<td>人数少时极低，带宽随人数增加而增加，<strong>不适合多人游戏</strong></td>
+<td>需要发送各种状态数据，带宽占用比较高。可以通过压缩、裁剪、增量等方式优化。</td>
+</tr>
+<tr>
+<td>网络延迟</td>
+<td>要求较低的延迟。如果延迟较高，极容易产生卡顿</td>
+<td><strong>适应性较高</strong>，方便做各种插值优化</td>
+</tr>
+<tr>
+<td>开发难度</td>
+<td>框架容易实现，但是难以解决bug和完善系统。比如浮点数、随机数、执行顺序导致计算结果不一致</td>
+<td>框架复杂，每个功能都需要客户端服务端联调</td>
+</tr>
+<tr>
+<td>跨平台</td>
+<td><strong>不适合跨平台</strong>，不同硬件和编译器导致浮点数计算不一致</td>
+<td>适合。有权威服务器</td>
+</tr>
+<tr>
+<td>反外挂</td>
+<td>不适合反外挂，如果引入战斗服务器来校验各个客户端结果，可以解决常见外挂</td>
+<td>与服务器加入校验机制，<strong>可以起到比较好的反外挂效果</strong>。</td>
+</tr>
+<tr>
+<td>断线重连</td>
+<td><strong>比较复杂。</strong>可以通过快捷播放服务器同步的帧数据来快速跟上游戏</td>
+<td>容易。由于实时记录了各个对象的状态信息，所以直接创建这些对象并同步信息即可</td>
+</tr>
+<tr>
+<td>回放（离线）</td>
+<td>本身收集了所有玩家的输入信息进行逻辑推进，<strong>天然支持回放</strong></td>
+<td>逻辑比较复杂，需要不断记录状态信息，同时回放时候需要读取合适的时间。</td>
+</tr>
+<tr>
+<td>回放（实时）</td>
+<td><strong>比较复杂</strong>，客户端需要本地对全场状态进行序列化，才能回到目标时间。播完回放后还需要加速追上实时游戏状态</td>
+<td><strong>相对容易</strong>，可以方便的记录快照信息，并按照录制内容随时播放</td>
+</tr>
+</tbody></table>
+<h2 id="回放系统"><a href="#回放系统" class="headerlink" title="回放系统"></a>回放系统</h2><p>帧同步的回放比状态同步好做得多，因为只需要保存每局所有人的操作就好了。但是实时回放的话（比如死亡回放），客户端需要本地对全场状态进行序列化，才能回到目标时间。播完回放后还需要加速追上实时游戏状态</p>
+<p>而状态同步的回放，需要有一个回放服务器，当一局战斗打响，战斗服务器在给客户端发送消息的同时，还需要把这些消息发给回放服务器，回放服务器做储存，如果有其他客户端请求回放或者观战，则回放服务器把储存起来的消息按时间发给客户端。守望先锋的死亡回放、全场最佳、赛后回放使用了另一个EntityAdmin（ECS的术语）</p>
+<h2 id="断线重连"><a href="#断线重连" class="headerlink" title="断线重连"></a>断线重连</h2><p>断线重连则相反，因为帧同步将数据大多放在客户端，而且基于UDP的帧同步会默认玩家网络会存在问题，重连时倍速播放服务端同步的帧数据来跟上正常进度。</p>
+<p>状态同步只需要根据服务端记录下的状态信息创建对象并同步就行了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -181,19 +360,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://ycy666666.github.io/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2023/04/29/Unity%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Unity打包流程
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2022/12/26/lua%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">lua面向对象</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -216,8 +491,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -286,11 +561,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">

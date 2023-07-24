@@ -336,8 +336,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="基础架构"><a href="#基础架构" class="headerlink" title="基础架构"></a>基础架构</h1><p>基于实习所在的项目组，主要是使用tolua框架在C#端进行C#接口开发，使用C/C++ Lua Bindings框架在lua层进行C++接口开发。Lua层能够以脚本更新来实现逻辑代码热更，但对于C#层和C++层的模块修改只能通过发布新的二进制包方式而无法热更</p>
-<p>使用tolua框架能够是Lua层访问C#层接口，使用C/C++ Lua Bindings框架使其能够访问C++结构，引入C++主要是为了剥离出会造成GC Alloc压力的代码到C++层。C#层只需要关注Unity引擎接口与Unity插件模块的使用，理想情况下IO，网络，下载与SDK等核心基础模块都应该使用C++开发与优化，从而提高基础组件的性能表现</p>
+        <h1 id="基础架构"><a href="#基础架构" class="headerlink" title="基础架构"></a>基础架构</h1><p>基于实习所在的项目组，主要是使用tolua框架在C#端进行C#接口开发，使用C&#x2F;C++ Lua Bindings框架在lua层进行C++接口开发。Lua层能够以脚本更新来实现逻辑代码热更，但对于C#层和C++层的模块修改只能通过发布新的二进制包方式而无法热更</p>
+<p>使用tolua框架能够是Lua层访问C#层接口，使用C&#x2F;C++ Lua Bindings框架使其能够访问C++结构，引入C++主要是为了剥离出会造成GC Alloc压力的代码到C++层。C#层只需要关注Unity引擎接口与Unity插件模块的使用，理想情况下IO，网络，下载与SDK等核心基础模块都应该使用C++开发与优化，从而提高基础组件的性能表现</p>
 <h1 id="Lua层结构"><a href="#Lua层结构" class="headerlink" title="Lua层结构"></a>Lua层结构</h1><h2 id="启动流程"><a href="#启动流程" class="headerlink" title="启动流程"></a>启动流程</h2><p>有了两种绑定方法，Lua层同时具有了调用C++层接口和Unity引擎接口的可能</p>
         
           <a class="article-more-a" href="/2023/06/28/unity-Lua%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/#more">more >></a>
@@ -420,9 +420,9 @@
       
         <h1 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h1><p>很多基本模块比如按钮、slider等都能从Prefab中直接拖拽到场景中实现，但都需要有一个Collider（Prefab已经自带）</p>
 <p>因为不仅是UI，所有带有Collider的游戏物体都能接收到OnClick， OnPress这样的事件——前提是需要在Main Camera里面添加上event System组件，然后自定义脚本添加以下函数：</p>
-<p><img src="/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/莉莉丝飞书20230412-142107.jpg" alt="莉莉丝飞书20230412-142107"></p>
+<p><img src="/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/%E8%8E%89%E8%8E%89%E4%B8%9D%E9%A3%9E%E4%B9%A620230412-142107.jpg" alt="莉莉丝飞书20230412-142107"></p>
 <p>如果不想写代码，也可以直接拖拽UIEventTrugger脚本来实现相关功能</p>
-<p><img src="/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/莉莉丝飞书20230412-143328.jpg" alt="莉莉丝飞书20230412-143328"></p>
+<p><img src="/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/%E8%8E%89%E8%8E%89%E4%B8%9D%E9%A3%9E%E4%B9%A620230412-143328.jpg" alt="莉莉丝飞书20230412-143328"></p>
 <p>与此同时，我们也可以给其中一个事件绑定多个函数，比如滑动条的变更既改变音量大小也能改变滑动条背景颜色。也能在On Finished中指定动作完成后发生的下一动作</p>
         
           <a class="article-more-a" href="/2023/04/29/NGUI%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/#more">more >></a>
@@ -580,7 +580,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>每一次重装系统或者是需要在服务器上正确运行软件，我们都需要重新安装所有的package、dependency并进行相应配置的微调。而这一过程可能就会因为疏忽导致错误，因此需要自动化部署</p>
-<p>持续整合，持续交付（CI/CD）的实践，我们能够周期性的对产品进行各种专业测试，如果出现问题我们也能快速找到发生问题的最近位置。同时我们还能进行报表分析和自动通知等其他操作</p>
+<p>持续整合，持续交付（CI&#x2F;CD）的实践，我们能够周期性的对产品进行各种专业测试，如果出现问题我们也能快速找到发生问题的最近位置。同时我们还能进行报表分析和自动通知等其他操作</p>
 <h1 id="Ansible"><a href="#Ansible" class="headerlink" title="Ansible"></a>Ansible</h1><p>ansible就是这样一款主流的自动化部署工具，要通过ansible在被控节点（managed node）上配置环境，我们需要安装Pyhton然后通过SSH连线。</p>
         
           <a class="article-more-a" href="/2023/04/29/CICD%E4%B8%AD%E7%9A%84jenkins%E5%92%8Cansible%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/#more">more >></a>
@@ -648,6 +648,7 @@
       
         <h1 id="一般打包流程"><a href="#一般打包流程" class="headerlink" title="一般打包流程"></a><strong>一般打包流程</strong></h1><p>通常打包流程主要是通过 <code>Building setting</code>来选择需要打包的场景后出包到指定文件夹位置，也可以采用 <code>[MenuItem(&quot;MyMenu/Do Something&quot;)]</code>中使用static函数来选择打包路径和打包方式——需要将该脚本放置在 <code>Editor</code>文件夹下</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">MenuItem(<span class="string">&quot;Test/BuildAndroid&quot;</span>)</span>]</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">BuildAndroid</span>()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">string</span> path = Path.GetFullPath(<span class="string">&quot;D:\\Packages&quot;</span>) + <span class="string">&quot;/Backbag&quot;</span> + <span class="string">&quot;.apk&quot;</span>;</span><br><span class="line">    BuildPipeline.BuildPlayer(GetBuildScence(), path, BuildTarget.Android, BuildOptions.None);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="命令行控制"><a href="#命令行控制" class="headerlink" title="命令行控制"></a><strong>命令行控制</strong></h2><ol>
 <li>Launching Unity</li>
 <li>首先我们需要在<code>Unity.exe</code>所在目录下执行</li>
@@ -679,6 +680,86 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2023/04/29/Unity%E6%89%93%E5%8C%85%E6%B5%81%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-帧同步和状态同步" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/">帧同步和状态同步</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/" class="archive-article-date">
+  	<time datetime="2023-01-09T11:22:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="网络同步"><a href="#网络同步" class="headerlink" title="网络同步"></a>网络同步</h1><p>网络同步主要目的在于保证各个端口的游戏表现一致，<strong>网络同步就在于实时的多段数据同步和实时的多端表现。</strong></p>
+<p>而对于大多数游戏，不仅客户端的表现要一致，而且需要客户端和服务端的数据是一致的。所以，同步是一个网络游戏概念，只有网络游戏才需要同步，而单机游戏是不需要同步的。</p>
+<h2 id="同步目的"><a href="#同步目的" class="headerlink" title="同步目的"></a>同步目的</h2><p>首先我们慢慢说明如何实现简单的坐标同步</p>
+<p>很多时候我们都在讨论 “该用帧同步还是状态同步”，似乎这已经变成了一个二选一的问题。 但事实上，帧同步和状态同步不但 <strong>不是</strong> 二选一的关系，甚至可以 <strong>相互替代</strong> 和 <strong>混合使用</strong>。</p>
+<p>因为，<strong>帧同步和状态同步最终都是同步状态。</strong></p>
+        
+          <a class="article-more-a" href="/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/09/%E5%B8%A7%E5%90%8C%E6%AD%A5%E5%92%8C%E7%8A%B6%E6%80%81%E5%90%8C%E6%AD%A5/">展开全文 >></a>
         </p>
       
 
@@ -808,50 +889,46 @@
       
         <h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>lua是动态语言类型，变量不需要类型定义，只需要为变量赋值</p>
 <p>lua有8个基本类型：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:left">数据类型</th>
-<th style="text-align:left">描述</th>
+<th align="left">数据类型</th>
+<th align="left">描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left">nil</td>
-<td style="text-align:left">这个最简单，只有值nil属于该类，表示一个无效值（在条件表达式中相当于false）。</td>
+<tbody><tr>
+<td align="left">nil</td>
+<td align="left">这个最简单，只有值nil属于该类，表示一个无效值（在条件表达式中相当于false）。</td>
 </tr>
 <tr>
-<td style="text-align:left">boolean</td>
-<td style="text-align:left">包含两个值：false和true。</td>
+<td align="left">boolean</td>
+<td align="left">包含两个值：false和true。</td>
 </tr>
 <tr>
-<td style="text-align:left">number</td>
-<td style="text-align:left">表示双精度类型的实浮点数</td>
+<td align="left">number</td>
+<td align="left">表示双精度类型的实浮点数</td>
 </tr>
 <tr>
-<td style="text-align:left">string</td>
-<td style="text-align:left">字符串由一对双引号或单引号来表示</td>
+<td align="left">string</td>
+<td align="left">字符串由一对双引号或单引号来表示</td>
 </tr>
 <tr>
-<td style="text-align:left">function</td>
-<td style="text-align:left">由 C 或 Lua 编写的函数</td>
+<td align="left">function</td>
+<td align="left">由 C 或 Lua 编写的函数</td>
 </tr>
 <tr>
-<td style="text-align:left">userdata</td>
-<td style="text-align:left">表示任意存储在变量中的C数据结构</td>
+<td align="left">userdata</td>
+<td align="left">表示任意存储在变量中的C数据结构</td>
 </tr>
 <tr>
-<td style="text-align:left">thread</td>
-<td style="text-align:left">表示执行的独立线路，用于执行协同程序</td>
+<td align="left">thread</td>
+<td align="left">表示执行的独立线路，用于执行协同程序</td>
 </tr>
 <tr>
-<td style="text-align:left">table</td>
-<td style="text-align:left">Lua 中的表（table）其实是一个”关联数组”（associative arrays），数组的索引可以是数字、字符串或表类型。在 Lua 里，table 的创建是通过”构造表达式”来完成，最简单构造表达式是{}，用来创建一个空表。</td>
+<td align="left">table</td>
+<td align="left">Lua 中的表（table）其实是一个”关联数组”（associative arrays），数组的索引可以是数字、字符串或表类型。在 Lua 里，table 的创建是通过”构造表达式”来完成，最简单构造表达式是{}，用来创建一个空表。</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
         
           <a class="article-more-a" href="/2022/12/23/lua-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/#more">more >></a>
         
@@ -878,89 +955,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/12/23/lua-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Unity-Mirror实现局域网联机自制卡牌游戏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/12/05/Unity-Mirror%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA%E8%87%AA%E5%88%B6%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F/">Unity + Mirror实现局域网联机自制卡牌游戏</a>
-    </h1>
-  
-
-        
-        <a href="/2022/12/05/Unity-Mirror%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA%E8%87%AA%E5%88%B6%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F/" class="archive-article-date">
-  	<time datetime="2022-12-05T09:30:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="资源下载地址"><a href="#资源下载地址" class="headerlink" title="资源下载地址"></a>资源下载地址</h1><p>局域网联机插件 Mirror：<a target="_blank" rel="noopener" href="https://assetstore.unity.com/packages/tools/network/mirror-129321">Mirror | 网络 | Unity Asset Store</a></p>
-<p>本地客户端测试多人游戏（不用打包）插件 ： <a target="_blank" rel="noopener" href="https://github.com/VeriorPies/ParrelSync">ParrelSync</a></p>
-<p>Mirror官方文档：<a target="_blank" rel="noopener" href="https://mirror-networking.gitbook.io/docs/general">General - Mirror (gitbook.io)</a></p>
-<h1 id="Mirror使用"><a href="#Mirror使用" class="headerlink" title="Mirror使用"></a>Mirror使用</h1><h2 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h2><ol>
-<li>导入Mirror Package</li>
-<li>创建空物体，添加 <code>Network Manager</code>， <code>Network Manager HUD</code>以及 <code>KCP Transport</code>（也可以选择其他网络连接方式）</li>
-<li>导入<code>ParrelSync</code>， 并为其clone当前项目，在此之后clone后的项目能同步你在本项目的所有修改</li>
-</ol>
-        
-          <a class="article-more-a" href="/2022/12/05/Unity-Mirror%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA%E8%87%AA%E5%88%B6%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/12/05/Unity-Mirror%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA%E8%87%AA%E5%88%B6%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F/">展开全文 >></a>
         </p>
       
 
@@ -1087,11 +1081,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -142,6 +142,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="article-games101-着色（7-9）" class="article article-type-article  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/">games101 着色（7~9）</a>
+    </h1>
+  
+
+        
+        <a href="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/" class="archive-article-date">
+  	<time datetime="2022-05-06T02:05:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="深度缓存"><a href="#深度缓存" class="headerlink" title="深度缓存"></a>深度缓存</h1><h2 id="1-何为深度"><a href="#1-何为深度" class="headerlink" title="1. 何为深度"></a>1. 何为深度</h2><p>深度其实就是该象素点在3D世界中距离摄象机的距离（绘制坐标），深度缓存中存储着每个象素点（绘制在屏幕上的）的深度值！深度值（Z值）越大，则离摄像机越远。</p>
+<h2 id="2-为什么需要深度？"><a href="#2-为什么需要深度？" class="headerlink" title="2. 为什么需要深度？"></a>2. 为什么需要深度？</h2><p>在不使用深度测试的时候，如果我们先绘制一个距离较近的物体，再绘制距离较远的物体，则距离远的物体因为后绘制，会把距离近的物体覆盖掉，这样的效果并不是我们所希望的。</p>
+<p><img src="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/image-20220428120250042.png" alt="image-20220428120250042"></p>
+<p>而且如果出现上图这种情况，这种方法便失效了。而有了深度缓冲以后，绘制物体的顺序就不那么重要了，都能按照远近（Z值)正常显示，这很关键。</p>
+        
+          <a class="article-more-a" href="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">图形学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/05/06/games101-%E7%9D%80%E8%89%B2%EF%BC%887-9%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="article-games101-光栅化（5-6）" class="article article-type-article  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -328,7 +407,6 @@
         <h1 id="认识音频组件"><a href="#认识音频组件" class="headerlink" title="认识音频组件"></a>认识音频组件</h1><h2 id="AudioClip"><a href="#AudioClip" class="headerlink" title="AudioClip"></a>AudioClip</h2><p>想要播放的音频文件，存储在Assets文件夹中</p>
 <h2 id="AudioSource"><a href="#AudioSource" class="headerlink" title="AudioSource"></a>AudioSource</h2><p> 播放音频文件，能调节音量，3D效果音。音频源就像一个控制器，用于启动和停止该剪辑音源的播放，以及修改其他音频属性。</p>
 <p><strong>Priority</strong>：从场景中存在的所有音频源中确定此音频源的优先级。（Priority值为0 表示优先级最高。值为256， 表示优先级最低。默认值为 128）。对于音轨值应为 0，避免被意外擦除。</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -336,8 +414,7 @@
 <th>声音衰减的速度。此值越高，监听器必须越接近才能听到声音。（这取决于图）。</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><strong>- Logarithmic Rolloff</strong></td>
 <td>靠近音频源时，声音很大，但离开对象时，声音降低得非常快。</td>
 </tr>
@@ -349,9 +426,7 @@
 <td><strong>- Custom Rolloff</strong></td>
 <td>音频源的音频效果是根据曲线图的设置变化的。</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h3 id="距离函数"><a href="#距离函数" class="headerlink" title="距离函数"></a>距离函数</h3>
         
           <a class="article-more-a" href="/2022/04/10/Unity-%E9%9F%B3%E9%A2%91%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/#more">more >></a>
@@ -430,6 +505,7 @@
       
         <h1 id="协程的使用"><a href="#协程的使用" class="headerlink" title="协程的使用"></a>协程的使用</h1><p>由于Unity3D是单线程的，所以实现了协程机制来达到类似多线程的作用。但它不是进程或线程，他执行过程类似于一个子例程或者是不带返回值的函数。</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Coroutine <span class="title">StartCoroutine</span>(<span class="params">IEnumertor routine</span>)</span>;</span><br><span class="line"><span class="function">Coroutine <span class="title">StartCoroutine</span>(<span class="params"><span class="built_in">string</span> methodName, <span class="built_in">object</span> <span class="keyword">value</span> = <span class="literal">null</span></span>)</span>;</span><br></pre></td></tr></table></figure>
+
 <p>我们就可以以此来实现延时效果</p>
 <p>而<code>StopCoroutine</code>方法只能停止同一个脚本当的方法名和传入string型参数相同的协程，而且只能用来停止那些使用<code>StartCoroutine</code>的string型参数的重载版本开启的协程</p>
 <h2 id="协程背后的迭代器"><a href="#协程背后的迭代器" class="headerlink" title="协程背后的迭代器"></a>协程背后的迭代器</h2><h2 id="认识迭代器"><a href="#认识迭代器" class="headerlink" title="认识迭代器"></a>认识迭代器</h2><p>迭代器：可在容器对象（container，例如链表或数组）上遍访的接口，而无需关心容器对象的内存分配的实现细节</p>
@@ -509,42 +585,38 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="UI系统对比"><a href="#UI系统对比" class="headerlink" title="UI系统对比"></a>UI系统对比</h1><p>对 UI 系统的选择取决于是为 Unity 编辑器开发 UI，还是为游戏或应用程序开发运行时 UI。</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:left"><strong>UI 的类型</strong></th>
-<th style="text-align:left"><strong>UI 工具包</strong></th>
-<th style="text-align:left"><strong>Unity UI(uGUI)</strong></th>
-<th style="text-align:left"><strong>IMGUI</strong></th>
-<th style="text-align:left"><strong>注意事项</strong></th>
+<th align="left"><strong>UI 的类型</strong></th>
+<th align="left"><strong>UI 工具包</strong></th>
+<th align="left"><strong>Unity UI(uGUI)</strong></th>
+<th align="left"><strong>IMGUI</strong></th>
+<th align="left"><strong>注意事项</strong></th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong>运行时（调试）</strong></td>
-<td style="text-align:left">✔ *</td>
-<td style="text-align:left">✔</td>
-<td style="text-align:left">✔</td>
-<td style="text-align:left">这指用于调试用途的临时运行时 UI。</td>
+<tbody><tr>
+<td align="left"><strong>运行时（调试）</strong></td>
+<td align="left">✔ *</td>
+<td align="left">✔</td>
+<td align="left">✔</td>
+<td align="left">这指用于调试用途的临时运行时 UI。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>运行时（游戏内）</strong></td>
-<td style="text-align:left">✔ *</td>
-<td style="text-align:left">✔</td>
-<td style="text-align:left">不推荐</td>
-<td style="text-align:left">出于性能原因，Unity 不推荐将 IMGUI 用于游戏内运行时 UI。</td>
+<td align="left"><strong>运行时（游戏内）</strong></td>
+<td align="left">✔ *</td>
+<td align="left">✔</td>
+<td align="left">不推荐</td>
+<td align="left">出于性能原因，Unity 不推荐将 IMGUI 用于游戏内运行时 UI。</td>
 </tr>
 <tr>
-<td style="text-align:left"><strong>Unity Editor</strong></td>
-<td style="text-align:left">✔</td>
-<td style="text-align:left">❌</td>
-<td style="text-align:left">✔</td>
-<td style="text-align:left">不能使用 Unity UI 为 Unity 编辑器创建 UI。</td>
+<td align="left"><strong>Unity Editor</strong></td>
+<td align="left">✔</td>
+<td align="left">❌</td>
+<td align="left">✔</td>
+<td align="left">不能使用 Unity UI 为 Unity 编辑器创建 UI。</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p>当然对于我来说，那必然是选择UGUI</p>
 <h1 id="基本布局"><a href="#基本布局" class="headerlink" title="基本布局"></a>基本布局</h1><p>UI是为了什么？当然是美观，不美观的UI就是摆在厕所的满汉全席</p>
         
@@ -789,7 +861,7 @@
 <p><img src="/2022/03/27/CSharp-%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93%EF%BC%88%E6%8A%BD%E8%B1%A1%E7%B1%BB%E4%B8%8E%E6%8E%A5%E5%8F%A3%EF%BC%89/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAamtra18=,size_20,color_FFFFFF,t_70,g_se,x_16.png" alt="img"></p>
 <p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
 <p> 示例代码</p>
-<p>如果不采用抽象方法，我们创建一个父类引用指向子类对象：Vehicle Car = new Car();</p>
+<p>如果不采用抽象方法，我们创建一个父类引用指向子类对象：Vehicle Car &#x3D; new Car();</p>
 <p>由于Cat是继承自它的父类Animal，所以Animal类型的引用是可以指向Cat类型的对象的。这就是“向上转型”。这样既可以使用子类强大的功能，又可以抽取父类的共性。 所以，父类类型的引用可以调用父类中定义的所有属性和方法，而对于子类中定义而父类中没有的方法，父类引用是无法调用的； </p>
 <p>那么如果我想编写一个种类的基类，种类之间都有相同方法，但具体实现需求不同。那么我就需要很多很多的抽象类，那会不会一个抽象类中的所有方法都是抽象的呢？</p>
 <p>当然有！这就是接口——</p>
@@ -925,82 +997,6 @@
 
 
   
-    <article id="post-git理论及其应用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/03/07/git%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/">git理论及其应用</a>
-    </h1>
-  
-
-        
-        <a href="/2022/03/07/git%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2022-03-07T12:51:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Git-库指令速查表"><a href="#Git-库指令速查表" class="headerlink" title="Git 库指令速查表"></a>Git 库指令速查表</h1><p><img src="/2022/03/07/git%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Zyw54ux54Gr5aCh5Z6S,size_20,color_FFFFFF,t_70,g_se,x_16.png" alt="img"></p>
-        
-          <a class="article-more-a" href="/2022/03/07/git%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">其他</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/03/07/git%E7%90%86%E8%AE%BA%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
@@ -1098,11 +1094,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">

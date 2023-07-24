@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://ycy666666.github.io">
   <title>协程背后的迭代器 | WEBSITE</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="协程的使用由于Unity3D是单线程的，所以实现了协程机制来达到类似多线程的作用。但它不是进程或线程，他执行过程类似于一个子例程或者是不带返回值的函数。 12Coroutine StartCoroutine(IEnumertor routine);Coroutine StartCoroutine(string methodName, object value &#x3D; null); 我们就可以以此来实现">
+  <meta name="description" content="协程的使用由于Unity3D是单线程的，所以实现了协程机制来达到类似多线程的作用。但它不是进程或线程，他执行过程类似于一个子例程或者是不带返回值的函数。 12Coroutine StartCoroutine(IEnumertor routine);Coroutine StartCoroutine(string methodName, object value &#x3D; null);  我们就可以以此来实">
 <meta property="og:type" content="article">
 <meta property="og:title" content="协程背后的迭代器">
 <meta property="og:url" content="https://ycy666666.github.io/2022/04/06/%E5%8D%8F%E7%A8%8B%E8%83%8C%E5%90%8E%E7%9A%84%E8%BF%AD%E4%BB%A3%E5%99%A8/index.html">
 <meta property="og:site_name" content="WEBSITE">
-<meta property="og:description" content="协程的使用由于Unity3D是单线程的，所以实现了协程机制来达到类似多线程的作用。但它不是进程或线程，他执行过程类似于一个子例程或者是不带返回值的函数。 12Coroutine StartCoroutine(IEnumertor routine);Coroutine StartCoroutine(string methodName, object value &#x3D; null); 我们就可以以此来实现">
+<meta property="og:description" content="协程的使用由于Unity3D是单线程的，所以实现了协程机制来达到类似多线程的作用。但它不是进程或线程，他执行过程类似于一个子例程或者是不带返回值的函数。 12Coroutine StartCoroutine(IEnumertor routine);Coroutine StartCoroutine(string methodName, object value &#x3D; null);  我们就可以以此来实">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-06T07:24:25.000Z">
 <meta property="article:modified_time" content="2022-04-06T07:34:16.963Z">
@@ -167,13 +167,16 @@
       
         <h1 id="协程的使用"><a href="#协程的使用" class="headerlink" title="协程的使用"></a>协程的使用</h1><p>由于Unity3D是单线程的，所以实现了协程机制来达到类似多线程的作用。但它不是进程或线程，他执行过程类似于一个子例程或者是不带返回值的函数。</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Coroutine <span class="title">StartCoroutine</span>(<span class="params">IEnumertor routine</span>)</span>;</span><br><span class="line"><span class="function">Coroutine <span class="title">StartCoroutine</span>(<span class="params"><span class="built_in">string</span> methodName, <span class="built_in">object</span> <span class="keyword">value</span> = <span class="literal">null</span></span>)</span>;</span><br></pre></td></tr></table></figure>
+
 <p>我们就可以以此来实现延时效果</p>
 <p>而<code>StopCoroutine</code>方法只能停止同一个脚本当的方法名和传入string型参数相同的协程，而且只能用来停止那些使用<code>StartCoroutine</code>的string型参数的重载版本开启的协程</p>
 <h2 id="协程背后的迭代器"><a href="#协程背后的迭代器" class="headerlink" title="协程背后的迭代器"></a>协程背后的迭代器</h2><h2 id="认识迭代器"><a href="#认识迭代器" class="headerlink" title="认识迭代器"></a>认识迭代器</h2><p>迭代器：可在容器对象（container，例如链表或数组）上遍访的接口，而无需关心容器对象的内存分配的实现细节</p>
 <span id="more"></span>
+
 <p>C#中迭代器被封装在<code>IEnumerable</code>和<code>IEnumerator</code>两个接口中，<code>IEnumerable</code>定义了可以获取<code>IEnumerator</code>的方法——<code>GetIEnumerator()</code>，而<code>IEnumerator</code>则实现了在目标序列上实现循环迭代（使用<code>MoveNext()</code>方法和<code>Current</code>属性），直到我们不再需要数据或者是没有数据可以返回。这样我们就能实现<code>foreach</code>循环</p>
 <p>为什么我们需要两个接口来完成工作呢，当我们需要使用嵌套的<code>foreach</code>循环时，我们要保证两个独立的迭代块不相互干扰，这正是<code>IEnumerator</code>要做的事情。我们还不能违背单一职责原则，不能让<code>IEnumerable</code>拥有过多指责，所以<code>IEnumerable</code>就没有实现<code>MoveNext()</code>方法</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title">Test</span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>()</span>&#123;</span><br><span class="line">        <span class="keyword">foreach</span>(<span class="function"><span class="built_in">string</span> s <span class="keyword">in</span> <span class="title">GetEnumerableTest</span>())</span>&#123;</span><br><span class="line">            Console.WriteLine(s);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;   </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">static</span> IEnumerable&lt;<span class="built_in">string</span>&gt; <span class="title">GetEnumerableTest</span>()</span>&#123;</span><br><span class="line">        <span class="keyword">yield</span> <span class="keyword">return</span> <span class="string">&quot;begin&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">yield</span> <span class="keyword">return</span> i.Tostring();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">yield</span> <span class="keyword">return</span> <span class="string">&quot;end&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>执行过程中值得注意的几点：</p>
 <ol>
 <li>执行顺序：<ol>
@@ -191,12 +194,14 @@
 <p>我们已经知道调用一个使用了迭代器块,返回类型为<code>IEnumerable</code>或<code>IEnumerator</code>时,并不是立即执行我们写的代码,而是先创建一个编译器生成的类的实例,当调用<code>MoveNext()</code>时才会开始执行(如果返回的是<code>IEnumerable</code>则先调用<code>GetEnumerator()</code>)</p>
 <p>值得注意的是返回最后一个数据之后的代码不会执行,因为此时<code>MoveNext()</code>返回的是false</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">yield</span> <span class="keyword">return</span> <span class="string">&quot;Final&quot;</span>;</span><br><span class="line">Console.WriteLine(<span class="string">&quot;这是最后yield return之后的代码&quot;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <p>迭代器内部状态机的状态转换大概是这样的:<br>-2: 只有IEnumerable才有,表明首次调用GetEnumerator之前的状态</p>
 <p>-1: Running状态,也会用于After状态</p>
 <p>0: 表示此时<code>MoveNext()</code>一次都还没调用</p>
 <h2 id="协程的其他用法"><a href="#协程的其他用法" class="headerlink" title="协程的其他用法"></a>协程的其他用法</h2><p>我们可以通过WWW类来下载网址中的内容</p>
 <p>用法:</p>
 <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">string</span> url = <span class="string">&quot;网址&quot;</span>;</span><br><span class="line"><span class="function">IEnumerator <span class="title">Start</span>()</span>&#123;</span><br><span class="line">    WWW www = <span class="keyword">new</span> WWW(url);</span><br><span class="line">    <span class="keyword">yield</span> <span class="keyword">return</span> www;</span><br><span class="line">    render.material.mainTexture = www.texture;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -417,11 +422,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">

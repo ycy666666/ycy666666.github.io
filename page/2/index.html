@@ -142,6 +142,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Unity-Mirror实现局域网联机自制卡牌游戏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/12/05/Unity-Mirror%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA%E8%87%AA%E5%88%B6%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F/">Unity + Mirror实现局域网联机自制卡牌游戏</a>
+    </h1>
+  
+
+        
+        <a href="/2022/12/05/Unity-Mirror%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA%E8%87%AA%E5%88%B6%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F/" class="archive-article-date">
+  	<time datetime="2022-12-05T09:30:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="资源下载地址"><a href="#资源下载地址" class="headerlink" title="资源下载地址"></a>资源下载地址</h1><p>局域网联机插件 Mirror：<a target="_blank" rel="noopener" href="https://assetstore.unity.com/packages/tools/network/mirror-129321">Mirror | 网络 | Unity Asset Store</a></p>
+<p>本地客户端测试多人游戏（不用打包）插件 ： <a target="_blank" rel="noopener" href="https://github.com/VeriorPies/ParrelSync">ParrelSync</a></p>
+<p>Mirror官方文档：<a target="_blank" rel="noopener" href="https://mirror-networking.gitbook.io/docs/general">General - Mirror (gitbook.io)</a></p>
+<h1 id="Mirror使用"><a href="#Mirror使用" class="headerlink" title="Mirror使用"></a>Mirror使用</h1><h2 id="前置准备"><a href="#前置准备" class="headerlink" title="前置准备"></a>前置准备</h2><ol>
+<li>导入Mirror Package</li>
+<li>创建空物体，添加 <code>Network Manager</code>， <code>Network Manager HUD</code>以及 <code>KCP Transport</code>（也可以选择其他网络连接方式）</li>
+<li>导入<code>ParrelSync</code>， 并为其clone当前项目，在此之后clone后的项目能同步你在本项目的所有修改</li>
+</ol>
+        
+          <a class="article-more-a" href="/2022/12/05/Unity-Mirror%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA%E8%87%AA%E5%88%B6%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Unity</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/12/05/Unity-Mirror%E5%AE%9E%E7%8E%B0%E5%B1%80%E5%9F%9F%E7%BD%91%E8%81%94%E6%9C%BA%E8%87%AA%E5%88%B6%E5%8D%A1%E7%89%8C%E6%B8%B8%E6%88%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-游戏优化之空间划分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -166,7 +249,7 @@
 <p>在游戏中，AI向最近的敌人攻击是很常见的，但如果有很多单位的话，他们AI需要频繁的查找单位，然后在检测是不是距离最近的单位，时间复杂度是o(n ^ 2)</p>
 <p>之所以会出现这个问题，是因为我们没有指明潜在的对象顺序。假如我们游戏的所有单位都只在一条直线上，我们只需要二分查找就可以找到最近对象了。操作系统中，有着局部性原理，我们也可以根据游戏物体的位置来存储对象，这样就能更快的找到他们</p>
 <p><strong>注意事项：</strong></p>
-<p>空间分区的存在是为了将<em>O(n)</em>或者<em>O(n²)</em> 的操作降到更加可控的数量级。 你拥有的对象<em>越多</em>，这就越重要。相反的，如果<em>n</em>足够小，也许不需要担心这个</p>
+<p>空间分区的存在是为了将<em>O(n)<em>或者</em>O(n²)</em> 的操作降到更加可控的数量级。 你拥有的对象<em>越多</em>，这就越重要。相反的，如果<em>n</em>足够小，也许不需要担心这个</p>
 <p>这不仅能够用于存储可移动的游戏对象，还可用于静态美术等场景资源。如果对象发生移动，我们需要在数据结构中重新追踪该对象，这也会增加CPU消耗。</p>
         
           <a class="article-more-a" href="/2022/11/20/%E6%B8%B8%E6%88%8F%E4%BC%98%E5%8C%96%E4%B9%8B%E7%A9%BA%E9%97%B4%E5%88%92%E5%88%86/#more">more >></a>
@@ -810,7 +893,7 @@
       
         <h1 id="什么是渲染管线"><a href="#什么是渲染管线" class="headerlink" title="什么是渲染管线"></a>什么是渲染管线</h1><p>渲染管线（渲染流水线）是将三维场景模型转换到屏幕像素空间输出的过程。图形渲染管线主要包括两个功能：一是将物体3D坐标转变为屏幕空间2D坐标，二是为屏幕每个像素点进行着色。</p>
 <h2 id="渲染管线的流程"><a href="#渲染管线的流程" class="headerlink" title="渲染管线的流程"></a>渲染管线的流程</h2><p>渲染管线的一般流程如下图所示。分别是：顶点数据的输入、顶点着色器、曲面细分过程、几何着色器、图元组装、裁剪剔除、光栅化、片段着色器以及混合测试。</p>
-<p><img src="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/Image [1].png" alt="Image [1]"></p>
+<p>![Image [1]](渲染管线概论&#x2F;Image [1].png)</p>
 <p>此外还可以抽象为4个阶段</p>
 <p><img src="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/image-20220920175951721.png" alt="image-20220920175951721"></p>
         
@@ -839,85 +922,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="article-图论算法个人总结" class="article article-type-article  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/06/%E5%9B%BE%E8%AE%BA%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/">图论算法个人总结</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/06/%E5%9B%BE%E8%AE%BA%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2022-09-06T14:34:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="图论基础以及遍历算法"><a href="#图论基础以及遍历算法" class="headerlink" title="图论基础以及遍历算法"></a>图论基础以及遍历算法</h1><p>图和多叉树的结构十分类似,不过一般通过邻接表和邻接矩阵来实现</p>
-<p><img src="/2022/09/06/%E5%9B%BE%E8%AE%BA%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/23a5281e86ad2de62a3225af0861a32a.png" alt="23a5281e86ad2de62a3225af0861a32a"></p>
-<p><img src="/2022/09/06/%E5%9B%BE%E8%AE%BA%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/afee463971dede1b937cd0cfa4c82867.png" alt="afee463971dede1b937cd0cfa4c82867"></p>
-<h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2>
-        
-          <a class="article-more-a" href="/2022/09/06/%E5%9B%BE%E8%AE%BA%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法导论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/06/%E5%9B%BE%E8%AE%BA%E7%AE%97%E6%B3%95%E4%B8%AA%E4%BA%BA%E6%80%BB%E7%BB%93/">展开全文 >></a>
         </p>
       
 
@@ -1044,11 +1048,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
