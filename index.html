@@ -142,6 +142,159 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ARM指令集体系结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/21/ARM%E6%8C%87%E4%BB%A4%E9%9B%86%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">ARM指令集体系结构</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/21/ARM%E6%8C%87%E4%BB%A4%E9%9B%86%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/" class="archive-article-date">
+  	<time datetime="2023-11-21T12:24:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p><strong>CPU架构</strong>是CPU厂商给属于同一系列的CPU产品定的一个规范，主要目的是为了区分不同类型CPU的重要标示。目	&#96;前市面上的CPU分类主要分有两大阵营，一个是intel、AMD为首的复杂指令集CPU（X86架构），另一个是以IBM、ARM为首的精简指令集CPU(ARM架构)。</p>
+<blockquote>
+<p>你想造一个房子，在具体的细节实现之前，你必须思考，我到底要造高楼、平房、独栋别墅………然后我确定我要造平房，什么样的平房？我要造三室一厅的平房，这就是一种基于平房架构的内核，我要造四室一厅的平房，这就是基于平房架构的另外一种内核。</p>
+</blockquote>
+<p><strong>两种架构之前的核心区别是x86是复杂指令集（CISC），ARM是精简指令集（RISC）</strong>，指令集是指处理器能够识别并执行的指令集合。</p>
+<ul>
+<li><p>精简指令集：每条指令功能简单，单条指令耗电低，但功能较少对于开发者实现一个功能需要自己想办法实现。</p>
+</li>
+<li><p>复杂指令集：一个指令就相当于一个事件</p>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2023/11/21/ARM%E6%8C%87%E4%BB%A4%E9%9B%86%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/21/ARM%E6%8C%87%E4%BB%A4%E9%9B%86%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-C-函数模板和类模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/11/21/C-%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E7%B1%BB%E6%A8%A1%E6%9D%BF/">C++ 函数模板和类模板</a>
+    </h1>
+  
+
+        
+        <a href="/2023/11/21/C-%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E7%B1%BB%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
+  	<time datetime="2023-11-21T12:23:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-11-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="函数模板"><a href="#函数模板" class="headerlink" title="函数模板"></a>函数模板</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>所谓的函数模板实际上是建立一个通用函数，其函数类型和形参类型不具体指定，用一个虚拟的类型来表达。这个通用函数就称为函数模板。凡是函数体相同的函数都可以用这个这个模板来取代模板中的虚拟类型，从而实现了不同函数的功能。</p>
+<p>1).模板把函数或类要处理的数据类型参数化，表现为参数的多态性，成为类属。</p>
+<p>2).模板用于<strong>表达逻辑结构相同</strong>，但<strong>具体数据元素类型不同</strong>的数据对象的通用行为。</p>
+        
+          <a class="article-more-a" href="/2023/11/21/C-%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E7%B1%BB%E6%A8%A1%E6%9D%BF/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/11/21/C-%E5%87%BD%E6%95%B0%E6%A8%A1%E6%9D%BF%E5%92%8C%E7%B1%BB%E6%A8%A1%E6%9D%BF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="article-UI框架设计学习" class="article article-type-article  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -789,201 +942,6 @@
 
 
   
-    <article id="post-lua面向对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/12/26/lua%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">lua面向对象</a>
-    </h1>
-  
-
-        
-        <a href="/2022/12/26/lua%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="archive-article-date">
-  	<time datetime="2022-12-26T14:26:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="简单的类实现"><a href="#简单的类实现" class="headerlink" title="简单的类实现"></a>简单的类实现</h1><p>LUA中最基本的结构是table，用table来描述对象的属性。lua 中的 function 可以用来表示方法。</p>
-<p><strong>那么LUA中的类可以通过 table + function 模拟出来。</strong></p>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Student = &#123;</span><br><span class="line">    age = <span class="number">1</span>,</span><br><span class="line">    growUp = <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- print(age) 这样写与表中没有任何关系，他打印age这个全局变量</span></span><br><span class="line">        <span class="comment">-- 一定要调用表名.属性来指明是谁做的</span></span><br><span class="line">        <span class="built_in">print</span>(Student.age)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">-- 声明表之后 ，仍可以在表外生命变量和方法</span></span><br><span class="line">Student.name = <span class="string">&quot;Name&quot;</span></span><br><span class="line">Student.Speak = <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;说话&quot;</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 第三种函数的声明方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student.Speak2</span><span class="params">()</span></span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;说话2&quot;</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 使用冒号 : 来将调用时冒号前的变量作为self</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student:Speak3</span><span class="params">()</span></span></span><br><span class="line">	<span class="built_in">print</span>(<span class="built_in">self</span>.name..<span class="string">&quot;说话3&quot;</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(Student.age)</span><br><span class="line">Student.Speak()</span><br><span class="line">Student.Speak2()</span><br><span class="line">Student:Speak3() <span class="comment">-- Student 作为self</span></span><br><span class="line"><span class="comment">--[[输出结果</span></span><br><span class="line"><span class="comment">1</span></span><br><span class="line"><span class="comment">说话</span></span><br><span class="line"><span class="comment">说话2</span></span><br><span class="line"><span class="comment">Name说话3</span></span><br><span class="line"><span class="comment">--]]</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/12/26/lua%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">lua</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/12/26/lua%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-lua-基本语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/12/23/lua-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">lua 基本语法</a>
-    </h1>
-  
-
-        
-        <a href="/2022/12/23/lua-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2022-12-23T12:40:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>lua是动态语言类型，变量不需要类型定义，只需要为变量赋值</p>
-<p>lua有8个基本类型：</p>
-<table>
-<thead>
-<tr>
-<th align="left">数据类型</th>
-<th align="left">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">nil</td>
-<td align="left">这个最简单，只有值nil属于该类，表示一个无效值（在条件表达式中相当于false）。</td>
-</tr>
-<tr>
-<td align="left">boolean</td>
-<td align="left">包含两个值：false和true。</td>
-</tr>
-<tr>
-<td align="left">number</td>
-<td align="left">表示双精度类型的实浮点数</td>
-</tr>
-<tr>
-<td align="left">string</td>
-<td align="left">字符串由一对双引号或单引号来表示</td>
-</tr>
-<tr>
-<td align="left">function</td>
-<td align="left">由 C 或 Lua 编写的函数</td>
-</tr>
-<tr>
-<td align="left">userdata</td>
-<td align="left">表示任意存储在变量中的C数据结构</td>
-</tr>
-<tr>
-<td align="left">thread</td>
-<td align="left">表示执行的独立线路，用于执行协同程序</td>
-</tr>
-<tr>
-<td align="left">table</td>
-<td align="left">Lua 中的表（table）其实是一个”关联数组”（associative arrays），数组的索引可以是数字、字符串或表类型。在 Lua 里，table 的创建是通过”构造表达式”来完成，最简单构造表达式是{}，用来创建一个空表。</td>
-</tr>
-</tbody></table>
-        
-          <a class="article-more-a" href="/2022/12/23/lua-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">lua</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/12/23/lua-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1081,11 +1039,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">

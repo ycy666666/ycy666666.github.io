@@ -142,6 +142,201 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-lua面向对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/12/26/lua%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">lua面向对象</a>
+    </h1>
+  
+
+        
+        <a href="/2022/12/26/lua%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="archive-article-date">
+  	<time datetime="2022-12-26T14:26:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简单的类实现"><a href="#简单的类实现" class="headerlink" title="简单的类实现"></a>简单的类实现</h1><p>LUA中最基本的结构是table，用table来描述对象的属性。lua 中的 function 可以用来表示方法。</p>
+<p><strong>那么LUA中的类可以通过 table + function 模拟出来。</strong></p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">Student = &#123;</span><br><span class="line">    age = <span class="number">1</span>,</span><br><span class="line">    growUp = <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line">        <span class="comment">-- print(age) 这样写与表中没有任何关系，他打印age这个全局变量</span></span><br><span class="line">        <span class="comment">-- 一定要调用表名.属性来指明是谁做的</span></span><br><span class="line">        <span class="built_in">print</span>(Student.age)</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">-- 声明表之后 ，仍可以在表外生命变量和方法</span></span><br><span class="line">Student.name = <span class="string">&quot;Name&quot;</span></span><br><span class="line">Student.Speak = <span class="function"><span class="keyword">function</span><span class="params">()</span></span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;说话&quot;</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 第三种函数的声明方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student.Speak2</span><span class="params">()</span></span></span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&quot;说话2&quot;</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 使用冒号 : 来将调用时冒号前的变量作为self</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student:Speak3</span><span class="params">()</span></span></span><br><span class="line">	<span class="built_in">print</span>(<span class="built_in">self</span>.name..<span class="string">&quot;说话3&quot;</span>)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(Student.age)</span><br><span class="line">Student.Speak()</span><br><span class="line">Student.Speak2()</span><br><span class="line">Student:Speak3() <span class="comment">-- Student 作为self</span></span><br><span class="line"><span class="comment">--[[输出结果</span></span><br><span class="line"><span class="comment">1</span></span><br><span class="line"><span class="comment">说话</span></span><br><span class="line"><span class="comment">说话2</span></span><br><span class="line"><span class="comment">Name说话3</span></span><br><span class="line"><span class="comment">--]]</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2022/12/26/lua%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">lua</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/12/26/lua%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-lua-基本语法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/12/23/lua-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">lua 基本语法</a>
+    </h1>
+  
+
+        
+        <a href="/2022/12/23/lua-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2022-12-23T12:40:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-12-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>lua是动态语言类型，变量不需要类型定义，只需要为变量赋值</p>
+<p>lua有8个基本类型：</p>
+<table>
+<thead>
+<tr>
+<th align="left">数据类型</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">nil</td>
+<td align="left">这个最简单，只有值nil属于该类，表示一个无效值（在条件表达式中相当于false）。</td>
+</tr>
+<tr>
+<td align="left">boolean</td>
+<td align="left">包含两个值：false和true。</td>
+</tr>
+<tr>
+<td align="left">number</td>
+<td align="left">表示双精度类型的实浮点数</td>
+</tr>
+<tr>
+<td align="left">string</td>
+<td align="left">字符串由一对双引号或单引号来表示</td>
+</tr>
+<tr>
+<td align="left">function</td>
+<td align="left">由 C 或 Lua 编写的函数</td>
+</tr>
+<tr>
+<td align="left">userdata</td>
+<td align="left">表示任意存储在变量中的C数据结构</td>
+</tr>
+<tr>
+<td align="left">thread</td>
+<td align="left">表示执行的独立线路，用于执行协同程序</td>
+</tr>
+<tr>
+<td align="left">table</td>
+<td align="left">Lua 中的表（table）其实是一个”关联数组”（associative arrays），数组的索引可以是数字、字符串或表类型。在 Lua 里，table 的创建是通过”构造表达式”来完成，最简单构造表达式是{}，用来创建一个空表。</td>
+</tr>
+</tbody></table>
+        
+          <a class="article-more-a" href="/2022/12/23/lua-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">lua</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/12/23/lua-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Unity-Mirror实现局域网联机自制卡牌游戏" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -787,170 +982,6 @@
 
 
   
-    <article id="aticle-详析二分搜索算法" class="article article-type-aticle  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/23/%E8%AF%A6%E6%9E%90%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/">详析二分搜索算法</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/23/%E8%AF%A6%E6%9E%90%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2022-09-23T06:26:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h1><p>二分查找特别容易出现问题，尤其发生在寻找左右边界的情况</p>
-<p>主要注意这几点：</p>
-<ul>
-<li>计算mid的时候使用<code>left + (right - left) / 2</code>防止溢出</li>
-<li>不写else，而是用if把条件说明</li>
-<li>明确自己的搜索区间，跳出while的条件就是搜索区间长度为0</li>
-<li>注意left、right和mid之间的关系，尤其是right的初始值情况</li>
-</ul>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">int</span> <span class="title">binarySearch</span>(<span class="params"><span class="built_in">int</span>[] nums, <span class="built_in">int</span> target</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">int</span> left = <span class="number">0</span>; </span><br><span class="line">    <span class="built_in">int</span> right = nums.length; <span class="comment">// 注意</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(left &lt; right) &#123;</span><br><span class="line">        <span class="built_in">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] == target)</span><br><span class="line">            <span class="keyword">return</span> mid; </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target)</span><br><span class="line">            left = mid + <span class="number">1</span>; <span class="comment">// 注意</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target)</span><br><span class="line">            right = mid; <span class="comment">// 注意</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/09/23/%E8%AF%A6%E6%9E%90%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法导论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/23/%E8%AF%A6%E6%9E%90%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="article-渲染管线概论" class="article article-type-article  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/">渲染管线概论</a>
-    </h1>
-  
-
-        
-        <a href="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/" class="archive-article-date">
-  	<time datetime="2022-09-21T08:08:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="什么是渲染管线"><a href="#什么是渲染管线" class="headerlink" title="什么是渲染管线"></a>什么是渲染管线</h1><p>渲染管线（渲染流水线）是将三维场景模型转换到屏幕像素空间输出的过程。图形渲染管线主要包括两个功能：一是将物体3D坐标转变为屏幕空间2D坐标，二是为屏幕每个像素点进行着色。</p>
-<h2 id="渲染管线的流程"><a href="#渲染管线的流程" class="headerlink" title="渲染管线的流程"></a>渲染管线的流程</h2><p>渲染管线的一般流程如下图所示。分别是：顶点数据的输入、顶点着色器、曲面细分过程、几何着色器、图元组装、裁剪剔除、光栅化、片段着色器以及混合测试。</p>
-<p>![Image [1]](渲染管线概论&#x2F;Image [1].png)</p>
-<p>此外还可以抽象为4个阶段</p>
-<p><img src="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/image-20220920175951721.png" alt="image-20220920175951721"></p>
-        
-          <a class="article-more-a" href="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">图形学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1048,11 +1079,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">

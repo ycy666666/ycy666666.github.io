@@ -142,6 +142,170 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="aticle-详析二分搜索算法" class="article article-type-aticle  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/23/%E8%AF%A6%E6%9E%90%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/">详析二分搜索算法</a>
+    </h1>
+  
+
+        
+        <a href="/2022/09/23/%E8%AF%A6%E6%9E%90%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2022-09-23T06:26:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h1><p>二分查找特别容易出现问题，尤其发生在寻找左右边界的情况</p>
+<p>主要注意这几点：</p>
+<ul>
+<li>计算mid的时候使用<code>left + (right - left) / 2</code>防止溢出</li>
+<li>不写else，而是用if把条件说明</li>
+<li>明确自己的搜索区间，跳出while的条件就是搜索区间长度为0</li>
+<li>注意left、right和mid之间的关系，尤其是right的初始值情况</li>
+</ul>
+<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">int</span> <span class="title">binarySearch</span>(<span class="params"><span class="built_in">int</span>[] nums, <span class="built_in">int</span> target</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">int</span> left = <span class="number">0</span>; </span><br><span class="line">    <span class="built_in">int</span> right = nums.length; <span class="comment">// 注意</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(left &lt; right) &#123;</span><br><span class="line">        <span class="built_in">int</span> mid = left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(nums[mid] == target)</span><br><span class="line">            <span class="keyword">return</span> mid; </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target)</span><br><span class="line">            left = mid + <span class="number">1</span>; <span class="comment">// 注意</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target)</span><br><span class="line">            right = mid; <span class="comment">// 注意</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2022/09/23/%E8%AF%A6%E6%9E%90%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法导论</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/09/23/%E8%AF%A6%E6%9E%90%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="article-渲染管线概论" class="article article-type-article  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/">渲染管线概论</a>
+    </h1>
+  
+
+        
+        <a href="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/" class="archive-article-date">
+  	<time datetime="2022-09-21T08:08:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-09-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="什么是渲染管线"><a href="#什么是渲染管线" class="headerlink" title="什么是渲染管线"></a>什么是渲染管线</h1><p>渲染管线（渲染流水线）是将三维场景模型转换到屏幕像素空间输出的过程。图形渲染管线主要包括两个功能：一是将物体3D坐标转变为屏幕空间2D坐标，二是为屏幕每个像素点进行着色。</p>
+<h2 id="渲染管线的流程"><a href="#渲染管线的流程" class="headerlink" title="渲染管线的流程"></a>渲染管线的流程</h2><p>渲染管线的一般流程如下图所示。分别是：顶点数据的输入、顶点着色器、曲面细分过程、几何着色器、图元组装、裁剪剔除、光栅化、片段着色器以及混合测试。</p>
+<p>![Image [1]](渲染管线概论&#x2F;Image [1].png)</p>
+<p>此外还可以抽象为4个阶段</p>
+<p><img src="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/image-20220920175951721.png" alt="image-20220920175951721"></p>
+        
+          <a class="article-more-a" href="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">图形学</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/09/21/%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E6%A6%82%E8%AE%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="article-图论算法个人总结" class="article article-type-article  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -811,169 +975,6 @@
 
 
   
-    <article id="article-CSharp 回看委托与事件" class="article article-type-article  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/22/CSharp%20%E5%9B%9E%E7%9C%8B%E5%A7%94%E6%89%98%E4%B8%8E%E4%BA%8B%E4%BB%B6/">C# 回看委托与事件</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/22/CSharp%20%E5%9B%9E%E7%9C%8B%E5%A7%94%E6%89%98%E4%B8%8E%E4%BA%8B%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2022-07-22T10:36:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="委托概述"><a href="#委托概述" class="headerlink" title="委托概述"></a>委托概述</h1><p>很多时候，我们传入某个类型完整的实例引用，只是为了调用其中的一个方法吗，这时候我们就是需要委托</p>
-<h2 id="委托的应用场景"><a href="#委托的应用场景" class="headerlink" title="委托的应用场景"></a>委托的应用场景</h2><p>比如在排序过程中，我们会根据需要选择升序排列，降序排列，或者是字母顺序排列</p>
-<p>为了减少重复代码，我们可以将比较方法作为参数传给排序函数，为了能将方法作为参数传递，我们要有一个表示方法的数据类型，也就是委托。</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">BubbleSort</span>(<span class="params"><span class="built_in">int</span>[] items, ComparisonHandler comparisonHandler</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">int</span> i,j,temp;</span><br><span class="line">    <span class="keyword">for</span>(i = item.Length; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">		<span class="keyword">for</span> (j = item.Length - <span class="number">1</span>; j&lt;= i; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(comparisonHandler(items[j - <span class="number">1</span>], items[j]))&#123;<span class="comment">//和直接调用方法的语法一致</span></span><br><span class="line">                temp = items[j - <span class="number">1</span>];</span><br><span class="line">                items[j - <span class="number">1</span>] = items[j];</span><br><span class="line">                items[j] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="built_in">delegate</span> <span class="built_in">bool</span> <span class="title">ComparisonHandler</span>(<span class="params"><span class="built_in">int</span> first, <span class="built_in">int</span> second</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">bool</span> <span class="title">GreaterThan</span> (<span class="params"><span class="built_in">int</span> first,<span class="built_in">int</span> second</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> first &gt; second;</span><br><span class="line">&#125;<span class="comment">//方法签名的剩余部分（参数和返回值），必须兼容委托的签名</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//...</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//调用BubbleSort，并提供有委托捕捉到的方法名称作为实参</span></span><br><span class="line"><span class="built_in">int</span>[] items = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">5</span>];</span><br><span class="line">BubbleSort(items,GreaterThan);<span class="comment">//ComparisonHandler委托是引用类型，使用时不必用new实例化</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/07/22/CSharp%20%E5%9B%9E%E7%9C%8B%E5%A7%94%E6%89%98%E4%B8%8E%E4%BA%8B%E4%BB%B6/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/22/CSharp%20%E5%9B%9E%E7%9C%8B%E5%A7%94%E6%89%98%E4%B8%8E%E4%BA%8B%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="article-CSharp 本质论 泛型" class="article article-type-article  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/07/18/CSharp%20%E6%9C%AC%E8%B4%A8%E8%AE%BA%20%E6%B3%9B%E5%9E%8B/">C# 本质论 泛型</a>
-    </h1>
-  
-
-        
-        <a href="/2022/07/18/CSharp%20%E6%9C%AC%E8%B4%A8%E8%AE%BA%20%E6%B3%9B%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2022-07-18T07:49:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="泛型类型概述"><a href="#泛型类型概述" class="headerlink" title="泛型类型概述"></a>泛型类型概述</h1><p>泛型允许开发人员专注于创建算法和模式上，而且确保代码能由不同数据类型重用</p>
-<h2 id="泛型的优点"><a href="#泛型的优点" class="headerlink" title="泛型的优点"></a>泛型的优点</h2><ul>
-<li>促进了类型安全，他确保在参数化的类中，只有明确期望的数据类型才可使用</li>
-<li>为泛型类成员使用值类型，不会造成到object的装箱转换，而且避免了类型检查</li>
-<li>泛型允许通过代码实现模式，泛型为代码中反复出现的问题提供了单一实现</li>
-</ul>
-<p><strong>编程习惯： 如果类型参数必须实现<code>IComponent</code>，那个类型名称可以是<code>TComponent</code></strong></p>
-<h2 id="泛型接口和泛型结构"><a href="#泛型接口和泛型结构" class="headerlink" title="泛型接口和泛型结构"></a>泛型接口和泛型结构</h2><p><strong>声明泛型接口</strong></p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title">IPair</span>&lt;<span class="title">TFirst</span>, <span class="title">TSecond</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">	TFirst First &#123; <span class="keyword">get</span>; <span class="keyword">set</span>;&#125;</span><br><span class="line">	TSecond Second &#123; <span class="keyword">get</span>; <span class="keyword">set</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2022/07/18/CSharp%20%E6%9C%AC%E8%B4%A8%E8%AE%BA%20%E6%B3%9B%E5%9E%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">C#</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2022/07/18/CSharp%20%E6%9C%AC%E8%B4%A8%E8%AE%BA%20%E6%B3%9B%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
@@ -1071,11 +1072,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">C#</a>
+                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Unity</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">C#</a>
               </li>
              
               <li class="article-tag-list-item">
